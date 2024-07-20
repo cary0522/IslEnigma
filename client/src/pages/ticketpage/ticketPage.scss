@@ -1,0 +1,428 @@
+$colorBanner: white;
+$colorText: rgba(115, 116, 140, 1);
+$backgroundColorSafe: rgba(181, 108, 138, 1);
+$backgroundColorBooking: rgba(255, 255, 255, 0.8);
+$backgroundColorBtnDark: rgba(115, 116, 140, 1);
+
+.ticketPage {
+	#divBanner {
+		position: relative;
+		.logoArea {
+			position: absolute;
+			width: 40%;
+			top: 40%;
+			left: 8%;
+			.divOutside {
+				width: 100%;
+				display: flex;
+			}
+			#imgLogoArea {
+				width: 700px;
+				margin: 0 auto;
+				@media screen and (max-width: 992px) {
+					width: 100%;
+				}
+				@media screen and (max-width: 720px) {
+					width: 70%;
+				}
+			}
+			.divPageName {
+				margin: 0 auto;
+				width: 700px;
+				display: flex;
+				justify-content: center;
+				h3 {
+					font-size: 2rem;
+					margin: 0;
+					color: $colorBanner;
+				}
+				@media screen and (max-width: 720px) {
+					display: none;
+				}
+			}
+			.linePageName {
+				width: 20%;
+				height: 50%;
+				border-bottom: 3px solid white;
+				&:first-of-type {
+					margin: 0 20px 0 auto;
+				}
+				&:last-of-type {
+					margin: 0 auto 0 20px;
+				}
+			}
+			@media screen and (max-width: 992px) {
+				width: 45%;
+			}
+			@media screen and (max-width: 720px) {
+				top: 15%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
+			}
+		}
+		.imgBackground {
+			@media screen and (max-width: 992px) {
+				height: 80vh;
+				object-fit: cover;
+			}
+			@media screen and (max-width: 720px) {
+				height: 100vh;
+				object-fit: cover;
+			}
+		}
+		.divSafe {
+			position: absolute;
+			background-color: $backgroundColorSafe;
+			color: $colorBanner;
+			padding: 10px 20px;
+			border-radius: 25px;
+			box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
+				0 4px 4px rgba(0, 0, 0, 0.25);
+			backdrop-filter: blur(8px);
+			top: 65%;
+			left: 8%;
+			text-align: center;
+			width: 300px;
+			h5 {
+				font-size: 0.8rem;
+				padding: 2px 0 0 0;
+			}
+			@media screen and (max-width: 992px) {
+				top: 60%;
+			}
+			@media screen and (max-width: 720px) {
+				top: 70%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+		.bookingArea {
+			width: 350px;
+			position: absolute;
+			top: 30%;
+			right: 15%;
+			background-color: $backgroundColorBooking;
+			box-shadow: inset -5px 5px 5px rgba(255, 255, 255, 0.52),
+				-5px 6px 4px rgba(0, 0, 0, 0.24);
+			backdrop-filter: blur(5px);
+			border-radius: 20px;
+			color: $colorText;
+			text-align: center;
+			.divBookingItem {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				margin: 10px;
+				padding: 10px;
+				height: 50px;
+				svg {
+					&:hover {
+						transform: scale(1.2);
+					}
+				}
+				.divTicketNum {
+					display: flex;
+					input {
+						height: 50px;
+						border: none;
+						outline: none;
+						background-color: transparent;
+						text-align: center;
+						line-height: 50px;
+						color: $colorText;
+						font-size: 24px;
+					}
+					.divIcons {
+						height: 50px;
+						line-height: 50px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						cursor: pointer;
+						.bookingAreaIcon {
+							box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+							border-radius: 50%;
+						}
+					}
+				}
+			}
+			p {
+				font-size: 24px;
+				color: $colorText;
+				margin: 5px;
+			}
+			small {
+				font-size: 16px;
+			}
+			button {
+				background-color: $backgroundColorBtnDark;
+				color: $colorBanner;
+				font-size: 24px;
+			}
+			@media screen and (max-width: 992px) {
+				width: 300px;
+				right: 5%;
+			}
+			@media screen and (max-width: 720px) {
+				top: 45%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+		.btnDown {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: rgba(255, 255, 255, 0.2);
+			box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
+				0 4px 4px rgba(0, 0, 0, 0.25);
+			backdrop-filter: blur(8px);
+			position: absolute;
+			bottom: 20%;
+			left: 45%;
+			transform: translate(-50%, -50%);
+			animation: btnDown 1s infinite 0.5s;
+			.btnDwnTriangle {
+				position: absolute;
+				bottom: -15%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				.svgPolygon {
+					fill: rgba(255, 255, 255, 0.2);
+				}
+				@keyframes btnDown {
+					0% {
+						transform: translateY(0) rotate(0deg);
+					}
+					20% {
+						transform: translateY(6px) rotate(5deg);
+					}
+					40% {
+						transform: translateY(-4px) rotate(-3deg);
+					}
+					60% {
+						transform: translateY(2px) rotate(2deg);
+					}
+					80% {
+						transform: translateY(-1px) rotate(-1deg);
+					}
+					100% {
+						transform: translateY(0) rotate(0deg);
+					}
+				}
+			}
+			@media screen and (min-width: 720px) {
+				display: none;
+			}
+		}
+	}
+	.divBackground {
+		margin: 50px auto;
+		padding: 20px;
+		border-radius: 20px;
+		background-image: linear-gradient(
+			270deg,
+			rgba(124, 101, 163, 1),
+			rgba(49, 125, 165, 1)
+		);
+		box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
+			0 4px 4px rgba(0, 0, 0, 0.25);
+		backdrop-filter: blur(8px);
+		text-align: center;
+	}
+	#divBookingWay {
+		h1 {
+			margin: 10px;
+			font-size: 30px;
+		}
+		.divIntroArea {
+			display: flex;
+			justify-content: space-around;
+			.divBookWayItem {
+				margin: 10px 0;
+				display: flex;
+				.lineBetweenComponents {
+					width: 0px;
+					height: 300px;
+					border: 1px solid white;
+					margin-top: 50px;
+					@media screen and (max-width: 991px) {
+						display: none;
+					}
+				}
+				.divBookingWayIntro {
+					margin: 0;
+					.pIntroTitle {
+						font-size: 24px;
+						margin: 20px 10px;
+					}
+					.pIntroContent {
+						text-align: left;
+						margin: 10px 30px;
+						line-height: 30px;
+						letter-spacing: 3px;
+					}
+				}
+			}
+			.divImages {
+				display: flex;
+				justify-content: center;
+				.divImgItem {
+					width: 100px;
+					height: 100px;
+					margin: 0px 15px 5px 15px;
+					padding: 10px;
+					background-color: rgba(255, 255, 255, 0.2);
+					box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
+						0 4px 4px rgba(0, 0, 0, 0.25);
+					backdrop-filter: blur(8px);
+					border-radius: 50%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					cursor: pointer;
+					&:hover {
+						animation: softSpring 0.8s ease-in-out forwards;
+					}
+					/* 左上跳動畫 */
+					@keyframes softSpring {
+						0% {
+							transform: translate(0, 0) scale(1);
+						}
+						50% {
+							transform: translate(-7px, -7px) scale(1.2);
+						}
+						100% {
+							transform: translate(0px, -4px) scale(1.1);
+						}
+					}
+					@media screen and (max-width: 1400px) {
+						width: 80px;
+						height: 80px;
+					}
+					@media screen and (max-width: 1200px) {
+						width: 60px;
+						height: 60px;
+					}
+					@media screen and (max-width: 991px) {
+						width: 100px;
+						height: 100px;
+					}
+					@media screen and (max-width: 768px) {
+						width: 60px;
+						height: 60px;
+					}
+				}
+			}
+			@media screen and (max-width: 991px) {
+				flex-wrap: wrap;
+			}
+		}
+	}
+	#divCompare {
+		.iconCrown {
+			color: rgba(246, 187, 66, 1);
+			position: absolute;
+			right: -2%;
+			top: -4%;
+			transform: rotate(20deg);
+		}
+		.divTable {
+			position: relative;
+			font-size: 24px;
+			color: white;
+			.divTableHead {
+				display: flex;
+				div {
+					width: 30%;
+					padding: 20px;
+					span {
+						width: 100%;
+						display: block;
+						margin: 10px;
+						letter-spacing: 1px;
+					}
+					@media screen and (max-width: 720px) {
+						width: 50%;
+					}
+				}
+				.divDisplayNone {
+					@media screen and (max-width: 720px) {
+						display: none;
+					}
+				}
+			}
+			.divTableTr {
+				display: flex;
+				border-top: 1px solid white;
+				div {
+					width: 30%;
+					padding: 20px;
+				}
+				.compareTitle {
+					@media screen and (max-width: 720px) {
+						margin: 10px 0 0 0;
+						width: 100%;
+						font-weight: 900;
+					}
+				}
+				@media screen and (max-width: 720px) {
+					flex-wrap: wrap;
+				}
+			}
+			.iconTick {
+				color: rgba(246, 187, 66, 1);
+			}
+			.ticketPrice {
+				text-shadow: 2px 1px 0px rgba(246, 187, 66, 1);
+			}
+			@media screen and (max-width: 992px) {
+				font-size: 1rem;
+			}
+		}
+	}
+	#ticketRuleArea {
+		margin: 50px auto;
+		.ticketRuleTopBorder {
+			margin: 10px auto;
+			padding: 10px 20px;
+			height: 80px;
+			border-radius: 20px 20px 20px 20px;
+			// border-radius: 50px 20px 0px 0px ;
+			background-image: linear-gradient(
+				270deg,
+				rgba(124, 101, 163, 1),
+				rgba(49, 125, 165, 1)
+			);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.leftCol {
+				display: flex;
+				align-items: center;
+				margin: 10px auto 10px 10px;
+				p {
+					font-size: 20px;
+					margin: 10px;
+				}
+				.svgTriangle {
+					// transform: rotate(180deg);
+				}
+			}
+			.rightCol {
+				margin: 10px 10px 10px auto;
+			}
+			svg {
+				color: white;
+				cursor: pointer;
+				&:hover {
+					transform: scale(1.2);
+				}
+			}
+		}
+		.ticketRuleContent {
+			display: none;
+		}
+	}
+}
