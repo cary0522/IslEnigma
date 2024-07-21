@@ -40,12 +40,16 @@ $backgroundColor1: rgba(209, 209, 210, 0.6);
 	}
 	#interactiveMap {
 		position: relative;
+		// border: 1px red solid;
 		width: 100%;
 		height: 100%;
-		overflow: scroll;
+		@media screen and (max-width: 720px) {
+			overflow: scroll;
+		}
 		img {
 			@media screen and (max-width: 720px) {
 				max-width: 1000%;
+				// transform: scale(1.2);
 				display: block;
 				height: 150vh;
 				object-fit: cover;
@@ -102,13 +106,41 @@ $backgroundColor1: rgba(209, 209, 210, 0.6);
 				padding: 10px;
 			}
 		}
-		.mapPointContainer{
+		.mapPointContainer {
+			// border: 1px solid black;
 			position: absolute;
-			top: 0%;
-			left: 0%;
+			// top: 0%;
+			// left: 0%;
 			.svgContainer {
+				width: 50px;
+				height: 65px;
 				position: relative;
-				svg{
+				background-image: url('./mapPoint.svg');
+				@keyframes svgHover {
+					0% {
+						transform: translateX(0) rotate(0deg) scale(1);
+					}
+					20% {
+						transform: translateX(3px) rotate(5deg) scale(1.2);
+					}
+					40% {
+						transform: translateX(-3px) rotate(-5deg) scale(1.2);
+					}
+					60% {
+						transform: translateX(3px) rotate(5deg) scale(1.2);
+					}
+					80% {
+						transform: translateX(-3px) rotate(-5deg) scale(1.2);
+					}
+					100% {
+						transform: translateX(0px) rotate(0deg) scale(1);
+					}
+				}
+				&:hover {
+					animation: svgHover 0.8s;
+					background-image: url('./mapPointHover.svg');
+				}
+				svg {
 					font-size: 30px;
 					color: $color1;
 					position: absolute;
@@ -116,6 +148,122 @@ $backgroundColor1: rgba(209, 209, 210, 0.6);
 					left: 8px;
 				}
 			}
+		}
+		// #view_fall{
+		// 	top:;
+		// 	left:;
+		// }
+		#VR_maze {
+			top: 10%;
+			left: 30%;
+		}
+		#view_garden {
+			top: 10%;
+			left: 35%;
+		}
+		#view_forest {
+			top: 10%;
+			left: 40%;
+		}
+		#shop_restaurant_sky {
+			top: 15%;
+			left: 10%;
+		}
+		#shop_cafe_dream {
+			top: 5%;
+			left: 5%;
+		}
+		#theater_sea {
+			top: 20%;
+			left: 60%;
+		}
+		#view_sea_tunnel {
+			top: 15%;
+			left: 62%;
+		}
+		#facility_rainbow {
+			top: 10%;
+			left: 90%;
+		}
+		#VR_coral {
+			top: 8%;
+			left: 80%;
+		}
+		#shop_restaurant_sea {
+			top: 8%;
+			left: 85%;
+		}
+		#facility_river {
+			top: 40%;
+			left: 60%;
+		}
+		#facility_sky_tower {
+			top: 35%;
+			left: 65%;
+		}
+		#facility_carousel {
+			top: 40%;
+			left: 85%;
+		}
+		#facility_roller_coaster {
+			top: 50%;
+			left: 90%;
+		}
+		#facility_wheel {
+			top: 80%;
+			left: 70%;
+		}
+		#shop_cafe_light {
+			top: 70%;
+			left: 85%;
+		}
+		#shop_bar {
+			top: 30%;
+			left: 30%;
+		}
+		#toilet {
+			top: 50%;
+			left: 50%;
+		}
+		#visitor_center {
+			top: 50%;
+			left: 50%;
+		}
+		#shop_shopping {
+			top: 40%;
+			left: 5%;
+		}
+		#port {
+			top: 60%;
+			left: 5%;
+		}
+		#ticket_center {
+			top: 50%;
+			left: 6%;
+		}
+		#medical_station {
+			top: 50%;
+			left: 55%;
+		}
+		#bus_station {
+			top: 50%;
+			left: 20%;
+		}
+		#room_center {
+			top: 80%;
+			left: 60%;
+		}
+		#room_grassland {
+			top: 85%;
+			left: 70%;
+		}
+		#room_second {
+			top: 85%;
+			left: 40%;
+		}
+		#room_third {
+			top: 80%;
+			left: 30%;
 		}
 	}
 }

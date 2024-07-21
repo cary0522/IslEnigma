@@ -6,8 +6,8 @@
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<g filter="url(#filter0_bdi_1180_6201)">
-				<circle cx="24" cy="20" r="20" fill="#D9D9D9" />
-				<path d="M24 60L6.67949 30L41.3205 30L24 60Z" fill="#D9D9D9" />
+				<circle cx="24" cy="20" r="20" fill='#D9D9D9'/>
+				<path d="M24 60L6.67949 30L41.3205 30L24 60Z" fill='#D9D9D9'/>
 			</g>
 			<defs>
 				<filter
