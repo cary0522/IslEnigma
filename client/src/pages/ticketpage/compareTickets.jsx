@@ -12,11 +12,11 @@ function CompareTickets() {
 				<FaCrown size={40} className="iconCrown" />
 				<div className="divTableHead">
 					<div className="divDisplayNone"></div>
-					<div>
+					<div className="">
 						<span>IslEnigma </span>
 						<span>Standard</span>
 					</div>
-					<div>
+					<div className="">
 						<span>IslEnigma </span>
 						<span>VIP</span>
 					</div>

@@ -1,9 +1,4 @@
-$colorBanner: white;
-$colorText: rgba(115, 116, 140, 1);
-$backgroundColorSafe: rgba(181, 108, 138, 1);
-$backgroundColorBooking: rgba(255, 255, 255, 0.8);
-$backgroundColorBtnDark: rgba(115, 116, 140, 1);
-
+@import '../../components/reset.scss';
 .ticketPage {
 	#divBanner {
 		position: relative;
@@ -34,7 +29,7 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 				h3 {
 					font-size: 2rem;
 					margin: 0;
-					color: $colorBanner;
+					color: $colorSvg;
 				}
 				@media screen and (max-width: 720px) {
 					display: none;
@@ -43,7 +38,7 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 			.linePageName {
 				width: 20%;
 				height: 50%;
-				border-bottom: 3px solid white;
+				border-bottom: 3px solid $colorSvg;
 				&:first-of-type {
 					margin: 0 20px 0 auto;
 				}
@@ -74,12 +69,11 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 		.divSafe {
 			position: absolute;
 			background-color: $backgroundColorSafe;
-			color: $colorBanner;
+			color: $colorSvg;
 			padding: 10px 20px;
 			border-radius: 25px;
-			box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
-				0 4px 4px rgba(0, 0, 0, 0.25);
-			backdrop-filter: blur(8px);
+			box-shadow: $backgroundShadow;
+			backdrop-filter: blur($backgroundBlur);
 			top: 65%;
 			left: 8%;
 			text-align: center;
@@ -157,7 +151,7 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 			}
 			button {
 				background-color: $backgroundColorBtnDark;
-				color: $colorBanner;
+				color: $colorSvg;
 				font-size: 24px;
 			}
 			@media screen and (max-width: 992px) {
@@ -175,9 +169,8 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 			height: 50px;
 			border-radius: 50%;
 			background-color: rgba(255, 255, 255, 0.2);
-			box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
-				0 4px 4px rgba(0, 0, 0, 0.25);
-			backdrop-filter: blur(8px);
+			box-shadow: $backgroundShadow;
+			backdrop-filter: blur($backgroundBlur);
 			position: absolute;
 			bottom: 20%;
 			left: 45%;
@@ -326,13 +319,19 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 			position: absolute;
 			right: -2%;
 			top: -4%;
-			transform: rotate(20deg);
+			animation: crownShin 1s infinite ease-in-out;
+			@keyframes crownShin {
+				0%{transform: scale(1) rotate(20deg);}						
+				50%{transform: scale(1.2) rotate(25deg);}			
+				100%{transform: scale(1) rotate(20deg);}				
+			}
 		}
 		.divTable {
 			position: relative;
 			font-size: 24px;
-			color: white;
+			color: $colorSvg;
 			.divTableHead {
+				width: 100%;
 				display: flex;
 				div {
 					width: 30%;
@@ -343,13 +342,12 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 						margin: 10px;
 						letter-spacing: 1px;
 					}
-					@media screen and (max-width: 720px) {
-						width: 50%;
-					}
 				}
 				.divDisplayNone {
+					padding: 0;
 					@media screen and (max-width: 720px) {
 						display: none;
+						padding: 0;
 					}
 				}
 			}
@@ -359,6 +357,7 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 				div {
 					width: 30%;
 					padding: 20px;
+					line-height: 50px;
 				}
 				.compareTitle {
 					@media screen and (max-width: 720px) {
@@ -385,11 +384,10 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 	#ticketRuleArea {
 		margin: 50px auto;
 		.ticketRuleTopBorder {
-			margin: 10px auto;
+			margin: 10px auto 0 auto;
 			padding: 10px 20px;
-			height: 80px;
-			border-radius: 20px 20px 20px 20px;
-			// border-radius: 50px 20px 0px 0px ;
+			height: 50px;
+			box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.25);
 			background-image: linear-gradient(
 				270deg,
 				rgba(124, 101, 163, 1),
@@ -407,7 +405,12 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 					margin: 10px;
 				}
 				.svgTriangle {
-					// transform: rotate(180deg);
+					transition: all .5s;
+					transform: rotate(0deg);
+				}
+				.svgTriangleClick {
+					transition: all .5s;
+					transform: rotate(180deg);
 				}
 			}
 			.rightCol {
@@ -422,7 +425,38 @@ $backgroundColorBtnDark: rgba(115, 116, 140, 1);
 			}
 		}
 		.ticketRuleContent {
-			display: none;
+			background-color: $colorSvg;
+			box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.25);
+			border: 1px solid rgba(195, 195, 195, 1);
+			border-radius: 0 0 20px 20px;
+			margin: 0px auto 10px auto;
+			padding: 10px 20px;
+			p{
+				color:$colorRule;
+				margin: 20px;
+				letter-spacing: 1px;
+				line-height: 25px;
+			}
+		}
+		@keyframes ruleContentHide {
+			0%{display: block;opacity: 1;}
+			25%{display: block;opacity: .8;}
+			50%{display: block;opacity: .4;}
+			75%{display: none;opacity: .1;}
+			100%{display: none;opacity: 0;}
+		}
+		.ticketRuleContentNone{
+			animation: ruleContentHide 0.3s both;	
+		}
+		@keyframes ruleContentBlock {
+			0%{display: none;opacity: 0;}
+			25%{display: block;opacity: .4;}
+			50%{display: block;opacity: .8;}
+			75%{display: block;opacity: .9;}
+			100%{display: block;opacity: 1;}
+		}
+		.ticketRuleContentBlock{
+			animation: ruleContentBlock 0.5s both;
 		}
 	}
 }

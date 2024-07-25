@@ -1,6 +1,4 @@
-$color1: white;
-$backgroundColor1: rgba(209, 209, 210, 0.6);
-
+@import "../../components/reset.scss";
 .mapPage {
 	.logoArea {
 		margin-top: 150px;
@@ -38,232 +36,387 @@ $backgroundColor1: rgba(209, 209, 210, 0.6);
 			display: none;
 		}
 	}
-	#interactiveMap {
-		position: relative;
-		// border: 1px red solid;
-		width: 100%;
-		height: 100%;
-		@media screen and (max-width: 720px) {
-			overflow: scroll;
-		}
-		img {
+	// 整體地圖區最外層容器，控制高度不要被放大的圖片撐開
+	#mapOutside {
+		width: 100vw;
+		height: 90vh;
+		overflow: scroll;
+		// 定位用容器，要跟著圖片一起放大才不會影響圖釘定位
+		#divInteractiveMap {
+			position: relative;
+			width: 1220px;
+			height: 658px;
 			@media screen and (max-width: 720px) {
-				max-width: 1000%;
-				// transform: scale(1.2);
-				display: block;
-				height: 150vh;
+				// 讓圖片可以左右滑動
+				overflow: scroll;
+			}
+			// 地圖
+			#imgInteractiveMap {
+				margin: 30px 0;
+				width: 1220px;
+				height: 658px;
 				object-fit: cover;
-				object-position: center;
 			}
-		}
-		#btnArea {
-			margin: 20px auto;
-			padding: 20px;
-			border-radius: 65px;
-			background-color: $backgroundColor1;
-			box-shadow: inset -3px 6px 5px rgba(255, 255, 255, 0.39),
-				-3px 4px 5px rgba(0, 0, 0, 0.25);
-			backdrop-filter: blur(8px);
-			position: absolute;
-			bottom: 15%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			display: flex;
-			justify-content: space-around;
-			svg {
-				color: $color1;
-				margin: 0 3px;
-				cursor: pointer;
-				&:hover {
-					animation: iconHover 0.8s;
+			.divDes {
+				width: 200px;
+				border-radius: 20px;
+				background-color: $backgroundColorDivLight;
+				box-shadow: inset -3px 6px 5px rgba(255, 255, 255, 0.39),
+					-3px 4px 5px rgba(0, 0, 0, 0.25);
+				backdrop-filter: blur(8px);
+				position: absolute;
+				display: flex;
+				padding: 15px;
+				z-index: 2;
+				color: $colorText;
+				img {
+					width: 30px;
+					height: 30px;
+					margin: 5px 0;
+					object-fit: contain;
+					border-radius: 20px;
 				}
-				@keyframes iconHover {
-					0% {
-						transform: translateX(0) rotate(0deg);
-					}
-					20% {
-						transform: translateX(3px) rotate(5deg);
-					}
-					40% {
-						transform: translateX(-1px) rotate(-5deg);
-					}
-					60% {
-						transform: translateX(3px) rotate(5deg);
-					}
-					80% {
-						transform: translateX(-1px) rotate(-5deg);
-					}
-					100% {
-						transform: translateX(0) rotate(0deg);
-					}
+				div {
+					font-weight: 500;
+					padding: 0 5px;
+					margin: 5px 2px;
+					font-size: 0.8rem;
+				}
+				button {
+					width: auto;
+					padding: 5px 15px;
+					margin: 0px 10px;
+					background-color: $colorText;
+					color: $colorSvg;
+				}
+				#btnX {
+					cursor: pointer;
+					z-index: 3;
 				}
 			}
-			@media screen and (max-width: 720px) {
+			// 互動按鈕點擊區域
+			#btnArea {
+				margin: 20px auto;
+				padding: 20px;
+				border-radius: 65px;
+				background-color: $backgroundColorDivLight;
+				box-shadow: inset -3px 6px 5px rgba(255, 255, 255, 0.39),
+					-3px 4px 5px rgba(0, 0, 0, 0.25);
+				backdrop-filter: blur(8px);
 				position: fixed;
-			}
-			@media screen and (max-width: 576px) {
-				margin: 5px;
-				padding: 10px;
-			}
-		}
-		.mapPointContainer {
-			// border: 1px solid black;
-			position: absolute;
-			// top: 0%;
-			// left: 0%;
-			.svgContainer {
-				width: 50px;
-				height: 65px;
-				position: relative;
-				background-image: url('./mapPoint.svg');
-				@keyframes svgHover {
-					0% {
-						transform: translateX(0) rotate(0deg) scale(1);
-					}
-					20% {
-						transform: translateX(3px) rotate(5deg) scale(1.2);
-					}
-					40% {
-						transform: translateX(-3px) rotate(-5deg) scale(1.2);
-					}
-					60% {
-						transform: translateX(3px) rotate(5deg) scale(1.2);
-					}
-					80% {
-						transform: translateX(-3px) rotate(-5deg) scale(1.2);
-					}
-					100% {
-						transform: translateX(0px) rotate(0deg) scale(1);
-					}
-				}
-				&:hover {
-					animation: svgHover 0.8s;
-					background-image: url('./mapPointHover.svg');
-				}
+				bottom: 5%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				display: flex;
+				justify-content: space-around;
 				svg {
-					font-size: 30px;
-					color: $color1;
-					position: absolute;
-					top: 8px;
-					left: 8px;
+					color: $colorSvg;
+					margin: 0 3px;
+					cursor: pointer;
+					font-size: 40px;
+					&:hover {
+						animation: iconHover 0.8s;
+					}
+					@keyframes iconHover {
+						0% {
+							transform: translateX(0) rotate(0deg);
+						}
+						20% {
+							transform: translateX(3px) rotate(5deg);
+						}
+						40% {
+							transform: translateX(-1px) rotate(-5deg);
+						}
+						60% {
+							transform: translateX(3px) rotate(5deg);
+						}
+						80% {
+							transform: translateX(-1px) rotate(-5deg);
+						}
+						100% {
+							transform: translateX(0) rotate(0deg);
+						}
+					}
+				}
+				@media screen and (max-width: 720px) {
+					bottom: 15%;
+					left: 50%;
+				}
+				@media screen and (max-width: 576px) {
+					margin: 5px;
+					padding: 10px;
 				}
 			}
+			// 設施圖釘共同樣式
+			.mapPointContainer {
+				position: absolute;
+				// 包住圖釘圖及設施分類圖
+				.svgContainer {
+					width: 50px;
+					height: 65px;
+					position: relative;
+					background-image: url("./mapPoint.svg");
+					cursor: pointer;
+					// 圖釘hover效果
+					@keyframes svgHover {
+						0% {
+							transform: translateX(0) rotate(0deg) scale(1);
+						}
+						20% {
+							transform: translateX(3px) rotate(5deg) scale(1.2);
+						}
+						40% {
+							transform: translateX(-3px) rotate(-5deg) scale(1.2);
+						}
+						60% {
+							transform: translateX(3px) rotate(5deg) scale(1.2);
+						}
+						80% {
+							transform: translateX(-3px) rotate(-5deg) scale(1.2);
+						}
+						100% {
+							transform: translateX(0px) rotate(0deg) scale(1);
+						}
+					}
+					&:hover {
+						animation: svgHover 0.8s;
+						background-image: url("./mapPointHover.svg");
+					}
+					// 地標內的分類svg圖樣式
+					svg {
+						font-size: 30px;
+						color: $colorSvg;
+						position: absolute;
+						top: 8px;
+						left: 9px;
+					}
+				}
+			}
+			// 設施個別定位，透過各別 id 設定
+			#view_fall {
+				top: 3%;
+				left: 10%;
+			}
+			#VR_maze {
+				top: 15%;
+				left: 28%;
+			}
+			#view_garden {
+				top: 7%;
+				left: 40%;
+			}
+			#view_forest {
+				top: 5%;
+				left: 55%;
+			}
+			#shop_restaurant_sky {
+				top: 23%;
+				left: 25%;
+			}
+			#shop_cafe_dream {
+				top: 15%;
+				left: 10%;
+			}
+			#theater_sea {
+				top: 21%;
+				left: 55%;
+			}
+			#view_sea_tunnel {
+				top: 19%;
+				left: 62%;
+			}
+			#facility_rainbow {
+				top: 10%;
+				left: 75%;
+			}
+			#VR_coral {
+				top: 5%;
+				left: 63%;
+			}
+			#shop_restaurant_sea {
+				top: 0%;
+				left: 72%;
+			}
+			#facility_river {
+				top: 45%;
+				left: 60%;
+			}
+			#facility_sky_tower {
+				top: 22%;
+				left: 70%;
+			}
+			#facility_carousel {
+				top: 25%;
+				left: 78%;
+			}
+			#facility_roller_coaster {
+				top: 38%;
+				left: 75%;
+			}
+			#facility_wheel {
+				top: 50%;
+				left: 68%;
+			}
+			#shop_cafe_light {
+				top: 60%;
+				left: 75%;
+			}
+			#shop_bar {
+				top: 35%;
+				left: 30%;
+			}
+			#toilet {
+				top: 35%;
+				left: 37%;
+			}
+			#visitor_center {
+				top: 50%;
+				left: 45%;
+			}
+			#shop_shopping {
+				top: 30%;
+				left: 13%;
+			}
+			#port {
+				top: 50%;
+				left: 2%;
+			}
+			#ticket_center {
+				top: 55%;
+				left: 8%;
+			}
+			#medical_station {
+				top: 48%;
+				left: 12%;
+			}
+			#bus_station_enter {
+				top: 45%;
+				left: 18%;
+			}
+			#bus_station_oasis {
+				top: 25%;
+				left: 45%;
+			}
+			#bus_station_high {
+				top: 30%;
+				left: 60%;
+			}
+			#bus_station_lost {
+				top: 38%;
+				left: 68%;
+			}
+			#bus_station_room {
+				top: 65%;
+				left: 55%;
+			}
+			#bus_station_visitor_center {
+				top: 60%;
+				left: 45%;
+			}
+			#room_center {
+				top: 80%;
+				left: 56%;
+			}
+			#room_grassland {
+				top: 70%;
+				left: 70%;
+			}
+			#room_forest {
+				top: 80%;
+				left: 40%;
+			}
+			#room_lake {
+				top: 60%;
+				left: 30%;
+			}
 		}
-		// #view_fall{
-		// 	top:;
-		// 	left:;
-		// }
-		#VR_maze {
-			top: 10%;
-			left: 30%;
+	}
+	// 詳細介紹區塊樣式
+	.divContent {
+		height: 70%;
+		border-radius: 20px;
+		background-color: rgba(255, 255, 255, 0.9);
+		box-shadow: inset 0px 4px 5px rgba(217, 217, 217, 0.56),
+			0px 4px 4px rgba(0, 0, 0, 0.35);
+		backdrop-filter: blur(4px);
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		margin: 50px auto;
+		padding: 20px 15px;
+		z-index: 10;
+		color: $colorText;
+		font-weight: 500;
+		.divContentItem {
+			width: 50%;
 		}
-		#view_garden {
-			top: 10%;
-			left: 35%;
+		h1 {
+			font-size: 2rem;
+			font-weight: 500;
+			margin: 10px;
 		}
-		#view_forest {
-			top: 10%;
-			left: 40%;
+		p {
+			color: $colorText;
+			font-weight: 500;
+			margin: 10px;
+			letter-spacing: 2px;
+			line-height: 20px;
+			font-size: 1rem;
 		}
-		#shop_restaurant_sky {
-			top: 15%;
-			left: 10%;
+		#btnXContent {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 3;
+			cursor: pointer;
 		}
-		#shop_cafe_dream {
-			top: 5%;
-			left: 5%;
+		@media screen and (max-width: 720px) {
+			height: 60%;
+			margin: 0px auto 20px auto;
+			display: block;
+			.divContentItem {
+				width: 100%;
+			}
+			h1 {
+				font-size: 1.2rem;
+			}
+			p {
+				font-size: 0.8rem;
+			}
 		}
-		#theater_sea {
-			top: 20%;
-			left: 60%;
-		}
-		#view_sea_tunnel {
-			top: 15%;
-			left: 62%;
-		}
-		#facility_rainbow {
-			top: 10%;
-			left: 90%;
-		}
-		#VR_coral {
-			top: 8%;
-			left: 80%;
-		}
-		#shop_restaurant_sea {
-			top: 8%;
-			left: 85%;
-		}
-		#facility_river {
-			top: 40%;
-			left: 60%;
-		}
-		#facility_sky_tower {
-			top: 35%;
-			left: 65%;
-		}
-		#facility_carousel {
-			top: 40%;
-			left: 85%;
-		}
-		#facility_roller_coaster {
-			top: 50%;
-			left: 90%;
-		}
-		#facility_wheel {
-			top: 80%;
-			left: 70%;
-		}
-		#shop_cafe_light {
-			top: 70%;
-			left: 85%;
-		}
-		#shop_bar {
-			top: 30%;
-			left: 30%;
-		}
-		#toilet {
-			top: 50%;
-			left: 50%;
-		}
-		#visitor_center {
-			top: 50%;
-			left: 50%;
-		}
-		#shop_shopping {
-			top: 40%;
-			left: 5%;
-		}
-		#port {
-			top: 60%;
-			left: 5%;
-		}
-		#ticket_center {
-			top: 50%;
-			left: 6%;
-		}
-		#medical_station {
-			top: 50%;
-			left: 55%;
-		}
-		#bus_station {
-			top: 50%;
-			left: 20%;
-		}
-		#room_center {
-			top: 80%;
-			left: 60%;
-		}
-		#room_grassland {
-			top: 85%;
-			left: 70%;
-		}
-		#room_second {
-			top: 85%;
-			left: 40%;
-		}
-		#room_third {
-			top: 80%;
-			left: 30%;
+		.contentItemOutside {
+			display: flex;
+			justify-content: center;
+			.contentItem {
+				width: 30%;
+				background-color: $colorText;
+				border-radius: 20px;
+				margin: 5px;
+				padding: 5px;
+				color: $colorSvg;
+				text-align: center;
+				svg {
+					font-size: 40px;
+					margin: 5px;
+				}
+				p {
+					margin: 5px;
+					color: $colorSvg;
+				}
+				@media screen and (max-width: 720px) {
+					svg {
+						font-size: 25px;
+					}
+				}
+				@media screen and (min-width: 1200px) {
+					width: 25%;
+					svg {
+						font-size: 25px;
+					}
+				}
+			}
 		}
 	}
 }

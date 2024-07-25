@@ -1,13 +1,10 @@
-import React, { Component } from "react";
-import mapPointSvg from "./mapPoint.svg";
+import React from "react";
 
-function MapPoint({ mapPointId , iconComponent } ) {
+function MapPoint({ facility ,handleDes}) {
+
 	return (
-		<div id={mapPointId} className="mapPointContainer col-1">
-			<div className="svgContainer">
-				{/* <img src={mapPointSvg} alt="" /> */}
-                {iconComponent}
-			</div>
+		<div id={facility.iconId} className="mapPointContainer col-1">
+			<div className="svgContainer" onClick={(e)=>{handleDes(e,facility.id)}} ref={facility.refName}>{facility.iconComponent}</div>
 		</div>
 	);
 }

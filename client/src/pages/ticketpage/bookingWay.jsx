@@ -1,6 +1,6 @@
 import React from "react";
-import BookingWayIntro from "./bookingWayIntro";
-import BookingWayImg from "./bookingWayImg";
+import BookingWayIntro from "./BookingWayIntro";
+import BookingWayImg from "./BookingWayImg";
 
 function BookingWay() {
 	let introOnline = [

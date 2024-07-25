@@ -1,8 +1,8 @@
 import React from "react";
 // components
 import LogoArea from "/src/components/common/LogoArea.jsx";
-import BookingArea from "./bookingArea.jsx";
-import BtnDown from "./btnDown.jsx";
+import BookingArea from "./BookingArea.jsx";
+import BtnDown from "./BtnDown.jsx";
 // image
 import imgBanner from "/public/images/ticketBanner.png";
 import imgLogo from "/public/images/LogoType_Light_2 2.png";
