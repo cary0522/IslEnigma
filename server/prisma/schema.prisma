@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  CREATED
+  PAID
+}
+
+enum PaymentMethod {
+  PAYPAL
+  CREDITCARD
+}
+
+model Member {
+  member_id  String    @id
+  img_url    String
+  first_name String
+  last_name  String
+  address    String
+  birth_date DateTime
+  email      String
+  password   String
+
+  orders     Order[]  // one to many
+} 
+
+model Room {
+  room_id    String     @id
+  room_type  String
+  bed_count   Int @default(2)
+  desc  String?
+  price      Int
+  available  Boolean
+  capacity   Int  @default(2)
+  img Json?
+  orderItems OrderItem[]
+}
+
+model Ticket {
+  ticket_id String   @id
+  type      String
+  price     Int
+  img Json?
+  orderItems OrderItem[]
+}
+
+model Order {
+  order_id      String     @id
+  member_id     String
+  total_amount  Int
+  status        OrderStatus
+  order_date    DateTime
+  member        Member     @relation(fields: [member_id], references: [member_id])
+  orderItems    OrderItem[]
+  orderInfo     OrderInfo?
+}
+
+model OrderItem {
+  order_item_id  String   @id
+  order_id       String
+  room_id        String?
+  ticket_id      String?
+  check_in_date  DateTime?
+  check_out_date DateTime?
+  people_count   Int?
+  quantity       Int
+  booked_date    DateTime?
+  valid_date     DateTime?
+
+  order          Order    @relation(fields: [order_id], references: [order_id])
+  room           Room?    @relation(fields: [room_id], references: [room_id])
+  ticket         Ticket?  @relation(fields: [ticket_id], references: [ticket_id])
+}
+
+model OrderInfo {
+  order_info_id   String   @id
+  order_id        String   @unique
+  customer        String
+  phone_number    String
+  address         String
+  payment_method  PaymentMethod
+
+  order Order    @relation(fields: [order_id], references: [order_id])
+}

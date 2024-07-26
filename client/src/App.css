@@ -100,19 +100,16 @@ nav,
 section {
   display: block;
 }
-
 body {
   line-height: 1;
   box-sizing: border-box;
 }
-
 ol,
 ul {
   list-style: none;
   color: white;
   font-size: 14px;
 }
-
 blockquote,
 q {
   quotes: none;
@@ -135,4 +132,3 @@ a {
   text-decoration: none;
   color: black;
 }
-/* cssReset */
