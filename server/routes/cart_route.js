@@ -10,7 +10,7 @@ const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 router.get("/", async (req, res) => {
   const shoppingCartWithItems = await prisma.order.findFirst({
     where: {
-      member_id: "2",
+      member_id: "1",
       status: "CREATED",
     },
     include: {
@@ -36,17 +36,32 @@ router.get("/", async (req, res) => {
 
 //新增訂單
 router.post("/", async (req, res) => {
-  console.log(req.body)
-  await prisma.user.create({
-    data: {
-      email: "e22wq@gmail.com",
-    },
-  })
+  const { cartItems } = req.body
+
+  if (cartItems.length === 0) return
+  console.log(cartItems[0].order_id)
+  try {
+    const updatedOrderItem = await prisma.order.update({
+      where: {
+        order_id: cartItems[0].order_id,
+      },
+      data: {
+        status: "PAID",
+      },
+    })
+    return res.json(updatedOrderItem)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: "Failed to update order item status" })
+  }
   res.json("good")
 })
 
-router.put("/:id", async (req, res, next) => {
+//更新商品數量
+router.put("/:id", async (req, res) => {
+  console.log("改數字")
   const { quantity } = req.body
+
   const itemId = req.params.id
 
   try {
@@ -83,13 +98,25 @@ router.post("/create-checkout-session", async (req, res) => {
           quantity: item.quantity,
         }
       }),
-      success_url: `http://localhost:5173/cart/shoppingSuccess`,
+      success_url: `http://localhost:5173/cart/shoppingSuccess?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `http://localhost:5173/cart/checkout`,
     })
     res.json({ url: session.url })
   } catch (e) {
     res.status(500).json(e)
   }
+})
+
+router.post("/payment-status", (req, res) => {
+  const { sessionIdParam } = req.body
+
+  stripe.checkout.sessions.retrieve(sessionIdParam, (err, session) => {
+    if (err) {
+      res.status(500).json(err)
+    } else {
+      res.status(200).json(session)
+    }
+  })
 })
 
 module.exports = router

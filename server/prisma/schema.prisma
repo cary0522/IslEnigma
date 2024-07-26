@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -32,7 +32,6 @@ model Member {
   birth_date DateTime
   email      String
   password   String
-
   orders     Order[]  // one to many
 } 
 

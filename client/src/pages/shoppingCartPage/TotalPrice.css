@@ -31,8 +31,18 @@
 
   width: 100%;
 }
+
+.btn {
+  border-radius: 8px;
+}
 .buyNow {
   padding: 12px 24px;
   background-color: #ffdc81;
+  color: #3e3939;
+}
+
+.noItem {
+  padding: 12px 24px;
+  background-color: rgba(255, 220, 129, 0.5);
   color: #3e3939;
 }

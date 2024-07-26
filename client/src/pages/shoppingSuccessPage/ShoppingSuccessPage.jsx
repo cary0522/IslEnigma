@@ -1,6 +1,40 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import "./ShoppingSuccessPage.css"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import useCartStore from "../../zustand/cartStore"
 const ShoppingSuccessPage = () => {
+  const location = useLocation()
+  const [sessionId, setSessionId] = useState(null)
+  const [status, setStatus] = useState("Checking payment status...")
+  const { cartItems, loading, fetchCartData } = useCartStore()
+
+  useEffect(() => {
+    fetchCartData()
+  }, [fetchCartData])
+
+  console.log("cartItems", cartItems)
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const sessionIdParam = params.get("session_id")
+
+    const status = axios
+      .post("http://localhost:3001/cart/payment-status", {
+        sessionIdParam,
+      })
+      .then((res) => {
+        if (res.data.status === "complete") {
+          console.log("Payment successful!")
+          axios.post("http://localhost:3001/cart", {
+            cartItems,
+          })
+        } else {
+          setStatus("Payment failed.")
+        }
+      })
+  }, [cartItems])
+
   return (
     <div className="successBox">
       <img

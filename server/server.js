@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const cart_route = require("./routes/cart_route")
 const cors = require("cors")
+
 require("dotenv").config()
 
 app.use(express.urlencoded({ extended: true }))
@@ -19,12 +20,8 @@ app.use("/cart", cart_route)
 
 // 根路由重定向到 /todo
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
-// app.get("/", (req, res, next) => {
-//   res.send("213")
-// })
-
-app.listen(port || 3000, () => {
+app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })

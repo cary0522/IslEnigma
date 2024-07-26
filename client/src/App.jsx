@@ -2,11 +2,10 @@ import { Outlet, Route, Routes, useLocation } from "react-router-dom"
 import "./App.css"
 import Layout from "./components/layout/Layout"
 import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage"
-import BreadCrumb from "./pages/shoppingCartPage/BreadCrumb"
 import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
-import useCartStore from "./zustand/cartStore"
-import { useState } from "react"
+
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
+import CartLayout from "./components/layout/CartLayout"
 
 function App() {
   return (
@@ -19,15 +18,6 @@ function App() {
         </Route>
       </Route>
     </Routes>
-  )
-}
-
-const CartLayout = () => {
-  return (
-    <>
-      <BreadCrumb />
-      <Outlet />
-    </>
   )
 }
 

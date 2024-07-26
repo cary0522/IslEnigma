@@ -23,9 +23,14 @@ const totalPrice = ({ cartItems, ticketQuantity }) => {
         <span>小記:</span> <span>NT${totalPrice}</span>
       </div>
       <div className="onSale"></div>
-      <Link to="checkout" className="btn buyNow">
-        前往購買手續
-      </Link>
+      {cartItems && cartItems.length > 0 && (
+        <Link to="/order">
+          <button className="btn buyNow">結帳頁面</button>
+        </Link>
+      )}
+      {cartItems && cartItems.length === 0 && (
+        <div className="btn noItem">結帳頁面</div>
+      )}
     </div>
   )
 }

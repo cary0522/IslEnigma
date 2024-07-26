@@ -10,10 +10,10 @@ const ShoppingCartPage = () => {
   const [ticketQuantity, setTicketQuantity] = useState(1)
 
   const location = useLocation()
-  console.log(location.pathname)
   useEffect(() => {
     fetchCartData()
   }, [location.pathname])
+
   if (loading) return <p>Loading...</p>
   return (
     <div className="shoppingCart">
