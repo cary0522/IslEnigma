@@ -36,7 +36,7 @@ function TicketRule({ ruleTitle, ruleContent }) {
 			</div>
 			<div className={ruleContentCssList} >
 				{ruleContent.map((text)=>{
-					return <p>{text}</p>
+					return <p key={text.id}>{text.text}</p>
 				})}
 
 			</div>

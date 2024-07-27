@@ -29,6 +29,7 @@ button{
     margin: 20px 10%;
     border-radius: 50px;
     border: none;
+    cursor: pointer;
     &:hover{
         transform: scale(1.1);
     }

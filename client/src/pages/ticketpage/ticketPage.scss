@@ -1,5 +1,77 @@
 @import '../../components/reset.scss';
 .ticketPage {
+	#divAlert{
+		display: flex;
+		flex-wrap: wrap;
+		padding: 10px;
+		justify-content: center;
+		background-color: $backgroundColorBooking;
+		backdrop-filter: blur($backgroundBlur);
+		box-shadow: $backgroundShadow;
+		border-radius: 20px;
+		height: auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		z-index: 5;
+		align-items: center;
+		div:first-child{
+			text-align: center;
+			margin: 20px auto;
+			animation: robotShake 1.2s infinite;
+			@keyframes robotShake {
+				0%{transform: rotate(0deg) translateX(0px);}
+				25%{transform: rotate(5deg) translateX(3px);}
+				50%{transform: rotate(0deg) translateX(0px);}
+				75%{transform: rotate(-5deg) translateX(-3px);}
+				100%{transform: rotate(0deg) translateX(0px);}
+			}
+			img{
+				max-width: 60%;
+			}
+		}
+		#divAlertContent{
+			text-align: center;
+			color: $colorText;
+			font-size: 2rem;
+		}
+		p:first-of-type{
+			position: absolute;
+			z-index: 6;
+			top: 3%;
+			right: 3%;
+			color: $colorText;
+			cursor: pointer;
+		}
+		button{
+			margin: 10px auto;
+			background-color: $backgroundColorBtnDark;
+			color: $colorSvg;
+			font-size: 1rem;
+		}
+		@media screen and (max-width:1680px) {
+			#divAlertContent{
+				font-size: 1.8rem;
+			}
+		}
+		@media screen and (max-width:1500px) {
+			#divAlertContent{
+				font-size: 1.3rem;
+			}
+		}
+		@media screen and (max-width:767px) {
+			display: block;			
+			#divAlertContent{
+				font-size: 1rem;
+			}
+		}
+		// @media screen and (max-width:455px) {
+		// 	#divAlertContent{
+		// 		font-size: 1rem;
+		// 	}
+		// }
+	}
 	#divBanner {
 		position: relative;
 		.logoArea {
@@ -112,7 +184,62 @@
 				height: 50px;
 				svg {
 					&:hover {
+						cursor: pointer;
 						transform: scale(1.2);
+					}
+				}
+				.divCalendar{
+					position: relative;
+					display: flex;
+					input{
+						background-color: transparent;
+						border: 1px solid $colorText;
+						border-radius: 20px;
+						text-align: center;
+						color: $colorText;
+					}
+					.calendarArea{
+						position: absolute;
+						top: 50%;
+						right: 0;
+						z-index: 4;
+						.react-calendar{
+							width: 350px;
+							height: auto;
+							background-color: $backgroundColorBooking;
+							box-shadow: $backgroundShadow;
+							backdrop-filter: blur($backgroundBlur);
+							border-radius:20px;
+							padding: 10px;
+							abbr{
+								text-decoration: none;
+							}
+							button{
+								background-color: transparent;
+								color: $colorText;
+								width: auto;
+								margin: 5px auto;
+								padding: 5px;
+								font-size: 1rem;
+								border-radius: 0px;
+								box-shadow: none;
+								backdrop-filter: none;
+								cursor: pointer;
+								// &:hover{
+								// 	transform: scale(1.1);
+								// 	border: 1px solid $colorText;
+								// 	border-radius: 50%;
+								// 	// background-color: $backgroundColorBtnDark;
+								// }
+							}
+							.disableSelectDate{
+								color: rgb(175, 174, 174);
+								cursor: none;
+							}
+						}
+						@media screen and (max-width:720px) {
+							right: -42%;
+						}
 					}
 				}
 				.divTicketNum {
@@ -459,4 +586,5 @@
 			animation: ruleContentBlock 0.5s both;
 		}
 	}
+
 }
