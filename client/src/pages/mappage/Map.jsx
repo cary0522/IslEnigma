@@ -835,18 +835,18 @@ function Map() {
 		setContentShow(false);
 	}
 	// 地圖放大縮小拉霸，是否需要？
-	let [scaleNum,setScaleNum] = useState(1);
-	let zoomIn=()=>{
-		console.log(scaleNum)
-		setScaleNum(scaleNum+0.5)
-	}
-	let zoomOut=()=>{
-		console.log(scaleNum)
-		setScaleNum(scaleNum-0.5)
-	}
-	let scaleStyle={
-		transform:`scale(${scaleNum})`
-	}
+	// let [scaleNum,setScaleNum] = useState(1);
+	// let zoomIn=()=>{
+	// 	console.log(scaleNum)
+	// 	setScaleNum(scaleNum+0.5)
+	// }
+	// let zoomOut=()=>{
+	// 	console.log(scaleNum)
+	// 	setScaleNum(scaleNum-0.5)
+	// }
+	// let scaleStyle={
+	// 	transform:`scale(${scaleNum})`
+	// }
 
 	return (
 		<>

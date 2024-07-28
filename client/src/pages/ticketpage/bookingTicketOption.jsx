@@ -41,7 +41,6 @@ function BookingTicketOption({
 					className="col-3"
 					value={ticketNum}
 					onChange={(e) => {
-						console.log(e.target.value);
 						e.stopPropagation();
 						if (e.target.value == "") {
 							handleAlertShow();

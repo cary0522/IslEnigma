@@ -14,6 +14,7 @@ import "./ticketPage.scss";
 function TicketPage() {
 	// 設定 alert 內容
 	let [alertContent, setAlertContent] = useState("");
+	let [btnContent, setBtnContent] = useState("前往選購");
 	// 設定是否跳出 alert-票數
 	let [alertShow, setAlertShow] = useState(false);
 	let handleAlertShow = () => {
@@ -30,6 +31,12 @@ function TicketPage() {
 		document.body.style.overflow = "hidden";
 		setAlertShow(true);
 		setAlertContent("預計哪天到訪迷樣島嶼呢？");
+	};
+	// 設定是否跳出 alert-成功加入購物車
+	let handleAlertShowCart = () => {
+		setAlertShow(true);
+		setAlertContent("成功加入購物車！");
+		setBtnContent("繼續選購");
 	};
 	// 訂票規定陣列
 	let ruleList = [
@@ -99,6 +106,15 @@ function TicketPage() {
 			],
 		},
 	];
+	// 判斷是否要顯示月曆
+	let [dateShow, setDateShow] = useState(false);
+	let showCalendar = (e) => {
+		e.stopPropagation();
+		setDateShow((dateShow = !dateShow));
+	};
+	let closeCalendar = () => {
+		setDateShow(false);
+	};
 
 	return (
 		<div className="ticketPage">
@@ -107,11 +123,17 @@ function TicketPage() {
 				alertShow={alertShow}
 				closeAlertShow={closeAlertShow}
 				alertContent={alertContent}
+				btnContent={btnContent}
+				showCalendar={showCalendar}
 			/>
 			<Banner
 				alertShow={alertShow}
 				handleAlertShow={handleAlertShow}
 				handleAlertShowDate={handleAlertShowDate}
+				handleAlertShowCart={handleAlertShowCart}
+				dateShow={dateShow}
+				showCalendar={showCalendar}
+				closeCalendar={closeCalendar}
 			/>
 			<BookingWay />
 			<CompareTickets />

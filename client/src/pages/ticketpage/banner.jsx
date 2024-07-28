@@ -7,18 +7,19 @@ import BtnDown from "./BtnDown.jsx";
 import imgBanner from "/public/images/ticketBanner.png";
 import imgLogo from "/public/images/LogoType_Light_2 2.png";
 
-function Banner({ handleAlertShow , handleAlertShowDate }) {
-	// 判斷是否要顯示月曆
-	let [dateShow, setDateShow] = useState(false);
-	let showCalendar = (e) => {
-		e.stopPropagation();
-		setDateShow((dateShow = !dateShow));
-	};
+function Banner({
+	dateShow,
+	showCalendar,
+	closeCalendar,
+	handleAlertShow,
+	handleAlertShowDate,
+	handleAlertShowCart,
+}) {
 	return (
 		<div
 			id="divBanner"
 			onClick={() => {
-				setDateShow(false);
+				closeCalendar();
 			}}
 		>
 			<LogoArea imgLogo={imgLogo} areaName={"訂票服務"} />
@@ -28,10 +29,11 @@ function Banner({ handleAlertShow , handleAlertShowDate }) {
 			</div>
 			<BookingArea
 				dateShow={dateShow}
-				setDateShow={setDateShow}
 				showCalendar={showCalendar}
+				closeCalendar={closeCalendar}
 				handleAlertShow={handleAlertShow}
 				handleAlertShowDate={handleAlertShowDate}
+				handleAlertShowCart={handleAlertShowCart}
 			/>
 			<BtnDown />
 		</div>

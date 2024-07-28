@@ -65,13 +65,13 @@ function Header(){
                 {/* <!-- 連結區 --> */}
                 <ul className="navLink">
                     <li className="navItem facility">
-                        <a href="#">
+                        <a href="/mappage">
                             <img src="./public/00myIcon/facility.png" alt="樂園設施" />
                             <p data-text="樂園設施">樂園設施</p>
                         </a>
                     </li>
                     <li className="navItem ticket">
-                        <a href="#">
+                        <a href="/ticketpage">
                             <img src="./public/00myIcon/ticket-info.png" alt="訂票資訊" />
                             <p data-text="訂票資訊">訂票資訊</p>
                         </a>

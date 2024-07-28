@@ -6,7 +6,10 @@ import TicketPage from './pages/ticketpage';
 function App() {
   return (
     <Router>
+      {/* <Link to='/mappage'>Map</Link>
+      <Link to='/ticketpage'>Ticket</Link> */}
       <Routes>
+        <Route index element={< MapPage />} />
         <Route path="/mappage" element={< MapPage />} />
         <Route path="/ticketpage" element={< TicketPage />} />
       </Routes>

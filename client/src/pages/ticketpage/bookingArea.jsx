@@ -8,10 +8,11 @@ import "react-calendar/dist/Calendar.css";
 
 function BookingArea({
 	dateShow,
-	setDateShow,
+	closeCalendar,
 	showCalendar,
 	handleAlertShow,
 	handleAlertShowDate,
+	handleAlertShowCart
 }) {
 	// 點選左右箭頭更換月份
 	let [date, setDate] = useState(new Date());
@@ -29,7 +30,7 @@ function BookingArea({
 	// 得到使用者選取的日期，並把月曆關掉
 	let [bookingDate, setBookingDate] = useState("");
 	let selectDate = (value) => {
-		setDateShow(false);
+		closeCalendar();
 		setBookingDate(value.toLocaleDateString());
 	};
 	// 得到票種、張數
@@ -57,15 +58,33 @@ function BookingArea({
 	function addCart() {
 		if (bookingDate) {
 			if (standardNum > 0 || VIPNum > 0) {
-				console.log("cart", [
-					{
-						date: bookingDate,
-						standardNum: standardNum,
-						standardPrice: standardNum * 2000,
-						VIPNum: VIPNum,
-						VIPPrice: VIPNum * 5000,
-					},
-				]);
+				// console.log("cart", [
+				// 	{
+				// 		booked_date: bookingDate,
+				// 		product_standard:'標準票',
+				// 		num_standard: standardNum,
+				// 		price_standard: standardNum * 2000,
+				// 		product_standard:'VIP票',
+				// 		num_VIP: VIPNum,
+				// 		price_VIP: VIPNum * 5000,
+				// 	},
+				// ]);
+				let cart = {
+					booked_date: bookingDate,
+					product_standard:'標準票',
+					num_standard: standardNum,
+					price_standard: standardNum * 2000,
+					product_VIP:'VIP票',
+					num_VIP: VIPNum,
+					price_VIP: VIPNum * 5000,
+				}
+				let cartDate = JSON.stringify(cart)
+				fetch('http://localhost:3000/shoppingCart',{
+					method:'POST',
+					headers:{'Content-Type':'application/json'},
+					body:cartDate
+				})
+				handleAlertShowCart();
 			} else {
 				handleAlertShow();
 			}
