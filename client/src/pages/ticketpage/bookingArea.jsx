@@ -33,8 +33,26 @@ function BookingArea({
 		setBookingDate(value.toLocaleDateString());
 	};
 	// 得到票種、張數
-	const [standardNum, setStandardNum] = useState(0);
-	const [VIPNum, setVIPNum] = useState(0);
+	let [standardNum, setStandardNum] = useState(0);
+	let plusStandard=()=>{
+		setStandardNum(standardNum+1)
+	}
+	let minusStandard=()=>{
+		setStandardNum(standardNum-1)
+	}
+	let zeroStandard=()=>{
+		setStandardNum(0)
+	}
+	let [VIPNum, setVIPNum] = useState(0);
+	let plusVIP=()=>{
+		setVIPNum(VIPNum+1)
+	}
+	let minusVIP=()=>{
+		setVIPNum(VIPNum-1)
+	}
+	let zeroVIP=()=>{
+		setVIPNum(0)
+	}
 	// 整理資料傳到購物車
 	function addCart() {
 		if (bookingDate) {
@@ -97,14 +115,19 @@ function BookingArea({
 			<BookingTicketOption
 				ticketOption={"VIP票"}
 				ticketPrice={"NT$ 5,000"}
-				ticketNum={standardNum}
-				setTicketNum={setStandardNum}
+				ticketNum={VIPNum}
+				setPlus={plusVIP}
+				setMinus={minusVIP}
+				setZero={zeroVIP}
 				handleAlertShow={handleAlertShow}
 			/>
 			<BookingTicketOption
 				ticketOption={"標準票"}
 				ticketPrice={"NT$ 2,000"}
-				ticketNum={VIPNum}
+				ticketNum={standardNum}
+				setPlus={plusStandard}
+				setMinus={minusStandard}
+				setZero={zeroStandard}
 				setTicketNum={setVIPNum}
 				handleAlertShow={handleAlertShow}
 			/>

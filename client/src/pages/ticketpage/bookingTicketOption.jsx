@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 import "../../style.scss";
 
@@ -6,6 +6,9 @@ function BookingTicketOption({
 	ticketOption,
 	ticketPrice,
 	ticketNum,
+	setPlus,
+	setMinus,
+	setZero,
 	setTicketNum,
 	handleAlertShow
 }) {
@@ -20,13 +23,13 @@ function BookingTicketOption({
 					className="divIcons col-3"
 					onClick={() => {
 						if (ticketNum > 0) {
-							setTicketNum(ticketNum - 1);
+							setMinus();
 						} else if (isNaN(ticketNum)) {
 							handleAlertShow();
-							setTicketNum(0);
+							setZero();
 						} else {
 							handleAlertShow();
-							setTicketNum(0);
+							setZero();
 						}
 					}}
 				>
@@ -42,12 +45,12 @@ function BookingTicketOption({
 						e.stopPropagation();
 						if (e.target.value == "") {
 							handleAlertShow();
-							setTicketNum(0);
+							setZero();
 						} else if (e.target.value >= 0) {
 							setTicketNum(parseInt(e.target.value));
 						} else {
 							handleAlertShow();
-							setTicketNum(0);
+							setZero();
 						}
 					}}
 				/>
@@ -55,10 +58,10 @@ function BookingTicketOption({
 					className="divIcons col-3"
 					onClick={() => {
 						if (ticketNum >= 0) {
-							setTicketNum(ticketNum + 1);
+							setPlus();
 						} else {
 							handleAlertShow();
-							setTicketNum(0);
+							setZero();
 						}
 					}}
 				>

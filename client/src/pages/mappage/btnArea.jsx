@@ -22,7 +22,7 @@ function BtnArea({handleType,
     type_medical,
     type_room}){
     return(
-        <div id="btnArea" className="col-11 col-md-10 col-lg-8 col-xl-6">
+        <div id="btnArea" className="col-6">
             <IoTicket id="type_ticket_center" onClick={()=>{handleType(type_ticket_center)}} />
             <LuFerrisWheel id="type_facility" onClick={()=>{handleType(type_facility)}}  />
             <GiForest id="type_view" onClick={()=>{handleType(type_view)}} />

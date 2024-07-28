@@ -1,5 +1,9 @@
 @import "../../components/reset.scss";
+body {
+	overflow: auto;
+}
 .mapPage {
+	overflow: auto;
 	.logoArea {
 		margin-top: 150px;
 		width: 100%;
@@ -36,6 +40,21 @@
 			display: none;
 		}
 	}
+	#scaleProgress {
+		transform: rotate(270deg);
+		position: absolute;
+		top: 80%;
+		left: -3%;
+		border: 1px solid red;
+		padding: 10px;
+		z-index: 5;
+		progress {
+			margin: 0 10px;
+		}
+		@media screen and (max-width: 720px) {
+			top: 40%;
+		}
+	}
 	// 整體地圖區最外層容器，控制高度不要被放大的圖片撐開
 	#mapOutside {
 		width: 100vw;
@@ -46,8 +65,9 @@
 			position: relative;
 			width: 1220px;
 			height: 658px;
+			overflow: scroll;
 			@media screen and (max-width: 720px) {
-				// 讓圖片可以左右滑動
+				// 讓圖片可以滑動
 				overflow: scroll;
 			}
 			// 地圖
@@ -56,6 +76,12 @@
 				width: 1220px;
 				height: 658px;
 				object-fit: cover;
+			}
+			#mapSvg {
+				position: absolute;
+				top: -50%;
+				left: 0;
+				z-index: 500;
 			}
 			.divDes {
 				width: 200px;
@@ -94,59 +120,7 @@
 					z-index: 3;
 				}
 			}
-			// 互動按鈕點擊區域
-			#btnArea {
-				margin: 20px auto;
-				padding: 20px;
-				border-radius: 65px;
-				background-color: $backgroundColorDivLight;
-				box-shadow: inset -3px 6px 5px rgba(255, 255, 255, 0.39),
-					-3px 4px 5px rgba(0, 0, 0, 0.25);
-				backdrop-filter: blur(8px);
-				position: fixed;
-				bottom: 5%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				display: flex;
-				justify-content: space-around;
-				svg {
-					color: $colorSvg;
-					margin: 0 3px;
-					cursor: pointer;
-					font-size: 40px;
-					&:hover {
-						animation: iconHover 0.8s;
-					}
-					@keyframes iconHover {
-						0% {
-							transform: translateX(0) rotate(0deg);
-						}
-						20% {
-							transform: translateX(3px) rotate(5deg);
-						}
-						40% {
-							transform: translateX(-1px) rotate(-5deg);
-						}
-						60% {
-							transform: translateX(3px) rotate(5deg);
-						}
-						80% {
-							transform: translateX(-1px) rotate(-5deg);
-						}
-						100% {
-							transform: translateX(0) rotate(0deg);
-						}
-					}
-				}
-				@media screen and (max-width: 720px) {
-					bottom: 15%;
-					left: 50%;
-				}
-				@media screen and (max-width: 576px) {
-					margin: 5px;
-					padding: 10px;
-				}
-			}
+
 			// 設施圖釘共同樣式
 			.mapPointContainer {
 				position: absolute;
@@ -330,7 +304,61 @@
 				left: 30%;
 			}
 		}
+		// 互動按鈕點擊區域
+		#btnArea {
+			margin: 20px auto;
+			padding: 20px;
+			border-radius: 65px;
+			background-color: $backgroundColorDivLight;
+			box-shadow: inset -3px 6px 5px rgba(255, 255, 255, 0.39),
+				-3px 4px 5px rgba(0, 0, 0, 0.25);
+			backdrop-filter: blur(8px);
+			position: sticky;
+			bottom: 8%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: flex;
+			justify-content: space-around;
+			svg {
+				color: $colorSvg;
+				margin: 0 3px;
+				cursor: pointer;
+				font-size: 40px;
+				&:hover {
+					animation: iconHover 0.8s;
+				}
+				@keyframes iconHover {
+					0% {
+						transform: translateX(0) rotate(0deg);
+					}
+					20% {
+						transform: translateX(3px) rotate(5deg);
+					}
+					40% {
+						transform: translateX(-1px) rotate(-5deg);
+					}
+					60% {
+						transform: translateX(3px) rotate(5deg);
+					}
+					80% {
+						transform: translateX(-1px) rotate(-5deg);
+					}
+					100% {
+						transform: translateX(0) rotate(0deg);
+					}
+				}
+			}
+			@media screen and (max-width: 720px) {
+				bottom: 15%;
+				left: 50%;
+			}
+			@media screen and (max-width: 576px) {
+				margin: 5px;
+				padding: 10px;
+			}
+		}
 	}
+
 	// 詳細介紹區塊樣式
 	.divContent {
 		height: 70%;
@@ -350,17 +378,17 @@
 		color: $colorText;
 		font-weight: 500;
 		overflow-y: scroll;
-		.divContentItem{
+		.divContentItem {
 			width: 50%;
 			margin: 10px auto;
-			button{
+			button {
 				background-color: $colorText;
 				color: $colorSvg;
 			}
 		}
 		.divContentItem:first-child {
 			text-align: center;
-			img{
+			img {
 				width: 90%;
 				height: 90%;
 				object-fit: cover;
@@ -395,7 +423,7 @@
 				width: 100%;
 			}
 			.divContentItem:first-child {
-				img{
+				img {
 					height: 350px;
 				}
 			}

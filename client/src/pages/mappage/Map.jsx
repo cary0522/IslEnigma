@@ -4,6 +4,7 @@ import BtnArea from "./BtnArea.jsx";
 import MapPoint from "./MapPoint.jsx";
 import FacilityContent from "./FacilityContent.jsx";
 import FacilityDes from "./FacilityDes.jsx";
+import ScaleProgress from "./ScaleProgress.jsx";
 
 // icons
 import { IoTicket } from "react-icons/io5";
@@ -833,6 +834,19 @@ function Map() {
 		setContentId(null);
 		setContentShow(false);
 	}
+	// 地圖放大縮小拉霸，是否需要？
+	let [scaleNum,setScaleNum] = useState(1);
+	let zoomIn=()=>{
+		console.log(scaleNum)
+		setScaleNum(scaleNum+0.5)
+	}
+	let zoomOut=()=>{
+		console.log(scaleNum)
+		setScaleNum(scaleNum-0.5)
+	}
+	let scaleStyle={
+		transform:`scale(${scaleNum})`
+	}
 
 	return (
 		<>
@@ -842,6 +856,7 @@ function Map() {
 				contentShow={contentShow}
 				handleContentClose={handleContentClose}
 			/>
+			{/* <ScaleProgress scaleNum={scaleNum} zoomIn={zoomIn} zoomOut={zoomOut} /> */}
 			<div
 				id="mapOutside"
 				onClick={(e) => {
@@ -859,6 +874,7 @@ function Map() {
 						handleDesClose={handleDesClose}
 						handleContent={handleContent}
 					/>
+					
 					<img src={map} alt="map" id="imgInteractiveMap"></img>
 					{facilityList.map((facility) => {
 						return (
@@ -870,7 +886,9 @@ function Map() {
 							/>
 						);
 					})}
-					<BtnArea
+
+				</div>
+				<BtnArea
 						handleType={handleType}
 						type_room={type_room}
 						type_VR={type_VR}
@@ -885,7 +903,6 @@ function Map() {
 						type_view={type_view}
 						type_visitor_center={type_visitor_center}
 					/>
-				</div>
 			</div>
 		</>
 	);
