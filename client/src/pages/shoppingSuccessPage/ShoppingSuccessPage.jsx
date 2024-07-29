@@ -3,36 +3,45 @@ import "./ShoppingSuccessPage.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import useCartStore from "../../zustand/cartStore"
+import { useNavigate } from "react-router-dom"
 const ShoppingSuccessPage = () => {
+  const navigate = useNavigate()
   const location = useLocation()
-  const [sessionId, setSessionId] = useState(null)
   const [status, setStatus] = useState("Checking payment status...")
   const { cartItems, loading, fetchCartData } = useCartStore()
+  const params = new URLSearchParams(location.search)
+  const sessionIdParam = params.get("session_id")
 
   useEffect(() => {
     fetchCartData()
   }, [fetchCartData])
 
-  console.log("cartItems", cartItems)
-
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    const sessionIdParam = params.get("session_id")
-
-    const status = axios
-      .post("http://localhost:3001/cart/payment-status", {
-        sessionIdParam,
-      })
-      .then((res) => {
-        if (res.data.status === "complete") {
-          console.log("Payment successful!")
-          axios.post("http://localhost:3001/cart", {
-            cartItems,
-          })
-        } else {
-          setStatus("Payment failed.")
-        }
-      })
+    const orderInfo = localStorage.getItem(
+      "order-info",
+      JSON.stringify(cartItems)
+    )
+    if (sessionIdParam) {
+      axios
+        .post("http://localhost:3001/cart/payment-status", {
+          sessionIdParam,
+        })
+        .then((res) => {
+          if (res.data.status === "complete") {
+            console.log("Payment successful!")
+            axios.post("http://localhost:3001/cart", {
+              cartItems,
+            })
+            axios.post("http://localhost:3001/cart/order-info", {
+              orderInfo,
+            })
+          } else {
+            setStatus("Payment failed.")
+          }
+        })
+    } else {
+      navigate("/")
+    }
   }, [cartItems])
 
   return (

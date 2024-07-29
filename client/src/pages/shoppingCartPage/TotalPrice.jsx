@@ -24,7 +24,7 @@ const totalPrice = ({ cartItems, ticketQuantity }) => {
       </div>
       <div className="onSale"></div>
       {cartItems && cartItems.length > 0 && (
-        <Link to="/order">
+        <Link to="checkout">
           <button className="btn buyNow">結帳頁面</button>
         </Link>
       )}

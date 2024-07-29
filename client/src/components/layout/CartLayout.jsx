@@ -5,7 +5,6 @@ const CartLayout = () => {
   return (
     <>
       <BreadCrumb />
-      <Outlet />
     </>
   )
 }

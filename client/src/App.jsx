@@ -6,6 +6,7 @@ import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
+import Hello from "./Hello"
 
 function App() {
   return (

@@ -4,7 +4,7 @@ const MobileContact = () => {
       <p class="footerTitle">Contact</p>
       <div class="iconBox">
         <a href="https://www.google.com/" target="_blank">
-          <img src="./icon/line.png" alt="line icon" />
+          <img src="/icon/line.png" alt="line icon" />
         </a>
         <a href="https://www.google.com/" target="_blank">
           <img src="/icon/twitter.png" alt="twitter icon" />

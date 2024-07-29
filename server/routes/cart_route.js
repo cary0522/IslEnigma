@@ -10,7 +10,7 @@ const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 router.get("/", async (req, res) => {
   const shoppingCartWithItems = await prisma.order.findFirst({
     where: {
-      member_id: "1",
+      member_id: "31008da0-4b01-11ef-94bd-e86a64cf2e3d",
       status: "CREATED",
     },
     include: {
@@ -117,6 +117,10 @@ router.post("/payment-status", (req, res) => {
       res.status(200).json(session)
     }
   })
+})
+
+router.post("/order-info", async (req, res) => {
+  console.log(req.body.orderInfo)
 })
 
 module.exports = router

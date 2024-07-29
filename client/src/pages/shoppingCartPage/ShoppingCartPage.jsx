@@ -1,4 +1,3 @@
-import axios, { toFormData } from "axios"
 import "./ShoppingCartPage.css"
 import { useEffect, useState } from "react"
 import Item from "./Item"

@@ -117,11 +117,7 @@ const Navbar = () => {
                 media="(min-width:850px)"
                 srcSet="/00logo/LogoType_Light_1.png"
               />
-              <img
-                src="./00logo/LOGO_Light_1.png"
-                alt="Logo"
-                className="logo"
-              />
+              <img src="/00logo/LOGO_Light_1.png" alt="Logo" className="logo" />
             </picture>
           </a>
           <div className="navRight">
@@ -206,7 +202,7 @@ const Navbar = () => {
               className="menuLogo"
             />
           </a>
-          <a href="./cart" className="cartIcon">
+          <a href="/cart" className="cartIcon">
             <i className="bi bi-cart"></i>
           </a>
         </div>

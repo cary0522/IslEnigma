@@ -45,4 +45,4 @@ VALUES
 
 --假購物車資料
 
-INSERT INTO OrderItem (order_item_id, order_id, room_id, ticket_id, check_in_date, check_out_date, people_count, quantity, booked_date, valid_date) VALUES (UUID(), 'order_id_1', '5', NULL, NOW() - INTERVAL 3 DAY, NOW() + INTERVAL 2 DAY, 2, 1, NOW() - INTERVAL 5 DAY, NOW() + INTERVAL 7 DAY), (UUID(), 'order_id_1', NULL, '2', NULL, NULL, NULL, 3, NOW() - INTERVAL 10 DAY, NOW() + INTERVAL 5 DAY);
+INSERT INTO OrderItem (order_item_id, order_id, room_id, ticket_id, check_in_date, check_out_date, people_count, quantity, booked_date, valid_date) VALUES (UUID(), 'order_id_2', '5', NULL, NOW() - INTERVAL 3 DAY, NOW() + INTERVAL 2 DAY, 2, 1, NOW() - INTERVAL 5 DAY, NOW() + INTERVAL 7 DAY), (UUID(), 'order_id_1', NULL, '2', NULL, NULL, NULL, 3, NOW() - INTERVAL 10 DAY, NOW() + INTERVAL 5 DAY);
