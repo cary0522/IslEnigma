@@ -20,9 +20,10 @@ function BtnArea({handleType,
     type_port,
     type_bus,
     type_medical,
-    type_room}){
+    type_room,
+    isSticky}){
     return(
-        <div id="btnArea" className="col-6">
+        <div id="btnArea" className={isSticky? 'btnAreaSticky':'btnAreaFixed'}>
             <IoTicket id="type_ticket_center" onClick={()=>{handleType(type_ticket_center)}} />
             <LuFerrisWheel id="type_facility" onClick={()=>{handleType(type_facility)}}  />
             <GiForest id="type_view" onClick={()=>{handleType(type_view)}} />

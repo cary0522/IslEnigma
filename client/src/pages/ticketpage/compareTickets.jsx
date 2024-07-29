@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // icons
 import { TiTick } from "react-icons/ti";

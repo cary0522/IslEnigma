@@ -18,9 +18,9 @@ function FacilityDes({
 				return (
 					<>
 						<div className="divDes" style={style}>
-							<img src="/src/pages/mappage/mapPointHover.svg" />
-							<div>
-								<div>{facility.title}</div>
+							<img src={facility.image} />
+							<div className="divDesContent">
+								<h1>{facility.title}</h1>
 								<div>{facility.des}</div>
 								<button
 									id="btnContent"

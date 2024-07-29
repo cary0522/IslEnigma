@@ -79,6 +79,7 @@
 			width: 40%;
 			top: 40%;
 			left: 8%;
+			transition: all .3s;
 			.divOutside {
 				width: 100%;
 				display: flex;
@@ -150,6 +151,7 @@
 			left: 8%;
 			text-align: center;
 			width: 300px;
+			transition: all .3s;
 			h5 {
 				font-size: 0.8rem;
 				padding: 2px 0 0 0;
@@ -164,6 +166,7 @@
 			}
 		}
 		.bookingArea {
+			transition: all .3s;
 			width: 350px;
 			position: absolute;
 			top: 30%;
@@ -175,6 +178,13 @@
 			border-radius: 20px;
 			color: $colorText;
 			text-align: center;
+			svg{
+				cursor: pointer;
+				&:hover {
+					transform: scale(1.2);
+					transition: all .5s;
+				}
+			}
 			.divBookingItem {
 				display: flex;
 				justify-content: space-around;
@@ -182,15 +192,10 @@
 				margin: 10px;
 				padding: 10px;
 				height: 50px;
-				svg {
-					&:hover {
-						cursor: pointer;
-						transform: scale(1.2);
-					}
-				}
 				.divCalendar{
 					position: relative;
 					display: flex;
+
 					input{
 						background-color: transparent;
 						border: 1px solid $colorText;
@@ -204,6 +209,11 @@
 						right: 0;
 						z-index: 4;
 						.react-calendar{
+							@keyframes divAnimation {
+								0%{opacity: 0;}
+								100%{opacity: 1;}
+							}
+							animation: divAnimation .5s;
 							width: 350px;
 							height: auto;
 							background-color: $backgroundColorBooking;
@@ -261,6 +271,10 @@
 						justify-content: center;
 						align-items: center;
 						cursor: pointer;
+						&:hover {
+							transform: scale(1.2);
+							transition: all .5s;
+						}
 						.bookingAreaIcon {
 							box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 							border-radius: 50%;
@@ -441,22 +455,30 @@
 		}
 	}
 	#divCompare {
-		.iconCrown {
-			color: rgba(246, 187, 66, 1);
-			position: absolute;
-			right: -2%;
-			top: -4%;
-			animation: crownShin 1s infinite ease-in-out;
-			@keyframes crownShin {
-				0%{transform: scale(1) rotate(20deg);}						
-				50%{transform: scale(1.2) rotate(25deg);}			
-				100%{transform: scale(1) rotate(20deg);}				
-			}
-		}
 		.divTable {
 			position: relative;
 			font-size: 24px;
 			color: $colorSvg;
+			.iconCrown {
+				color: rgba(246, 187, 66, 1);
+				position: absolute;
+				right: 9%;
+				top: -4%;
+				animation: crownShin 1s infinite ease-in-out;
+				@keyframes crownShin {
+					0%{transform: scale(1) rotate(20deg);}						
+					50%{transform: scale(1.2) rotate(25deg);}			
+					100%{transform: scale(1) rotate(20deg);}				
+				}
+				@media screen and (max-width: 1700px) {
+					right: 6%;
+					top: -2%;
+				}
+				@media screen and (max-width: 1220px) {
+					right: 3%;
+					top: -2%;
+				}
+			}
 			.divTableHead {
 				width: 100%;
 				display: flex;

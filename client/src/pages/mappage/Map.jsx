@@ -21,7 +21,7 @@ import { MdOutlineDirectionsBoatFilled } from "react-icons/md";
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { GiForest, GiCampingTent, GiSixEyes } from "react-icons/gi";
 
-function Map() {
+function Map({isSticky}) {
 	// 相同種類設施設定相同 setRef function，把相同種類元素放進 ref 陣列中
 	let type_ticket_center = useRef([]);
 	let setTypeTicketCenter = (elem) => {
@@ -863,6 +863,7 @@ function Map() {
 					handleDesClose();
 					handleContentClose();
 				}}
+				
 			>
 				<div id="divInteractiveMap">
 					<FacilityDes
@@ -902,6 +903,7 @@ function Map() {
 						type_toilet={type_toilet}
 						type_view={type_view}
 						type_visitor_center={type_visitor_center}
+						isSticky={isSticky}
 					/>
 			</div>
 		</>
