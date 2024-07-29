@@ -120,7 +120,25 @@ router.post("/payment-status", (req, res) => {
 })
 
 router.post("/order-info", async (req, res) => {
-  console.log(req.body.orderInfo)
+  try {
+    const res = await prisma.orderInfo.create({
+      data: {
+        order_id: oder_id_1,
+        first_name: "Eric",
+        last_name: "Wang",
+        phone_number: "0982748292",
+        address: "台灣市台中路",
+        zip: 404,
+        order_date: Date.now(),
+      },
+    })
+
+    console.log(res)
+
+    return
+  } catch (e) {
+    res.status(500).json(e)
+  }
 })
 
 module.exports = router
