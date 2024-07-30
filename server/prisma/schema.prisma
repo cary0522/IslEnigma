@@ -9,8 +9,84 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+
+model Member {
+  member_id  Int      @id @default(autoincrement())
+  name       String   @db.VarChar(50)
+  address    String?  @db.VarChar(100)
+  birth      DateTime? 
+  account    String   @unique @db.VarChar(50)
+  password   String   @db.Char(64)
+  phone      String?  @db.VarChar(20)
+  photo      Json?    
+
+  Order      Order[]
+}
+
+model Room {
+  room_id    String   @id @db.VarChar(191)
+  room_type  String   @db.VarChar(191)
+  bed_count  Int      @default(2)
+  description String? @db.VarChar(191)
+  price      Int
+  available  Boolean
+  capacity   Int      @default(2)
+  img        Json?
+  
+  OrderItem  OrderItem[]
+}
+
+model Ticket {
+  ticket_id  String   @id @db.VarChar(191)
+  type       String   @db.VarChar(191)
+  price      Int
+  img        Json?
+
+  OrderItem  OrderItem[]
+}
+
+model Order {
+  order_id     String     @id @db.VarChar(191)
+  member_id    Int
+  total_amount Int
+  status       OrderStatus
+  order_date   DateTime    @db.Timestamp(3)
+  
+  member       Member      @relation(fields: [member_id], references: [member_id], onDelete: Restrict, onUpdate: Cascade)
+  OrderItem    OrderItem[]
+  OrderInfo    OrderInfo?
+}
+
+model OrderItem {
+  order_item_id  String   @id @db.VarChar(191)
+  order_id       String
+  room_id        String?
+  ticket_id      String?
+  check_in_date  DateTime?  @db.Timestamp(3)
+  check_out_date DateTime?  @db.Timestamp(3)
+  people_count   Int?
+  quantity       Int
+  booked_date    DateTime?  @db.Timestamp(3)
+  valid_date     DateTime?  @db.Timestamp(3)
+  
+  order          Order      @relation(fields: [order_id], references: [order_id], onDelete: Restrict, onUpdate: Cascade)
+  room           Room?      @relation(fields: [room_id], references: [room_id], onDelete: SetNull, onUpdate: Cascade)
+  ticket         Ticket?    @relation(fields: [ticket_id], references: [ticket_id], onDelete: SetNull, onUpdate: Cascade)
+}
+
+model OrderInfo {
+  order_info_id    String   @id @db.VarChar(191)
+  order_id         String   @unique
+  customer         String   @db.VarChar(191)
+  phone_number     String   @db.VarChar(191)
+  address          String   @db.VarChar(191)
+  payment_method   PaymentMethod
+
+  order            Order    @relation(fields: [order_id], references: [order_id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 enum OrderStatus {
@@ -21,75 +97,4 @@ enum OrderStatus {
 enum PaymentMethod {
   PAYPAL
   CREDITCARD
-}
-
-model Member {
-  member_id  String    @id
-  img_url    String
-  first_name String
-  last_name  String
-  address    String
-  birth_date DateTime
-  email      String
-  password   String
-  orders     Order[]  // one to many
-} 
-
-model Room {
-  room_id    String     @id
-  room_type  String
-  bed_count   Int @default(2)
-  desc  String?
-  price      Int
-  available  Boolean
-  capacity   Int  @default(2)
-  img Json?
-  orderItems OrderItem[]
-}
-
-model Ticket {
-  ticket_id String   @id
-  type      String
-  price     Int
-  img Json?
-  orderItems OrderItem[]
-}
-
-model Order {
-  order_id      String     @id
-  member_id     String
-  total_amount  Int
-  status        OrderStatus
-  order_date    DateTime
-  member        Member     @relation(fields: [member_id], references: [member_id])
-  orderItems    OrderItem[]
-  orderInfo     OrderInfo?
-}
-
-model OrderItem {
-  order_item_id  String   @id
-  order_id       String
-  room_id        String?
-  ticket_id      String?
-  check_in_date  DateTime?
-  check_out_date DateTime?
-  people_count   Int?
-  quantity       Int
-  booked_date    DateTime?
-  valid_date     DateTime?
-
-  order          Order    @relation(fields: [order_id], references: [order_id])
-  room           Room?    @relation(fields: [room_id], references: [room_id])
-  ticket         Ticket?  @relation(fields: [ticket_id], references: [ticket_id])
-}
-
-model OrderInfo {
-  order_info_id   String   @id
-  order_id        String   @unique
-  customer        String
-  phone_number    String
-  address         String
-  payment_method  PaymentMethod
-
-  order Order    @relation(fields: [order_id], references: [order_id])
 }

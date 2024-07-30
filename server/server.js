@@ -20,7 +20,7 @@ app.use("/cart", cart_route)
 
 // 根路由重定向到 /todo
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)

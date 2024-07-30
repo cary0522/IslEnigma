@@ -10,11 +10,11 @@ const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 router.get("/", async (req, res) => {
   const shoppingCartWithItems = await prisma.order.findFirst({
     where: {
-      member_id: "31008da0-4b01-11ef-94bd-e86a64cf2e3d",
+      member_id: 1,
       status: "CREATED",
     },
     include: {
-      orderItems: {
+      OrderItem: {
         include: {
           room: true,
           ticket: true,
@@ -39,7 +39,6 @@ router.post("/", async (req, res) => {
   const { cartItems } = req.body
 
   if (cartItems.length === 0) return
-  console.log(cartItems[0].order_id)
   try {
     const updatedOrderItem = await prisma.order.update({
       where: {
@@ -59,7 +58,6 @@ router.post("/", async (req, res) => {
 
 //更新商品數量
 router.put("/:id", async (req, res) => {
-  console.log("改數字")
   const { quantity } = req.body
 
   const itemId = req.params.id
@@ -120,23 +118,22 @@ router.post("/payment-status", (req, res) => {
 })
 
 router.post("/order-info", async (req, res) => {
+  console.log(123)
   try {
     const res = await prisma.orderInfo.create({
       data: {
-        order_id: oder_id_1,
-        first_name: "Eric",
-        last_name: "Wang",
+        order_info_id: "info2",
+        order_id: "order123",
+        customer: "Eric",
         phone_number: "0982748292",
         address: "台灣市台中路",
-        zip: 404,
-        order_date: Date.now(),
+        payment_method: "CREDITCARD",
       },
     })
 
     console.log(res)
-
-    return
   } catch (e) {
+    console.log(e)
     res.status(500).json(e)
   }
 })

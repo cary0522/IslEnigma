@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 
 const CheckOutTotal = ({ cartItems }) => {
   const [totalPrice, setTotalPrice] = useState(0)
+
+  console.log(cartItems)
   useEffect(() => {
     if (cartItems && cartItems.length > 0) {
       const total = cartItems.reduce((acc, item) => {

@@ -13,6 +13,7 @@ const ShoppingCartPage = () => {
     fetchCartData()
   }, [location.pathname])
 
+  console.log(cartItems)
   if (loading) return <p>Loading...</p>
   return (
     <div className="shoppingCart">
