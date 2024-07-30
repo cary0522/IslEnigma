@@ -23,6 +23,7 @@ function FacilityDes({
 								<h1>{facility.title}</h1>
 								<div>{facility.des}</div>
 								<button
+								className="button"
 									id="btnContent"
 									onClick={(e) => {
 										e.stopPropagation();

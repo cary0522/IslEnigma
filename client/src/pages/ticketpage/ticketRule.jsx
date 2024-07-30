@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import { TbTriangleFilled } from "react-icons/tb";
-import { FaCircle } from "react-icons/fa";
+import { FaCircle ,FaAngleDown } from "react-icons/fa";
 
 function TicketRule({ ruleTitle, ruleContent }) {
 
@@ -27,11 +27,11 @@ function TicketRule({ ruleTitle, ruleContent }) {
 		<div id="ticketRuleArea" className="">
 			<div className="ticketRuleTopBorder col-10" onClick={()=>{changeStyle()}} style={topBorderStyle}>
 				<div className="leftCol">
-					<TbTriangleFilled size={25} className={style} />
+					<FaAngleDown size={20} className={style} />
 					<p>{ruleTitle}</p>
 				</div>
 				<div className="rightCol">
-					<FaCircle size={20}/>
+					<FaCircle size={15}/>
 				</div>
 			</div>
 			<div className={ruleContentCssList} >

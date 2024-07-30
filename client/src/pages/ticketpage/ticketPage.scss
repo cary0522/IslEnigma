@@ -1,5 +1,8 @@
 @import '../../components/reset.scss';
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+
 .ticketPage {
+	font-family: "Noto Sans TC","Arial",sans-serif; 
 	#divAlert{
 		display: flex;
 		flex-wrap: wrap;
@@ -235,12 +238,6 @@
 								box-shadow: none;
 								backdrop-filter: none;
 								cursor: pointer;
-								// &:hover{
-								// 	transform: scale(1.1);
-								// 	border: 1px solid $colorText;
-								// 	border-radius: 50%;
-								// 	// background-color: $backgroundColorBtnDark;
-								// }
 							}
 							.disableSelectDate{
 								color: rgb(175, 174, 174);
@@ -293,7 +290,7 @@
 			button {
 				background-color: $backgroundColorBtnDark;
 				color: $colorSvg;
-				font-size: 24px;
+				font-size: 20px;
 			}
 			@media screen and (max-width: 992px) {
 				width: 300px;
@@ -531,11 +528,11 @@
 		}
 	}
 	#ticketRuleArea {
-		margin: 50px auto;
+		margin: 30px auto;
 		.ticketRuleTopBorder {
 			margin: 10px auto 0 auto;
-			padding: 10px 20px;
-			height: 50px;
+			padding: 15px 20px;
+			height: 18px;
 			box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.25);
 			background-image: linear-gradient(
 				270deg,

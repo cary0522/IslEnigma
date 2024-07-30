@@ -1,10 +1,17 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import map from "/public/images/map-final.png";
+import area1 from '/public/images/area1.png';
+import area2 from '/public/images/area2.png';
+import area3 from '/public/images/area3.png';
+import area4 from '/public/images/area4.png';
+import area5 from '/public/images/area5.png';
+import area6 from '/public/images/area6.png';
+
 import BtnArea from "./BtnArea.jsx";
 import MapPoint from "./MapPoint.jsx";
 import FacilityContent from "./FacilityContent.jsx";
 import FacilityDes from "./FacilityDes.jsx";
-import ScaleProgress from "./ScaleProgress.jsx";
+// import ScaleProgress from "./ScaleProgress.jsx";
 
 // icons
 import { IoTicket } from "react-icons/io5";
@@ -725,13 +732,13 @@ function Map({isSticky}) {
 		},
 		{
 			id: "32",
-			title: "草原住宿區",
+			title: "夢幻星空",
 			refName: setTypeRoom,
 			className: "type_room",
 			iconId: "room_grassland",
-			des: "位於遊樂園的寬廣草原上，讓您在大自然的懷抱中享受奢華露營的獨特體驗。",
+			des: "圓球帳篷，仰望星空，倚看穹頂晨曦與夜色星空",
 			content:
-				"草原住宿區位於遊樂園的寬廣草原上，讓您在大自然的懷抱中享受奢華露營的獨特體驗。每個帳篷都配備高端設施，提供舒適的睡眠環境和寧靜的氛圍。",
+				"圓球帳篷是觀星愛好者的天堂。透明的穹頂設計讓您可以舒適地躺在床上，欣賞璀璨的星空。白天，您可以欣賞全景的自然風光；夜晚，則可以在溫暖的被窩中數星星。",
 			image: "/public/images/facility_image_32.jpeg",
 			location:'露營區',
 			open_time:'8:00~24:00',
@@ -745,14 +752,14 @@ function Map({isSticky}) {
 		},
 		{
 			id: "33",
-			title: "森林小築區",
+			title: "草原步調",
 			refName: setTypeRoom,
 			className: "type_room",
 			iconId: "room_forest",
-			des: "提供豪華露營體驗，是尋求平靜與放鬆的理想之地，讓您遠離都市的喧囂，回歸自然的懷抱。",
+			des: "簡約帳篷，擁抱自然簡約風，享受寧靜草原夜景。",
 			content:
-				"這裡的帳篷設計融合了現代舒適與自然之美，讓您在靜謐的森林中享受一夜好眠。白天，您可以探索周圍的步道，觀賞各種鳥類和野生動植物。夜晚，伴隨著蟲鳴和微風，享受與自然共處的靜謐時光。",
-			image: "/public/images/facility_image_33.jpeg",
+				"簡約帳篷位於寬闊的草原上，讓您親近大自然，享受寧靜的時光。帳篷內部簡約舒適，配備必要的現代化設施，為您提供舒適的住宿體驗。",
+			image: "/public/images/facility_image_33.png",
 			location:'露營區',
 			open_time:'8:00~24:00',
 			data_maintain:'每日清潔維護',
@@ -765,14 +772,14 @@ function Map({isSticky}) {
 		},
 		{
 			id: "34",
-			title: "湖濱度假區",
+			title: "沉靜海洋",
 			refName: setTypeRoom,
 			className: "type_room",
 			iconId: "room_lake",
-			des: "每個帳篷都面向湖面，讓您在享受舒適設施的同時，體會湖水清澈的寧靜。",
+			des: "豪華帳棚，聆聽海浪聲，感受奢華露營體驗",
 			content:
-				"白天，您可以在私人沙灘上曬日光浴，或者參加各種水上活動。夜晚，伴著月光，沿著湖濱散步，體驗真正的放鬆與愜意。湖濱度假區是追求奢華與自然結合的完美選擇，讓您在美麗的湖景中度過難忘的假期。",
-			image: "/public/images/facility_image_34.webp",
+				"豪華帳棚坐落於海岸線附近，為您帶來奢華的海濱露營體驗。寬敞的內部空間配備高級設施，讓您在舒適中欣賞壯麗的海景。您可以在私人露台上觀賞日出日落，聆聽海浪的韻律，享受無與倫比的寧靜與奢華。",
+			image: "/public/images/facility_image_34.jpg",
 			location:'露營區',
 			open_time:'8:00~24:00',
 			data_maintain:'每日清潔維護',
@@ -834,19 +841,6 @@ function Map({isSticky}) {
 		setContentId(null);
 		setContentShow(false);
 	}
-	// 地圖放大縮小拉霸，是否需要？
-	// let [scaleNum,setScaleNum] = useState(1);
-	// let zoomIn=()=>{
-	// 	console.log(scaleNum)
-	// 	setScaleNum(scaleNum+0.5)
-	// }
-	// let zoomOut=()=>{
-	// 	console.log(scaleNum)
-	// 	setScaleNum(scaleNum-0.5)
-	// }
-	// let scaleStyle={
-	// 	transform:`scale(${scaleNum})`
-	// }
 
 	return (
 		<>
@@ -856,7 +850,6 @@ function Map({isSticky}) {
 				contentShow={contentShow}
 				handleContentClose={handleContentClose}
 			/>
-			{/* <ScaleProgress scaleNum={scaleNum} zoomIn={zoomIn} zoomOut={zoomOut} /> */}
 			<div
 				id="mapOutside"
 				onClick={(e) => {
@@ -877,6 +870,13 @@ function Map({isSticky}) {
 					/>
 					
 					<img src={map} alt="map" id="imgInteractiveMap"></img>
+					<img src={area1} alt="" className="imgAreaItem" id="area1" />
+					<img src={area2} alt="" className="imgAreaItem" id="area2" />
+					<img src={area3} alt="" className="imgAreaItem" id="area3" />
+					<img src={area4} alt="" className="imgAreaItem" id="area4" />
+					<img src={area5} alt="" className="imgAreaItem" id="area5" />
+					<img src={area6} alt="" className="imgAreaItem" id="area6" />
+
 					{facilityList.map((facility) => {
 						return (
 							<MapPoint

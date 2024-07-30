@@ -21,7 +21,7 @@ function AlertInt({
 						X
 					</p>
 					<button
-						className="col-12 col-md-6"
+						className="col-12 col-md-6 button"
 						onClick={(e) => {
 							closeAlertShow();
 							showCalendar(e);
@@ -43,7 +43,7 @@ function AlertInt({
 					<p id="btnAlert" onClick={closeAlertShow}>
 						X
 					</p>
-					<button className="col-12 col-md-6" onClick={closeAlertShow}>
+					<button className="col-12 col-md-6 button" onClick={closeAlertShow}>
 						{btnContent}
 					</button>
 				</div>

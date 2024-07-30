@@ -1,5 +1,8 @@
 @import "../../components/reset.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+
 .mapPage {
+	font-family: "Noto Sans TC","Arial",sans-serif; 
 	.logoArea {
 		margin-top: 150px;
 		width: 100%;
@@ -36,21 +39,6 @@
 			display: none;
 		}
 	}
-	// #scaleProgress {
-	// 	transform: rotate(270deg);
-	// 	position: absolute;
-	// 	top: 80%;
-	// 	left: -3%;
-	// 	border: 1px solid red;
-	// 	padding: 10px;
-	// 	z-index: 5;
-	// 	progress {
-	// 		margin: 0 10px;
-	// 	}
-	// 	@media screen and (max-width: 720px) {
-	// 		top: 40%;
-	// 	}
-	// }
 	// 整體地圖區最外層容器，控制高度不要被放大的圖片撐開
 	#mapOutside {
 		width: 100vw;
@@ -79,6 +67,44 @@
 				left: 0;
 				z-index: 500;
 			}
+			.imgAreaItem{
+				position: absolute;
+				top: 0;
+				left: 0;
+				&:hover{
+					filter: brightness(110%);
+				}
+			}
+			#area1{
+				width: 55%;
+				top: 4.5%;
+				left: 8%;
+			}
+			#area2{
+				width: 35%;
+				top: 6%;
+				left: 53%;
+			}
+			#area3{
+				width: 37%;
+				top: 22%;
+				left: 56%;
+			}
+			#area4{
+				width: 36%;
+				top: 32%;
+				left: 23.5%;
+			}
+			#area5{
+				width: 19%;
+				top: 32%;
+				left: 5.7%;
+			}
+			#area6{
+				width: 60.2%;
+				top: 56%;
+				left: 19.7%;
+			}
 			.divDes {
 				@keyframes desAnimation {
 					0%{opacity: 0;}
@@ -98,7 +124,7 @@
 				color: $colorText;
 				h1{
 					font-size: 1rem;
-					margin: 0 0 5px 0 ;
+					margin: 0 0 15px 0 ;
 				}
 				img {
 					width: 50px;
@@ -117,7 +143,7 @@
 					button {
 						width: auto;
 						padding: 5px 15px;
-						margin:10px 0 0 0;
+						margin:15px 0 0 0;
 						background-color: $colorText;
 						color: $colorSvg;
 					}
@@ -127,7 +153,6 @@
 					z-index: 3;
 				}
 			}
-
 			// 設施圖釘共同樣式
 			.mapPointContainer {
 				position: absolute;
@@ -407,6 +432,7 @@
 			width: 50%;
 			margin: 10px auto;
 			button {
+				font-size: 15px;
 				background-color: $colorText;
 				color: $colorSvg;
 			}
