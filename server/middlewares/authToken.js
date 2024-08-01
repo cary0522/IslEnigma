@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config({ path: '../.env' });
 const authMiddleware = {
   verifyToken: (req, res, next) => {
     const token = req.cookies.token;
