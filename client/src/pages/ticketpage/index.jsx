@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 // components
-// import Header from "/src/components/layout/Navbar/Navbar.jsx";
-// import Footer from "/src/components/layout/Footer/Footer.jsx";
 import Banner from "./Banner.jsx";
 import BookingWay from "./BookingWay.jsx";
 import CompareTickets from "./CompareTickets.jsx";
@@ -13,8 +11,6 @@ import AlertCart from './AlertCart.jsx';
 import "./ticketPage.scss";
 
 function TicketPage() {
-
-	
 
 	// 設定 alert 內容
 	let [alertContent, setAlertContent] = useState("");
@@ -151,7 +147,6 @@ function TicketPage() {
 
 	return (
 		<div className="ticketPage">
-			{/* <Header></Header> */}
 			<AlertInt
 				alertShow={alertShow}
 				closeAlertShow={closeAlertShow}
@@ -200,7 +195,6 @@ function TicketPage() {
 					/>
 				);
 			})}
-			{/* <Footer></Footer> */}
 		</div>
 	);
 }

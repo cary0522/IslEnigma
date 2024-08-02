@@ -1,8 +1,8 @@
 const MobileContact = () => {
   return (
     <div className="mobileContact">
-      <p class="footerTitle">Contact</p>
-      <div class="iconBox">
+      <p className="footerTitle">Contact</p>
+      <div className="iconBox">
         <a href="https://www.google.com/" target="_blank">
           <img src="/icon/line.png" alt="line icon" />
         </a>

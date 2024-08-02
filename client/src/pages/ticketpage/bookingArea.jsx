@@ -3,9 +3,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 import BookingTicketOption from "./BookingTicketOption.jsx";
 import Button from "/src/components/common/Button.jsx";
 import DateCalendar from "./DateCalendar.jsx";
-
 import "react-calendar/dist/Calendar.css";
-
+import Cookies from "universal-cookie";
 import axios from "axios";
 
 function BookingArea({
@@ -40,35 +39,42 @@ function BookingArea({
 			return "disableSelectDate";
 		}
 	};
+	const cookies = new Cookies();
+	let cart = null
 
 	// 整理資料傳到購物車
 	function addCart() {
 		if (bookingDate) {
 			if (standardNum > 0 || VIPNum > 0) {
-				console.log("cart", [
-					{
-						booked_date: bookingDate,
-						product_standard: "標準票",
-						num_standard: standardNum,
-						price_standard: standardNum * 2000,
-						product_standard: "VIP票",
-						num_VIP: VIPNum,
-						price_VIP: VIPNum * 5000,
-					},
-				]);
-				let cart = [
-					{
-						id: 1,
-						booked_date: bookingDate,
-						VIPQuantity: VIPNum,
-					},
-					{
-						id: 2,
-						booked_date: bookingDate,
-						standardQuantity: standardNum,
-					},
-				];
-				let cartDate = JSON.stringify(cart);
+				if (cookies.get("token") === undefined) {
+					cart = [
+						{
+							id: 1,
+							booked_date: bookingDate,
+							quantity: VIPNum,
+						},
+						{
+							id: 2,
+							booked_date: bookingDate,
+							quantity: standardNum,
+						},
+					];
+				}else{
+					cart = [
+						{
+							id: 1,
+							booked_date: bookingDate,
+							quantity: VIPNum,
+							userToken:cookies.get('token')
+						},
+						{
+							id: 2,
+							booked_date: bookingDate,
+							quantity: standardNum,
+							userToken:cookies.get('token')
+						},
+					];
+				}
 				axios
 					.post("http://localhost:3000/addTicketItem", cart)
 					.then((response) => {

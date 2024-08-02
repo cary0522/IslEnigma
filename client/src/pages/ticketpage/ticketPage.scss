@@ -17,7 +17,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		z-index: 5;
+		z-index: 1000;
 		align-items: center;
 		text-align: center;
 		animation: alertShow 0.3s ease-out ;
@@ -275,7 +275,6 @@
 				.divCalendar {
 					position: relative;
 					display: flex;
-
 					input {
 						background-color: transparent;
 						border: 1px solid $colorText;
@@ -381,6 +380,13 @@
 				top: 45%;
 				left: 50%;
 				transform: translate(-50%, -50%);
+				.divBookingItem{
+					height: 30px;
+				}
+				button{
+					font-size: 15px;
+					padding:10px 70px
+				};
 			}
 		}
 		.btnDown {
@@ -395,6 +401,7 @@
 			left: 45%;
 			transform: translate(-50%, -50%);
 			animation: btnDown 1s infinite 0.5s;
+			transition: all .3s;
 			.btnDwnTriangle {
 				position: absolute;
 				bottom: -15%;
@@ -495,7 +502,7 @@
 					align-items: center;
 					cursor: pointer;
 					&:hover {
-						animation: softSpring 0.8s ease-in-out forwards;
+						animation: softSpring 0.3s ease-in-out forwards;
 					}
 					/* 左上跳動畫 */
 					@keyframes softSpring {
@@ -629,6 +636,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			cursor: pointer;
 			.leftCol {
 				display: flex;
 				align-items: center;

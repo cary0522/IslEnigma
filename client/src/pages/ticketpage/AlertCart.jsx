@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
 function AlertCart({ cartShow, closeAlertShowCart ,bookingDate,standardNum,VIPNum}) {

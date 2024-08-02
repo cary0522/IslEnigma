@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 // components
 import LogoArea from "/src/components/common/LogoArea.jsx";
 import Map from "./Map.jsx";
-// import Header from "/src/components/layout/Navbar/Navbar.jsx";
-// import Footer from "/src/components/layout/Footer/Footer.jsx";
 // css
 import "./mapPage.scss";
 
@@ -28,10 +26,8 @@ function MapPage() {
 		<div
 			className="mapPage"
 		>
-			{/* <Header></Header> */}
 			<LogoArea imgLogo={imgLogo} areaName={"園區導覽"} />
 			<Map isSticky={isSticky} />
-			{/* <Footer></Footer> */}
 		</div>
 	);
 }

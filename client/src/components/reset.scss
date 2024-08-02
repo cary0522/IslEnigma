@@ -11,6 +11,10 @@ $backgroundShadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
 	0 4px 4px rgba(0, 0, 0, 0.25);
 $backgroundBlur: 8px;
 
+html{
+	scroll-behavior: smooth;
+}
+
 body {
 	background-color: $backgroundColorWhole;
 }

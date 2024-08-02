@@ -165,7 +165,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="navItem menber">
-                <a href="#">
+                <a href="/login">
                   <img src="/00myIcon/menber.png" alt="登入" />
                   <p data-text="會員">會員</p>
                 </a>
@@ -226,10 +226,10 @@ const Navbar = () => {
           </div>
         </div>
         <nav className="menuItems">
-          <a href="#">
+          <a href="/mappage">
             <Icon.Building /> 樂園設施 <span>&gt;</span>
           </a>
-          <a href="#">
+          <a href="/ticketpage">
             <Icon.TicketPerforated />
             訂票資訊 <span>&gt;</span>
           </a>
