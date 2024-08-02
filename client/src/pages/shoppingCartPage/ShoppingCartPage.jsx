@@ -4,16 +4,25 @@ import Item from "./Item"
 import TotalPrice from "./TotalPrice"
 import useCartStore from "../../zustand/cartStore"
 import { useLocation } from "react-router-dom"
+import axios from "axios"
+
+// eslint-disable-next-line react/prop-types
+
 const ShoppingCartPage = () => {
   const { cartItems, loading, fetchCartData, setCartItems } = useCartStore()
   const [ticketQuantity, setTicketQuantity] = useState(1)
 
   const location = useLocation()
+  const handleDelete = async (itemId) => {
+    await axios.delete(`http://localhost:3001/cart/${itemId}`)
+  }
+
   useEffect(() => {
     fetchCartData()
-  }, [location.pathname])
+  }, [location.pathname, cartItems])
 
   console.log(cartItems)
+
   if (loading) return <p>Loading...</p>
   return (
     <div className="shoppingCart">
@@ -33,6 +42,7 @@ const ShoppingCartPage = () => {
               price={item.room?.price}
               ticketQuantity={ticketQuantity}
               setTicketQuantity={setTicketQuantity}
+              handleDelete={handleDelete}
             />
           )
         })}

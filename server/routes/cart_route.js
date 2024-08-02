@@ -8,13 +8,13 @@ const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 //到資料庫查找購物車
 
 router.get("/", async (req, res) => {
-  const shoppingCartWithItems = await prisma.order.findFirst({
+  const shoppingCartWithItems = await prisma.customer_order.findFirst({
     where: {
       member_id: 1,
       status: "CREATED",
     },
     include: {
-      OrderItem: {
+      order_item: {
         include: {
           room: true,
           ticket: true,
@@ -25,22 +25,15 @@ router.get("/", async (req, res) => {
   res.status(200).json(shoppingCartWithItems)
 })
 
-// router.get("/:id", async (req, res, next) => {
-//   console.log(req.params.id)
-// })
-
-// router.delete("/cart/:", (req, res) => {
-//   const
-
-// })
-
 //新增訂單
 router.post("/", async (req, res) => {
   const { cartItems } = req.body
+  console.log("items")
+  console.log(cartItems)
 
   if (cartItems.length === 0) return
   try {
-    const updatedOrderItem = await prisma.order.update({
+    const updatedOrderItem = await prisma.customer_order.update({
       where: {
         order_id: cartItems[0].order_id,
       },
@@ -63,7 +56,7 @@ router.put("/:id", async (req, res) => {
   const itemId = req.params.id
 
   try {
-    const updatedItem = await prisma.orderItem.update({
+    const updatedItem = await prisma.order_item.update({
       where: {
         order_item_id: itemId,
       },
@@ -72,6 +65,20 @@ router.put("/:id", async (req, res) => {
       },
     })
     res.status(200).json(updatedItem)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+router.delete("/:id", async (req, res) => {
+  const itemId = req.params.id
+
+  try {
+    const deletedItem = await prisma.order_item.delete({
+      where: {
+        order_item_id: itemId,
+      },
+    })
+    res.status(200).json(deletedItem)
   } catch (err) {
     res.status(500).json(err)
   }
@@ -120,7 +127,7 @@ router.post("/payment-status", (req, res) => {
 router.post("/order-info", async (req, res) => {
   console.log(123)
   try {
-    const res = await prisma.orderInfo.create({
+    const res = await prisma.order_info.create({
       data: {
         order_info_id: "info2",
         order_id: "order123",
