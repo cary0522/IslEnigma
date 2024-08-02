@@ -59,26 +59,29 @@ const HamburgerMenu = ({
       </div>
       <nav className="menuItems">
         <a href="#">
-          <Icon.Building /> 樂園設施 <span>&gt;</span>
+          <Icon.Building /> <span>樂園設施</span> <span>&gt;</span>
         </a>
         <a href="#">
           <Icon.TicketPerforated />
-          訂票資訊 <span>&gt;</span>
+          <span> 訂票資訊</span> <span>&gt;</span>
         </a>
         <a href="#">
-          <Icon.House /> 訂房資訊 <span>&gt;</span>
+          <Icon.House /> <span>訂房資訊</span> <span>&gt;</span>
         </a>
         <a href="#">
-          <Icon.Cart3 /> 飲食購物 <span>&gt;</span>
+          <Icon.Cart3 /> <span>飲食購物</span> <span>&gt;</span>
         </a>
         <a href="#">
-          <Icon.CarFront /> 交通資訊 <span>&gt;</span>
+          <Icon.CarFront />
+          <span> 交通資訊</span> <span>&gt;</span>
         </a>
         <a href="#">
-          <Icon.InfoCircle /> 關於islEnigma <span>&gt;</span>
+          <Icon.InfoCircle /> <span>關於islEnigma</span>
+          <span>&gt;</span>
         </a>
         <a href="#">
-          <Icon.PatchQuestion /> 樂園資訊 <span>&gt;</span>
+          <Icon.PatchQuestion />
+          <span> 樂園資訊</span> <span>&gt;</span>
         </a>
       </nav>
       <div className="menuFooter">
