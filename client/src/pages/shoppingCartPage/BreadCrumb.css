@@ -1,0 +1,53 @@
+@media (max-width: 1440px) {
+  .breadcrumb div {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: -1px 5px 8px #a19595;
+  }
+  .breadcrumb div img {
+    height: 20px;
+  }
+}
+
+/* end nav*/
+
+/* Main  */
+
+main {
+  margin-top: 15vh;
+}
+.breadcrumb {
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  width: 60%;
+  min-width: 500px;
+  margin-top: 50px;
+}
+
+.breadcrumb div {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: -1px 5px 8px #a19595;
+}
+.breadcrumb div img {
+  height: 50px;
+}
+
+.breadcrumbArrow {
+  height: 15px;
+}
+
+.active-now {
+  background: linear-gradient(to bottom right, #b0f1cf, #9894e1);
+  img {
+    filter: brightness(0) invert(1);
+  }
+}
