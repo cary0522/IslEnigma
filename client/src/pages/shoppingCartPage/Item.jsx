@@ -12,6 +12,7 @@ const Item = ({
   peopleCount,
   ticketQuantity,
   setTicketQuantity,
+  handleDelete,
 }) => {
   useEffect(() => {
     setTicketQuantity(quantity)
@@ -45,11 +46,6 @@ const Item = ({
       setTicketQuantity(newQuantity)
       updateQuantity(newQuantity)
     }
-  }
-
-  const handleDelete = async () => {
-    console.log(id)
-    // await axios.delete(`http://localst:3000/cart/${id    }`)
   }
 
   return (
@@ -89,7 +85,9 @@ const Item = ({
           <img
             src="shoppingCart/garbageCan.png"
             alt="Garbage Can Icon"
-            onClick={handleDelete}
+            onClick={() => {
+              handleDelete(itemId)
+            }}
           />
         </div>
       </div>
