@@ -1,12 +1,12 @@
-@import '../../components/reset.scss';
+@import "../../components/reset.scss";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 
 .ticketPage {
-	font-family: "Noto Sans TC","Arial",sans-serif; 
-	#divAlert{
-		display: flex;
-		flex-wrap: wrap;
-		padding: 10px;
+	font-family: "Noto Sans TC", "Arial", sans-serif;
+	.divAlert {
+		padding: 30px;
+		max-width: 400px;
+		width: 70%;
 		justify-content: center;
 		background-color: $backgroundColorBooking;
 		backdrop-filter: blur($backgroundBlur);
@@ -16,30 +16,65 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 		z-index: 5;
 		align-items: center;
-		div:first-child{
+		text-align: center;
+		animation: alertShow 0.3s ease-out ;
+		@keyframes alertShow {
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		h2,
+		p,
+		svg {
+			color: $colorText;
+		}
+		h2 {
+			font-size: 24px;
+			margin-bottom: 15px;
+		}
+		p {
+			font-size: 16px;
+			margin-bottom: 20px;
+			letter-spacing: 2px;
+			line-height: 30px;
+		}
+		.ticketIcon {
+			width: 80px;
+			margin-bottom: 20px;
+		}
+		div:first-child {
 			text-align: center;
 			margin: 20px auto;
 			animation: robotShake 1.2s infinite;
 			@keyframes robotShake {
-				0%{transform: rotate(0deg) translateX(0px);}
-				25%{transform: rotate(5deg) translateX(3px);}
-				50%{transform: rotate(0deg) translateX(0px);}
-				75%{transform: rotate(-5deg) translateX(-3px);}
-				100%{transform: rotate(0deg) translateX(0px);}
-			}
-			img{
-				max-width: 60%;
+				0% {
+					transform: rotate(0deg) translateX(0px);
+				}
+				25% {
+					transform: rotate(5deg) translateX(3px);
+				}
+				50% {
+					transform: rotate(0deg) translateX(0px);
+				}
+				75% {
+					transform: rotate(-5deg) translateX(-3px);
+				}
+				100% {
+					transform: rotate(0deg) translateX(0px);
+				}
 			}
 		}
-		#divAlertContent{
+		#divAlertContent {
 			text-align: center;
 			color: $colorText;
-			font-size: 2rem;
 		}
-		p:first-of-type{
+		.btnClose {
 			position: absolute;
 			z-index: 6;
 			top: 3%;
@@ -47,33 +82,75 @@
 			color: $colorText;
 			cursor: pointer;
 		}
-		button{
-			margin: 10px auto;
-			background-color: $backgroundColorBtnDark;
-			color: $colorSvg;
-			font-size: 1rem;
-		}
-		@media screen and (max-width:1680px) {
-			#divAlertContent{
-				font-size: 1.8rem;
+		.socialLinks {
+			margin-bottom: 25px;
+			text-align: center;
+			p {
+				margin-bottom: 10px;
+			}
+			.socialIcon {
+				display: inline-block;
+				margin: 0 10px;
+				svg {
+					font-size: 30px;
+					transition: 0.3s ease;
+					&:hover {
+						transform: translateX(5px);
+						font-size: 2.2rem;
+						text-shadow: 2px 2px #266487;
+					}
+				}
 			}
 		}
-		@media screen and (max-width:1500px) {
-			#divAlertContent{
-				font-size: 1.3rem;
-			}
-		}
-		@media screen and (max-width:767px) {
-			display: block;			
-			#divAlertContent{
+		.divAlertBtn {
+			margin: 10px 0;
+			display: flex;
+			justify-content: center;
+			.button {
+				margin: 10px auto;
+				background-color: $backgroundColorBtnDark;
+				color: $colorSvg;
 				font-size: 1rem;
 			}
+			// 成功加入購物車彈跳視窗按鈕，樣式不同
+			.btnCart {
+				background-color: $backgroundColorBtnDark;
+				color: $colorSvg;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 25px;
+				font-size: 16px;
+				cursor: pointer;
+				transition: background-color 0.3s ease, transform 0.3s ease;
+				margin: 0 10px;
+				position: relative;
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					border: 4px solid #73748c; //一開始的邊框顏色
+					transition: all 0.3s ease-in-out;
+					box-sizing: border-box;
+					border-radius: 30px;
+				}
+				&:hover::before,
+				&:focus::before {
+					border-radius: 40px;
+					top: calc(-9px);
+					left: calc(-9px);
+					right: calc(-9px);
+					bottom: calc(-9px);
+					border-color: #758694;
+					transition: 0.4s ease-in-out;
+				}
+				@media screen and (max-width: 720px) {
+					font-size: 0.8rem;
+				}
+			}
 		}
-		// @media screen and (max-width:455px) {
-		// 	#divAlertContent{
-		// 		font-size: 1rem;
-		// 	}
-		// }
 	}
 	#divBanner {
 		position: relative;
@@ -82,7 +159,7 @@
 			width: 40%;
 			top: 40%;
 			left: 8%;
-			transition: all .3s;
+			transition: all 0.3s;
 			.divOutside {
 				width: 100%;
 				display: flex;
@@ -154,7 +231,7 @@
 			left: 8%;
 			text-align: center;
 			width: 300px;
-			transition: all .3s;
+			transition: all 0.3s;
 			h5 {
 				font-size: 0.8rem;
 				padding: 2px 0 0 0;
@@ -169,7 +246,7 @@
 			}
 		}
 		.bookingArea {
-			transition: all .3s;
+			transition: all 0.3s;
 			width: 350px;
 			position: absolute;
 			top: 30%;
@@ -181,11 +258,11 @@
 			border-radius: 20px;
 			color: $colorText;
 			text-align: center;
-			svg{
+			svg {
 				cursor: pointer;
 				&:hover {
 					transform: scale(1.2);
-					transition: all .5s;
+					transition: all 0.5s;
 				}
 			}
 			.divBookingItem {
@@ -195,39 +272,43 @@
 				margin: 10px;
 				padding: 10px;
 				height: 50px;
-				.divCalendar{
+				.divCalendar {
 					position: relative;
 					display: flex;
 
-					input{
+					input {
 						background-color: transparent;
 						border: 1px solid $colorText;
 						border-radius: 20px;
 						text-align: center;
 						color: $colorText;
 					}
-					.calendarArea{
+					.calendarArea {
 						position: absolute;
 						top: 50%;
 						right: 0;
 						z-index: 4;
-						.react-calendar{
+						.react-calendar {
 							@keyframes divAnimation {
-								0%{opacity: 0;}
-								100%{opacity: 1;}
+								0% {
+									opacity: 0;
+								}
+								100% {
+									opacity: 1;
+								}
 							}
-							animation: divAnimation .5s;
+							animation: divAnimation 0.5s;
 							width: 350px;
 							height: auto;
 							background-color: $backgroundColorBooking;
 							box-shadow: $backgroundShadow;
 							backdrop-filter: blur($backgroundBlur);
-							border-radius:20px;
+							border-radius: 20px;
 							padding: 10px;
-							abbr{
+							abbr {
 								text-decoration: none;
 							}
-							button{
+							button {
 								background-color: transparent;
 								color: $colorText;
 								width: auto;
@@ -239,12 +320,12 @@
 								backdrop-filter: none;
 								cursor: pointer;
 							}
-							.disableSelectDate{
+							.disableSelectDate {
 								color: rgb(175, 174, 174);
 								cursor: none;
 							}
 						}
-						@media screen and (max-width:720px) {
+						@media screen and (max-width: 720px) {
 							right: -42%;
 						}
 					}
@@ -270,7 +351,7 @@
 						cursor: pointer;
 						&:hover {
 							transform: scale(1.2);
-							transition: all .5s;
+							transition: all 0.5s;
 						}
 						.bookingAreaIcon {
 							box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -463,9 +544,15 @@
 				top: -4%;
 				animation: crownShin 1s infinite ease-in-out;
 				@keyframes crownShin {
-					0%{transform: scale(1) rotate(20deg);}						
-					50%{transform: scale(1.2) rotate(25deg);}			
-					100%{transform: scale(1) rotate(20deg);}				
+					0% {
+						transform: scale(1) rotate(20deg);
+					}
+					50% {
+						transform: scale(1.2) rotate(25deg);
+					}
+					100% {
+						transform: scale(1) rotate(20deg);
+					}
 				}
 				@media screen and (max-width: 1700px) {
 					right: 6%;
@@ -551,11 +638,11 @@
 					margin: 10px;
 				}
 				.svgTriangle {
-					transition: all .5s;
+					transition: all 0.5s;
 					transform: rotate(0deg);
 				}
 				.svgTriangleClick {
-					transition: all .5s;
+					transition: all 0.5s;
 					transform: rotate(180deg);
 				}
 			}
@@ -577,33 +664,62 @@
 			border-radius: 0 0 20px 20px;
 			margin: 0px auto 10px auto;
 			padding: 10px 20px;
-			p{
-				color:$colorRule;
+			p {
+				color: $colorRule;
 				margin: 20px;
 				letter-spacing: 1px;
 				line-height: 25px;
 			}
 		}
 		@keyframes ruleContentHide {
-			0%{display: block;opacity: 1;}
-			25%{display: block;opacity: .8;}
-			50%{display: block;opacity: .4;}
-			75%{display: none;opacity: .1;}
-			100%{display: none;opacity: 0;}
+			0% {
+				display: block;
+				opacity: 1;
+			}
+			25% {
+				display: block;
+				opacity: 0.8;
+			}
+			50% {
+				display: block;
+				opacity: 0.4;
+			}
+			75% {
+				display: none;
+				opacity: 0.1;
+			}
+			100% {
+				display: none;
+				opacity: 0;
+			}
 		}
-		.ticketRuleContentNone{
-			animation: ruleContentHide 0.3s both;	
+		.ticketRuleContentNone {
+			animation: ruleContentHide 0.3s both;
 		}
 		@keyframes ruleContentBlock {
-			0%{display: none;opacity: 0;}
-			25%{display: block;opacity: .4;}
-			50%{display: block;opacity: .8;}
-			75%{display: block;opacity: .9;}
-			100%{display: block;opacity: 1;}
+			0% {
+				display: none;
+				opacity: 0;
+			}
+			25% {
+				display: block;
+				opacity: 0.4;
+			}
+			50% {
+				display: block;
+				opacity: 0.8;
+			}
+			75% {
+				display: block;
+				opacity: 0.9;
+			}
+			100% {
+				display: block;
+				opacity: 1;
+			}
 		}
-		.ticketRuleContentBlock{
+		.ticketRuleContentBlock {
 			animation: ruleContentBlock 0.5s both;
 		}
 	}
-
 }

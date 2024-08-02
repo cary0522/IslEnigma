@@ -7,11 +7,15 @@ import BookingWay from "./BookingWay.jsx";
 import CompareTickets from "./CompareTickets.jsx";
 import TicketRule from "./TicketRule.jsx";
 import AlertInt from "./AlertInt.jsx";
+import AlertCart from './AlertCart.jsx';
 
 // css
 import "./ticketPage.scss";
 
 function TicketPage() {
+
+	
+
 	// 設定 alert 內容
 	let [alertContent, setAlertContent] = useState("");
 	let [btnContent, setBtnContent] = useState("前往選購");
@@ -32,11 +36,40 @@ function TicketPage() {
 		setAlertShow(true);
 		setAlertContent("預計哪天到訪迷樣島嶼呢？");
 	};
+		// 得到使用者選取的日期，並把月曆關掉
+		let [bookingDate, setBookingDate] = useState("");
+		let selectDate = (value) => {
+			closeCalendar();
+			setBookingDate(value.toLocaleDateString());
+		};
+		// 得到票種、張數
+		let [standardNum, setStandardNum] = useState(0);
+		let plusStandard=()=>{
+			setStandardNum(standardNum+1)
+		}
+		let minusStandard=()=>{
+			setStandardNum(standardNum-1)
+		}
+		let zeroStandard=()=>{
+			setStandardNum(0)
+		}
+		let [VIPNum, setVIPNum] = useState(0);
+		let plusVIP=()=>{
+			setVIPNum(VIPNum+1)
+		}
+		let minusVIP=()=>{
+			setVIPNum(VIPNum-1)
+		}
+		let zeroVIP=()=>{
+			setVIPNum(0)
+		}
 	// 設定是否跳出 alert-成功加入購物車
+	let [cartShow , setCartShow]=useState(false)
 	let handleAlertShowCart = () => {
-		setAlertShow(true);
-		setAlertContent("成功加入購物車！");
-		setBtnContent("繼續選購");
+		setCartShow(true);
+	};
+	let closeAlertShowCart = () => {
+		setCartShow(false);
 	};
 	// 訂票規定陣列
 	let ruleList = [
@@ -126,14 +159,35 @@ function TicketPage() {
 				btnContent={btnContent}
 				showCalendar={showCalendar}
 			/>
+			<AlertCart
+				cartShow={cartShow}
+				closeAlertShowCart={closeAlertShowCart}
+				bookingDate={bookingDate}
+				standardNum={standardNum}
+				VIPNum={VIPNum}
+			/>
 			<Banner
 				alertShow={alertShow}
 				handleAlertShow={handleAlertShow}
 				handleAlertShowDate={handleAlertShowDate}
-				handleAlertShowCart={handleAlertShowCart}
 				dateShow={dateShow}
 				showCalendar={showCalendar}
 				closeCalendar={closeCalendar}
+				cartShow={cartShow}
+				handleAlertShowCart={handleAlertShowCart}
+				closeAlertShowCart={closeAlertShowCart}
+				bookingDate={bookingDate}
+				selectDate={selectDate}
+				standardNum={standardNum}
+				setStandardNum={setStandardNum}
+				plusStandard={plusStandard}
+				minusStandard={minusStandard}
+				zeroStandard={zeroStandard}
+				VIPNum={VIPNum}
+				setVIPNum={setVIPNum}
+				plusVIP={plusVIP}
+				minusVIP={minusVIP}
+				zeroVIP={zeroVIP}
 			/>
 			<BookingWay />
 			<CompareTickets />

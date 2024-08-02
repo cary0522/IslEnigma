@@ -49,9 +49,7 @@
 			position: relative;
 			width: 1220px;
 			height: 720px;
-			// overflow: scroll;
 			@media screen and (max-width: 720px) {
-				// 讓圖片可以滑動
 				overflow: scroll;
 			}
 			// 地圖
@@ -404,7 +402,6 @@
 			left: 50%;
 		}
 	}
-
 	// 詳細介紹區塊樣式
 	.divContent {
 		@keyframes divOpacity {

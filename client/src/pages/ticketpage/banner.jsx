@@ -13,7 +13,21 @@ function Banner({
 	closeCalendar,
 	handleAlertShow,
 	handleAlertShowDate,
+	cartShow,
 	handleAlertShowCart,
+	closeAlertShowCart,
+	bookingDate,
+	selectDate,
+	standardNum,
+	setStandardNum,
+	plusStandard,
+	minusStandard,
+	zeroStandard,
+	VIPNum,
+	setVIPNum,
+	plusVIP,
+	minusVIP,
+	zeroVIP
 }) {
 	return (
 		<div
@@ -33,7 +47,21 @@ function Banner({
 				closeCalendar={closeCalendar}
 				handleAlertShow={handleAlertShow}
 				handleAlertShowDate={handleAlertShowDate}
+				cartShow={cartShow}
 				handleAlertShowCart={handleAlertShowCart}
+				closeAlertShowCart={closeAlertShowCart}
+				bookingDate={bookingDate}
+				selectDate={selectDate}
+				standardNum={standardNum}
+				setStandardNum={setStandardNum}
+				plusStandard={plusStandard}
+				minusStandard={minusStandard}
+				zeroStandard={zeroStandard}
+				VIPNum={VIPNum}
+				setVIPNum={setVIPNum}
+				plusVIP={plusVIP}
+				minusVIP={minusVIP}
+				zeroVIP={zeroVIP}
 			/>
 			<BtnDown />
 		</div>

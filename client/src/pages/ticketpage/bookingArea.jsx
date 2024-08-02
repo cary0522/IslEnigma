@@ -6,13 +6,26 @@ import DateCalendar from "./DateCalendar.jsx";
 
 import "react-calendar/dist/Calendar.css";
 
+import axios from "axios";
+
 function BookingArea({
 	dateShow,
-	closeCalendar,
 	showCalendar,
 	handleAlertShow,
 	handleAlertShowDate,
-	handleAlertShowCart
+	handleAlertShowCart,
+	bookingDate,
+	selectDate,
+	standardNum,
+	setStandardNum,
+	plusStandard,
+	minusStandard,
+	zeroStandard,
+	VIPNum,
+	setVIPNum,
+	plusVIP,
+	minusVIP,
+	zeroVIP,
 }) {
 	// 點選左右箭頭更換月份
 	let [date, setDate] = useState(new Date());
@@ -27,63 +40,40 @@ function BookingArea({
 			return "disableSelectDate";
 		}
 	};
-	// 得到使用者選取的日期，並把月曆關掉
-	let [bookingDate, setBookingDate] = useState("");
-	let selectDate = (value) => {
-		closeCalendar();
-		setBookingDate(value.toLocaleDateString());
-	};
-	// 得到票種、張數
-	let [standardNum, setStandardNum] = useState(0);
-	let plusStandard=()=>{
-		setStandardNum(standardNum+1)
-	}
-	let minusStandard=()=>{
-		setStandardNum(standardNum-1)
-	}
-	let zeroStandard=()=>{
-		setStandardNum(0)
-	}
-	let [VIPNum, setVIPNum] = useState(0);
-	let plusVIP=()=>{
-		setVIPNum(VIPNum+1)
-	}
-	let minusVIP=()=>{
-		setVIPNum(VIPNum-1)
-	}
-	let zeroVIP=()=>{
-		setVIPNum(0)
-	}
+
 	// 整理資料傳到購物車
 	function addCart() {
 		if (bookingDate) {
 			if (standardNum > 0 || VIPNum > 0) {
-				// console.log("cart", [
-				// 	{
-				// 		booked_date: bookingDate,
-				// 		product_standard:'標準票',
-				// 		num_standard: standardNum,
-				// 		price_standard: standardNum * 2000,
-				// 		product_standard:'VIP票',
-				// 		num_VIP: VIPNum,
-				// 		price_VIP: VIPNum * 5000,
-				// 	},
-				// ]);
-				let cart = {
-					booked_date: bookingDate,
-					product_standard:'標準票',
-					num_standard: standardNum,
-					price_standard: standardNum * 2000,
-					product_VIP:'VIP票',
-					num_VIP: VIPNum,
-					price_VIP: VIPNum * 5000,
-				}
-				let cartDate = JSON.stringify(cart)
-				fetch('http://localhost:3000/shoppingCart',{
-					method:'POST',
-					headers:{'Content-Type':'application/json'},
-					body:cartDate
-				})
+				console.log("cart", [
+					{
+						booked_date: bookingDate,
+						product_standard: "標準票",
+						num_standard: standardNum,
+						price_standard: standardNum * 2000,
+						product_standard: "VIP票",
+						num_VIP: VIPNum,
+						price_VIP: VIPNum * 5000,
+					},
+				]);
+				let cart = [
+					{
+						id: 1,
+						booked_date: bookingDate,
+						VIPQuantity: VIPNum,
+					},
+					{
+						id: 2,
+						booked_date: bookingDate,
+						standardQuantity: standardNum,
+					},
+				];
+				let cartDate = JSON.stringify(cart);
+				axios
+					.post("http://localhost:3000/addTicketItem", cart)
+					.then((response) => {
+						console.log(response);
+					});
 				handleAlertShowCart();
 			} else {
 				handleAlertShow();
@@ -138,6 +128,7 @@ function BookingArea({
 				setPlus={plusVIP}
 				setMinus={minusVIP}
 				setZero={zeroVIP}
+				setTicketNum={setVIPNum}
 				handleAlertShow={handleAlertShow}
 			/>
 			<BookingTicketOption
@@ -147,7 +138,7 @@ function BookingArea({
 				setPlus={plusStandard}
 				setMinus={minusStandard}
 				setZero={zeroStandard}
-				setTicketNum={setVIPNum}
+				setTicketNum={setStandardNum}
 				handleAlertShow={handleAlertShow}
 			/>
 			<div
