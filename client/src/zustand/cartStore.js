@@ -8,7 +8,7 @@ const useCartStore = create((set) => ({
     try {
       const response = await axios.get("http://localhost:3001/cart")
       set({
-        cartItems: response.data.OrderItem,
+        cartItems: response.data.order_item,
         loading: false,
       })
     } catch (error) {

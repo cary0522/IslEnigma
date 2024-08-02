@@ -9,12 +9,10 @@ import { Form, useLocation, useNavigate } from "react-router-dom"
 
 const CheckOutPage = () => {
   const [orderInfo, setOrderInfo] = useState({
-    firstName: "",
-    lastName: "",
+    customer: "",
     phoneNumber: "",
     country: "",
     address: "",
-    zip: "",
   })
 
   const navigate = useNavigate()
@@ -57,22 +55,12 @@ const CheckOutPage = () => {
         <form className="form-container">
           <div className="form-group">
             <div>
-              <label htmlFor="lastName">姓氏</label>
+              <label htmlFor="customer">姓名</label>
               <input
                 type="text"
                 id="firstName"
-                name="firstName"
-                value={orderInfo.firstName}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="lastName">名字</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={orderInfo.lastName}
+                name="customer"
+                value={orderInfo.customer}
                 onChange={handleInputChange}
               />
             </div>
