@@ -19,13 +19,13 @@ const Nav = ({ toggleNavbar }) => {
       <div className="navRight">
         <ul className="navLink">
           <li className="navItem facility">
-            <a href="#">
+            <a href="/mappage">
               <img src="/00myIcon/facility.png" alt="樂園設施" />
               <p data-text="樂園設施">樂園設施</p>
             </a>
           </li>
           <li className="navItem ticket">
-            <a href="#">
+            <a href="/ticketpage">
               <img src="/00myIcon/ticket-info.png" alt="訂票資訊" />
               <p data-text="訂票資訊">訂票資訊</p>
             </a>
@@ -61,13 +61,13 @@ const Nav = ({ toggleNavbar }) => {
             </a>
           </li>
           <li className="navItem menber">
-            <a href="#">
+            <a href="/login">
               <img src="/00myIcon/menber.png" alt="登入" />
               <p data-text="會員">會員</p>
             </a>
           </li>
         </ul>
-        <a href="/ticket">
+        <a href="/ticketpage">
           <img src="/00myIcon/ticket.png" alt="Ticket" className="ticketImg" />
         </a>
       </div>
