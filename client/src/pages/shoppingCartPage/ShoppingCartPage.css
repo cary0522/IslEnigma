@@ -1,0 +1,127 @@
+/* body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+} */
+
+/* Header */
+
+/* ShoppingCart  */
+
+.shoppingCart {
+  margin: 50px auto;
+  height: 110vh;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  transition: transform 0.1s ease-out;
+}
+
+.itemList {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+}
+
+.item {
+  padding: 20px 60px;
+
+  width: 100%;
+  min-width: 550px;
+  height: 200px;
+  background: linear-gradient(
+    270deg,
+    rgba(83, 54, 131, 0.53) 0%,
+    rgba(49, 125, 165, 0.8) 100%
+  );
+  border-radius: 40px;
+}
+
+/* Item top */
+.itemTop {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  grid-template-columns: 1fr 2fr 1fr 0.2fr;
+}
+
+.roomImg {
+  height: 120px;
+}
+
+.shoppingCartItemInfo {
+  padding: 20px 0;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+.shoppingCartCounterBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shoppingCartCounter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 120px;
+  background-color: #fffdf8;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.shoppingCartCounter p {
+  color: #317da5;
+  font-size: 25px;
+}
+.shoppingCartCounter div {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--15, linear-gradient(180deg, #fcd6e3 0%, #9894e1 100%));
+
+  height: 30px;
+
+  width: 30px;
+
+  border-radius: 50%;
+}
+
+.shoppingCartCounter img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.shoppingCartGarbageCan {
+  transform: scale(0.5);
+}
+
+/* end item top */
+
+/* Item bottom */
+
+.itemBottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*  Total price */
+/* .totalPriceBox {
+  color: rgb(179, 28, 28);
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 300px;
+} */
+/* .totalPriceContainer {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+} */
