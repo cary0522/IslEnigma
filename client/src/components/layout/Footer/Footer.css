@@ -21,7 +21,7 @@
 }
 #footer .firstRow {
   font-size: 0;
-  background-color: white;
+  background-color: rgba(255, 253, 248, 1);
   max-width: 1920px;
   background-position: center;
   background-size: cover;

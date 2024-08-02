@@ -58,10 +58,10 @@ const HamburgerMenu = ({
         </div>
       </div>
       <nav className="menuItems">
-        <a href="#">
+        <a href="/mappage">
           <Icon.Building /> <span>樂園設施</span> <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/ticketpage">
           <Icon.TicketPerforated />
           <span> 訂票資訊</span> <span>&gt;</span>
         </a>

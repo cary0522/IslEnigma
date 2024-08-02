@@ -3,6 +3,8 @@ import "./App.css"
 import Layout from "./components/layout/Layout"
 import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage"
 import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
+import MapPage from './pages/mappage';
+import TicketPage from './pages/ticketpage';
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
@@ -17,9 +19,11 @@ function App() {
           <Route path="checkout" element={<CheckOutPage />} />
           <Route path="shoppingSuccess" element={<ShoppingSuccessPage />} />
         </Route>
+        <Route path="/mappage" element={< MapPage />} />
+        <Route path="/ticketpage" element={< TicketPage />} />
       </Route>
     </Routes>
   )
 }
 
-export default App
+export default App;

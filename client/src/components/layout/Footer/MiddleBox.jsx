@@ -1,15 +1,15 @@
 const MiddleBox = () => {
   return (
-    <div class="middleBox">
-      <div class="logoBox">
+    <div className="middleBox">
+      <div className="logoBox">
         <img src="/footerDeco/footerLogo.png" alt="footer logo" />
       </div>
-      <nav class="footerNav">
+      <nav className="footerNav">
         <ul>
-          <a href="">樂園設施</a>
+          <a href="/mappage">樂園設施</a>
         </ul>
         <ul>
-          <a href="">訂票</a>
+          <a href="/ticketpage">訂票</a>
         </ul>
         <ul>
           <a href="">訂房</a>
@@ -27,13 +27,13 @@ const MiddleBox = () => {
           <a href="">樂園設施</a>
         </ul>
       </nav>
-      <nav class="MobileFooterNav">
+      <nav className="MobileFooterNav">
         <div>
           <ul>
-            <a href="">樂園設施</a>
+            <a href="/mappage">樂園設施</a>
           </ul>
           <ul>
-            <a href="">訂票</a>
+            <a href="/ticketpage">訂票</a>
           </ul>
           <ul>
             <a href="">訂房</a>
@@ -50,7 +50,7 @@ const MiddleBox = () => {
             <a href="">關於我們</a>
           </ul>
           <ul>
-            <a href="">樂園設施</a>
+            <a href="/mappage">樂園設施</a>
           </ul>
         </div>
       </nav>

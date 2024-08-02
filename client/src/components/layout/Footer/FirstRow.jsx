@@ -1,6 +1,6 @@
 const FirstRow = () => {
   return (
-    <div class="firstRow">
+    <div className="firstRow">
       <img src="/footerDeco/upperDeco.png" alt="" />
     </div>
   )

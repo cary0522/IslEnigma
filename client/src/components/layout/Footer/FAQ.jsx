@@ -1,8 +1,8 @@
 const FAQ = () => {
   return (
-    <div class="faq">
-      <p class="footerTitle">FAQ</p>
-      <div class="iconBox">
+    <div className="faq">
+      <p className="footerTitle">FAQ</p>
+      <div className="iconBox">
         <a href="https://www.google.com/" target="_blank">
           <img src="/icon/question.png" alt="question icon" />
         </a>
