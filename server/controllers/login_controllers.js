@@ -1,3 +1,4 @@
+//@author :TerryXU
 const login_Model = require('../models/login_Model');
 const passwordHelpers = require('../utils/passwordHelpers');
 const generateToken = require('../utils/jwtHelpers');

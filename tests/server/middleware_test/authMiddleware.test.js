@@ -1,3 +1,4 @@
+//@author :TerryXU
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('../../../server/middlewares/authToken');
 

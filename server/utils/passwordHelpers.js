@@ -1,3 +1,4 @@
+//@author :TerryXU
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const passwordHelpers = {
