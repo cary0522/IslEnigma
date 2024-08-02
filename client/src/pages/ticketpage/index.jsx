@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // components
-import Header from "/src/components/layout/Header.jsx";
-import Footer from "/src/components/layout/Footer.jsx";
+// import Header from "/src/components/layout/Navbar/Navbar.jsx";
+// import Footer from "/src/components/layout/Footer/Footer.jsx";
 import Banner from "./Banner.jsx";
 import BookingWay from "./BookingWay.jsx";
 import CompareTickets from "./CompareTickets.jsx";
@@ -151,7 +151,7 @@ function TicketPage() {
 
 	return (
 		<div className="ticketPage">
-			<Header></Header>
+			{/* <Header></Header> */}
 			<AlertInt
 				alertShow={alertShow}
 				closeAlertShow={closeAlertShow}
@@ -200,7 +200,7 @@ function TicketPage() {
 					/>
 				);
 			})}
-			<Footer></Footer>
+			{/* <Footer></Footer> */}
 		</div>
 	);
 }

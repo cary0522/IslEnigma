@@ -16,11 +16,11 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route path="cart" element={<CartLayout />}>
           <Route index element={<ShoppingCart />} />
-          <Route path="/mappage" element={< MapPage />} />
-          <Route path="/ticketpage" element={< TicketPage />} />
           <Route path="checkout" element={<CheckOutPage />} />
           <Route path="shoppingSuccess" element={<ShoppingSuccessPage />} />
         </Route>
+        <Route path="/mappage" element={< MapPage />} />
+        <Route path="/ticketpage" element={< TicketPage />} />
       </Route>
     </Routes>
   )
