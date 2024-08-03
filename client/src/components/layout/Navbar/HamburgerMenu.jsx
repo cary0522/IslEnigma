@@ -68,7 +68,7 @@ const HamburgerMenu = ({
         <a href="#">
           <Icon.House /> <span>訂房資訊</span> <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/restaurantpage">
           <Icon.Cart3 /> <span>飲食購物</span> <span>&gt;</span>
         </a>
         <a href="#">

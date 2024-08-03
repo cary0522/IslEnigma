@@ -5,7 +5,7 @@ import BookingArea from "./BookingArea.jsx";
 import BtnDown from "./BtnDown.jsx";
 // image
 import imgBanner from "/public/images/ticketBanner.png";
-import imgLogo from "/public/images/LogoType_Light_2 2.png";
+import imgLogo from "/public/00logo/LogoType_Light_2.png";
 
 function Banner({
 	dateShow,
