@@ -5,7 +5,11 @@ import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage"
 import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
 import MapPage from './pages/mappage';
 import TicketPage from './pages/ticketpage';
-import RestaurantPage from "./pages/restaurantpage"
+
+// import InfoEvent from './pages/infoEvent';
+import InfoInfoPage from './pages/infoInfoPage';
+// import InfoFAQ from './pages/infoFAQ';
+// import RoomMore from './pages/roomMore';
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
@@ -22,7 +26,16 @@ function App() {
         </Route>
         <Route path="/mappage" element={< MapPage />} />
         <Route path="/ticketpage" element={< TicketPage />} />
-        <Route path="/restaurantpage" element={< RestaurantPage />} />
+
+        {/* <Route path="/infoEvent" element={< InfoEvent />} /> */}
+        <Route path="/infoEvent/infoInfoPage" element={< InfoInfoPage />} />
+        {/* <Route path="/infoEvent/infoFAQ" element={< InfoFAQ />} /> */}
+
+
+        {/* <Route path="/room" element={< Room />}>
+          <Route path="/room/roomMore" element={< RoomMore />} />
+        </Route> */}
+
       </Route>
     </Routes>
   )

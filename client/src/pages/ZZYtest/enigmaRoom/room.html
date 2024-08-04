@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISLENIGMA</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <!-- bootstap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- 自訂css -->
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="navbar.css">
+    <link  rel="stylesheet" href="room.css">
+
+</head>
+<body>
+    <!-- 導航列 -->
+    <div id="navbarAll" class="navbarAll">
+      <header>
+        <!-- 主導航欄  -->
+        <div class="topNav">
+          <!-- 左側按鈕 -->
+          <div class="headerLeft">
+            <!-- 漢堡菜單按鈕  -->
+            <button id="hamburgerBtn" class="hamburgerBtn">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <!-- music播放控制 -->
+            <div class="musicContainer">
+              <button class="btn music">
+                music
+                <div id="mainMusicSwitcher" class="musicSwitcher">
+                  <div class="ball"></div>
+                </div>
+              </button>
+            </div>
+            <!-- languageDropdown -->
+            <div class="languageDropdown">
+              <button class="btn language">
+                Language<i class="bi bi-chevron-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="#">中文</a>
+                <a href="#">English</a>
+              </div>
+            </div>
+          </div>
+          <!-- mobile logo需要放在中間，手機板出現 -->
+          <a href="#">
+            <img
+              class="topLogo"
+              src="./public/00logo/LogoType_Light_1.png"
+              alt=""
+            />
+          </a>
+          <!-- 右側按鈕 -->
+          <div class="headerRight">
+            <a href="/cart" class="btnShoppingCart">
+              <i class="bi bi-cart"></i>
+            </a>
+            <!-- 新增:使用者登入登出 -->
+            <div class="userMenuContainer">
+              <a href="./login" class="btn btnLogin">
+                <img
+                  src="/default-avatar.png"
+                  alt="User Avatar"
+                  class="userAvatar"
+                  style="display: none"
+                />
+                <i class="bi bi-person"></i>
+                <span class="loginText">Login</span>
+              </a>
+              <div class="dropdown-content">
+                <a href="/profile">會員中心</a>
+                <a href="#" class="logoutBtn">登出</a>
+              </div>
+            </div>
+          </div>
+          <!-- ------隱藏次要導覽列功能按鈕 -->
+          <button id="toggleNavbar" class="toggleNavbar">
+            <i class="bi bi-chevron-double-up"></i>
+          </button>
+        </div>
+        <!-- 次導覽欄 -->
+        <nav class="navbar">
+          <!-- 左側，logo(三種 1920-1024,1024-850,<850) -->
+          <a href="./index">
+            <picture class="logo-container">
+              <source
+                media="(min-width:1024px)"
+                srcset="./public/00logo/LogoType_Light_2.png"
+              />
+              <source
+                media="(min-width:850px)"
+                srcset="./public/00logo/LogoType_Light_1.png"
+              />
+              <img
+                src="./public/00logo/LOGO_Light_1.png"
+                alt="Logo"
+                class="logo"
+              />
+            </picture>
+          </a>
+          <!-- 右側按鈕 -->
+          <div class="navRight">
+            <!-- 連結區 -->
+            <ul class="navLink">
+              <li class="navItem facility">
+                <a href="#">
+                  <img src="./public/00myIcon/facility.png" alt="樂園設施" />
+                  <p data-text="樂園設施">樂園設施</p>
+                </a>
+              </li>
+              <li class="navItem ticket">
+                <a href="#">
+                  <img src="./public/00myIcon/ticket-info.png" alt="訂票資訊" />
+                  <p data-text="訂票資訊">訂票資訊</p>
+                </a>
+              </li>
+              <li class="navItem book">
+                <a href="#">
+                  <img
+                    src="./public/00myIcon/booking-info.png"
+                    alt="訂房資訊"
+                  />
+                  <p data-text="訂房資訊">訂房資訊</p>
+                </a>
+              </li>
+              <!-- food在下拉選單隱藏 -->
+              <li class="navItem food">
+                <a href="#">
+                  <img
+                    src="./public/00myIcon/restaurant-info.png"
+                    alt="飲食購物"
+                  />
+                  <p data-text="飲食購物">飲食購物</p>
+                </a>
+              </li>
+              <li class="navItem traffic">
+                <a href="#">
+                  <img
+                    src="./public/00myIcon/traffic-info.png"
+                    alt="交通資訊"
+                  />
+                  <p data-text="交通資訊">交通資訊</p>
+                </a>
+              </li>
+              <!-- about在下拉選單隱藏 -->
+              <li class="navItem about">
+                <a href="#">
+                  <img src="./public/00myIcon/about.png" alt="關於我們" />
+                  <p data-text="關於我們">關於我們</p>
+                </a>
+              </li>
+              <!-- info在下拉選單隱藏 -->
+              <li class="navItem info">
+                <a href="#">
+                  <img src="./public/00myIcon/park-info.png" alt="樂園資訊" />
+                  <p data-text="樂園資訊">樂園資訊</p>
+                </a>
+              </li>
+              <!-- 新增:menber在下拉選單出現 -->
+              <li class="navItem menber">
+                <a href="#" class="memberLink">
+                  <img
+                    src="./public/00myIcon/menber.png"
+                    alt="登入"
+                    class="memberIcon"
+                  />
+                  <img
+                    src="/default-avatar.png"
+                    alt="User Avatar"
+                    class="memberAvatar"
+                    style="display: none"
+                  />
+                  <p class="memberText" data-text="會員">會員</p>
+                </a>
+                <div class="memberDropdown">
+                  <a href="/profile">會員中心</a>
+                  <a href="#" class="logoutBtnNav">登出</a>
+                </div>
+              </li>
+            </ul>
+            <!-- 最右側快速訂票 -->
+            <a href="/ticket">
+              <img
+                src="public/00myIcon/ticket.png"
+                alt="Ticket"
+                class="ticketImg"
+              />
+            </a>
+          </div>
+        </nav>
+      </header>
+      <!-- 漢堡選單(點開後出現側拉選單) -->
+      <div id="hamburgerMenu" class="hamburgerMenu">
+        <!-- 頭部 -->
+        <div class="menuHeader">
+          <span id="closeBtn" class="closeBtn">&times;</span>
+          <a href="./index"
+            ><img
+              src="./public/00logo/LogoType_Light_1.png"
+              alt="Logo"
+              class="menuLogo"
+          /></a>
+          <a href="./cart" class="cartIcon"><i class="bi bi-cart"></i></a>
+        </div>
+        <!-- 系統按鈕 -->
+        <div class="systemButtons">
+          <div class="btn musicContainer">
+            <span>music</span>
+            <div id="menuMusicSwitcher" class="musicSwitcher">
+              <div class="ball"></div>
+            </div>
+          </div>
+          <div class="btn languageDropdown">
+            <span>Language</span>
+            <div class="dropdown-content">
+              <a href="#">中文</a>
+              <a href="#">English</a>
+            </div>
+          </div>
+        </div>
+        <!-- 側拉導覽列 -->
+        <nav class="menuItems">
+          <a href="#"
+            ><i class="bi bi-building"></i> 樂園設施 <span>&gt;</span></a
+          >
+          <a href="#"
+            ><i class="bi bi-ticket-perforated"></i> 訂票資訊
+            <span>&gt;</span></a
+          >
+          <a href="#"><i class="bi bi-house"></i> 訂房資訊 <span>&gt;</span></a>
+          <a href="#"><i class="bi bi-cart3"></i> 飲食購物 <span>&gt;</span></a>
+          <a href="#"
+            ><i class="bi bi-car-front"></i> 交通資訊 <span>&gt;</span></a
+          >
+          <a href="#"
+            ><i class="bi bi-info-circle"></i> 關於islEnigma
+            <span>&gt;</span></a
+          >
+          <a href="#"
+            ><i class="bi bi-patch-question"></i> 樂園資訊 <span>&gt;</span></a
+          >
+        </nav>
+        <!-- 社交連結按鈕 -->
+        <div class="menuFooter">
+          <div class="socialIcons">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-line"></i></a>
+          </div>
+          <div class="copyright">
+            <a href="/about">©bluepen team</a>
+          </div>
+        </div>
+        <!-- 側拉選單的右下訂票按鈕 -->
+        <a href="#" class="ticketIcon">
+          <i class="bi bi-ticket-perforated"></i>
+        </a>
+      </div>
+
+      <!-- music demo-->
+      <audio id="backgroundMusic" loop>
+        <source
+          src="./public/music/music_ EventDeparture.mp3"
+          type="audio/mpeg"
+        />
+      </audio>
+      <!-- music js-->
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let mainSwitcher = document.getElementById("mainMusicSwitcher");
+          let menuSwitcher = document.getElementById("menuMusicSwitcher");
+          let music = document.getElementById("backgroundMusic");
+          // 控制音樂開始與停止
+          function toggleMusic(switcher) {
+            const isActive = switcher.classList.toggle("active");
+            music[isActive ? "play" : "pause"]();
+            [mainSwitcher, menuSwitcher].forEach((s) =>
+              s.classList.toggle("active", isActive)
+            );
+          }
+          // 控制側拉選單的按鈕與主頁的switch可以互相控制
+          [mainSwitcher, menuSwitcher].forEach((switcher) =>
+            switcher.addEventListener("click", (e) => {
+              e.stopPropagation();
+              toggleMusic(switcher);
+            })
+          );
+          // 設置起始音量為 50%
+          music.volume = 0.5;
+        });
+      </script>
+      <!-- hamburger js-->
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let hamburgerBtn = document.getElementById("hamburgerBtn");
+          let hamburgerMenu = document.getElementById("hamburgerMenu");
+          let closeBtn = document.getElementById("closeBtn");
+          //點擊後打開側邊選單(增加.open)
+          hamburgerBtn.addEventListener("click", function () {
+            hamburgerMenu.classList.add("open");
+          });
+          //點擊後關閉側邊選單(移除.open)
+          closeBtn.addEventListener("click", function () {
+            hamburgerMenu.classList.remove("open");
+          });
+        });
+      </script>
+      <!-- 控制中間按鈕(是否收起次要導覽列) js -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let toggleBtn = document.getElementById("toggleNavbar");
+          let navbar = document.querySelector(".navbar");
+          // 點擊後設置為hidden
+          toggleBtn.addEventListener("click", function () {
+            navbar.classList.toggle("hidden");
+            this.classList.toggle("active");
+            // 保存用戶的選擇
+            if (navbar.classList.contains("hidden")) {
+              localStorage.setItem("navbarHidden", "true");
+            } else {
+              localStorage.setItem("navbarHidden", "false");
+            }
+          });
+          // 檢查用戶之前的選擇
+          if (localStorage.getItem("navbarHidden") === "true") {
+            navbar.classList.add("hidden");
+            toggleBtn.classList.add("active");
+          }
+        });
+      </script>
+
+      <!-- 控制登入登出 -->
+      <script>
+        function updateLoginButton(isLoggedIn, username = "", avatarUrl = "") {
+          const loginButton = document.querySelector(".btnLogin");
+          const loginIcon = loginButton.querySelector("i");
+          const loginText = loginButton.querySelector(".loginText");
+          const userAvatar = loginButton.querySelector(".userAvatar");
+          const userMenuContainer =
+            document.querySelector(".userMenuContainer");
+
+          // 處理會員圖標
+          const memberItem = document.querySelector(".navItem.menber");
+          const memberIcon = memberItem.querySelector(".memberIcon");
+          const memberAvatar = memberItem.querySelector(".memberAvatar");
+          const memberText = memberItem.querySelector(".memberText");
+          const memberDropdown = memberItem.querySelector(".memberDropdown");
+
+          if (isLoggedIn) {
+            // 頂部登入按鈕邏輯
+            loginIcon.style.display = "none";
+            userAvatar.style.display = "inline-block";
+            loginText.textContent = username;
+            if (avatarUrl) {
+              userAvatar.src = avatarUrl;
+            }
+            userMenuContainer.classList.add("loggedIn");
+            loginButton.href = "#";
+            loginButton.onclick = function (e) {
+              e.preventDefault();
+            };
+
+            // 更新會員圖標
+            memberItem.classList.add("loggedIn");
+            memberIcon.style.display = "none";
+            memberAvatar.style.display = "inline-block";
+            if (avatarUrl) {
+              memberAvatar.src = avatarUrl;
+            }
+            memberText.textContent = username;
+            memberText.setAttribute("data-text", username);
+          } else {
+            // 頂部登出按鈕邏輯
+            loginIcon.style.display = "inline-block";
+            userAvatar.style.display = "none";
+            loginText.textContent = "Login";
+            userMenuContainer.classList.remove("loggedIn");
+            loginButton.href = "./login";
+            loginButton.onclick = null;
+
+            // 恢復會員圖標為默認狀態
+            memberItem.classList.remove("loggedIn");
+            memberIcon.style.display = "inline-block";
+            memberAvatar.style.display = "none";
+            memberText.textContent = "會員";
+            memberText.setAttribute("data-text", "會員");
+          }
+
+          // 確保下拉選單隱藏
+          memberDropdown.classList.remove("show");
+        }
+
+        // 登出功能
+        document
+          .querySelectorAll(".logoutBtn, .logoutBtnNav")
+          .forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+              e.preventDefault();
+              updateLoginButton(false);
+            });
+          });
+
+        // 處理會員點擊
+        const memberLink = document.querySelector(".memberLink");
+        const memberDropdown = document.querySelector(".memberDropdown");
+
+        memberLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (this.closest(".navItem.menber").classList.contains("loggedIn")) {
+            memberDropdown.classList.toggle("show");
+          } else {
+            window.location.href = "./login"; // 未登入時跳轉到登入頁面
+          }
+        });
+
+        // 點擊其他地方時關閉下拉選單
+        document.addEventListener("click", function (e) {
+          if (!e.target.closest(".navItem.menber")) {
+            memberDropdown.classList.remove("show");
+          }
+        });
+
+        // 初始化登入狀態（示例）
+        updateLoginButton(true, "張禎云", "./public/00myIcon/login (6).png");
+        // updateLoginButton(false);
+      </script>
+    </div>
+
+
+    <!--room banner -->
+    <div id="roomBanner" class="bannerWrapper">
+        <!-- 左邊的選項按鈕type1 -->
+        <!-- <div class="leftButtons">
+            <button class="iconButton">
+              <i class="fa-solid fa-campground"></i>
+                <span>草原步調</span>
+            </button>
+            <button class="iconButton">
+              <i class="fa-solid fa-disease"></i>
+              <span>海洋之眼</span>
+            </button>
+            <button class="iconButton">
+              <i class="fa-solid fa-bridge-water"></i>
+                <span>島嶼蹤跡</span>
+            </button>
+            <button class="iconButton">
+              <i class="fa-brands fa-galactic-republic"></i>
+              <span>夢幻星空</span>
+            </button>
+        </div> -->
+
+        <!-- 左邊的選項按鈕type2 -->
+        <div class="leftButtons">
+          <div class="containerMain">
+            <div class="drop dropOne">
+              <div class="content">
+                <h2><i class="fa-solid fa-campground"></i></h2>
+                <a href="#">草原步調</a>
+              </div>
+            </div>
+            <div class="drop dropTwo">
+              <div class="content">
+                <h2><i class="fa-solid fa-disease"></i></h2>
+                <a href="#">海洋之眼</a>
+              </div>
+            </div>
+            <div class="drop dropThree">
+              <div class="content">
+                <h2><i class="fa-solid fa-bridge-water"></i></h2>
+                <a href="#">島嶼蹤跡</a>
+              </div>
+            </div>
+            <div class="drop dropFour">
+              <div class="content">
+                <h2><i class="fa-brands fa-galactic-republic"></i></h2>
+                <a href="#">夢幻星空</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- banner中間的內容 -->
+        <div class="bannerContent">
+            <div class="bannerLogo">
+                <img src="./public/00logo/LogoType_Light_2.png" alt="神秘樂園logo">
+            </div>
+            <div class="bannerTextGroup">
+                <span class="bannerLine"></span>
+                <p class="bannerTitle">訂房資訊</p>
+                <span class="bannerLine"></span>
+            </div>
+            <p class="bannerTagline">在 ISLENIGMA，每一刻都是驚喜，每一夜都是冒險。準備好揭開島嶼的神秘面紗，開啟您的奇幻之旅了嗎？</p>
+            <div class="bannerButtons">
+                <a href="#roomTypes" class="primaryButton"><i class="fa-solid fa-tents"></i>查看房型</a>
+                <a class="primaryButton"><i class="fa-regular fa-calendar-plus"></i>快速預約</a>
+            </div>
+        </div>
+        <!-- 腳印 -->
+        <div class="footprints">
+            <i class="fas fa-shoe-prints footprint footprint-left"></i>
+            <i class="fas fa-shoe-prints footprint footprint-right"></i>
+            <i class="fas fa-shoe-prints footprint footprint-left"></i>
+            <i class="fas fa-shoe-prints footprint footprint-right"></i>
+        </div>
+    <!-- 新增的快速預約 Modal -->
+      <div id="quickReservationModal" class="quickModal">
+        <div class="quickModalContent">
+          <!-- 關閉按鈕 -->
+          <span class="closeQuickModal">&times;</span>
+          <!-- 左邊 -->
+          <div class="modalLeft">
+            <h2>露營訂房<i class="bi bi-calendar-week-fill"></i></h2>
+            <div id="reservationCalendar"><!-- 這裡放日曆本人，用jq的ui做 --></div>
+          </div>
+          <!-- 右邊 -->
+          <div class="modalRight">
+
+            <div class="reservationForm">
+              <div class="dateInputs">
+                <div class="dateInput">
+                  <label for="checkInDate">入住日期:</label>
+                  <input type="text" id="checkInDate" readonly>
+                </div>
+                <div class="dateInput">
+                  <label for="checkOutDate">退房日期:</label>
+                  <input type="text" id="checkOutDate" readonly>
+                </div>
+              </div>
+              <div class="guestInputs">
+                <div class="inputGroup">
+                  <label>床數</label>
+                  <div class="numberInput">
+                    <button class="decrease">-</button>
+                    <input type="number" id="bedCount" value="1" min="0" max="4" readonly>
+                    <button class="increase">+</button>
+                  </div>
+                </div>
+                <div class="inputGroup">
+                  <label>人數</label>
+                  <div class="numberInput">
+                    <button class="decrease">-</button>
+                    <input type="number" id="guestCount" value="1" min="0" max="10" readonly>
+                    <button class="increase">+</button>
+                  </div>
+                </div>
+                              <!-- <span>最優惠價格</span> -->
+              <div class="totalPrice">
+                <span>NT$</span>
+                <input type="text" id="totalPriceInput" value="0" readonly>
+            </div>
+              </div>
+              <!-- 記得改成下拉選單 -->
+              <div class="roomTypeSelectWrapper">
+                <select id="roomTypeSelect" class="roomTypeSelect">
+                  <option value="" disabled selected>選擇房型</option>
+                  <option value="Grass">簡約帳篷 | 草原步調</option>
+                  <option value="Ocean">豪華帳棚 | 沉靜海洋</option>
+                  <option value="Isle">高級帳篷 | 島嶼蹤跡</option>
+                  <option value="Starry">圓球帳篷 | 夢幻星空</option>
+                </select>
+              </div>
+              <!-- <button id="selectRoomType">選擇房型</button> -->
+              <button id="searchResults">加入購物車</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 跳出框測試 -->
+    <div id="cartConfirmationPopup" class="popupOverlay">
+      <div class="popupContent">
+        <img src="./public/00myIcon/booking-info.png" alt="Tent Icon" class="tentIcon">
+        <h2>謝謝您的訂購</h2>
+        <p>您已訂購 "<span id="roomTypeName"></span>" 入住日期" "<span id="checkInDate"></span>" 退房日期" "<span id="checkOutDate"></span>"</p>
+        <div class="socialLinks">
+          <p>追蹤我們</p>
+          <a href="#" class="socialIcon"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="socialIcon"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="socialIcon"><i class="bi bi-youtube"></i></a>
+        </div>
+        <button id="goToCartBtn" class="actionBtn">前往購物車</button>
+        <button id="continueShoppingBtn" class="actionBtn secondary">繼續瀏覽</button>
+      </div>
+    </div>
+
+    <!-- 跳出框測試 -->
+<!--room feature -->
+<section id="roomFeature">
+    <div class="featureHeader">
+        <h2 class="featureTitle">特色 | <span>Stellar Sea Glamping</span></h2>
+        <div class="decoLine"></div>
+        <p class="featureSubtitle">說走就走，免裝備高級海島露營</p>
+    </div>
+    <div class="carouselButtonContainer">
+        <button class="carouselButton prev"><i class="fa-solid fa-circle-arrow-left"></i></button>
+        <div class="featureCarousel">
+            <div class="carouselContainer">
+            <div class="carouselSlide" 
+                 data-title="專屬衛浴" 
+                 data-description="在 isleNigma 的豪華露營區，每個帳篷都配備了專屬的五星級衛浴設施。享受雨林般的淋浴體驗，浸泡在寬敞的按摩浴缸中，或使用我們精心挑選的有機盥洗用品。我們的衛浴空間不僅保證您的私密性，還能讓您在大自然中享受極致的舒適。"
+                 data-english-title="Private Bathroom"
+                 data-equipment-usage="淋浴、浴缸、有機盥洗用品"
+                 data-dates="全年開放，建議提前預訂"
+                 data-details="包含專屬管家服務，24小時隨時為您提供協助"
+                 data-limit="每日限量帳篷，請及早預訂"
+                 data-promo-text="神秘島嶼奢華露營體驗"
+                 data-tags="#私人衛浴 #奢華露營 #自然體驗">
+                <div class="imgContainer">
+                    <img src="./public/03rooms/room (24).png" alt="專屬衛浴">
+                    <div class="overlay">
+                        <span class="slideCaption">專屬衛浴</span>
+                        <div class="hoverOverlay">
+                            <span>查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="carouselSlide" 
+                 data-title="超大空間" 
+                 data-description="我們的豪華帳篷擁有寬敞的起居空間，讓您在享受露營樂趣的同時不失舒適。每個帳篷都配備了獨立的睡眠區、休息區和工作區，確保您有充足的空間放鬆身心。高挑的天花板和全景窗戶讓您隨時欣賞 isleNigma 的壯麗景色。"
+                 data-english-title="Spacious Accommodation"
+                 data-equipment-usage="睡眠區、休息區、工作區、全景窗戶"
+                 data-dates="全年開放，夏季熱銷中"
+                 data-details="提供家庭套房和情侶套房選擇"
+                 data-limit="每種類型帳篷數量有限"
+                 data-promo-text="寬敞舒適，與自然共處"
+                 data-tags="#豪華帳篷 #全景窗戶 #舒適空間">
+                <div class="imgContainer">
+                    <img src="./public/03rooms/room (60).png" alt="超大空間">
+                    <div class="overlay">
+                        <span class="slideCaption">超大空間</span>
+                        <div class="hoverOverlay">
+                            <span>查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="carouselSlide" 
+                 data-title="營火晚會" 
+                 data-description="每晚，我們都會在 isleNigma 的神秘海灘舉行獨特的營火晚會。圍繞著溫暖的火光，聆聽島上古老的傳說，品嚐特製的 s'mores 和熱飲。我們的音樂家還將為您演奏輕柔的原聲音樂，讓您在星空下度過一個難忘的夜晚。"
+                 data-english-title="Campfire Party"
+                 data-equipment-usage="營火設備、音響系統、座椅"
+                 data-dates="每週五、六晚上 8 點開始"
+                 data-details="提供特製點心和飲品，請自備毛毯"
+                 data-limit="每場活動限 30 人參加"
+                 data-promo-text="神秘海灘，星空營火"
+                 data-tags="#營火晚會 #海灘派對 #島嶼傳說">
+                <div class="imgContainer">
+                    <img src="./public/03rooms/room (28).png" alt="營火晚會">
+                    <div class="overlay">
+                        <span class="slideCaption">營火晚會</span>
+                        <div class="hoverOverlay">
+                            <span>查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="carouselSlide" 
+                 data-title="美食饗宴" 
+                 data-description="在 isleNigma，我們提供一泊四食的頂級餐飲體驗。從清晨的豐盛早餐，到午後的精緻下午茶，再到晚上的星級晚宴，每一餐都是一場美食冒險。我們的主廚運用當地新鮮食材，結合創新烹飪技巧，為您呈現獨一無二的島嶼風味。"
+                 data-english-title="Gourmet Dining"
+                 data-equipment-usage="專業廚房設備、用餐區域、酒吧"
+                 data-dates="天天供應，請提前告知特殊飲食需求"
+                 data-details="包含早餐、午餐、下午茶、晚餐"
+                 data-limit="可選擇帳篷內用餐或在主餐廳用餐"
+                 data-promo-text="一泊四食，島嶼風味"
+                 data-tags="#美食饗宴 #島嶼風味 #一泊四食">
+                <div class="imgContainer">
+                    <img src="./public/03rooms/room (52).png" alt="美食饗宴">
+                    <div class="overlay">
+                        <span class="slideCaption">美食饗宴 (一泊四食)</span>
+                        <div class="hoverOverlay">
+                            <span>查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="carouselSlide" 
+                 data-title="觀星活動" 
+                 data-description="isleNigma 擁有無光害的純淨夜空，是觀星的絕佳地點。我們提供專業的天文望遠鏡和知識豐富的天文導覽員，帶您探索浩瀚宇宙。在我們特設的觀星平台上，您可以清晰地看到銀河、行星，甚至是遙遠的星系。"
+                 data-english-title="Stargazing"
+                 data-equipment-usage="天文望遠鏡、觀星平台、星圖"
+                 data-dates="晴朗夜晚，21:00-23:00"
+                 data-details="提供保暖毯子和熱飲，請穿著舒適鞋子"
+                 data-limit="每場活動限 20 人參加"
+                 data-promo-text="銀河之旅，星空探索"
+                 data-tags="#觀星活動 #銀河之旅 #夜空探索">
+                <div class="imgContainer">
+                    <img src="./public/03rooms/room (1).jpeg" alt="觀星活動">
+                    <div class="overlay">
+                        <span class="slideCaption">觀星活動</span>
+                        <div class="hoverOverlay">
+                            <span>查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="carouselSlide" 
+                 data-title="高級家具" 
+                 data-description="每個豪華帳篷都配備了精心挑選的高級家具，確保您的住宿體驗舒適無比。從量身定制的 King Size 床墊到手工打造的原木家具，每一件都體現了對品質的追求。我們的戶外躺椅和吊床讓您可以在私人露台上放鬆身心，欣賞 isleNigma 的迷人風光。"
+                 data-english-title="Luxury Furniture"
+                 data-equipment-usage="King Size 床墊、原木家具、戶外躺椅、吊床"
+                 data-dates="全年提供，定期更新"
+                 data-details="每個帳篷的佈置和風格略有不同"
+                 data-limit="可根據個人喜好預訂特定風格帳篷"
+                 data-promo-text="奢華露營，品質體驗"
+                 data-tags="#高級家具 #奢華露營 #品質體驗">
+                <div class="imgContainer">
+                    <img src="./public/03rooms/room (10).jpg" alt="高級家具">
+                    <div class="overlay">
+                        <span class="slideCaption">高級家具</span>
+                        <div class="hoverOverlay">
+                            <span>查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="carouselSlide" 
+                 data-title="精緻備品" 
+                 data-description="我們為每位貴賓準備了一系列精緻的客房備品，確保您在 isleNigma 的住宿體驗無微不至。從奢華的有機護膚品到特製的沙灘包和防曬用品，再到夜間望遠鏡和星空地圖，我們的貼心備品將使您的島嶼冒險更加完美。"
+                 data-english-title="Luxurious Amenities"
+                 data-equipment-usage="有機護膚品、沙灘用品、觀星工具"
+                 data-dates="可提前告知特殊需求"
+                 data-details="包含有機盥洗用品、沙灘用品、觀星工具等"
+                 data-limit="部分特殊備品需提前預訂"
+                 data-promo-text="精緻備品，細緻呵護"
+                 data-tags="#精緻備品 #貼心服務 #奢華體驗">
+                <div class="imgContainer">
+                    <img src="./public/03rooms/room (67).png" alt="精緻備品">
+                    <div class="overlay">
+                        <span class="slideCaption">精緻備品</span>
+                        <div class="hoverOverlay">
+                            <span>查看更多</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <button class="carouselButton next"><i class="fa-solid fa-circle-arrow-right"></i></button>
+    </div>
+    
+</section>
+
+<!-- feature 模態框 -->
+<div id="featureModal" class="modal">
+    <div class="modalContent">
+        <span class="closeModal">&times;</span>
+        <div class="modalInner">
+            <div class="modalImage">
+                <img id="modalImage" src="" alt="特色圖片">
+            </div>
+            <div class="modalDetails">
+                <h2 id="modalTitle" class="modalTitle"></h2>
+                <h3 id="modalEnglishTitle" class="modalEnglishTitle"></h3>
+                <p id="modalDescription" class="promotionDescription"></p>
+                
+                <div id="modalTags" class="promotionTags"></div>
+                
+                <div class="promotionDates">
+                    <h3>詳細資訊:</h3>
+                    <p id="modalDates"></p>
+                </div>
+                
+                <p id="modalDetails" class="promotionDetails"></p>
+                <p id="modalLimit" class="promotionLimit"></p>
+                
+                <p id="modalContact" class="promotionContact"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--room type -->
+<section id="roomTypes">
+    <div class="typeHeader">
+        <h2 class="typeTitle">房型 | <span>Choose Your Favorite Glamping Tent</span></h2>
+        <div class="decoLine"></div>
+        <p class="typeSubtitle">謎樣露營，提供最好的休息露營體驗</p>
+    </div>
+    <div class="roomGrid">
+<!-- 1 -->
+<div class="roomCard" data-room-type="1">
+    <div class="roomNumber">01</div>
+    <div class="roomImage">
+        <div class="roomCarousel">
+            <!-- 圖片將通過 JavaScript 動態添加 -->
+        </div>
+        <h3>草原步調</h3>
+        <div class="imageIndicators">
+          <span></span><span></span><span></span>
+        </div>
+    </div>
+    <div class="roomInfo">
+      <h4>簡約帳篷 | 草原步調</h4>
+      <div class="decorativeLine"></div>
+      <p>擁抱自然簡約風，享受寧靜草原夜景</p>
+      <p>NT$12000/晚</p>
+      <button class="moreButton"><a href="../room_more.html">查看更多+</a></button>
+    </div>
+</div>
+
+<!-- 2 -->
+<div class="roomCard" data-room-type="2">
+    <div class="roomNumber">02</div>
+    <div class="roomImage">
+        <div class="roomCarousel">
+            <!-- 圖片將通過 JavaScript 動態添加 -->
+        </div>
+        <h3>沉靜海洋</h3>
+        <div class="imageIndicators">
+          <span></span><span></span><span></span>
+        </div>
+    </div>
+    <div class="roomInfo">
+      <h4>豪華帳棚 | 沉靜海洋</h4>
+      <div class="decorativeLine"></div>
+      <p>聆聽海浪聲，感受奢華露營體驗</p>
+      <p>NT$15,000/晚</p>
+      <button class="moreButton"><a href="../room_more.html">查看更多+</a></button>
+    </div>
+</div>
+
+<!-- 3 -->
+<div class="roomCard" data-room-type="3">
+    <div class="roomNumber">03</div>
+    <div class="roomImage">
+        <div class="roomCarousel">
+            <!-- 圖片將通過 JavaScript 動態添加 -->
+        </div>
+        <h3>島嶼蹤跡</h3>
+        <div class="imageIndicators">
+          <span></span><span></span><span></span>
+        </div>
+    </div>
+    <div class="roomInfo">
+      <h4>高級帳篷 | 島嶼蹤跡</h4>
+      <div class="decorativeLine"></div>
+      <p>探索島嶼秘境，高級舒適盡在此處</p>
+      <p>NT$18000/晚</p>
+      <button class="moreButton"><a href="../room_more.html">查看更多+</a></button>
+    </div>
+</div>
+
+<!-- 4 -->
+<div class="roomCard" data-room-type="4">
+    <div class="roomNumber">04</div>
+    <div class="roomImage">
+        <div class="roomCarousel">
+            <!-- 圖片將通過 JavaScript 動態添加 -->
+        </div>
+        <h3>夢幻星空</h3>
+        <div class="imageIndicators">
+          <span></span><span></span><span></span>
+        </div>
+    </div>
+    <div class="roomInfo">
+      <h4>圓球帳篷 | 夢幻星空</h4>
+      <div class="decorativeLine"></div>
+      <p>仰望星空，圓形設計帶來獨特體驗</p>
+      <p>NT$20000/晚</p>
+      <button class="moreButton"><a href="../room_more.html">查看更多+</a></button>
+    </div>
+</div>
+      <!-- 重複上面的 .roomCard 結構來創建其他三個房型卡片 -->
+    </div>
+</section>
+
+<!-- room ONFM 一泊四食 -->
+<section id="roomONFM" class="roomONFM">
+    <div class="roomONFMVerticalTitle left">
+      <h2>Delicious.</h2>
+    </div>
+    <div class="roomONFMContent">
+      <div class="roomONFMTitleContainer">
+          <h2 class="roomONFMTitle">一泊四食專屬 | 豪華露營體驗模式</h2>
+          <p class="roomONFMDescription">只要訂閱露營住宿，就包含所有的餐點。所有餐點已由頂尖的廚師團隊為您準備就緒，為您省去準備餐飲的時間與麻煩。這樣的豪華露營體驗模式，讓您能真正的放鬆享受、真正的品嚐精緻美饌。</p>
+      </div>
+      <div class="roomONFMContainer">
+        <div class="roomONFMItem" data-meal="breakfast">
+          <img src="./public/03rooms/room (56).png" alt="Breakfast" class="roomONFMImage">
+          <div class="roomONFMItemTitle">Breakfast
+            <p>晨曦微露，早餐桌上精緻Buffet，讓您以飽滿的活力擁抱新的一天。</p>
+          </div>
+          <div class="roomONFMItemVerticalTitle">Breakfast</div>
+        </div>
+        <div class="roomONFMItem" data-meal="picnic">
+          <img src="./public/03rooms/room (34).png" alt="Picnic" class="roomONFMImage">
+          <div class="roomONFMItemTitle">Picnic
+            <p>林間野餐，徜徉在大自然的懷抱，享受悠閒時光與陽光的溫暖。</p>
+          </div>
+          <div class="roomONFMItemVerticalTitle">Picnic</div>
+        </div>
+        <div class="roomONFMItem" data-meal="classicLunch">
+          <img src="./public/03rooms/room (71).png" alt="Classic Lunch" class="roomONFMImage">
+          <div class="roomONFMItemTitle">Classic Lunch
+            <p>經典午餐，匯聚山海鮮美滋味，為您的味蕾帶來驚喜。</p>
+          </div>
+          <div class="roomONFMItemVerticalTitle">Classic Lunch</div>
+        </div>
+        <div class="roomONFMItem" data-meal="dinner">
+          <img src="./public/03rooms/room (52).png" alt="Dinner" class="roomONFMImage">
+          <div class="roomONFMItemTitle">Dinner
+            <p>夜幕低垂，晚餐的精緻佳餚伴隨星空與蟲鳴，譜出露營的浪漫樂章。 </p>
+          </div>
+          <div class="roomONFMItemVerticalTitle">Dinner</div>
+        </div>
+        <div class="roomONFMItem" data-meal="campfireBBQ">
+          <img src="./public/03rooms/room (43).png" alt="Campfire BBQ" class="roomONFMImage">
+          <div class="roomONFMItemTitle">Campfire BBQ
+            <p>圍繞營火，享受烤肉的歡愉，讓溫暖的火光點亮歡笑與美好回憶。</p>
+          </div>
+          <div class="roomONFMItemVerticalTitle">Campfire BBQ</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="roomONFMVerticalTitle right">
+      <h2>FOOD.</h2>
+    </div>
+</section>
+
+<!-- room slogan 廣告 -->
+<section id="roomSlogan" class="roomSlogan">
+    <div class="roomSlogan__container">
+      <div class="roomSlogan__slide active">
+        <img src="./public/03rooms/room (28).png" alt="Room Slogan 1">
+        <div class="roomSlogan__content">
+          <h2>Adventure Meets Luxury:</h2>
+          <h3>islEnigma's Glamping Paradise</h3>
+        </div>
+      </div>
+
+      <div class="roomSlogan__slide">
+        <img src="./public/03rooms/room (36).png" alt="Room Slogan 1">
+        <div class="roomSlogan__content">
+          <h2>Thrills by Day, Stars by Night:</h2>
+          <h3>The Ultimate Glamping Experience</h3>
+        </div>
+      </div>
+
+      <div class="roomSlogan__slide">
+        <img src="./public/03rooms/room (39).png" alt="Room Slogan 1">
+        <div class="roomSlogan__content">
+          <h2>Embrace the Wild:</h2>
+          <h3>Luxury Meets Nature</h3>
+        </div>
+      </div>
+
+      <div class="roomSlogan__slide active">
+        <img src="./public/03rooms/room (28).png" alt="Room Slogan 1">
+        <div class="roomSlogan__content">
+          <h2>Ride, Relax, Repeat:</h2>
+          <h3>Glamping at ISLENIGMA's Heart</h3>
+        </div>
+      </div>
+
+      <div class="roomSlogan__slide">
+        <img src="./public/03rooms/room (36).png" alt="Room Slogan 1">
+        <div class="roomSlogan__content">
+          <h2>Eco-Luxury Retreat:</h2>
+          <h3>Immerse in Island Beauty</h3>
+        </div>
+      </div>
+
+
+      <!-- Add more slide divs as needed -->
+    </div>
+    <div class="roomSlogan__indicators">
+      <span class="roomSlogan__indicator active"></span>
+      <span class="roomSlogan__indicator"></span>
+      <span class="roomSlogan__indicator"></span>
+      <span class="roomSlogan__indicator"></span>
+      <span class="roomSlogan__indicator"></span>
+    </div>
+</section>
+
+<!-- room rules 房間須知-->
+<section class="roomRules">
+    <h2 class="roomRules__title">住房須知</h2>
+    <div class="roomRules__accordion">
+      <div class="roomRules__item active">
+        <div class="roomRules__header">
+          <span class="roomRules__icon"></span>
+          <h3>入住規定</h3>
+          <span class="roomRules__decorator"></span>
+        </div>
+        <div class="roomRules__content ">
+          <p>本園區採取預約制，若臨時來訪可能無候補可供入住，敬請見諒</p>
+          <p>露營區開放時段：• 全年無休，24小時開放 • 入住時間：下午 3:00 後 • 退房時間：上午 11:00 前</p>
+          <p>櫃台營業時間： • 每日 08:00 - 22:00 • 22:00 後有緊急聯絡電話提供服務</p>
+          <p>預訂與入住須知： • 需提前至少 3 天預訂 • 入住時需出示有效身份證件 • 僅限 18 歲以上成年人入住</p>
+          <p>餐飲服務時間： • 早餐：07:00 - 10:00 • 午餐：12:00 - 14:00 • 晚餐：18:00 - 21:00 • 24 小時客房服務 available</p>
+          <p>設施使用時間： • 健身中心：24 小時開放 • 游泳池：06:00 - 22:00 • 海灘區：日出至日落開放</p>
+        </div>
+      </div>
+      <div class="roomRules__item ">
+        <div class="roomRules__header">
+          <span class="roomRules__icon"></span>
+          <h3>其他注意事項</h3>
+          <span class="roomRules__decorator"></span>
+        </div>
+        <div class="roomRules__content">
+          <p>環保政策： • 請遵守垃圾分類規定 • 鼓勵使用環保用品，減少一次性物品使用</p>
+          <p>噪音管制： • 22:00 - 08:00 為安靜時段，請降低音量</p>
+          <p>寵物政策： • 很抱歉，為確保所有客人的舒適，不接受寵物入住</p>
+          <p>吸煙政策： • 所有室內區域禁止吸煙 • 指定戶外吸煙區available</p>
+          <p>緊急聯絡： • 緊急情況請撥打房間內的緊急聯絡電話 • 醫療協助 24 小時available</p>
+        </div>
+      </div>
+      <div class="roomRules__item">
+        <div class="roomRules__header">
+          <span class="roomRules__icon"></span>
+          <h3>取消政策</h3>
+          <span class="roomRules__decorator"></span>
+        </div>
+        <div class="roomRules__content">
+          <p>活動預約： • 建議提前至少 1 天預約特色活動 • 部分活動可能因天氣因素取消或調整</p>
+          <p>交通服務： • 提供碼頭至露營區的免費接駁服務 • 需提前 2 小時預約接駁車</p>
+          <p>取消預訂： • 入住日 7 天前取消，全額退款 • 入住日 3-6 天前取消，收取 50% 取消費 • 入住日 3 天內取消，恕不退款</p>
+          <p>更改預訂： • 可在入住日 3 天前免費更改一次預訂日期，視房間供應情況而定</p>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+  <!-- footer -->
+  <div id="footer">
+    <div class="wrap">
+        <div class="firstRow">
+            <img src="./footerDeco/upperDeco.png" alt="">
+        </div>
+        <div class="secondRow">
+            <div class="faq">
+                <p class="footerTitle">FAQ</p>
+                <div class="iconBox">
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/question.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/bag.png"></a>
+                    <!-- <img src="./icon/house.png"> -->
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/cart.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/chat.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/cash.png"></a>
+                </div>
+            </div>
+            <div class="contact">
+                <p class="footerTitle">Contact</p>
+                <div class="iconBox">
+                    <!-- <img src="./icon/phone.png"> -->
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/line.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/twitter.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/fb.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/ig.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/mail.png"></a>
+                </div>
+            </div>
+            <div class="middleBox">
+                <div class="logoBox">
+                    <img src="./footerDeco/footerLogo.png">
+                </div>
+                <nav class="footerNav">
+                    <ul><a href="">樂園設施</a></ul>
+                    <ul><a href="">訂票</a></ul>
+                    <ul><a href="">訂房</a></ul>
+                    <ul><a href="">飲食購物</a></ul>
+                    <ul><a href="">交通資訊</a></ul>
+                    <ul><a href="">關於我們</a></ul>
+                    <ul><a href="">樂園設施</a></ul>
+                </nav>
+                <!-- 手機版footer 1180才會出現 -->
+                <nav class="MobileFooterNav">
+                    <div>
+                        <ul><a href="">樂園設施</a></ul>
+                        <ul><a href="">訂票</a></ul>
+                        <ul><a href="">訂房</a></ul>
+                    </div>
+                    <div>
+                        <ul><a href="">飲食購物</a></ul>
+                        <ul><a href="">交通資訊</a></ul>
+                        <ul><a href="">關於我們</a></ul>
+                        <ul><a href="">樂園設施</a></ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="mobileFaq">
+                <p class="footerTitle">FAQ</p>
+                <div class="iconBox">
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/question.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/bag.png"></a>
+                    <!-- <img src="./icon/house.png"> -->
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/cart.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/chat.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/cash.png"></a>
+                </div>
+            </div>
+            <div class="mobileContact">
+                <p class="footerTitle">Contact</p>
+                <div class="iconBox">
+                    <!-- <img src="./icon/phone.png"> -->
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/line.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/twitter.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/fb.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/ig.png"></a>
+                    <a href="https://www.google.com/" target="_blank"><img src="./icon/mail.png"></a>
+                </div>
+            </div>
+            <!-- 手機版footer 1180才會出現 -->
+            <div class="joinUs">
+                <p class="footerTitle">Join Us</p>
+                <a href="https://www.google.com/">Team Information</a>
+                <a href="https://www.google.com/">Recruitment Information</a>
+            </div>
+            <div class="goTopBox">
+                <a class="goTop" href="https://www.google.com/">
+                    <img class="goTopArrow" src="./icon/topArrowHover.png">
+                    <p>BACK TOP</p>
+                    <img class="o" src="./footerDeco/circle.png">
+                    <svg viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="circle effect-3" cx="80" cy="80" r="75" fill="transparent"/>
+                </a>
+            </div>
+        </div>
+        <div class="thirdRow">
+            <div class="thirdDeco">
+                <img src="./footerDeco/downDeco.png">
+            </div>
+            <div class="openTime">
+                <p class="footerTitle">營業時間</p>
+                <p>園區營業時間丨09:00 - 18:00</p>
+                <p>設施開放時間丨09:00 - 17:30</p>
+                <p>營地開放時間丨08:00 - 24:00</p>
+            </div>
+            <div class="lineBox">
+                <div class="line"></div>
+                <span></span>
+            </div>
+            <div class="copyright">
+                <p> © 2024 BluePen Team</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 引用jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<!-- boostrap jq 暫時用不到 -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script> -->
+<!-- jQuery UI JavaScript -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+<!-- 房間快速訂房及購物車確認模組 -->
+<script src="./bookAndCheckcart.js"></script>
+
+<!-- 活動輪播圖 -->
+ <script src="./featureCarouse.js"></script>
+
+<!-- 房間的輪播與資料插入 -->
+ <script src="roomCarouse.js"></script>
+
+
+<!-- room slogan的sc -->
+<script src="./roomSloganCarouse.js"></script>
+
+<!-- room rules的風琴 -->
+<script src="./roomRulesOrgan.JS"></script>
+ 
+
+</body>
+</html>
