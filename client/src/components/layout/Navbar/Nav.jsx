@@ -37,7 +37,7 @@ const Nav = ({ toggleNavbar }) => {
             </a>
           </li>
           <li className="navItem food">
-            <a href="#">
+            <a href="/restaurantpage">
               <img src="/00myIcon/restaurant-info.png" alt="飲食購物" />
               <p data-text="飲食購物">飲食購物</p>
             </a>

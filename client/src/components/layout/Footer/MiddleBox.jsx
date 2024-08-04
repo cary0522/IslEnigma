@@ -15,7 +15,7 @@ const MiddleBox = () => {
           <a href="">訂房</a>
         </ul>
         <ul>
-          <a href="">飲食購物</a>
+          <a href="/restaurantpage">飲食購物</a>
         </ul>
         <ul>
           <a href="">交通資訊</a>
@@ -24,7 +24,7 @@ const MiddleBox = () => {
           <a href="">關於我們</a>
         </ul>
         <ul>
-          <a href="">樂園設施</a>
+          <a href="">樂園資訊</a>
         </ul>
       </nav>
       <nav className="MobileFooterNav">
@@ -41,7 +41,7 @@ const MiddleBox = () => {
         </div>
         <div>
           <ul>
-            <a href="">飲食購物</a>
+            <a href="/restaurantpage">飲食購物</a>
           </ul>
           <ul>
             <a href="">交通資訊</a>
@@ -50,7 +50,7 @@ const MiddleBox = () => {
             <a href="">關於我們</a>
           </ul>
           <ul>
-            <a href="/mappage">樂園設施</a>
+            <a href="#">樂園資訊</a>
           </ul>
         </div>
       </nav>

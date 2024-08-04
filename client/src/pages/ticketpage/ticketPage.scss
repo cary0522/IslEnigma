@@ -154,6 +154,10 @@
 	}
 	#divBanner {
 		position: relative;
+		img{
+			max-width: 100%;
+			object-fit: contain;
+		}
 		.logoArea {
 			position: absolute;
 			width: 40%;
@@ -501,6 +505,10 @@
 					justify-content: center;
 					align-items: center;
 					cursor: pointer;
+					img{
+						max-width: 100%;
+						object-fit: contain;
+					}
 					&:hover {
 						animation: softSpring 0.3s ease-in-out forwards;
 					}

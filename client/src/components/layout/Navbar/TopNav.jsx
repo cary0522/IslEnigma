@@ -56,25 +56,25 @@ const TopNav = ({
         <a href="/cart" className="btnShoppingCart">
           <CiShoppingCart />
         </a>
-        <div class="userMenuContainer">
-          <a href="./login" class="btn btnLogin">
+        <div className="userMenuContainer">
+          <a href="./login" className="btn btnLogin">
             {!isLogin ? (
               <>
                 {" "}
                 <Icon.PersonFill />
-                <span class="loginText">Login</span>
+                <span className="loginText">Login</span>
               </>
             ) : (
               <>
-                <img src="/00myIcon/baby.png" class="userAvatar" />
-                <span class="loginText">張甄畇</span>
+                <img src="/00myIcon/baby.png" className="userAvatar" />
+                <span className="loginText">張甄畇</span>
               </>
             )}
           </a>
           {isLogin && (
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <a href="/profile">會員中心</a>
-              <a href="#" class="logoutBtn">
+              <a href="#" className="logoutBtn">
                 登出
               </a>
             </div>

@@ -6,18 +6,18 @@ const Robot = () => {
   const [toggleBot, setToggleBot] = useState(false)
   return (
     <div id="chatbot">
-      <div class="chatBot" onClick={() => setToggleBot(!toggleBot)}>
+      <div className="chatBot" onClick={() => setToggleBot(!toggleBot)}>
         <img src="./about.png" alt="Chat Bot" />
       </div>
       {toggleBot && (
-        <div class="chatBotContainer">
-          <div class="chatBotHeader">
+        <div className="chatBotContainer">
+          <div className="chatBotHeader">
             <span>IslEnigma遊樂園智能助理</span>
             <span>×</span>
           </div>
-          <div class="chatBotMessages" id="chatBotMessages"></div>
-          <div class="chatBotInput">
-            <button class="menuButton">☰</button>
+          <div className="chatBotMessages" id="chatBotMessages"></div>
+          <div className="chatBotInput">
+            <button className="menuButton">☰</button>
             <input
               type="text"
               id="chatBotInput"
