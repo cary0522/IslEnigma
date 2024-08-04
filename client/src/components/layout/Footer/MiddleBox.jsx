@@ -50,7 +50,7 @@ const MiddleBox = () => {
             <a href="">關於我們</a>
           </ul>
           <ul>
-            <a href="/mappage">樂園設施</a>
+            <a href="#">樂園資訊</a>
           </ul>
         </div>
       </nav>
