@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css/bundle";
+import "swiper/scss/pagination";
+import 'swiper/scss/scrollbar'
 
 function PhoneView({ bannerList }) {
 	return (
 		<div className="restPhonePage">
-			<Swiper pagination={true} modules={[Pagination]}>
+			<Swiper pagination={{dynamicBullets:true,clickable:true,}}
+             loop={true} 
+             modules={[Pagination,Scrollbar,Autoplay]} 
+             autoplay={{delay:2000,disableOnInteraction:false}}
+             scrollbar={{dragSize:20}}
+             >
 					{bannerList.map((shop) => {
 				return (
-						<SwiperSlide>
+						<SwiperSlide key={shop.id}>
 							<img src={shop.img[0]} alt="" className="phoneImg" />
 							<div className="phoneText">
 								<h1>{shop.name}</h1>

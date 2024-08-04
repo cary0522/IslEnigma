@@ -115,11 +115,17 @@ $background-color_2: #555;
 						text-align: center;
 						margin: 10px 0;
 					}
+					@media screen and (max-width: 992px) {
+						width: 100%;
+						letter-spacing: 1.5px;
+					}
+					@media screen and (max-width: 850px) {
+						width: 100%;
+						letter-spacing: 1px;
+						font-size: 0.8rem;
+					}
 				}
 			}
-		}
-		@media screen and (max-width: 720px) {
-			display: none;
 		}
 	}
 	/* 主內容佈局 */
@@ -132,7 +138,12 @@ $background-color_2: #555;
 		margin: 50px 100px;
 		letter-spacing: 2px;
 		line-height: 30px;
-
+		@media screen and (max-width: 1200px) {
+			margin: 50px 50px;
+		}
+		@media screen and (max-width: 992px) {
+			margin: 50px 25px;
+		}
 		.sectionContainer {
 			max-width: 1200px;
 			width: 100%;
@@ -174,7 +185,7 @@ $background-color_2: #555;
 					font-size: 32px;
 					margin-bottom: 20px;
 				}
-				h3{
+				h3 {
 					font-size: 1.3rem;
 				}
 				p {
@@ -192,15 +203,18 @@ $background-color_2: #555;
 					display: flex;
 					align-items: center;
 					margin-bottom: 10px;
-					.timeText{
+					.timeText {
 						background-color: $backgroundColorBtnLight;
 						border-radius: 30px;
-						padding: 5px ;
+						padding: 5px;
 						color: $colorSvg;
 						text-align: center;
 						font-size: 16px;
+						@media screen and (max-width: 1200px) {
+							font-size: 0.8rem;
+						}
 					}
-					.timeLine{
+					.timeLine {
 						border: 1px solid $backgroundColorBtnLight;
 					}
 				}
@@ -208,6 +222,12 @@ $background-color_2: #555;
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
+					@media screen and (max-width: 800px) {
+						display: block;
+					}
+					@media screen and (max-width: 768px) {
+						display: flex;
+					}
 					p {
 						font-size: 16px;
 						margin: 0;
@@ -220,11 +240,49 @@ $background-color_2: #555;
 						color: $colorSvg;
 						font-size: 1.2rem;
 						cursor: pointer;
+						@media screen and (max-width: 1200px) {
+							font-size: 0.8rem;
+						}
+						@media screen and (max-width: 992px) {
+							font-size: 0.7rem;
+							margin: 5px;
+							padding: 5px 15px;
+						}
 					}
-					.timeText{
+					.timeText {
 						margin-top: 5px;
-						margin-left:0;
+						margin-left: 0;
+						p {
+							@media screen and (max-width: 992px) {
+								font-size: 0.8rem;
+							}
+						}
 					}
+				}
+			}
+			@media screen and (max-width: 768px) {
+				flex-direction: column;
+				align-items: center;
+				margin: 0 20px;
+				.imageContainer{
+					margin: 20px 0;
+					width: 100%;
+					height: auto;
+					.image1 {
+						position: static;
+						width: 100%;
+						height: auto;
+						margin-bottom: 10px;
+					}
+					.image2 {
+						position: static;
+						width: 100%;
+						height: auto;
+						margin-bottom: 10px;
+					}
+				}
+				.contentContainer{
+					margin: auto;
 				}
 			}
 		}
@@ -232,88 +290,111 @@ $background-color_2: #555;
 			flex-direction: row-reverse;
 			text-align: right;
 			justify-content: flex-end;
-			p{
+			p {
 				margin-left: auto;
 			}
-			.businessHourstime{
+			.businessHourstime {
 				display: flex;
 				flex-direction: row-reverse;
 				justify-content: flex-end;
 			}
-			.timeAndBtn{
+			.timeAndBtn {
 				flex-direction: row-reverse;
-				.timeText{
-					margin-right:0 ;
+				.timeText {
+					margin-right: 0;
 				}
 			}
+			@media screen and (max-width: 768px) {
+				flex-direction: column;
+				align-items: center;
+				margin: 0 20px;
+				.imageContainer{
+					margin: 20px 0;
+					width: 100%;
+					height: auto;
+					.image1 {
+						position: static;
+						width: 100%;
+						height: auto;
+						margin-bottom: 10px;
+					}
+					.image2 {
+						position: static;
+						width: 100%;
+						height: auto;
+						margin-bottom: 10px;
+					}
+				}
 			}
+		}
 	}
 	/* 縮小 */
-	@media (max-width: 768px) {
-		// .carouselContainer {
-		// 	display: none;
-		// }
-		.sectionContainer {
-			flex-direction: column;
-			align-items: center;
-			margin: 0 20px;
-		}
-		.imageContainer {
-			margin: 20px 0;
-			width: 100%;
-			height: auto;
-		}
-		.contentContainer {
-			margin: 20px 0;
-			width: 100%;
-			height: auto;
-			margin-left: 0;
-			text-align: center;
-		}
-		.image1 {
-			position: static;
-			width: 100%;
-			height: auto;
-			margin-bottom: 10px;
-		}
-		.image2 {
-			position: static;
-			width: 100%;
-			height: auto;
-			margin-bottom: 10px;
-		}
-	}
-	.restPhonePage{
-		.phoneImg{
+	// @media (max-width: 768px) {
+	// 	// .carouselContainer {
+	// 	// 	display: none;
+	// 	// }
+	// 	// .sectionContainer {
+	// 	// 	flex-direction: column;
+	// 	// 	align-items: center;
+	// 	// 	margin: 0 20px;
+	// 	// }
+	// 	.imageContainer {
+	// 		margin: 20px 0;
+	// 		width: 100%;
+	// 		height: auto;
+	// 	}
+	// 	.contentContainer {
+	// 		margin: 20px 0;
+	// 		width: 100%;
+	// 		height: auto;
+	// 		margin-left: 0;
+	// 		text-align: center;
+	// 	}
+	// 	.image1 {
+	// 		position: static;
+	// 		width: 100%;
+	// 		height: auto;
+	// 		margin-bottom: 10px;
+	// 	}
+	// 	.image2 {
+	// 		position: static;
+	// 		width: 100%;
+	// 		height: auto;
+	// 		margin-bottom: 10px;
+	// 	}
+	// }
+	// 手機畫面樣式
+	.restPhonePage {
+		.phoneImg {
 			width: 100vw;
 			height: 100vh;
 			object-fit: cover;
 			filter: brightness(140%);
 		}
-		.phoneText{
+		.phoneText {
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			transform: translate(-50%,-50%);
+			transform: translate(-50%, -50%);
 			text-align: center;
 			width: 100%;
-			h1{
+			h1 {
 				font-size: 2.6rem;
 				color: $colorSvg;
 				margin: 10px;
 				font-weight: 500;
 			}
-			.divOpenTime{
+			.divOpenTime {
 				margin: 20px;
 				border: 1px solid $colorSvg;
 				border-radius: 20px;
 				display: flex;
 				justify-content: space-between;
-				div{
+				div {
 					padding: 10px;
 					color: $colorSvg;
 				}
-				div:first-child{
+				div:first-child {
 					background-color: $colorSvg;
 					width: 30%;
 					margin-left: 0;
@@ -321,7 +402,7 @@ $background-color_2: #555;
 					color: black;
 				}
 			}
-			p{
+			p {
 				background-color: rgba(0, 0, 0, 0.46);
 				padding: 20px;
 				margin: 20px;
@@ -329,12 +410,25 @@ $background-color_2: #555;
 				letter-spacing: 2.5px;
 				line-height: 30px;
 			}
-			button{
+			button {
 				background-color: $backgroundColorBtnDark;
 				padding: 10px;
 				font-size: 15px;
 				width: 30%;
 				color: $colorSvg;
+			}
+		}
+		.swiper-pagination-horizontal {
+			top: 80%;
+			.swiper-pagination-bullet {
+				background-color: $colorSvg;
+				width: 10px;
+				height: 10px;
+				display: inline-block;
+			}
+			.swiper-pagination-bullet-active {
+				background-color: rgba(255, 104, 56, 1);
+				width: 15px;
 			}
 		}
 	}

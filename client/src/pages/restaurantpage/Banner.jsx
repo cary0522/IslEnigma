@@ -17,7 +17,7 @@ function Banner({bannerList}) {
 		});
 	};
 	return (
-		<div className="">
+		<div>
 			<div className="banner">
 				<img src={bannerImg} alt="" />
 				<div className="bannerContainer">

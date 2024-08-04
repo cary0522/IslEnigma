@@ -12,8 +12,8 @@ function Des({ shop }) {
 				<h3>{shop.des}</h3>
 				<p>{shop.content}</p>
 				<div className="businessHourstime rightItem">
-					<div className="col-2 timeText">營業時間</div>
-					<div className="col-9 timeLine"></div>
+					<div className="col-3 col-xl-2 timeText">營業時間</div>
+					<div className="col-8 col-xl-9 timeLine"></div>
 				</div>
 				<div className="timeAndBtn">
 					<div className="timeText">
