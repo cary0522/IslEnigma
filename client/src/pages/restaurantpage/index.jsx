@@ -99,7 +99,7 @@ function RestaurantPage() {
 		},
 	];
 
-	let [view, setView] = useState(false);
+	let [view, setView] = useState(true);
 
 	let handleView = ()=>{
 		if(window.innerWidth > 720){

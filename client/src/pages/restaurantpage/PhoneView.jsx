@@ -10,9 +10,8 @@ function PhoneView({ bannerList }) {
 		<div className="restPhonePage">
 			<Swiper pagination={{dynamicBullets:true,clickable:true,}}
              loop={true} 
-             modules={[Pagination,Scrollbar,Autoplay]} 
-             autoplay={{delay:2000,disableOnInteraction:false}}
-             scrollbar={{dragSize:20}}
+             modules={[Pagination,Autoplay]} 
+             autoplay={{delay:2000}}
              >
 					{bannerList.map((shop) => {
 				return (
