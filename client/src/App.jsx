@@ -6,7 +6,8 @@ import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
-import Hello from "./Hello"
+import Restaurant from "./pages/restaurantPage/Restaurant"
+import Rooms from "./pages/roomPage/Rooms"
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route path="checkout" element={<CheckOutPage />} />
           <Route path="shoppingSuccess" element={<ShoppingSuccessPage />} />
         </Route>
+        <Route path="restaurant" element={<Restaurant />} />
+        <Route path="rooms" element={<Rooms />} />
       </Route>
     </Routes>
   )

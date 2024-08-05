@@ -4,85 +4,18 @@ const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
+const { cart_controller } = require("../controllers/cart_controller")
 
 //到資料庫查找購物車
 
-router.get("/", async (req, res) => {
-  const shoppingCartWithItems = await prisma.customer_order.findFirst({
-    where: {
-      member_id: 1,
-      status: "CREATED",
-    },
-    include: {
-      order_item: {
-        include: {
-          room: true,
-          ticket: true,
-        },
-      },
-    },
-  })
-  res.status(200).json(shoppingCartWithItems)
-})
+router.get("/", cart_controller.get_cart_items)
 
 //新增訂單
-router.post("/", async (req, res) => {
-  const { cartItems } = req.body
-  console.log("items")
-  console.log(cartItems)
-
-  if (cartItems.length === 0) return
-  try {
-    const updatedOrderItem = await prisma.customer_order.update({
-      where: {
-        order_id: cartItems[0].order_id,
-      },
-      data: {
-        status: "PAID",
-      },
-    })
-    return res.json(updatedOrderItem)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: "Failed to update order item status" })
-  }
-  res.json("good")
-})
+router.post("/", cart_controller.new_order)
 
 //更新商品數量
-router.put("/:id", async (req, res) => {
-  const { quantity } = req.body
-
-  const itemId = req.params.id
-
-  try {
-    const updatedItem = await prisma.order_item.update({
-      where: {
-        order_item_id: itemId,
-      },
-      data: {
-        quantity,
-      },
-    })
-    res.status(200).json(updatedItem)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
-router.delete("/:id", async (req, res) => {
-  const itemId = req.params.id
-
-  try {
-    const deletedItem = await prisma.order_item.delete({
-      where: {
-        order_item_id: itemId,
-      },
-    })
-    res.status(200).json(deletedItem)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
+router.put("/:id")
+router.delete("/:id", cart_controller.update_item_quantity)
 
 router.post("/create-checkout-session", async (req, res) => {
   const cartItems = req.body
