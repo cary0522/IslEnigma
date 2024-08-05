@@ -59,7 +59,6 @@ body {
   margin-top: 100px;
 }
 
-
 // banner
 .bannerWrapper {
   width: 100%;
@@ -90,7 +89,7 @@ body {
       background-size: 105% auto;
     }
   }
-  
+
   @keyframes bigzoomInOut {
     0%,
     100% {
@@ -100,7 +99,7 @@ body {
       background-size: 330% auto;
     }
   }
-  
+
   @keyframes slideInFromTop {
     0% {
       transform: translateY(-100%);
@@ -111,7 +110,7 @@ body {
       opacity: 1;
     }
   }
-  
+
   @keyframes slideInFromBottom {
     0% {
       transform: translateY(100%);
@@ -122,7 +121,6 @@ body {
       opacity: 1;
     }
   }
-  
 
   @include responsive(mobile) {
     min-height: auto;
@@ -322,7 +320,6 @@ body {
       font-size: 2rem;
       // margin-top: 5rem;
       animation: slideInFromTop 1s ease-out;
-
     }
   }
 
@@ -338,7 +335,6 @@ body {
   .customDropdown {
     display: none; // 默認隱藏
     animation: slideInFromBottom 1s ease-out;
-
 
     @include responsive(mobile) {
       display: block; // 在移動端顯示
@@ -542,7 +538,6 @@ body {
   }
 }
 
-
 // 神秘新聞區域
 .mysteryNews {
   display: flex;
@@ -554,8 +549,6 @@ body {
   padding: 50px 150px;
   padding-bottom: 0;
   // overflow: hidden;
-
-
 
   //新聞標題
   .sectionTitleRow {
@@ -622,8 +615,6 @@ body {
     margin-bottom: 5px;
     border-radius: 5px;
   }
-
-
 
   //左邊
   .left-column {
@@ -729,7 +720,7 @@ body {
       border-radius: 5rem;
       align-items: center;
       box-shadow: 0px 3px 3px 0px rgba(255, 255, 255, 0.25) inset,
-      0px 3px 3px 0px rgba(83, 54, 131, 0.5);
+        0px 3px 3px 0px rgba(83, 54, 131, 0.5);
 
       .ticketIcon {
         width: 50%;
@@ -844,7 +835,6 @@ body {
       border-top: 1px solid #ddd;
       display: flex;
       align-items: left;
-
 
       .imageItem {
         height: 100px;
@@ -1316,8 +1306,6 @@ body {
     }
   }
 
-
-
   .more-section {
     background: linear-gradient(to right, #3a77b0, #6b5b95);
     color: white;
@@ -1335,33 +1323,31 @@ body {
     }
   }
 
+  .title,
+  .news-title,
+  .imageOverlay h3 {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
 
-    .title,
-    .news-title,
-    .imageOverlay h3 {
-      position: relative;
-      display: inline-block;
-      transition: transform 0.3s ease;
-      
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        width: 0;
-        height: 2px;
-        background-color: #2c5d8f;
-        transition: width 0.3s ease;
-      }
-      
-      &:hover {
-        &::after {
-          width: 100%;
-        }
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background-color: #2c5d8f;
+      transition: width 0.3s ease;
     }
 
-  
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
   .image-container,
   .mainImageItem,
   .news-image {
@@ -1372,8 +1358,6 @@ body {
       }
     }
   }
-
-
 
   // 做新聞區塊整體的響應
   @include responsive(large) {
@@ -1425,7 +1409,6 @@ body {
           justify-content: flex-start;
           align-self: start;
         }
-
       }
     }
 
@@ -1456,7 +1439,6 @@ body {
     transform: scale(1.05) translateY(-2px);
   }
 }
-
 
 //票卡按鈕
 .ticketSection {
@@ -1557,7 +1539,6 @@ body {
   }
 }
 
-
 // 右列
 .right-column {
   .scrollable-area .news-image {
@@ -1599,7 +1580,6 @@ body {
   .sectionTitleRow {
     margin-bottom: 30px;
 
-
     .sectionTitle {
       background: $main-color;
       color: #fffdf8;
@@ -1639,7 +1619,7 @@ body {
     margin-bottom: 15px;
     cursor: pointer;
     align-self: center;
-    transition:0.3s ease;
+    transition: 0.3s ease;
 
     &:hover {
       background-color: darken(#337ab7, 10%);
@@ -1715,12 +1695,10 @@ body {
     }
   }
 
-  
-// 隱藏年度活動表格
-#yearlyActivitiesTable {
-  display: none;
-}
-
+  // 隱藏年度活動表格
+  #yearlyActivitiesTable {
+    display: none;
+  }
 }
 
 // 活動注意事項樣式
@@ -1735,7 +1713,6 @@ body {
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-
   h3 {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -1747,7 +1724,6 @@ body {
     font-size: 18px;
     font-weight: bold;
   }
-
 
   ul {
     margin: 0;
@@ -1774,137 +1750,131 @@ body {
   }
 
   .imgContainer {
-
     justify-content: center;
     align-items: center;
     position: absolute;
     right: 100px;
     width: 100%;
-    height: 300px; 
-  
+    height: 300px;
+
     .imgbox {
       display: flex;
       position: relative;
 
       img {
         position: absolute;
-        width: 50%; 
-        max-width: 160px; 
+        width: 50%;
+        max-width: 160px;
         height: auto;
-
       }
-    
+
       img:first-of-type {
-        right: 6%;  /* 調整右側城堡的位置 */
+        right: 6%; /* 調整右側城堡的位置 */
         top: 134px;
         opacity: 1;
-        width: 150px;  /* 設置最大寬度 */
+        width: 150px; /* 設置最大寬度 */
       }
-    
+
       img:last-of-type {
-        right: 18%;  /* 調整左側城堡的位置 */
-        width: 120px;  /* 設置最大寬度 */
-        transform: scaleX(-1);  /* 水平翻轉 */
+        right: 18%; /* 調整左側城堡的位置 */
+        width: 120px; /* 設置最大寬度 */
+        transform: scaleX(-1); /* 水平翻轉 */
         top: 157px;
         opacity: 1;
-
       }
-    
+
       #wheel {
         position: absolute;
         top: 70px;
         max-width: 200px;
-        right: 10%;  /* 調整右側城堡的位置 */
+        right: 10%; /* 調整右側城堡的位置 */
         height: auto;
       }
-    
-  // 響應式調整
-  @include responsive(huge) {
-    img:first-of-type {
-      right: -10px;
-    }
 
-    img:last-of-type {
-      right: 140px;
-    }
-    #wheel {
-      max-width: 150px;
-      right: 85px;
+      // 響應式調整
+      @include responsive(huge) {
+        img:first-of-type {
+          right: -10px;
+        }
 
+        img:last-of-type {
+          right: 140px;
+        }
+        #wheel {
+          max-width: 150px;
+          right: 85px;
+        }
+      }
+
+      @include responsive(large) {
+        img:first-of-type {
+          right: -10px;
+        }
+
+        img:last-of-type {
+          right: 140px;
+        }
+        #wheel {
+          max-width: 150px;
+          right: 85px;
+        }
+      }
+
+      @include responsive(medium) {
+        img:first-of-type {
+          right: -10px;
+        }
+
+        img:last-of-type {
+          right: 140px;
+        }
+        #wheel {
+          max-width: 150px;
+          right: 85px;
+        }
+      }
+
+      @include responsive(small) {
+        img:first-of-type {
+          opacity: 0.5; // 降低透明度
+
+          right: -10%;
+        }
+
+        img:last-of-type {
+          opacity: 0.5; // 降低透明度
+
+          right: 10%;
+        }
+        #wheel {
+          max-width: 150px;
+          right: 2%;
+          opacity: 0.7; // 降低透明度
+        }
+      }
+
+      @include responsive(mobile) {
+        img:first-of-type {
+          max-width: 120px;
+          right: -63px;
+          opacity: 0.3; // 進一步降低透明度
+          top: 157px;
+        }
+
+        img:last-of-type {
+          max-width: 100px;
+          top: 173px;
+          right: 57px;
+          opacity: 0.3; // 進一步降低透明度
+        }
+        #wheel {
+          max-width: 120px;
+          right: 30px;
+          opacity: 0.5; // 進一步降低透明度
+        }
+      }
     }
   }
-
-  @include responsive(large) {
-    img:first-of-type {
-      right: -10px;
-    }
-
-    img:last-of-type {
-      right: 140px;
-    }
-    #wheel {
-      max-width: 150px;
-      right: 85px;
-
-    }
-  }
-
-  @include responsive(medium) {
-    img:first-of-type {
-      right: -10px;
-    }
-
-    img:last-of-type {
-      right: 140px;
-    }
-    #wheel {
-      max-width: 150px;
-      right: 85px;
-
-    }
-  }
-
-  @include responsive(small) {
-    img:first-of-type {
-      opacity: 0.5; // 降低透明度
-
-      right: -10%;
-    }
-
-    img:last-of-type {
-      opacity: 0.5; // 降低透明度
-
-      right: 10%;
-    }
-    #wheel {
-      max-width: 150px;
-      right: 2%;
-      opacity: 0.7; // 降低透明度
-    }
-  }
-
-  @include responsive(mobile) {
-    img:first-of-type {
-      max-width: 120px;
-      right: -63px;
-      opacity: 0.3; // 進一步降低透明度
-      top: 157px;
-    }
-
-     img:last-of-type {
-      max-width: 100px;
-      top: 173px;
-      right: 57px;
-      opacity: 0.3; // 進一步降低透明度
-    }
-    #wheel {
-      max-width: 120px;
-      right: 30px;
-      opacity: 0.5; // 進一步降低透明度
-    }
-  }
-}
-}
   @include responsive(mobile) {
     margin: 30px;
 

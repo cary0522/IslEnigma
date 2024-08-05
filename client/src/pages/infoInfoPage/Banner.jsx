@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import './infolnfo.scss';
+import './infoBanner.scss';
 
 const Banner = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);

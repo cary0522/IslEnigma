@@ -389,7 +389,7 @@ const InfoInfo = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="modal-backdrop show"></div>
+                    <div className=" show"></div>
                 </>
             )}
         </div>

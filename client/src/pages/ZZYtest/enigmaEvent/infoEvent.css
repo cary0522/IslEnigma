@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(./allReset.css);
 /* 全局樣式 */
 body {
   margin: 0;
@@ -480,6 +481,7 @@ body {
   background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
   color: #fffdf8;
   align-self: flex-start;
+  width: -moz-fit-content;
   width: fit-content;
   padding: 20px;
   font-size: 4rem;
@@ -540,7 +542,8 @@ body {
 .mysteryNews .left-column .box_1 .image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 30px;
 }
 .mysteryNews .left-column .box_2 {
@@ -550,7 +553,8 @@ body {
 .mysteryNews .left-column .box_2 .image2 {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 30px;
 }
 .mysteryNews .left-column .box_3 {
@@ -596,6 +600,7 @@ body {
 }
 .mysteryNews .left-column .seeMore {
   font-size: 0.8rem;
+  width: -moz-fit-content;
   width: fit-content;
   padding: 10px 15px;
   background: linear-gradient(to right, #3a77b0, #6b5b95);
@@ -689,7 +694,8 @@ body {
 .mysteryNews .center-column .mainContent .mainImageItem img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 30px;
 }
 .mysteryNews .center-column .mainContent .imageOverlay {
@@ -728,7 +734,8 @@ body {
 .mysteryNews .center-column .subNews .imageItem img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5px;
 }
 .mysteryNews .center-column .subNews .textItem {
@@ -873,7 +880,8 @@ body {
 .mysteryNews .right-column .scrollable-area .news-item .news-image img {
   width: 100%;
   height: 80px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5px;
 }
 .mysteryNews .right-column .scrollable-area .news-item .news-content {
@@ -1003,7 +1011,8 @@ body {
   bottom: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   overflow: hidden;
   border-radius: 20px;
 }
@@ -1021,7 +1030,8 @@ body {
   left: -50px;
   bottom: 0;
   max-width: 60%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .mysteryNews .right-column .box_1 .box1 .mainImage:hover {
   max-width: 80%;
@@ -1279,7 +1289,8 @@ body {
 .image-container img, .right-column .scrollable-area .news-image img, .center-column .subNews .imageItem img, .center-column .mainImageItem img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   transition: transform 0.3s ease;
 }
 .image-container:hover img, .right-column .scrollable-area .news-image:hover img, .center-column .subNews .imageItem:hover img, .center-column .mainImageItem:hover img {
@@ -1333,6 +1344,7 @@ body {
   background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
   color: #fffdf8;
   align-self: flex-start;
+  width: -moz-fit-content;
   width: fit-content;
   padding: 20px;
   font-size: 4rem;
@@ -1611,6 +1623,4 @@ body {
   .description-column {
     display: none;
   }
-}
-
-/*# sourceMappingURL=infoEvent.css.map */
+}/*# sourceMappingURL=infoEvent.css.map */
