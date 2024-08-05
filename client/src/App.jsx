@@ -6,6 +6,7 @@ import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
 import MapPage from './pages/mappage';
 import TicketPage from './pages/ticketpage';
 import RestaurantPage from "./pages/restaurantpage"
+import BoatPage from './pages/boatpage'
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
@@ -23,6 +24,7 @@ function App() {
         <Route path="/mappage" element={< MapPage />} />
         <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
+        <Route path="/boatpage" element={< BoatPage />} />
       </Route>
     </Routes>
   )

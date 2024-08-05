@@ -1,0 +1,299 @@
+$color_1: white;
+$color_2: #333;
+$color_3: #666;
+$background-color_1: darkgray;
+$background-color_2: #f9f9f9;
+$background-color_3: #ffffff;
+$background-color_4: #4caf50;
+$background-color_5: #f1f1f1;
+@import "../../components/reset.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+
+/* 通用樣式 */
+/* banner */
+/* 時刻表 */
+// html {
+// 	margin: 0;
+// 	padding: 0;
+// 	height: 100%;
+// }
+// body {
+// 	margin: 0;
+// 	padding: 0;
+// 	height: 100%;
+// }
+
+.boatPage {
+	font-family: "Noto Sans TC", "Arial", sans-serif;
+	.banner {
+		background-image: url("/public/boat/boatBanner.png");
+		background-size: cover;
+		background-position: center;
+		height: 70vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: $color_1;
+		position: relative;
+		z-index: 1;
+		margin-top: 0px;
+		overflow: hidden;
+		.bannerContainer {
+			position: absolute;
+			bottom: 50px;
+			text-align: center;
+			.logoContainer {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				img {
+					max-width: 100%;
+					width: 40%;
+				}
+				.logoArea {
+					margin-top: 300px;
+					width: 100%;
+					max-width: 700px;
+					.divOutside {
+						width: 90%;
+						display: flex;
+						max-width: 700px;
+					}
+					#imgLogoArea {
+						max-width: 700px;
+						width: 100%;
+						margin: 0 auto;
+					}
+					.divPageName {
+						margin: 0 auto;
+						max-width: 700px;
+						width: 100%;
+						display: flex;
+						justify-content: center;
+						h3 {
+							font-size: 1.8rem;
+							margin: 0;
+						}
+					}
+					.linePageName {
+						width: 20%;
+						height: 50%;
+						border-bottom: 3px solid $colorSvg;
+						&:first-of-type {
+							margin: 0 20px 0 auto;
+						}
+						&:last-of-type {
+							margin: 0 auto 0 20px;
+						}
+					}
+				}
+			}
+		}
+		@media screen and (max-width:720px) {
+			height: 50vh;
+			.bannerContainer{
+				bottom:130px
+			}
+			
+		}
+	}
+	.mapImg {
+		display: flex;
+		justify-content: center;
+		margin: 50px 0px;
+		position: relative;
+		.timeTable {
+			background-color: $color_1;
+			box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+			border-radius: 50px;
+			width: 80%;
+			max-width: 800%;
+			height: 80px;
+			justify-content: center;
+			align-items: center;
+			margin-top: -100px;
+			padding: 0 15px;
+			z-index: 1;
+			position: absolute;
+			top: 20px;
+			display: flex;
+			h4,
+			p {
+				color: $colorText;
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			img {
+				width: 40px;
+			}
+			@media screen and (max-width: 1024px) {
+				h4,
+				p {
+					font-size: 1rem;
+				}
+				img {
+					width: 30px;
+				}
+			}
+			@media screen and (max-width:720px) {
+				position: absolute;
+				top: -10%;
+				left: 50%;
+				transform: translate((-50%,-50%));
+			}
+		}
+		.map {
+			margin-top: -120px;
+			img {
+				margin: 0;
+				width: 100%;
+			}
+		}
+	}
+	.boatTablePage {
+		justify-content: center;
+		position: relative;
+		.boatH1 {
+			text-align: center;
+			h1 {
+				font-size: 2rem;
+				font-weight: 800;
+				text-align: center;
+				color: $colorText;
+				margin-bottom: 40px;
+			}
+			p {
+				color: $colorText;
+				font-size: 1.2rem;
+				letter-spacing: 2px;
+				@media screen and (max-width:720px) {
+					font-size: 1rem;
+					margin: 0 10px;
+					line-height: 30px;
+				}
+			}
+		}
+		.routeTitle {
+			margin: 40px;
+			text-align: center;
+			font-size: 1.2rem;
+			color: $colorText;
+			font-weight: 600;
+			letter-spacing: 2px;
+		}
+	}
+	.aboutBoatPage {
+		justify-content: center;
+		padding: 20px;
+		margin: 50px 100px;
+		.aboutBoat {
+			display: flex;
+			width: 100%;
+			img {
+				border-radius: 20px;
+				width: 50%;
+				max-width: 600px;
+			}
+			div {
+				width: 50%;
+				margin-left: 50px;
+			}
+			h2 {
+				margin: 10px 0;
+				font-size: 1.5rem;
+				font-weight: 800;
+			}
+			h2,
+			p {
+				color: $colorText;
+				letter-spacing: 2px;
+				line-height: 30px;
+			}
+		}
+		@media screen and (max-width: 720px) {
+			margin: 50px 20px;
+			.aboutBoat {
+				display: block;
+				img,div{
+					width: 100%;
+					margin: 10px;
+				}
+			}
+		}
+	}
+	.busMap {
+		justify-content: center;
+		padding: 20px;
+		margin: 50px 100px;
+		h1 {
+			color: $colorText;
+			font-size: 2rem;
+			font-weight: 800;
+			letter-spacing: 2px;
+			text-align: center;
+		}
+		img {
+			width: 100%;
+		}
+		p {
+			text-align: center;
+		}
+		.busTimeTable {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			margin: 30px 0px;
+			table {
+				width: 100%;
+				border-style: none;
+				color: $colorText;
+			}
+		}
+		@media screen and (max-width: 720px) {
+			margin: 50px 20px;
+			table {
+				font-size: 0.8rem;
+			}
+		}
+	}
+	td {
+		border-style: none;
+		padding: 12px 15px;
+		text-align: center;
+		&:first-child {
+			font-weight: bold;
+			color: $color_2;
+		}
+		&:last-child {
+			color: $color_3;
+		}
+	}
+	table {
+		border-radius: 20px;
+		width: 80%;
+		margin: 0 auto;
+		border-collapse: collapse;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		letter-spacing: 2px;
+	}
+	th {
+		padding: 12px 15px;
+		text-align: center;
+		background-color: $background-color_4;
+		color: $color_1;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	tr {
+		&:nth-child(odd) {
+			background-color: $background-color_2;
+		}
+		&:nth-child(even) {
+			background-color: $background-color_3;
+		}
+		&:hover {
+			background-color: $background-color_5;
+		}
+	}
+}
