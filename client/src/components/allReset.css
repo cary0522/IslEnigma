@@ -137,4 +137,7 @@ a {
   text-decoration: none;
   color: black;
 }
+::-webkit-scrollbar {
+  width: 0px;
+}
 /* cssReset */
