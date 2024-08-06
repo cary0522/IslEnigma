@@ -24,8 +24,8 @@ function App() {
           <Route path="checkout" element={<CheckOutPage />} />
           <Route path="shoppingSuccess" element={<ShoppingSuccessPage />} />
         </Route>
-        <Route path="/mappage" element={<MapPage />} />
-        <Route path="/ticketpage" element={<TicketPage />} />
+        <Route path="/mappage" element={< MapPage />} />
+        <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
         <Route path="/infoEventPage" element={<InfoEventPage />} />
         <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />
