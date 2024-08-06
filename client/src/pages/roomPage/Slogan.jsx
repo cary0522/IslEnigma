@@ -1,53 +1,46 @@
+import { useEffect, useRef, useState } from "react"
+import SloganSlide from "./SloganSlide"
+import { sloganData } from "./data/sloganData"
+
 const Slogan = () => {
+  const sloganContainerRef = useRef(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  //設定計時器 每五秒換下一張
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === sloganData.length - 2 ? 0 : prevIndex + 1
+      )
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, []) /
+    useEffect(() => {
+      if (sloganContainerRef.current) {
+        sloganContainerRef.current.style.transform = `translateX(${
+          currentIndex * -50
+        }%)`
+      }
+    }, [currentIndex])
+
   return (
-    <section id="roomSlogan" class="roomSlogan">
-      <div class="roomSlogan__container">
-        <div class="roomSlogan__slide active">
-          <img src="./public/03rooms/room (28).png" alt="Room Slogan 1" />
-          <div class="roomSlogan__content">
-            <h2>Adventure Meets Luxury:</h2>
-            <h3>islEnigma's Glamping Paradise</h3>
-          </div>
-        </div>
-
-        <div class="roomSlogan__slide">
-          <img src="./public/03rooms/room (36).png" alt="Room Slogan 1" />
-          <div class="roomSlogan__content">
-            <h2>Thrills by Day, Stars by Night:</h2>
-            <h3>The Ultimate Glamping Experience</h3>
-          </div>
-        </div>
-
-        <div class="roomSlogan__slide">
-          <img src="./public/03rooms/room (39).png" alt="Room Slogan 1" />
-          <div class="roomSlogan__content">
-            <h2>Embrace the Wild:</h2>
-            <h3>Luxury Meets Nature</h3>
-          </div>
-        </div>
-
-        <div class="roomSlogan__slide active">
-          <img src="./public/03rooms/room (28).png" alt="Room Slogan 1" />
-          <div class="roomSlogan__content">
-            <h2>Ride, Relax, Repeat:</h2>
-            <h3>Glamping at ISLENIGMA's Heart</h3>
-          </div>
-        </div>
-
-        <div class="roomSlogan__slide">
-          <img src="./public/03rooms/room (36).png" alt="Room Slogan 1" />
-          <div class="roomSlogan__content">
-            <h2>Eco-Luxury Retreat:</h2>
-            <h3>Immerse in Island Beauty</h3>
-          </div>
-        </div>
+    <section id="roomSlogan" className="roomSlogan">
+      <div className="roomSlogan__container" ref={sloganContainerRef}>
+        {sloganData.map((data, index) => (
+          <SloganSlide key={index} data={data} index={index} />
+        ))}
       </div>
-      <div class="roomSlogan__indicators">
-        <span class="roomSlogan__indicator active"></span>
-        <span class="roomSlogan__indicator"></span>
-        <span class="roomSlogan__indicator"></span>
-        <span class="roomSlogan__indicator"></span>
-        <span class="roomSlogan__indicator"></span>
+      <div className="roomSlogan__indicators">
+        {Array.from({ length: sloganData.length - 1 }).map((_, index) => (
+          <span
+            key={index}
+            className={`roomSlogan__indicator ${
+              index === currentIndex ? "active" : ""
+            }`}
+            onClick={() => setCurrentIndex(index)}
+          ></span>
+        ))}
       </div>
     </section>
   )

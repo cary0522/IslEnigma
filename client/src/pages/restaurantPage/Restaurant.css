@@ -29,13 +29,13 @@
 }
 
 /* 輪播 */
-.carouselContainer {
+/* .carouselContainer {
   perspective: 1000px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin-top: -20px;
-}
+} */
 
 .carousel {
   display: flex;

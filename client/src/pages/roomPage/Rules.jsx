@@ -1,9 +1,15 @@
+import { useState } from "react"
+import { rulesData } from "./data/rulesDada"
+import RulesItem from "./RulesItem"
+
 const Rules = () => {
+  const [ruleIndex, setRuleIndex] = useState(0)
+
   return (
     <section class="roomRules">
       <h2 class="roomRules__title">住房須知</h2>
       <div class="roomRules__accordion">
-        <div class="roomRules__item active">
+        {/* <div class="roomRules__item active">
           <div class="roomRules__header">
             <span class="roomRules__icon"></span>
             <h3>入住規定</h3>
@@ -77,7 +83,18 @@ const Rules = () => {
               天前免費更改一次預訂日期，視房間供應情況而定
             </p>
           </div>
-        </div>
+        </div> */}
+
+        {rulesData.map((data, index) => {
+          return (
+            <RulesItem
+              data={data}
+              index={index}
+              ruleIndex={ruleIndex}
+              setRuleIndex={setRuleIndex}
+            />
+          )
+        })}
       </div>
     </section>
   )
