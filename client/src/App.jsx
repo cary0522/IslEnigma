@@ -5,7 +5,7 @@ import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage";
 import CheckOutPage from "./pages/checkoutPage/CheckOutPage";
 import MapPage from "./pages/mappage";
 import TicketPage from "./pages/ticketpage";
-
+import RestaurantPage from "./pages/restaurantpage"
 import InfoEventPage from "./pages/infoEventPage";
 import InfoInfoPage from "./pages/infoInfoPage";
 import InfoFAQPage from "./pages/infoFAQPage";
@@ -26,7 +26,7 @@ function App() {
         </Route>
         <Route path="/mappage" element={<MapPage />} />
         <Route path="/ticketpage" element={<TicketPage />} />
-
+        <Route path="/restaurantpage" element={< RestaurantPage />} />
         <Route path="/infoEventPage" element={<InfoEventPage />} />
         <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />
         <Route path="/infoEvent/infoFAQPage" element={<InfoFAQPage />} />
