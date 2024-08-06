@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 
 // 變數定義
-$font-family: "Arial", sans-serif;
+$font-family: "Noto Sans TC", "Arial", sans-serif;
 $background-color: #fffdf8;
 $main-color: linear-gradient(
   to right,
@@ -78,42 +78,42 @@ body {
 //---------------------room banner start
 
 //腳印動畫本人
-@keyframes footstep {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px) rotate(90deg);
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(0) rotate(90deg);
-  }
-  80% {
-    opacity: 1;
-    transform: translateY(0) rotate(90deg);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(20px) rotate(90deg);
-  }
-}
-// 處理右腳
+// @keyframes footstep {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(-20px) rotate(90deg);
+//   }
+//   20% {
+//     opacity: 1;
+//     transform: translateY(0) rotate(90deg);
+//   }
+//   80% {
+//     opacity: 1;
+//     transform: translateY(0) rotate(90deg);
+//   }
+//   100% {
+//     opacity: 0;
+//     transform: translateY(20px) rotate(90deg);
+//   }
+// }
+// 處理腳印
 .footprint-right {
   @keyframes footstep {
     0% {
       opacity: 0;
-      transform: translateY(-20px) rotate(80deg) scaleY(-1);
+      transform: translateY(-20px) rotate0(270deg);
     }
     20% {
       opacity: 1;
-      transform: translateY(0) rotate(90deg) scaleY(-1);
+      transform: translateY(0) rotate(270deg);
     }
     80% {
       opacity: 1;
-      transform: translateY(0) rotate(90deg) scaleY(-1);
+      transform: translateY(0) rotate(270deg);
     }
     100% {
       opacity: 0;
-      transform: translateY(20px) rotate(100deg) scaleY(-1);
+      transform: translateY(20px) rotate(270deg);
     }
   }
 }
@@ -122,18 +122,18 @@ body {
   position: absolute;
   z-index: 2;
   top: -50px;
-  background: linear-gradient(transparent, rgba(255,255,255,0.8));
-  width: 1px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+  width: 3.5px;
   height: 50px;
   animation: rain linear infinite;
 }
 
 @keyframes rain {
   0% {
-      transform: translateY(-50px);
+    transform: translateY(-50px);
   }
   100% {
-      transform: translateY(calc(100vh + 50px));
+    transform: translateY(calc(100vh + 50px));
   }
 }
 //rain end
@@ -141,8 +141,7 @@ body {
 // roomBanner 包裝
 #roomBanner {
   width: 100%;
- background-image:
-    url("../../public/roomMorePage/room (6).jpeg");
+  background-image: url("../../public/roomMorePage/room (6).jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -296,11 +295,11 @@ body {
   //腳印本人
   .footprint {
     position: absolute;
-    font-size: 24px;
+    font-size: 26px;
     color: rgba(255, 255, 255, 0.7);
     opacity: 0;
     animation: footstep 4s infinite;
-    transform: rotate(90deg); // 使腳尖朝下
+    transform: rotate(270deg); // 使腳尖朝下
 
     &-left {
       left: 0;
@@ -308,7 +307,7 @@ body {
 
     &-right {
       right: 0;
-      transform: rotate(90deg) scaleY(-1); // 使用 scaleY 而不是 scaleX
+      transform: rotate(270deg); // 使用 scaleY 而不是 scaleX
     }
 
     @include responsive(huge) {
@@ -551,7 +550,7 @@ body {
         margin-bottom: 1rem;
 
         .carousel-inner {
-          border-radius: 8px;
+          border-radius: 20px;
           overflow: hidden;
         }
 
@@ -577,9 +576,9 @@ body {
           width: 32%;
           height: 80px;
           object-fit: cover;
-          border-radius: 4px;
+          border-radius: 20px;
           cursor: pointer;
-          transition:0.3s ease;
+          transition: 0.3s ease;
 
           &:hover {
             opacity: 0.8;
@@ -593,6 +592,47 @@ body {
     .roomInfo {
       flex: 1;
       padding: 1rem; //?
+      position: relative;
+
+      .backgroundImageGrass {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background-image: url("../../../public/roomMorePage/room(72)-02.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: top right;
+        opacity: 0.2;
+        z-index: 1;
+      }
+
+      .backgroundImageIsland {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background-image: url("../../../public/roomMorePage/room(73)-02-03.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: top right;
+        opacity: 0.2;
+        z-index: 1;
+      }
+
+      // 確保其他內容在圖片上方
+      .roomTypeEng,
+      .roomType,
+      .roomMoreSlogan,
+      .roomDesc,
+      .roomTags,
+      .roomDetails,
+      .roomActions {
+        position: relative;
+        // z-index: 2;
+      }
 
       .roomTypeEng {
         font-size: 2rem;
@@ -633,12 +673,13 @@ body {
         font-style: italic;
         margin-bottom: 1rem;
         color: #7f8f99;
-        font-weight: 500;
+        font-weight: 800;
       }
 
       .roomDesc {
         margin-bottom: 1rem;
         color: #3b7ba5;
+        font-weight: 600;
         line-height: 1.5;
       }
 
@@ -683,6 +724,7 @@ body {
         grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
         margin-bottom: 1rem;
+        font-weight: bold;
         color: #3b7ba5;
         font-size: 0.8rem;
 
@@ -728,7 +770,7 @@ body {
           font-style: italic;
           margin-bottom: 0;
           flex: 1;
-          color: #3b7ba5;
+          color: #9ba7ce;
         }
 
         .checkFacilities {
@@ -829,7 +871,7 @@ body {
           background-color: #699dbf;
 
           i {
-            color:#e4e3e6;
+            color: #e4e3e6;
           }
         }
 
@@ -1007,4 +1049,3 @@ body {
 //   rgb(49, 124, 165),
 //   hsla(263, 25%, 52%, 1)
 // );
-
