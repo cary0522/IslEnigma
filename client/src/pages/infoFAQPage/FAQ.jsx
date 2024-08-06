@@ -7,9 +7,13 @@ const FAQ = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const chatContainerRef = useRef(null);
+  const isInitializedRef = useRef(false);
 
   useEffect(() => {
-    initializeChat();
+    if (!isInitializedRef.current) {
+      initializeChat();
+      isInitializedRef.current = true;
+    }
   }, []);
 
   useEffect(() => {
@@ -37,7 +41,6 @@ const FAQ = () => {
         ...prevMessages,
         {
           type: "feedback",
-          //   lastUpdated: lastUpdated[currentState],
           id: Date.now(),
         },
       ]);
@@ -52,13 +55,13 @@ const FAQ = () => {
     setChatMessages((prevMessages) =>
       prevMessages.filter((msg) => msg.type !== "feedback")
     );
-    addOptions(faqData[currentState]);
+    addOptions(faqData[currentState], currentState);
   };
 
-  const addOptions = (options) => {
+  const addOptions = (options, state) => {
     setChatMessages((prevMessages) => [
       ...prevMessages,
-      { type: "options", options, currentState, id: Date.now() },
+      { type: "options", options, state, id: Date.now() },
     ]);
   };
 
@@ -77,14 +80,15 @@ const FAQ = () => {
         }, 500);
       }, 500);
     } else if (option.nextState) {
-      setCurrentState(option.nextState);
+      const newState = option.nextState;
+      setCurrentState(newState);
       setTimeout(() => {
-        if (option.nextState === "初始") {
+        if (newState === "初始") {
           addMessage("還有什麼我可以幫您的嗎？");
         } else {
-          addMessage(`關於${option.nextState}，您想了解哪方面的資訊？`);
+          addMessage(`關於${newState}，您想了解哪方面的資訊？`);
         }
-        addOptions(faqData[option.nextState]);
+        addOptions(faqData[newState], newState);
       }, 500);
     }
   };
@@ -93,17 +97,17 @@ const FAQ = () => {
     addMessage(
       "歡迎來到IslEnigma！我是尼格瑪常見問題小幫手。請問您想了解哪方面的資訊？"
     );
-    addOptions(faqData["初始"]);
+    addOptions(faqData["初始"], "初始");
   };
 
   return (
-    <div className="FAQ">
+    <div id="faqPage" className="FAQ">
       <div className="contain">
-        <div>
+        <header>
           <span className="FAQLine"></span>
           <h1>IslEnigma 常見問題</h1>
           <span className="FAQLine"></span>
-        </div>
+        </header>
         <div role="main">
           <div
             id="chat-messages"
@@ -116,7 +120,7 @@ const FAQ = () => {
                   <OptionsContainer
                     key={message.id}
                     options={message.options}
-                    currentState={message.currentState}
+                    state={message.state}
                     handleUserInput={handleUserInput}
                   />
                 );
@@ -124,7 +128,7 @@ const FAQ = () => {
                 return (
                   <FeedbackMessage
                     key={message.id}
-                    lastUpdated={message.lastUpdated}
+                    lastUpdated={lastUpdated[currentState]}
                     handleFeedback={handleFeedback}
                   />
                 );
@@ -140,6 +144,12 @@ const FAQ = () => {
             })}
           </div>
         </div>
+        <footer>
+          <p>
+            <a href="#">islEnigma</a> ➛ <a href="#">樂園資訊</a> ➛
+            <a href="#">常見問題</a>
+          </p>
+        </footer>
       </div>
       {showModal && (
         <FeedbackModal
@@ -151,6 +161,7 @@ const FAQ = () => {
   );
 };
 
+// 其他組件保持不變
 const MessageBubble = ({ message, isUser }) => (
   <div className={`message ${isUser ? "user-message" : "bot-message"}`}>
     {!isUser && <div className="mascot"></div>}
@@ -165,44 +176,44 @@ const MessageBubble = ({ message, isUser }) => (
   </div>
 );
 
-const OptionsContainer = ({ options, currentState, handleUserInput }) => (
-  <div
-    className={
-      currentState === "初始"
-        ? "initial-options-container"
-        : "options-container"
-    }
-  >
-    {options.map((option, index) => (
-      <button
-        key={index}
-        className={
-          currentState === "初始" ? "initial-option-btn" : "option-btn"
-        }
-        onClick={() => handleUserInput(option)}
-      >
-        {option.icon && (
-          <img
-            src={`./public/00myIcon/${option.icon}`}
-            alt={option.text}
-            className="option-icon"
-          />
-        )}
-        <span>{option.text}</span>
-      </button>
-    ))}
-    {currentState !== "初始" && (
-      <button
-        className="option-btn return-to-main"
-        onClick={() =>
-          handleUserInput({ text: "返回主選單", nextState: "初始" })
-        }
-      >
-        返回主選單
-      </button>
-    )}
-  </div>
-);
+const OptionsContainer = ({ options, state, handleUserInput }) => {
+  const isInitialState = state === "初始";
+
+  return (
+    <div
+      className={
+        isInitialState ? "initial-options-container" : "options-container"
+      }
+    >
+      {options.map((option, index) => (
+        <button
+          key={index}
+          className={isInitialState ? "initial-option-btn" : "option-btn"}
+          onClick={() => handleUserInput(option)}
+        >
+          {option.icon && (
+            <img
+              src={`../../public/00myIcon/${option.icon}`}
+              alt={option.text}
+              className="option-icon"
+            />
+          )}
+          <span>{option.text}</span>
+        </button>
+      ))}
+      {!isInitialState && (
+        <button
+          className="option-btn return-to-main"
+          onClick={() =>
+            handleUserInput({ text: "返回主選單", nextState: "初始" })
+          }
+        >
+          返回主選單
+        </button>
+      )}
+    </div>
+  );
+};
 
 const FeedbackMessage = ({ lastUpdated, handleFeedback }) => (
   <div className="message bot-message feedback-message">

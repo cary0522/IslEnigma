@@ -143,7 +143,7 @@ const TodayActivities = () => {
   ];
 
   return (
-    <div className="todayActivities">
+    <div id="todayActivities" className="todayActivities">
       <div className="row sectionTitleRow">
         <h2 id="activityTitle" className="sectionTitle col-12">
           {showToday ? "今日活動" : "年度活動"}

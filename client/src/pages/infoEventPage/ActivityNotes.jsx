@@ -3,8 +3,12 @@ import FerrisWheel from "./FerrisWheel";
 
 const ActivityNotes = () => {
   return (
-    <div className="activityNotes">
-      <h3>活動注意事項</h3>
+    <div id="activityNotes" className="activityNotes">
+      <div className="roomRulesheader">
+        <span className="roomRulesIcon"></span>
+        <h3>活動注意事項</h3>
+        <span className="roomRulesDecorator"></span>
+      </div>
       <div className="activityContent">
         <ul>
           <li>

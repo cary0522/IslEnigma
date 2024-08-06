@@ -15,7 +15,6 @@ export const faqData = {
     { text: "園區禁止攜帶物品", nextState: "園區禁止攜帶物品" },
     { text: "營業時間與票務", nextState: "營業時間與票務" },
     { text: "交通與園內服務", nextState: "交通與園內服務" },
-    { text: "返回主選單", nextState: "初始" },
   ],
   入園須知: [
     {

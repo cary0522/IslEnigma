@@ -1312,7 +1312,8 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 100px;
 
-  h3 {
+  .roomRulesheader {
+    display: flex;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     margin-top: 0;
@@ -1320,8 +1321,35 @@ body {
     padding: 20px;
     background: $main-color;
     color: $background-color;
+    justify-content: space-between;
+    align-items: center;
     font-size: 18px;
     font-weight: bold;
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+      flex-grow: 1;
+      padding-left: 10px;
+    }
+
+    .roomRulesIcon {
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      margin-left: 20px;
+      transition: transform 0.5s ease;
+      transform: rotate(45deg) translateX(-3px);
+    }
+
+    .roomRulesDecorator {
+      display: flex;
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
   }
 
   ul {
@@ -1369,16 +1397,16 @@ body {
 
       img:first-of-type {
         right: 6%; /* 調整右側城堡的位置 */
-        top: 134px;
+        top: 150px;
         opacity: 1;
-        width: 150px; /* 設置最大寬度 */
+        width: 130px; /* 設置最大寬度 */
       }
 
       img:last-of-type {
         right: 18%; /* 調整左側城堡的位置 */
-        width: 150px; /* 設置最大寬度 */
+        width: 130px; /* 設置最大寬度 */
         transform: scaleX(-1); /* 水平翻轉 */
-        top: 134px;
+        top: 150px;
         opacity: 1;
       }
 
@@ -1427,12 +1455,12 @@ body {
 
       @include responsive(large) {
         img:first-of-type {
-          opacity: 0.8;
-          right: -10px;
+          opacity: 0.5;
+          right: 11px;
         }
 
         img:last-of-type {
-          opacity: 0.7;
+          opacity: 0.5;
           right: 140px;
         }
         #wheel {
@@ -1444,7 +1472,7 @@ body {
       @include responsive(medium) {
         img:first-of-type {
           opacity: 0.7;
-          right: -10px;
+          right: 11px;
         }
 
         img:last-of-type {
@@ -1462,13 +1490,13 @@ body {
         img:first-of-type {
           opacity: 0.5; // 降低透明度
 
-          right: -10%;
+          right: -60px;
         }
 
         img:last-of-type {
           opacity: 0.5; // 降低透明度
 
-          right: 10%;
+          right: 70px;
         }
         #wheel {
           max-width: 150px;

@@ -9,7 +9,7 @@ import TicketPage from "./pages/ticketpage";
 import InfoEventPage from "./pages/infoEventPage";
 import InfoInfoPage from "./pages/infoInfoPage";
 import InfoFAQPage from "./pages/infoFAQPage";
-// import RoomMore from './pages/roomMore';
+import RoomMorePage from "./pages/roomMorePage";
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage";
 import CartLayout from "./components/layout/CartLayout";
@@ -31,9 +31,8 @@ function App() {
         <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />
         <Route path="/infoEvent/infoFAQPage" element={<InfoFAQPage />} />
 
-        {/* <Route path="/room" element={< Room />}>
-          <Route path="/room/roomMore" element={< RoomMore />} />
-        </Route> */}
+        {/* <Route path="/roomPage" element={< RoomPage />}/> */}
+        <Route path="/room/roomMorePage" element={<RoomMorePage />} />
       </Route>
     </Routes>
   );

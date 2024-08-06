@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 
 // 變數定義
-$font-family: "Arial", sans-serif;
+$font-family: "Noto Sans TC", "Arial", sans-serif;
 $background-color: #fffdf8;
 $main-color: linear-gradient(
   to right,
@@ -70,7 +70,6 @@ body {
 //   hsla(263, 25%, 52%, 1)
 // );
 
-
 /* 全局樣式 */
 body {
   margin: 0;
@@ -92,8 +91,8 @@ body {
 // banner
 .bannerWrapper {
   width: 100%;
-  background-image: url("../../public/07poster_banner/banner (8).png"); 
-   // background-image: url("https://cdn.midjourney.com/f9899842-d373-463f-acb3-89382a967279/0_0.png");
+  background-image: url("../../public/07poster_banner/banner (8).png");
+  // background-image: url("https://cdn.midjourney.com/f9899842-d373-463f-acb3-89382a967279/0_0.png");
   // background-image: url("https://cdn.midjourney.com/86bfae4d-d6cf-462a-80bb-0d4f7d15079e/0_0.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -119,7 +118,7 @@ body {
       background-size: 105% auto;
     }
   }
-  
+
   @keyframes bigzoomInOut {
     0%,
     100% {
@@ -129,7 +128,7 @@ body {
       background-size: 330% auto;
     }
   }
-  
+
   @keyframes slideInFromTop {
     0% {
       transform: translateY(-100%);
@@ -140,7 +139,7 @@ body {
       opacity: 1;
     }
   }
-  
+
   @keyframes slideInFromBottom {
     0% {
       transform: translateY(100%);
@@ -151,7 +150,6 @@ body {
       opacity: 1;
     }
   }
-  
 
   @include responsive(mobile) {
     min-height: auto;
@@ -351,7 +349,6 @@ body {
       font-size: 2rem;
       // margin-top: 5rem;
       animation: slideInFromTop 1s ease-out;
-
     }
   }
 
@@ -367,7 +364,6 @@ body {
   .customDropdown {
     display: none; // 默認隱藏
     animation: slideInFromBottom 1s ease-out;
-
 
     @include responsive(mobile) {
       display: block; // 在移動端顯示
@@ -387,12 +383,13 @@ body {
         transition: 0.3s;
 
         i {
-          margin-left: 10px}
+          margin-left: 10px;
+        }
 
-          &:hover {
-              background-color: #3b7ba5;
-              color: #ffffff;
-            }
+        &:hover {
+          background-color: #3b7ba5;
+          color: #ffffff;
+        }
       }
 
       .dropdownOptions {
@@ -477,12 +474,12 @@ body {
     @include responsive(medium) {
       gap: 3rem;
     }
-          @include responsive(small) {
+    @include responsive(small) {
       gap: 0.5rem;
 
       .menuItem {
-        transform: scale(0.8)
-        }
+        transform: scale(0.8);
+      }
     }
   }
 

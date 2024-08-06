@@ -112,7 +112,7 @@ const MysteryNews = () => {
   const nextNews = newsItems[(currentIndex + 1) % newsItems.length] || {};
 
   return (
-    <div className="mysteryNews container-fluid">
+    <div id="mysteryNews" className="mysteryNews container-fluid">
       <div className="row sectionTitleRow">
         <h2 className="sectionTitle col-12">謎樣快報</h2>
         <div className="sectionTitleLine"></div>
@@ -181,7 +181,7 @@ const MysteryNews = () => {
 
             <div className="row box_4">
               <div className="col-12">
-                <a href="#" className="ticketSection">
+                <a href="/ticketpage" className="ticketSection">
                   <img
                     src="../../public/infoEventPage/00myIcon/ticket.png"
                     alt="Ticket"
