@@ -8,13 +8,13 @@ import 'swiper/scss/scrollbar'
 function PhoneView({ bannerList }) {
 	return (
 		<div className="restPhonePage">
-			<Swiper pagination={{dynamicBullets:true,clickable:true,}}
-             loop={true} 
-             modules={[Pagination,Autoplay]} 
-             autoplay={{delay:2000}}
-             >
-					{bannerList.map((shop) => {
-				return (
+			<Swiper pagination={{ dynamicBullets: true, clickable: true, }}
+				loop={true}
+				modules={[Pagination, Autoplay]}
+				autoplay={{ delay: 2000 }}
+			>
+				{bannerList.map((shop) => {
+					return (
 						<SwiperSlide key={shop.id}>
 							<img src={shop.img[0]} alt="" className="phoneImg" />
 							<div className="phoneText">
@@ -27,8 +27,8 @@ function PhoneView({ bannerList }) {
 								<button className="button">查看更多</button>
 							</div>
 						</SwiperSlide>
-				)
-					})}
+					)
+				})}
 			</Swiper>
 		</div>
 	);

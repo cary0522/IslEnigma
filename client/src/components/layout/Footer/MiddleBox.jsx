@@ -24,7 +24,7 @@ const MiddleBox = () => {
           <a href="">關於我們</a>
         </ul>
         <ul>
-          <a href="">樂園資訊</a>
+          <a href="/infoEventPage">樂園資訊</a>
         </ul>
       </nav>
       <nav className="MobileFooterNav">
@@ -50,12 +50,12 @@ const MiddleBox = () => {
             <a href="">關於我們</a>
           </ul>
           <ul>
-            <a href="#">樂園資訊</a>
+            <a href="/infoEventPage">樂園資訊</a>
           </ul>
         </div>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default MiddleBox
+export default MiddleBox;
