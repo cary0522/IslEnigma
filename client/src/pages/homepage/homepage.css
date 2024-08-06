@@ -142,7 +142,7 @@
   width: 100%;
 }
 * .weatherBox .weather img {
-  width: 30%;
+  width: 25%;
 }
 * .weatherBox .weather .rightBox {
   display: flex;
