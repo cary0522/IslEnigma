@@ -13,18 +13,21 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./infoEvent.scss";
 
 const MysteryNews = () => {
-  // 使用 useState 鉤子來管理組件的狀態
+  // 使用 useState hook管理組件狀態
   // newsItems 存儲主要新聞項目
   const [newsItems, setNewsItems] = useState([]);
   // currentIndex 追蹤當前顯示的新聞索引
   const [currentIndex, setCurrentIndex] = useState(0);
   // scrollNews 存儲滾動新聞項目
   const [scrollNews, setScrollNews] = useState([]);
+  // 新增狀態來控制 MysteryNews2 的顯示
+  const [showMoreNews, setShowMoreNews] = useState(false);
+  // 新增 MysteryNews2 的數據狀態
+  const [moreNewsItems, setMoreNewsItems] = useState([]);
 
-  // useEffect 鉤子用於執行副作用，例如數據獲取
+  // useEffect 鉤子用於執行數據獲取
   useEffect(() => {
     // 模擬從 API 獲取主要新聞數據
-    // 在實際應用中，這裡應該是一個 API 調用
     const fetchedNewsItems = [
       {
         mainImage: "../../public/infoEventPage/07poster_banner/banner (17).png",
@@ -96,7 +99,38 @@ const MysteryNews = () => {
       },
     ];
     setScrollNews(fetchedScrollNews);
-  }, []); // 空依賴數組表示這個效果只在組件掛載時運行一次
+    // 空依賴數組表示這個效果只在組件掛載時運行一次
+
+    // 獲取 MysteryNews2 的數據
+    const fetchedMoreNewsItems = [
+      {
+        image: "../../public/infoEventPage/07poster_banner/banner (19).jpg",
+        title: "「夢幻漂布」升級：高級VR互動水舞秀",
+        date: "2024年9月15日",
+        content:
+          "我們邀請了米其林星級主廚，精心打造七道式星際美食。每道菜品都靈感來自不同的星座，不僅美味更富創意。",
+      },
+      {
+        image: "../../public/infoEventPage/07poster_banner/food (13).png",
+        title: "「迷幻酒吧」新品上市：「幻境雞尾酒」系列",
+        content:
+          "全新「幻境雞尾酒」系列，結合獨特香料和視覺效果，帶來味蕾的奇幻旅程。",
+      },
+      {
+        image: "../../public/infoEventPage/03rooms/room (47).png",
+        title: "「夢境咖啡廳」推出「味覺幻象」下午茶",
+        content: "顛覆對食物的認知，每一口都是味蕾的探索和驚喜。",
+      },
+      {
+        image: "../../public/infoEventPage/07poster_banner/banner (17).png",
+        title: "「異域市集」舉辦「星際工藝品展銷會」",
+        date: "2024年9月20日",
+        content:
+          "「異域市集」將舉辦為期一個月的「星際工藝品展銷會」。我們邀請了來自世界各地的藝術家，展示他們以外星文明為靈感創作的工藝品。從奇特的首飾到神秘的雕塑，每件作品都充滿想像力。這是將一件獨特的「外星」紀念品帶回家的絕佳機會！",
+      },
+    ];
+    setMoreNewsItems(fetchedMoreNewsItems);
+  }, []);
 
   const showNextNews = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % newsItems.length);
@@ -108,201 +142,284 @@ const MysteryNews = () => {
     );
   };
 
+  // 切換顯示更多新聞的函數
+  const toggleMoreNews = () => {
+    setShowMoreNews(!showMoreNews);
+  };
+
   const currentNews = newsItems[currentIndex] || {};
   const nextNews = newsItems[(currentIndex + 1) % newsItems.length] || {};
 
   return (
-    <div id="mysteryNews" className="mysteryNews container-fluid">
-      <div className="row sectionTitleRow">
-        <h2 className="sectionTitle col-12">謎樣快報</h2>
-        <div className="sectionTitleLine"></div>
-      </div>
-
-      <div className="row newsContent">
-        {/* 左列 */}
-        <div className="left-column col-lg-4 col-md-6 col-sm-12">
-          <div className="container-fluid p-0">
-            <div className="row box_1">
-              <div className="col-12">
-                <div className="row no-gutters">
-                  <div className="col-6">
-                    <div className=" title">
-                      「深海迷航」虛擬實境體驗正式開放
-                    </div>
-                    <div className="itemA time">2024 / 9 / 15 起</div>
-                    <div className="itemA content">
-                      探索未知海底世界！我們很高興宣布，全新的虛擬實境體驗「深海迷航」將在9月15日正式開放。戴上VR裝置，在神秘的海底洞穴中尋找失落的寶藏，準備好迎接挑戰了嗎？
-                    </div>
-                    <div className="seeMore">看更多+</div>
-                  </div>
-                  <div className="col-6 image-container">
-                    <img
-                      src="../../public/infoEventPage/07poster_banner/banner (15).webp"
-                      alt=""
-                      className="itemA image"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <hr />
-
-            <div className="row box_2">
-              <div className="col-12">
-                <div className="row no-gutters">
-                  <div className="col-6 image-container">
-                    <img
-                      src="../../public/infoEventPage/07poster_banner/food (13).png"
-                      alt=""
-                      className="itemA image2"
-                    />
-                  </div>
-                  <div className="col-6">
-                    <div className="itemA title">
-                      「星空餐廳」即將推出「銀河味蕾之旅」主題晚宴
-                    </div>
-                    <div className="itemA time">2024 / 10 / 1 起</div>
-                    <div className="seeMore">看更多+</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="row box_3">
-              <div className="col-12">
-                <div className="itemA content-2">
-                  「星空餐廳」為您獻上「銀河味蕾之旅」主題晚宴。我們邀請了米其林星級主廚，精心打造七道式星際美食。每道菜品都靈感來自不同的星座，不僅美味更富創意。配合動態星空投影，讓您在品嚐美食的同時，彷彿遨遊宇宙。
-                </div>
-              </div>
-            </div>
-
-            <hr />
-
-            <div className="row box_4">
-              <div className="col-12">
-                <a href="/ticketpage" className="ticketSection">
-                  <img
-                    src="../../public/infoEventPage/00myIcon/ticket.png"
-                    alt="Ticket"
-                    className="ticketIcon"
-                  />
-                  <span className="ticketText">TICKET?</span>
-                </a>
-              </div>
-            </div>
-          </div>
+    <>
+      <div id="mysteryNews" className="mysteryNews container-fluid">
+        <div className="row sectionTitleRow">
+          <h2 className="sectionTitle col-12">謎樣快報</h2>
+          <div className="sectionTitleLine"></div>
         </div>
 
-        {/* 中列 */}
-        <div className="center-column col-lg-5 col-md-6 col-sm-12">
-          <div className="mainContent">
-            <div className="itemA mainImageItem">
-              <img
-                src={currentNews.mainImage}
-                alt={currentNews.title}
-                className="centerImg"
-              />
-            </div>
-            <div className="imageOverlay">
-              <h3 className="title">{currentNews.title}</h3>
-              <div className="itemA time">{currentNews.date}</div>
-              <p>{currentNews.content}</p>
-            </div>
-          </div>
-          <div className="subNews row no-gutters">
-            <div className="col-lg-4 col-md-6 col-sm-6">
-              <div className="itemA imageItem">
-                <img src={nextNews.subImage} alt={nextNews.subTitle} />
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6">
-              <div className="itemA textItem">
-                <h4>下一則頭條</h4>
-                <p>{nextNews.subTitle}</p>
-                <div className="date">{nextNews.subDate}</div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-6">
-              <div className="itemA buttonItem">
-                <button onClick={showPrevNews} className="btn btn-link">
-                  <i className="bi bi-chevron-left"></i>
-                </button>
-                <button onClick={showNextNews} className="btn btn-link">
-                  <i className="bi bi-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 右列 */}
-        <div className="right-column col-lg-3 col-md-12">
-          <div className="container-fluid p-0">
-            <div className="row box_1">
-              <div className="col-12 box1 imageContainer flipCard">
-                <div className="flipCardInner">
-                  <div className="flipCardFront">
-                    <img
-                      src="../../public/infoEventPage//00myIcon/elef.png"
-                      alt="New Performer"
-                      className="mainImage"
-                    />
-                    <h4 className="elefTitle">New Performer?</h4>
-                  </div>
-                  <div className="flipCardBack">
-                    <img
-                      src="https://cdn.midjourney.com/75b848a7-e375-45da-adc9-69ac2be5a0b3/0_0.png"
-                      alt="大象萊利"
-                      className="subImage"
-                    />
-                    <div className="subTitle">大象萊利周五即將到來!</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="scrollable-area">
-              {scrollNews.map((news, index) => (
-                <React.Fragment key={index}>
-                  <div className="news-item">
-                    <div className="news-image image-container">
+        <div className="row newsContent">
+          {/* 左列 */}
+          <div className="left-column col-lg-4 col-md-6 col-sm-12">
+            <div className="container-fluid p-0">
+              <div className="row box_1">
+                <div className="col-12">
+                  <div className="row no-gutters">
+                    <div className="col-6">
+                      <div className=" title">
+                        「深海迷航」虛擬實境體驗正式開放
+                      </div>
+                      <div className="itemA time">2024 / 9 / 15 起</div>
+                      <div className="itemA content">
+                        探索未知海底世界！我們很高興宣布，全新的虛擬實境體驗「深海迷航」將在9月15日正式開放。戴上VR裝置，在神秘的海底洞穴中尋找失落的寶藏，準備好迎接挑戰了嗎？
+                      </div>
+                      <div className="seeMore">看更多+</div>
+                    </div>
+                    <div className="col-6 image-container">
                       <img
-                        src={`../../public/infoEventPage/07poster_banner/banner (${
-                          index + 1
-                        }).webp`}
-                        alt={news.title}
+                        src="../../public/infoEventPage/07poster_banner/banner (15).webp"
+                        alt=""
+                        className="itemA image"
                       />
                     </div>
-                    <div className="news-content">
-                      <h4 className="news-title">{news.title}</h4>
-                      <p className="news-date">{news.date}</p>
-                      <p className="news-excerpt">{news.content}</p>
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
+              <div className="row box_2">
+                <div className="col-12">
+                  <div className="row no-gutters">
+                    <div className="col-6 image-container">
+                      <img
+                        src="../../public/infoEventPage/07poster_banner/food (13).png"
+                        alt=""
+                        className="itemA image2"
+                      />
+                    </div>
+                    <div className="col-6">
+                      <div className="itemA title">
+                        「星空餐廳」即將推出「銀河味蕾之旅」主題晚宴
+                      </div>
+                      <div className="itemA time">2024 / 10 / 1 起</div>
+                      <div className="seeMore">看更多+</div>
                     </div>
                   </div>
-                  {index < scrollNews.length - 1 && <hr />}
-                </React.Fragment>
-              ))}
+                </div>
+              </div>
+
+              <div className="row box_3">
+                <div className="col-12">
+                  <div className="itemA content-2">
+                    「星空餐廳」為您獻上「銀河味蕾之旅」主題晚宴。我們邀請了米其林星級主廚，精心打造七道式星際美食。每道菜品都靈感來自不同的星座，不僅美味更富創意。配合動態星空投影，讓您在品嚐美食的同時，彷彿遨遊宇宙。
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
+              <div className="row box_4">
+                <div className="col-12">
+                  <a href="/ticketpage" className="ticketSection">
+                    <img
+                      src="../../public/infoEventPage/00myIcon/ticket.png"
+                      alt="Ticket"
+                      className="ticketIcon"
+                    />
+                    <span className="ticketText">TICKET?</span>
+                  </a>
+                </div>
+              </div>
             </div>
-            <hr />
-            <div className="row box_5">
-              <div className="col-12 p-0 video-container">
-                <iframe
-                  className="mainVideo"
-                  src="https://www.youtube.com/embed/rB83mJBxImQ?si=O5305rqN8kifcS8v&autoplay=1&mute=1&loop=1&playlist=rB83mJBxImQ"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
+          </div>
+
+          {/* 中列 */}
+          <div className="center-column col-lg-5 col-md-6 col-sm-12">
+            <div className="mainContent">
+              <div className="itemA mainImageItem">
+                <img
+                  src={currentNews.mainImage}
+                  alt={currentNews.title}
+                  className="centerImg"
+                />
+              </div>
+              <div className="imageOverlay">
+                <h3 className="title">{currentNews.title}</h3>
+                <div className="itemA time">{currentNews.date}</div>
+                <p>{currentNews.content}</p>
+              </div>
+            </div>
+            <div className="subNews row no-gutters">
+              <div className="col-lg-4 col-md-6 col-sm-6">
+                <div className="itemA imageItem">
+                  <img src={nextNews.subImage} alt={nextNews.subTitle} />
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6 col-sm-6">
+                <div className="itemA textItem">
+                  <h4>下一則頭條</h4>
+                  <p>{nextNews.subTitle}</p>
+                  <div className="date">{nextNews.subDate}</div>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6 col-sm-6">
+                <div className="itemA buttonItem">
+                  <button onClick={showPrevNews} className="btn btn-link">
+                    <i className="bi bi-chevron-left"></i>
+                  </button>
+                  <button onClick={showNextNews} className="btn btn-link">
+                    <i className="bi bi-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 右列 */}
+          <div className="right-column col-lg-3 col-md-12">
+            <div className="container-fluid p-0">
+              <div className="row box_1">
+                <div className="col-12 box1 imageContainer flipCard">
+                  <div className="flipCardInner">
+                    <div className="flipCardFront">
+                      <img
+                        src="../../public/infoEventPage//00myIcon/elef.png"
+                        alt="New Performer"
+                        className="mainImage"
+                      />
+                      <h4 className="elefTitle">New Performer?</h4>
+                    </div>
+                    <div className="flipCardBack">
+                      <img
+                        src="https://cdn.midjourney.com/75b848a7-e375-45da-adc9-69ac2be5a0b3/0_0.png"
+                        alt="大象萊利"
+                        className="subImage"
+                      />
+                      <div className="subTitle">大象萊利周五即將到來!</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div className="scrollable-area">
+                {scrollNews.map((news, index) => (
+                  <React.Fragment key={index}>
+                    <div className="news-item">
+                      <div className="news-image image-container">
+                        <img
+                          src={`../../public/infoEventPage/07poster_banner/banner (${
+                            index + 1
+                          }).webp`}
+                          alt={news.title}
+                        />
+                      </div>
+                      <div className="news-content">
+                        <h4 className="news-title">{news.title}</h4>
+                        <p className="news-date">{news.date}</p>
+                        <p className="news-excerpt">{news.content}</p>
+                      </div>
+                    </div>
+                    {index < scrollNews.length - 1 && <hr />}
+                  </React.Fragment>
+                ))}
+              </div>
+              <hr />
+              <div className="row box_5">
+                <div className="col-12 p-0 video-container">
+                  <iframe
+                    className="mainVideo"
+                    src="https://www.youtube.com/embed/rB83mJBxImQ?si=O5305rqN8kifcS8v&autoplay=1&mute=1&loop=1&playlist=rB83mJBxImQ"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="more-section">看更多 &gt;</div>
-    </div>
+      {/* <img
+        className="testimg"
+        src="../../public/infoEventPage/07poster_banner/banner (19).jpg"
+        alt=""
+      /> */}
+      {/* MysteryNews2 內容 */}
+      {showMoreNews && (
+        <div className="mysteryNews2">
+          <div className="row">
+            <div className="col-lg-5 col-md-5 col-sm-12 leftColumn">
+              <div className="topNews">
+                <img
+                  src="../../public/infoEventPage/07poster_banner/food (12).png"
+                  alt="迷幻酒吧"
+                />
+                <div className="content">
+                  <h3>
+                    「迷幻酒吧」新品上市：
+                    <br />
+                    「幻境雞尾酒」系列
+                  </h3>
+                </div>
+              </div>
+              <div className="bottomNews">
+                <img
+                  src="../../public/infoEventPage/07poster_banner/food (14).png"
+                  alt="夢境咖啡廳"
+                />
+                <div className="content">
+                  <h3>
+                    「夢境咖啡廳」推出:
+                    <br />
+                    「味覺幻象」下午茶
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-7 col-md-7 col-sm-12 rightColumn">
+              <div className="topSection d-none d-lg-flex">
+                <div className="infoBlock">
+                  <h2 className="title">夢幻瀑布大升級!VR互動水舞現正熱映</h2>
+                  <p className="time">2024 / 9 / 15 起</p>
+                  <button className="btnMore">看更多 +</button>
+                </div>
+                <div className="descriptionBlock">
+                  <p>
+                    「夢幻瀑布」全新升級，推出互動水舞秀！遊客可以通過特製的感應裝置，控制瀑布的水流方向和燈光效果。您的動作將直接影響水舞的節奏和形態，創造出獨一無二的視覺饗宴。來體驗成為水舞大師的樂趣吧！
+                  </p>
+                </div>
+                <div className="imageBlock  col-lg-8">
+                  <img
+                    src="../../public/infoEventPage/07poster_banner/facilities (61).png"
+                    alt="星際美食"
+                  />
+                </div>
+              </div>
+              <div className="mainNews">
+                <div className="imageContainer">
+                  <img
+                    src="../../public/infoEventPage/07poster_banner/food (93).png"
+                    alt="異域市集"
+                  />
+                </div>
+                <div className="content">
+                  <h2>異域市集舉辦「星際工藝品展銷會」</h2>
+                  <p className="date">2024 / 9 / 15 - 10 /15</p>
+                  <p className="description">
+                    異域市集將舉辦為期一個月的「星際工藝品展銷會」。我們邀請了來自世界各地的藝術家，展示他們以外星文明為靈感創作的工藝品。從奇特的首飾到神秘的雕塑，每件作品都充滿想像力。這是將一件獨特的「外星」紀念品帶回家的絕佳機會！
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="more-section" onClick={toggleMoreNews}>
+        {showMoreNews ? "收起來" : "查看更多"} &gt;
+      </div>
+    </>
   );
 };
 

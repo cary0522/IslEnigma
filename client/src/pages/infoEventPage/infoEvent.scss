@@ -548,7 +548,7 @@ body {
       // height: 100vh;
       // margin-top: 50px;
       .box_1 {
-        display: none;
+        // display: none;
       }
     }
 
@@ -558,7 +558,7 @@ body {
     }
 
     .box_1 {
-      height: auto;
+      // height: auto;
     }
 
     .scrollable-area {
@@ -790,7 +790,22 @@ body {
           max-width: 50%;
           z-index: 1; // 確保標題在大象上方
         }
+        @include responsive(small) {
+          .elefTitle {
+            position: absolute;
+            font-size: 4rem;
+            color: white;
+            right: 60px;
+            bottom: 5px;
+            max-width: 50%;
+            z-index: 1; // 確保標題在大象上方
+          }
 
+          .mainImage {
+            max-width: 18%;
+            left: -200px;
+          }
+        }
         @include responsive(mobile) {
           .elefTitle {
             position: absolute;
@@ -883,28 +898,6 @@ body {
     }
   }
 
-  .more-section {
-    background: linear-gradient(to right, #3a77b0, #6b5b95);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
-    font-weight: 800;
-    width: 30%;
-    border-radius: 50px;
-    border: none;
-    font-size: 1.2rem;
-    padding: 20px 25px;
-    cursor: pointer;
-    transition: 0.3s ease;
-
-    span {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-  }
-
   .title,
   .news-title,
   .imageOverlay h3 {
@@ -943,17 +936,26 @@ body {
 
   // 做新聞區塊整體的響應
   @include responsive(large) {
-    padding: 50px 100px;
+    padding: 20px 100px;
+    padding-bottom: 0;
   }
   @include responsive(medium) {
     padding: 40px 80px;
+    padding-bottom: 0;
   }
   @include responsive(small) {
     padding: 30px 50px;
+    padding-bottom: 0;
+    margin-top: 30px;
+
+    // .right-column {
+    //   height: 100px;
+    // }
   }
   @include responsive(mobile) {
     padding: 20px 20px;
     margin-top: 50px;
+    padding-bottom: 0;
 
     .sectionTitle {
       font-size: 20px;
@@ -1052,6 +1054,30 @@ body {
     transition: all 0.3s ease;
   }
 }
+
+.more-section {
+  background: linear-gradient(to right, #3a77b0, #6b5b95);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  font-weight: 800;
+  width: 30%;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.2rem;
+  padding: 20px 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 30px;
+
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
 //看更多按鈕
 .more-section {
   transition: all 0.3s ease;
@@ -1562,5 +1588,321 @@ body {
 
   .description-column {
     display: none;
+  }
+}
+
+.testimg {
+  width: 100%;
+  height: 100%;
+}
+
+//====================
+.mysteryNews2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // margin-top: 100px;
+  background-color: #fffdf8;
+  padding: 0 100px;
+
+  // 做新聞區塊2整體的響應
+  @include responsive(large) {
+    padding: 20px 100px;
+  }
+  @include responsive(medium) {
+    padding: 40px 80px;
+  }
+  @include responsive(small) {
+    padding: 30px 50px;
+  }
+  @include responsive(mobile) {
+    padding: 20px 20px;
+    margin-top: 50px;
+  }
+
+  .row {
+    margin: 0;
+    height: 80vh;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    height: 100%;
+    padding: 0 10px;
+  }
+
+  .leftColumn {
+    .topNews,
+    .bottomNews {
+      position: relative;
+      height: 48%;
+      margin-bottom: 4%;
+      border-radius: 15px;
+      overflow: hidden;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .content {
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 0.5rem 1.5rem;
+
+        h3 {
+          margin: 0;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+
+    .topSection {
+      height: 28%;
+      margin-bottom: 1%;
+      display: flex;
+
+      .infoBlock,
+      .descriptionBlock,
+      .imageBlock {
+        padding: 10px;
+        background: white;
+        border-radius: 15px;
+        margin-right: 1%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      .infoBlock {
+        flex: 1.2;
+
+        .title {
+          font-size: 1.3rem;
+          margin-bottom: 5px;
+          color: #2c5d8f;
+        }
+
+        p {
+          font-size: 0.9rem;
+          margin-bottom: 10px;
+          color: #333;
+          text-align: start;
+        }
+
+        .title {
+          font-weight: bold;
+          line-height: 1.6rem;
+        }
+
+        .time {
+          font-size: 1rem;
+          font-weight: 800;
+          text-align: left;
+          margin: 0;
+          color: #2c5d8f;
+        }
+
+        .btnMore {
+          background: linear-gradient(to right, #3a77b0, #6b5b95);
+          border: none;
+          border-radius: 20px;
+          padding: 10px 15px;
+          color: white;
+          align-self: flex-start;
+          margin-top: auto;
+          transition: 0.3s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .descriptionBlock {
+        flex: 1.5;
+
+        p {
+          font-size: 0.95rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #2c5d8f;
+          font-weight: 600;
+          line-height: 1.3;
+          display: -webkit-box;
+          -webkit-line-clamp: 7;
+          -webkit-box-orient: vertical;
+        }
+      }
+
+      .imageBlock {
+        flex: 1.7;
+        overflow: hidden;
+        transition: 0.3s;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+          overflow: hidden;
+          transition: 0.3s;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    .mainNews {
+      border: #2c5d8f solid 1px;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 15px;
+      overflow: hidden;
+
+      .imageContainer {
+        height: 60%;
+        width: 100%;
+        border-radius: 30px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 30px;
+          transition: 0.3s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .content {
+        height: 40%;
+        padding: 15px;
+        background: white;
+        // overflow-y: auto;
+        overflow: hidden;
+
+        h2 {
+          font-size: 1.5rem;
+          color: #2c5d8f;
+          margin-bottom: 5px;
+          font-weight: 800;
+        }
+
+        .date {
+          font-size: 1rem;
+          color: #666;
+          margin: 20px 10px;
+          font-size: 1rem;
+          font-weight: 800;
+          text-align: left;
+          margin: 0;
+        }
+
+        .description {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: #2c5d8f;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+}
+@include responsive(small) {
+  .mainNews {
+    height: 100%;
+  }
+}
+
+// 響應式調整
+@include responsive(mobile) {
+  .mysteryNews2 {
+    padding: 0 20px;
+
+    .row {
+      height: auto;
+    }
+
+    .leftColumn,
+    .rightColumn {
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .leftColumn {
+      height: 50vh;
+    }
+
+    .rightColumn {
+      .topSection {
+        flex-direction: column;
+        height: auto;
+
+        .infoBlock,
+        .descriptionBlock,
+        .imageBlock {
+          margin-right: 0;
+          margin-bottom: 10px;
+          height: auto;
+        }
+      }
+
+      .mainNews {
+        padding: 15px;
+
+        .imageContainer {
+          height: 180px;
+          width: 100%;
+        }
+
+        .content {
+          height: auto;
+
+          h2 {
+            font-size: 1.4rem;
+          }
+          .date {
+            margin: 10px 0px;
+          }
+          .description {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
   }
 }
