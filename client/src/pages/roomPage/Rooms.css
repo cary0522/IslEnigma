@@ -58,7 +58,7 @@ body {
   top: 50px;
   height: 100vh;
   overflow: hidden;
-  background-image: url("./public/03rooms/room (49).png");
+  background-image: url("/03rooms/room (49).png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
@@ -360,7 +360,6 @@ body {
 }
 
 .quickModal {
-  display: none;
   position: fixed;
   z-index: 1000;
   right: 5%;

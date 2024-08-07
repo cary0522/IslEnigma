@@ -14,7 +14,6 @@ const FeatureModal = ({ modal, setModal, modalData }) => {
     tags,
   } = modalData
 
-  console.log(modalData)
   return (
     <div
       id="featureModal"
