@@ -13,9 +13,12 @@ getOrder: async (req, res) => {
     res.status(400).json({ error: 'No order' });
   }
 },
-getPayMethod: async (req, res) => {},
+getPayMethod: async (req, res) => {
+  
+},
 postPayMethod: async (req, res) => {},
 postMemberInfo: async (req, res) => {},
 changePassword: async (req, res) => {},
   
 };
+module.exports = memberInfo_controllers;
