@@ -9,7 +9,7 @@ function MapImg() {
 	let [timeBus, setTimeBus] = useState(15);
 
 	useEffect(() => {
-		// 設定倒數遞迴函式，一秒後再次呼叫自己一次，形成在時間大於一之前，會一秒執行一次
+		// 設定倒數遞迴函式，一秒後再次呼叫自己一次，在倒數時間大於一之前，會一秒執行一次
 		const countdown = ((t,callback)=>{
 			if(t > 0 ){
 				callback(t-1)
@@ -22,7 +22,7 @@ function MapImg() {
 			countdown(timeBus, setTimeBus)
 		}, 1000)
 	},[])
-	// 設定顯示內容函式，若時間大於零，Ｆ轉換為分：秒形式
+	// 設定顯示內容函式，若時間大於零，轉換為分：秒形式
 	function makeTimeString (time) {
 		if(time == 0)
 			return '即將到站'
