@@ -18,7 +18,7 @@ const MiddleBox = () => {
           <a href="/restaurantpage">飲食購物</a>
         </ul>
         <ul>
-          <a href="">交通資訊</a>
+          <a href="/boatpage">交通資訊</a>
         </ul>
         <ul>
           <a href="">關於我們</a>
@@ -44,7 +44,7 @@ const MiddleBox = () => {
             <a href="/restaurantpage">飲食購物</a>
           </ul>
           <ul>
-            <a href="">交通資訊</a>
+            <a href="/boatpage">交通資訊</a>
           </ul>
           <ul>
             <a href="">關於我們</a>

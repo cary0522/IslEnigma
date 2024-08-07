@@ -42,6 +42,23 @@ function FacilityContent({
 					}
 				});
 
+				let [moreAbout, setMoreAbout] = useState([]);
+				let getMoreAbout = () => {
+					axios
+						.post("http://localhost:3000/moreAbout", {
+							facility_id: facility.id,
+						})
+						.then((response) => {
+							setMoreAbout(response.data.more_link);
+						});
+				};
+				useEffect(() => {
+					let fetchAboutData = async () => {
+						await getMoreAbout();
+					};
+					fetchAboutData();
+				}, []);
+
 				return (
 					<div className="divContent col-10">
 						<div className="divContentItem">
@@ -83,7 +100,7 @@ function FacilityContent({
 									備註說明 | <span>{facility.remarks}</span>
 								</p>
 							</div>
-							<ShopMore shop_more={facility.shop_more} />
+							<ShopMore shop_more={moreAbout} />
 						</div>
 						<div
 							id="btnXContent"

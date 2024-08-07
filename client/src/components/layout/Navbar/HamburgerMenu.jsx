@@ -71,7 +71,7 @@ const HamburgerMenu = ({
         <a href="/restaurantpage">
           <Icon.Cart3 /> <span>飲食購物</span> <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/boatpage">
           <Icon.CarFront />
           <span> 交通資訊</span> <span>&gt;</span>
         </a>

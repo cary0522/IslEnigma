@@ -43,7 +43,7 @@ const Nav = ({ toggleNavbar }) => {
             </a>
           </li>
           <li className="navItem traffic">
-            <a href="#">
+            <a href="/boatpage">
               <img src="/00myIcon/traffic-info.png" alt="交通資訊" />
               <p data-text="交通資訊">交通資訊</p>
             </a>
