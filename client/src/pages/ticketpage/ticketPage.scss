@@ -3,6 +3,7 @@
 
 .ticketPage {
 	font-family: "Noto Sans TC", "Arial", sans-serif;
+	box-sizing: content-box;
 	.divAlert {
 		padding: 30px;
 		max-width: 400px;
@@ -20,12 +21,12 @@
 		z-index: 1000;
 		align-items: center;
 		text-align: center;
-		animation: alertShow 0.3s ease-out ;
+		animation: alertShow 0.3s ease-out;
 		@keyframes alertShow {
-			from{
+			from {
 				opacity: 0;
 			}
-			to{
+			to {
 				opacity: 1;
 			}
 		}
@@ -154,7 +155,7 @@
 	}
 	#divBanner {
 		position: relative;
-		img{
+		img {
 			max-width: 100%;
 			object-fit: contain;
 		}
@@ -292,14 +293,6 @@
 						right: 0;
 						z-index: 4;
 						.react-calendar {
-							@keyframes divAnimation {
-								0% {
-									opacity: 0;
-								}
-								100% {
-									opacity: 1;
-								}
-							}
 							animation: divAnimation 0.5s;
 							width: 350px;
 							height: auto;
@@ -308,6 +301,14 @@
 							backdrop-filter: blur($backgroundBlur);
 							border-radius: 20px;
 							padding: 10px;
+							@keyframes divAnimation {
+								0% {
+									opacity: 0;
+								}
+								100% {
+									opacity: 1;
+								}
+							}
 							abbr {
 								text-decoration: none;
 							}
@@ -384,13 +385,13 @@
 				top: 45%;
 				left: 50%;
 				transform: translate(-50%, -50%);
-				.divBookingItem{
+				.divBookingItem {
 					height: 30px;
 				}
-				button{
+				button {
 					font-size: 15px;
-					padding:10px 70px
-				};
+					padding: 10px 70px;
+				}
 			}
 		}
 		.btnDown {
@@ -405,7 +406,7 @@
 			left: 45%;
 			transform: translate(-50%, -50%);
 			animation: btnDown 1s infinite 0.5s;
-			transition: all .3s;
+			transition: all 0.3s;
 			.btnDwnTriangle {
 				position: absolute;
 				bottom: -15%;
@@ -505,7 +506,7 @@
 					justify-content: center;
 					align-items: center;
 					cursor: pointer;
-					img{
+					img {
 						max-width: 100%;
 						object-fit: contain;
 					}

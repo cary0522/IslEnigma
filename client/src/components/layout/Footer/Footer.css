@@ -280,23 +280,46 @@
 
   #footer .MobileFooterNav {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* flex-wrap: wrap; */
     gap: 10px;
-    padding: 20px 50px 10px 50px;
-    transform: scale(1.1);
+    /* padding: 20px 50px 10px 50px; */
+    /* transform: scale(1.1); */
+  }
+
+  #footer .MobileFooterNav>div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  #footer .MobileFooterNav div {
+    flex-wrap: nowrap;
   }
 
   #footer .MobileFooterNav ul {
     border: 1px solid white;
     padding: 10px;
     border-radius: 50px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     text-align: center;
+    flex-wrap: nowrap;
+    flex: 0 1 auto;
+    transition: 0.3s;
+  }
+  #footer .MobileFooterNav ul:hover{
+    background: #ffffff3e;
+    transform: scale(1.1);
   }
 
   #footer .MobileFooterNav ul a {
     color: white;
     transition: 0.3s ease-in-out;
+    flex-wrap: nowrap;
+    padding: 0;
+    font-size: 14px;
   }
 
   #footer .MobileFooterNav ul a:hover {
