@@ -1,10 +1,10 @@
-import * as Icon from "react-bootstrap-icons"
+import * as Icon from "react-bootstrap-icons";
 
-import { FaFacebook } from "react-icons/fa"
-import { BsInstagram } from "react-icons/bs"
-import { TfiYoutube } from "react-icons/tfi"
-import { FaLine } from "react-icons/fa"
-import { IoTicketSharp } from "react-icons/io5"
+import { FaFacebook } from "react-icons/fa";
+import { BsInstagram } from "react-icons/bs";
+import { TfiYoutube } from "react-icons/tfi";
+import { FaLine } from "react-icons/fa";
+import { IoTicketSharp } from "react-icons/io5";
 
 const HamburgerMenu = ({
   toggleHamburgerMenu,
@@ -22,7 +22,7 @@ const HamburgerMenu = ({
           id="closeBtn"
           className="closeBtn"
           onClick={() => {
-            setToggleHamburgerMenu(false)
+            setToggleHamburgerMenu(false);
           }}
         >
           &times;
@@ -79,7 +79,7 @@ const HamburgerMenu = ({
           <Icon.InfoCircle /> <span>關於islEnigma</span>
           <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/infoEventPage">
           <Icon.PatchQuestion />
           <span> 樂園資訊</span> <span>&gt;</span>
         </a>
@@ -107,7 +107,7 @@ const HamburgerMenu = ({
         <IoTicketSharp size={30} />
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default HamburgerMenu
+export default HamburgerMenu;

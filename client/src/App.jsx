@@ -1,16 +1,20 @@
-import { Outlet, Route, Routes, useLocation } from "react-router-dom"
-import "./App.css"
-import Layout from "./components/layout/Layout"
-import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage"
-import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
-import MapPage from './pages/mappage';
-import TicketPage from './pages/ticketpage';
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import "./App.css";
+import Layout from "./components/layout/Layout";
+import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage";
+import CheckOutPage from "./pages/checkoutPage/CheckOutPage";
+import MapPage from "./pages/mappage";
+import TicketPage from "./pages/ticketpage";
 import RestaurantPage from "./pages/restaurantpage"
 import BoatPage from './pages/boatpage'
+import InfoEventPage from "./pages/infoEventPage";
+import InfoInfoPage from "./pages/infoInfoPage";
+import InfoFAQPage from "./pages/infoFAQPage";
+import RoomMorePage from "./pages/roomMorePage";
 
-import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
-import CartLayout from "./components/layout/CartLayout"
-import Hello from "./Hello"
+import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage";
+import CartLayout from "./components/layout/CartLayout";
+import Hello from "./Hello";
 
 function App() {
   return (
@@ -25,9 +29,15 @@ function App() {
         <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
         <Route path="/boatpage" element={< BoatPage />} />
+        <Route path="/infoEventPage" element={<InfoEventPage />} />
+        <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />
+        <Route path="/infoEvent/infoFAQPage" element={<InfoFAQPage />} />
+
+        {/* <Route path="/roomPage" element={< RoomPage />}/> */}
+        <Route path="/room/roomMorePage" element={<RoomMorePage />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
 export default App;
