@@ -76,7 +76,7 @@ function BookingArea({
 					];
 				}
 				axios
-					.post("http://localhost:3000/addTicketItem", cart)
+					.post("http://localhost:3001/ticket/addTicketItem", cart)
 					.then((response) => {
 						console.log(response);
 					});
@@ -91,7 +91,7 @@ function BookingArea({
 
 	return (
 		<div className="bookingArea">
-			<div className="divBookingItem container">
+			<div className="divBookingItem">
 				<div className="col-6">
 					<p>日期</p>
 				</div>

@@ -34,7 +34,7 @@ function Map({ isSticky }) {
 	// 從資料庫抓設施資料
 	let [facilityList, setFacilityList] = useState([]);
 	let getFacilityList = async () => {
-		let result = await axios.get("http://localhost:3000/mapPage");
+		let result = await axios.get("http://localhost:3001/map/mapPage");
 		setFacilityList(result.data);
 	};
 	useEffect(() => {
@@ -991,7 +991,7 @@ function Map({ isSticky }) {
 
 					<img src={map} alt="map" id="imgInteractiveMap"></img>
 					{mapArea.map((area) => {
-						return <MapArea area={area} />;
+						return <MapArea area={area} key={area.nameId}/>;
 					})}
 
 					{facilityList.map((facility) => {
@@ -1000,7 +1000,7 @@ function Map({ isSticky }) {
 								facility={facility}
 								refList={refList}
 								componentList={componentList}
-								key={facility.id}
+								key={facility.facility_id}
 								handleDes={handleDes}
 								handleContent={handleContent}
 							/>
