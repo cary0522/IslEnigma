@@ -78,7 +78,6 @@
   font-size: 14px;
 }
 .chatBotInput button {
-  background-color: #007e9e;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -114,10 +113,15 @@
   gap: 5px;
   margin-top: 10px;
 }
+
+#chatBotContainer .optionsContainer button {
+  background-color: #f0f0f0;
+  color: #007e9e;
+}
+
 .optionButton {
   background-color: #f0f0f0;
   border: 1px solid #007e9e;
-  color: #007e9e;
   padding: 5px 10px;
   border-radius: 15px;
   cursor: pointer;
