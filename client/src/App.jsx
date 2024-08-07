@@ -1,4 +1,5 @@
 import { Outlet, Route, Routes, useLocation } from "react-router-dom"
+
 import "./App.css"
 import Layout from "./components/layout/Layout"
 import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage"
