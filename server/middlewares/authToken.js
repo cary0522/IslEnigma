@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: '../.env' });
 const authMiddleware = {
   verifyToken: (req, res, next) => {
-    const token = req.cookies.token;
+    const token = req.cookies.JWTToken;
     const secretKey=process.env.JWT_SECRET;
     if (!token) {
       return res.status(401).json({ error: 'No token' });

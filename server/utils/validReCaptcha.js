@@ -2,7 +2,9 @@ const axios = require('axios');
 require('dotenv').config({ path: '../.env' });
 const validReCaptcha = {
   valid: async function(token) {
+    console.log('reCAPTCHA token:', token);
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    console.log('reCAPTCHA secret key:', secretKey);
     const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
     try {
       const response = await axios.post(verifyUrl);

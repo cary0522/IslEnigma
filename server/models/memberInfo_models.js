@@ -12,11 +12,9 @@ const memberInfo_Model = {
             status:"PAID'",
           }
         });
-
         if (orders.length === 0) {
           return [];
         }
-
         const orderData = await Promise.all(
           orders.map(async (order) => {
             const items = await prisma.order_detail.findMany({

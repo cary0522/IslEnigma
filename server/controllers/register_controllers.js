@@ -13,9 +13,9 @@ const register_controllers = {
         });;
       }
       const createMember = await register_Model.create(memberData);
-
       if (createMember) {
         res.status(201).send('Member created');
+        console.log('Member created');
       } else {
         res.status(400).json({error: '帳號註冊失敗，請洽系統管理員'});
       }

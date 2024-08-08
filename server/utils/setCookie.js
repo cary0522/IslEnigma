@@ -3,7 +3,7 @@ const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000;
 
 const cookieHelpers = {
   setAuthCookie: (res, token) => {
-    res.cookie('token', token, {
+    res.cookie('JWTToken', token, {
       httpOnly: true,
       secure: true,
       sameSite: 'None',
