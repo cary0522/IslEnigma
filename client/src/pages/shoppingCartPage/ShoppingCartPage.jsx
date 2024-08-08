@@ -6,10 +6,15 @@ import useCartStore from "../../zustand/cartStore"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 
+import { fetchCartItem } from "../../hooks/useCartItem"
+import { useCartItemsData } from "../../hooks/useCartItem"
+
 // eslint-disable-next-line react/prop-types
 
 const ShoppingCartPage = () => {
-  const { cartItems, loading, fetchCartData, setCartItems } = useCartStore()
+  const { data, error, isLoading } = useCartItemsData()
+
+  // const { cartItems, loading, fetchCartData, setCartItems } = useCartStore()
   const [ticketQuantity, setTicketQuantity] = useState(1)
 
   const location = useLocation()
@@ -17,17 +22,17 @@ const ShoppingCartPage = () => {
     await axios.delete(`http://localhost:3001/cart/${itemId}`)
   }
 
-  useEffect(() => {
-    fetchCartData()
-  }, [location.pathname, cartItems])
+  // useEffect(() => {
+  //   fetchCartData()
+  // }, [location.pathname, cartItems])
 
-  console.log(cartItems)
+  // console.log(cartItems)
+  if (isLoading) return <p>Loading...</p>
 
-  if (loading) return <p>Loading...</p>
   return (
     <div className="shoppingCart">
       <div className="itemList">
-        {cartItems.map((item) => {
+        {data.map((item) => {
           return (
             <Item
               itemId={item.order_item_id}
@@ -47,7 +52,7 @@ const ShoppingCartPage = () => {
           )
         })}
       </div>
-      <TotalPrice cartItems={cartItems} ticketQuantity={ticketQuantity} />
+      <TotalPrice cartItems={data} ticketQuantity={ticketQuantity} />
     </div>
   )
 }

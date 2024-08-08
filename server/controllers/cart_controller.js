@@ -1,3 +1,6 @@
+const { PrismaClient } = require("@prisma/client")
+const prisma = new PrismaClient()
+
 const cart_controller = {
   get_cart_items: async (req, res) => {
     const shoppingCartWithItems = await prisma.customer_order.findFirst({
@@ -14,7 +17,7 @@ const cart_controller = {
         },
       },
     })
-    res.status(200).json(shoppingCartWithItems)
+    res.status(200).json(shoppingCartWithItems.order_item)
   },
 
   new_order: async (req, res) => {
@@ -40,6 +43,7 @@ const cart_controller = {
     res.json("good")
   },
   update_item_quantity: async (req, res) => {
+    console.log(123)
     const { quantity } = req.body
 
     const itemId = req.params.id

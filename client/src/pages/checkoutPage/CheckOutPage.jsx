@@ -6,6 +6,7 @@ import CheckTotal from "./CheckOutTotal"
 import CheckOutTotal from "./CheckOutTotal"
 import axios from "axios"
 import { Form, useLocation, useNavigate } from "react-router-dom"
+import { useCartItemsData } from "../../hooks/useCartItem"
 
 const CheckOutPage = () => {
   const [orderInfo, setOrderInfo] = useState({
@@ -16,13 +17,16 @@ const CheckOutPage = () => {
   })
 
   const navigate = useNavigate()
-  const { cartItems, loading, fetchCartData, setCartItems } = useCartStore()
-  const location = useLocation()
-  useEffect(() => {
-    fetchCartData()
-  }, [location.pathname])
+  // const { cartItems, loading, fetchCartData, setCartItems } = useCartStore()
+  const { data, error, isLoading } = useCartItemsData()
 
-  console.log(cartItems)
+  const location = useLocation()
+  // useEffect(() => {
+  //   fetchCartData()
+  // }, [location.pathname])
+  if (isLoading) return <p>Loading...</p>
+
+  console.log(data)
 
   const handlePayment = async () => {
     localStorage.setItem("order-info", {
@@ -114,10 +118,10 @@ const CheckOutPage = () => {
         </form>
       </div>
       <div className="priceContainer">
-        {cartItems.map((item) => {
+        {data.map((item) => {
           return <PriceItem cartItems={item} />
         })}
-        <CheckOutTotal cartItems={cartItems} />
+        <CheckOutTotal cartItems={data} />
         <button onClick={handlePayment}>前往付款頁面</button>
       </div>
     </div>

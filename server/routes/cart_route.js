@@ -2,20 +2,21 @@ const express = require("express")
 const router = express.Router()
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
-
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
+
+//controller
 const { cart_controller } = require("../controllers/cart_controller")
+const { get_cart_items, new_order, update_item_quantity } = cart_controller
 
-//到資料庫查找購物車
-
-router.get("/", cart_controller.get_cart_items)
+//購物車商品
+router.get("/", get_cart_items)
 
 //新增訂單
-router.post("/", cart_controller.new_order)
+router.post("/", new_order)
 
 //更新商品數量
-router.put("/:id")
-router.delete("/:id", cart_controller.update_item_quantity)
+router.put("/:id", update_item_quantity)
+router.delete("/:id", update_item_quantity)
 
 router.post("/create-checkout-session", async (req, res) => {
   const cartItems = req.body
