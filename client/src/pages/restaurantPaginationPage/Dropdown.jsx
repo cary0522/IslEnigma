@@ -1,7 +1,15 @@
-function Dropdown({restaurants}) {
+function Dropdown({ restaurants, loadRestaurantData }) {
 	return (
 		<div className="dropdown ">
-			<select onchange="loadRestaurantData(this.value)">
+			<select
+				onChange={(e) => {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth",
+					});
+					loadRestaurantData(e.target.value);
+				}}
+			>
 				<option value="1">星空餐廳</option>
 				<option value="2">夢境咖啡廳</option>
 				<option value="3">海洋珍饌</option>

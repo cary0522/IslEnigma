@@ -1,25 +1,32 @@
-import {Swiper , SwiperSlide} from 'swiper/react'
-import {Pagination} from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/pagination'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay ,Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
-import image1 from '/public/resraurant/Starlit Bistro.png'
-import image2 from '/public/resraurant/Starlit Bistro food.png'
-import image3 from '/public/resraurant/Starlit Bistro food 2.png'
+function MainContent({image1,image2,image3}) {
+	const pagination = { clickable: true };
 
-function MainContent({images}) {
 	return (
 		<div className="divCarouse">
 			<div className="carouselContainer">
 				<div className="carousel" id="restaurantCarousel">
-					<img src="/public/resraurant/Starlit Bistro.png" />
-					<img src="/public/resraurant/Starlit Bistro food.png" />
-					<img src="/public/resraurant/Starlit Bistro food 2.png" />
-				</div>
-				<div>
-					<span className="dot" onclick="currentSlide(0)"></span>
-					<span className="dot" onclick="currentSlide(1)"></span>
-					<span className="dot" onclick="currentSlide(2)"></span>
+					<Swiper
+						pagination={pagination}
+						modules={[Pagination,Autoplay,Navigation]}
+						loop={true}
+						autoplay={{ delay: 3000, disableOnInteraction: false }}
+					>
+						<SwiperSlide>
+							<img src={image1} alt="" />
+						</SwiperSlide>
+						<SwiperSlide>
+							<img src={image2} alt="" />
+						</SwiperSlide>
+						<SwiperSlide>
+							<img src={image3} alt="" />
+						</SwiperSlide>
+					</Swiper>
 				</div>
 			</div>
 		</div>
