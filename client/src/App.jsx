@@ -11,6 +11,7 @@ import InfoEventPage from "./pages/infoEventPage";
 import InfoInfoPage from "./pages/infoInfoPage";
 import InfoFAQPage from "./pages/infoFAQPage";
 import RoomMorePage from "./pages/roomMorePage";
+import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage";
 import CartLayout from "./components/layout/CartLayout";
@@ -28,6 +29,7 @@ function App() {
         <Route path="/mappage" element={< MapPage />} />
         <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
+        <Route path="/restaurantpage/pagination" element={< RestaurantPaginationPage />} />
         <Route path="/boatpage" element={< BoatPage />} />
         <Route path="/infoEventPage" element={<InfoEventPage />} />
         <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />

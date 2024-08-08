@@ -3,7 +3,6 @@
 
 .mapPage {
 	font-family: "Noto Sans TC", "Arial", sans-serif;
-	box-sizing: content-box;
 	.logoArea {
 		margin-top: 150px;
 		width: 100%;
@@ -45,6 +44,7 @@
 		width: 100vw;
 		height: 90vh;
 		overflow: auto;
+		scrollbar-width: none;
 		// 定位用容器，要跟著圖片一起放大才不會影響圖釘定位
 		#divInteractiveMap {
 			position: relative;
@@ -67,6 +67,7 @@
 				z-index: 500;
 			}
 			.areaName {
+				box-sizing: content-box;
 				border: 2px dashed $colorText;
 				color: $colorText;
 				border-radius: 20px;
@@ -139,6 +140,7 @@
 				left: 19.7%;
 			}
 			.divDes {
+				box-sizing: content-box;
 				animation: desAnimation 0.3s;
 				width: 270px;
 				border-radius: 20px;
@@ -446,6 +448,7 @@
 	}
 	// 詳細介紹區塊樣式
 	.divContent {
+		box-sizing: content-box;
 		animation: divOpacity 0.5s forwards;
 		height: 70%;
 		border-radius: 20px;
@@ -472,8 +475,15 @@
 			}
 		}
 		.divContentItem {
+			box-sizing: content-box;
 			width: 50%;
 			margin: 10px auto;
+			.divOtherRules{
+				padding: 0 0 10px 0;
+			}
+			div{
+				box-sizing: content-box;
+			}
 			button {
 				font-size: 15px;
 				background-color: $colorText;
@@ -496,6 +506,7 @@
 			font-size: 2rem;
 			font-weight: 500;
 			margin: 10px;
+			box-sizing: content-box;
 		}
 		p {
 			color: $colorText;
@@ -504,6 +515,7 @@
 			letter-spacing: 2.5px;
 			line-height: 25px;
 			font-size: 1rem;
+			box-sizing: content-box;
 		}
 		#btnXContent {
 			position: absolute;

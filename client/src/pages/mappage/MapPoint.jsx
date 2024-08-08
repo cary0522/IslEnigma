@@ -6,7 +6,7 @@ function MapPoint({ facility, refList, componentList, handleDes }) {
 			<div
 				className="svgContainer"
 				onClick={(e) => {
-					handleDes(e, facility.id);
+					handleDes(e, facility.facility_id);
 				}}
 				ref={refList[facility.facility_class_name]}
 			>

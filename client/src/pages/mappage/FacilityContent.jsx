@@ -12,12 +12,12 @@ function FacilityContent({
 }) {
 	if (contentShow) {
 		for (let facility of facilityList) {
-			if (facility.id == contentId) {
+			if (facility.facility_id == contentId) {
 				// 從資料庫抓設施規定資料
 				let [ruleList, setRuleList] = useState([]);
 				let getRuleList = () => {
 					axios
-						.post("http://localhost:3000/mapPage", { facility_id: facility.id })
+						.post("http://localhost:3001/map/mapPage", { facility_id: facility.facility_id })
 						.then((response) => {
 							setRuleList(response.data);
 						});
@@ -42,14 +42,18 @@ function FacilityContent({
 					}
 				});
 
-				let [moreAbout, setMoreAbout] = useState([]);
+				let [moreAbout, setMoreAbout] = useState(null);
 				let getMoreAbout = () => {
 					axios
-						.post("http://localhost:3000/moreAbout", {
-							facility_id: facility.id,
+						.post("http://localhost:3001/map/moreAbout", {
+							facility_id: facility.facility_id,
 						})
 						.then((response) => {
-							setMoreAbout(response.data.more_link);
+							if(response.data){
+								setMoreAbout(response.data.more_link);
+							}else{
+								setMoreAbout(null)
+							}
 						});
 				};
 				useEffect(() => {
@@ -86,7 +90,7 @@ function FacilityContent({
 								/>
 							</div>
 							<p>{facility.content}</p>
-							<div>
+							<div className="divOtherRules">
 								<p>
 									設施位置 | <span>{facility.location}</span>
 								</p>

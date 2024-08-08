@@ -29,7 +29,7 @@ model customer_order {
 }
 
 model event {
-  event_id     String    @id @db.VarChar(255)
+  event_id     Int       @id @default(autoincrement())
   type         String    @db.VarChar(100)
   title        String    @db.VarChar(255)
   content      String?
@@ -42,25 +42,28 @@ model event {
 }
 
 model facility {
-  facility_id     String            @id @db.VarChar(255)
-  title           String            @db.VarChar(255)
-  image           Json?
-  category        String            @db.VarChar(255)
-  des             String?
-  content         String?
-  area            String            @db.VarChar(255)
-  location        String            @db.VarChar(255)
-  open_time       String?           @db.VarChar(255)
-  data_maintain   DateTime?         @db.Date
-  class_name      String?           @db.VarChar(255)
-  remarks         String?
-  facility_rule   facility_rule[]
-  restaurant_menu restaurant_menu[]
+  facility_id         Int               @id @default(autoincrement())
+  title               String            @db.VarChar(255)
+  image               Json?
+  category            String            @db.VarChar(255)
+  des                 String?
+  content             String?
+  area                Int
+  location            String            @db.VarChar(255)
+  open_time           String?           @db.VarChar(255)
+  data_maintain       String?           @db.VarChar(255)
+  facility_id_name    String            @db.VarChar(255)
+  facility_class_name String            @db.VarChar(255)
+  rule_others         String            @db.VarChar(255)
+  remarks             String?
+  facility_rule       facility_rule[]
+  restaurant_menu     restaurant_menu[]
+  more_about          more_about[]
 }
 
 model facility_rule {
   facility_rule_id Int       @id @default(autoincrement())
-  facility_id      String?   @db.VarChar(255)
+  facility_id      Int?
   rule_type        String?   @db.VarChar(50)
   rule_value       String?   @db.VarChar(255)
   facility         facility? @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction)
@@ -70,7 +73,7 @@ model member {
   member_id      Int              @id @default(autoincrement())
   name           String           @db.VarChar(50)
   address        String?          @db.VarChar(100)
-  birth          DateTime?        @db.Date
+  birth          String?          @db.VarChar(100)
   account        String           @unique @db.VarChar(50)
   password       String           @db.VarChar(64)
   phone          String?          @db.VarChar(20)
@@ -80,7 +83,7 @@ model member {
 }
 
 model news {
-  news_id     String    @id @db.VarChar(10)
+  news_id     Int       @id @default(autoincrement())
   title       String    @db.VarChar(255)
   des         String
   create_time DateTime? @default(now()) @db.Timestamptz(6)
@@ -98,32 +101,32 @@ model order_info {
   customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-  model order_item {
-    order_item_id  String         @id @db.VarChar(191)
-    order_id       String         @db.VarChar(191)
-    room_id        String?        @db.VarChar(191)
-    ticket_id      String?        @db.VarChar(191)
-    check_in_date  DateTime?
-    check_out_date DateTime?
-    people_count   Int?
-    quantity       Int
-    booked_date    DateTime?
-    valid_date     DateTime?
-    customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
-    room           room?          @relation(fields: [room_id], references: [room_id], onUpdate: NoAction)
-    ticket         ticket?        @relation(fields: [ticket_id], references: [ticket_id], onUpdate: NoAction)
-  }
+model order_item {
+  order_item_id  String         @id @db.VarChar(191)
+  order_id       String         @db.VarChar(191)
+  room_id        Int?
+  ticket_id      Int?
+  check_in_date  String?
+  check_out_date String?
+  people_count   Int?
+  quantity       Int
+  booked_date    DateTime?      @default(now())
+  customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+  room           room?          @relation(fields: [room_id], references: [room_id], onUpdate: NoAction)
+  ticket         ticket?        @relation(fields: [ticket_id], references: [ticket_id], onUpdate: NoAction)
+}
 
 model restaurant_menu {
   restaurant_menu_id Int       @id @default(autoincrement())
-  facility_id        String?   @db.VarChar(20)
+  facility_id        Int?
   menu_item          String    @db.VarChar(255)
+  menu_content       String    @db.VarChar(255)
   price              Decimal   @db.Decimal(10, 2)
   facility           facility? @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model room {
-  room_id     String       @id @db.VarChar(191)
+  room_id     Int          @id @default(autoincrement())
   room_type   String       @db.VarChar(191)
   bed_count   Int          @default(2)
   description String?      @db.VarChar(191)
@@ -135,9 +138,17 @@ model room {
 }
 
 model ticket {
-  ticket_id  String       @id @db.VarChar(191)
-  type       String       @db.VarChar(191)
+  ticket_id  Int          @id @default(autoincrement())
+  type       String       @db.VarChar(100)
   price      Int
   img        Json?
   order_item order_item[]
+}
+
+model more_about {
+  more_about_id Int      @id @default(autoincrement())
+  more_link     String
+  facility_id   Int
+  img           Json?
+  facility      facility @relation(fields: [facility_id], references: [facility_id])
 }
