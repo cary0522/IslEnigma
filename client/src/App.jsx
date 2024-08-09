@@ -17,6 +17,8 @@ import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
 import Hello from "./Hello"
+import AboutUsPage from "./pages/aboutUsPage";
+
 
 function App() {
   return (
@@ -39,7 +41,7 @@ function App() {
         {/* <Route path="/roomPage" element={< RoomPage />}/> */}
         <Route path="/room/roomMorePage" element={<RoomMorePage />} />
         <Route path="/homepage" element={< Homepage />} />
-        <Route path="/about-us" element={< aboutUsPage />} />
+        <Route path="/about-us" element={< AboutUsPage />} />
 
       </Route>
     </Routes>

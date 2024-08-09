@@ -220,7 +220,7 @@ class News extends React.Component {
                                     <p className="date">2024.07.01</p>
                                 </div>
                                 <div>
-                                    <h3>設施運行時請勿站立、扭動</h3>
+                                    <h3>設施運行時請勿站立扭動</h3>
                                     <button className="btnTrigger" onClick={this.handleTriggerClick3}>＋</button>
                                 </div>
                             </div>
@@ -239,7 +239,7 @@ class News extends React.Component {
                                     <p className="date">2024.06.30</p>
                                 </div>
                                 <div>
-                                    <h3>趕緊來查看謎樣樂園指南！</h3>
+                                    <h3>來查看謎樣樂園指南！</h3>
                                     <button className="btnTrigger" onClick={this.handleTriggerClick4}>＋</button>
                                 </div>
                             </div>
@@ -277,7 +277,7 @@ class News extends React.Component {
                                             <p className="eventName">深海生物觀察(VIP)</p>
                                             <p className="eventDes">藍藍的海，你期待看見什麼？</p>
                                             <div className="btnMore">
-                                                <a href="#">查看更多</a>
+                                                <a href="/infoEventPage">查看更多</a>
                                             </div>
                                         </div>
                                     </div>
@@ -292,7 +292,7 @@ class News extends React.Component {
                                             <p className="eventName">品嚐特色雞尾酒</p>
                                             <p className="eventDes">一起發瘋喝醉吧！</p>
                                             <div className="btnMore">
-                                                <a href="#">查看更多</a>
+                                                <a href="/infoEventPage">查看更多</a>
                                             </div>
                                         </div>
                                     </div>
@@ -307,7 +307,7 @@ class News extends React.Component {
                                             <p className="eventName">彩虹飛龍跳傘</p>
                                             <p className="eventDes">玩這個沒有人在綁安全繩的</p>
                                             <div className="btnMore">
-                                                <a href="#">查看更多</a>
+                                                <a href="/infoEventPage">查看更多</a>
                                             </div>
                                         </div>
                                     </div>
@@ -322,7 +322,7 @@ class News extends React.Component {
                                             <p className="eventName">潛水體驗</p>
                                             <p className="eventDes">一起下去看海洋生物吧！</p>
                                             <div className="btnMore">
-                                                <a href="#">查看更多</a>
+                                                <a href="/infoEventPage">查看更多</a>
                                             </div>
                                         </div>
                                     </div>

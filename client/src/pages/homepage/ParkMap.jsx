@@ -78,7 +78,7 @@ const ParkMap = () => {
                                 ))}
                             </div>
                             <div className="btnMore">
-                                <a href="#">查看更多{'>'}</a>
+                                <a href="/mappage">查看更多{'>'}</a>
                             </div>
                         </div>
                     </div>

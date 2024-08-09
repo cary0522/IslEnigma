@@ -52,7 +52,7 @@
 * .rightBack a {
   color: white;
   background-color: #73748c;
-  padding: 20px 70px;
+  padding: 20px 50px;
   border-radius: 30px;
   font-size: 16px;
   border: none;
@@ -125,7 +125,7 @@
   right: 1%;
   bottom: 1%;
   width: 40%;
-  height: 15%;
+  height: 23%;
   background-color: #f0f4f8;
   padding: 20px 0 20px 40px;
   overflow: hidden;
@@ -642,7 +642,7 @@
 #newsArea .leftBox .leftBack {
   visibility: hidden;
   position: absolute;
-  right: calc(50% - 100px);
+  right: calc(50% - 175px);
   bottom: 30px;
   visibility: hidden;
   z-index: 2;
@@ -736,7 +736,7 @@
 #newsArea .leftBox .listOutside {
   display: flex;
   gap: 20px;
-  width: 60%;
+  width: 70%;
   padding: 20px;
   border-radius: 20px;
   background: #fff;
@@ -931,9 +931,6 @@
   padding: 28px;
   border: 2px solid black;
 }
-#newsArea .rightBox .eventList swiper-slide .content {
-  margin-left: 30px;
-}
 #newsArea .rightBox .eventList swiper-slide .content .upperContent {
   margin-bottom: 20px;
 }
@@ -953,7 +950,7 @@
   font-size: 20px;
   right: 0;
   margin-top: -25px;
-  margin-right: 48px;
+  margin-right: 20px;
   padding: 10px 20px;
   border-radius: 10px;
 }
@@ -976,7 +973,7 @@
   margin-top: 38px;
 }
 #newsArea .rightBox .eventList swiper-slide .content .belowContent .btnMore a {
-  padding: 20px 115px;
+  padding: 12px 115px;
 }
 #newsArea .rightBox .eventList swiper-slide:nth-child(odd) {
   background: white;
@@ -1027,7 +1024,7 @@
     right: calc(25% - 90px);
   }
   #newsArea .leftBox .listOutside {
-    width: 70%;
+    width: 90%;
     flex-direction: column;
     font-size: 0.8rem;
   }

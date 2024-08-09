@@ -68,7 +68,7 @@ const AboutUs = () => {
                         </div>
                     </div>
                     <div className="btnMore">
-                        <a href="#" target="_blank">
+                        <a href="/about-us" target="_blank">
                             查看更多{`>`}
                         </a>
                     </div>
