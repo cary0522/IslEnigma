@@ -6,6 +6,7 @@ import CheckOutPage from "./pages/checkoutPage/CheckOutPage";
 import MapPage from "./pages/mappage";
 import TicketPage from "./pages/ticketpage";
 import RestaurantPage from "./pages/restaurantpage"
+import Homepage from "./pages/homepage";
 import BoatPage from './pages/boatpage'
 import InfoEventPage from "./pages/infoEventPage";
 import InfoInfoPage from "./pages/infoInfoPage";
@@ -13,9 +14,11 @@ import InfoFAQPage from "./pages/infoFAQPage";
 import RoomMorePage from "./pages/roomMorePage";
 import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
 
-import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage";
-import CartLayout from "./components/layout/CartLayout";
-import Hello from "./Hello";
+import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
+import CartLayout from "./components/layout/CartLayout"
+import Hello from "./Hello"
+import AboutUsPage from "./pages/aboutUsPage";
+
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
 
         {/* <Route path="/roomPage" element={< RoomPage />}/> */}
         <Route path="/room/roomMorePage" element={<RoomMorePage />} />
+        <Route path="/homepage" element={< Homepage />} />
+        <Route path="/about-us" element={< AboutUsPage />} />
+
       </Route>
     </Routes>
   );
