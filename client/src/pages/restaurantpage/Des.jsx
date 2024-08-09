@@ -20,7 +20,7 @@ function Des({ shop }) {
 						<p>{shop.openTime}</p>
 						<p>{shop.lastOrder}</p>
 					</div>
-					<a href="#" className="button">
+					<a href="/restaurantpage/pagination" className="button">
 						查看更多&nbsp;&gt;
 					</a>
 				</div>

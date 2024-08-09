@@ -1,0 +1,516 @@
+body {
+  scroll-behavior: smooth;
+}
+
+* .wrap {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #20377a;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+/* bannerArea */
+#aboutUsBanner {
+  width: 100%;
+  margin: 0;
+  margin-top: 50px;
+  padding: 0;
+}
+#aboutUsBanner .wrap {
+  max-width: 1920px;
+  max-height: 1080px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#aboutUsBanner .bannerImgBox {
+  width: 100%;
+  filter: contrast(50%);
+}
+#aboutUsBanner .bannerImgBox img {
+  height: 360px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+#aboutUsBanner .logoBox {
+  max-width: 760px;
+  width: 100%;
+  position: absolute;
+  top: 38%;
+}
+#aboutUsBanner .logoBox img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+
+/* bannerArea */
+#originArea {
+  padding-top: 80px;
+  padding-bottom: 120px;
+  width: 100%;
+}
+#originArea p {
+  color: #20377A;
+}
+#originArea .wrap {
+  max-width: 1200px;
+  width: 100%;
+}
+#originArea .originBox {
+  width: 100%;
+}
+#originArea .originBox .titleBox {
+  font-size: 36px;
+  width: 100%;
+}
+#originArea .originBox .titleBox p {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#originArea .originBox .titleBox p::before {
+  content: "The Origin";
+  color: transparent;
+  -webkit-text-stroke: 1px #20377a;
+  font-weight: 800;
+  font-size: 120px;
+}
+#originArea .originBox .titleBox p::after {
+  content: "";
+  display: block;
+  width: calc(100% - 25px);
+  height: 2px;
+  background-color: #20377a;
+  margin-top: 10px;
+}
+#originArea .originBox .contentBox {
+  width: 100%;
+  display: flex;
+  gap: 70px;
+}
+#originArea .originBox .contentBox .leftBox {
+  padding-top: 50px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+#originArea .originBox .contentBox .leftBox .imgBox {
+  width: 100%;
+  z-index: 1;
+  display: flex;
+}
+#originArea .originBox .contentBox .leftBox .imgBox img {
+  width: 490px;
+}
+#originArea .originBox .contentBox .leftBox .textBox {
+  padding: 30px 30px 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#originArea .originBox .contentBox .leftBox .textBox .Text {
+  width: 20%;
+  writing-mode: vertical-rl;
+  transform: scaleX(-1) scaleY(-1);
+  font-size: 28px;
+  position: relative;
+}
+#originArea .originBox .contentBox .leftBox .textBox .Text::after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 1px;
+  background-color: #20377a;
+  rotate: 90deg;
+  position: absolute;
+  right: -45%;
+  top: 60px;
+}
+#originArea .originBox .contentBox .leftBox .textBox .text {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 80%;
+}
+#originArea .originBox .contentBox .leftBox .textBox .text p:nth-child(1) {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+#originArea .originBox .contentBox .leftBox .textBox .text p:nth-child(2) {
+  font-size: 16px;
+  line-height: 1.5;
+}
+#originArea .originBox .contentBox .rightBox {
+  padding: 50px 10px 0 0;
+  width: 50%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: left;
+}
+#originArea .originBox .contentBox .rightBox .imgBox {
+  width: 100%;
+  z-index: 1;
+  display: flex;
+}
+#originArea .originBox .contentBox .rightBox .imgBox img {
+  width: 490px;
+}
+#originArea .originBox .contentBox .rightBox .textBox {
+  padding: 0 30px 30px 30px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+#originArea .originBox .contentBox .rightBox .textBox .Text {
+  width: 20%;
+  writing-mode: vertical-rl;
+  transform: scaleX(1);
+  font-size: 28px;
+  position: relative;
+}
+#originArea .originBox .contentBox .rightBox .textBox .Text::after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 1px;
+  background-color: #20377a;
+  rotate: 90deg;
+  position: absolute;
+  right: -45%;
+  top: 60px;
+}
+#originArea .originBox .contentBox .rightBox .textBox .text {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 80%;
+}
+#originArea .originBox .contentBox .rightBox .textBox .text p:nth-child(1) {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+#originArea .originBox .contentBox .rightBox .textBox .text p:nth-child(2) {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  #originArea .originBox {
+    width: 100%;
+  }
+  #originArea .originBox .contentBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+  }
+  #originArea .originBox .contentBox .leftBox {
+    width: 100%;
+    padding-top: 50px;
+  }
+  #originArea .originBox .contentBox .leftBox .imgBox {
+    display: flex;
+  }
+  #originArea .originBox .contentBox .leftBox .textBox {
+    width: 50%;
+  }
+  #originArea .originBox .contentBox .rightBox {
+    padding: 0;
+    width: 100%;
+    padding-top: 30px;
+    flex-direction: column;
+  }
+  #originArea .originBox .contentBox .rightBox .imgBox {
+    display: flex;
+  }
+  #originArea .originBox .contentBox .rightBox .textBox {
+    width: 50%;
+    padding: 30px 30px 0 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  #originArea .originBox .contentBox .rightBox .textBox .Text {
+    width: 20%;
+    writing-mode: vertical-rl;
+    transform: scaleY(-1) scaleX(-1);
+  }
+  #originArea .originBox .contentBox .rightBox .textBox .text {
+    width: 80%;
+  }
+}
+#purposeArea {
+  padding-top: 30px;
+  position: relative;
+}
+#purposeArea p {
+  color: #20377A;
+}
+#purposeArea .wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+}
+#purposeArea .wrap .purposeBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#purposeArea .wrap .purposeBox .engTitleBox,
+#purposeArea .wrap .purposeBox .titleBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 120px;
+  margin-bottom: 50px;
+}
+#purposeArea .wrap .purposeBox .engTitleBox p,
+#purposeArea .wrap .purposeBox .titleBox p {
+  color: transparent;
+  -webkit-text-stroke: 1px #20377a;
+  font-weight: 800;
+  font-size: 120px;
+}
+#purposeArea .wrap .purposeBox .titleBox {
+  position: absolute;
+  top: 30%;
+  left: -34%;
+  z-index: -1;
+}
+#purposeArea .wrap .purposeBox .titleBox p {
+  font-size: 130px;
+  writing-mode: vertical-lr;
+  letter-spacing: 50px;
+}
+#purposeArea .wrap .purposeBox .ppItemBox {
+  width: 75%;
+}
+#purposeArea .wrap .purposeBox .ppItemBox::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+  height: calc(100% - 450px);
+  right: calc(50% + 3px);
+  background-color: #20377a;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 60px;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items .word {
+  font-size: 20px;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items .dot {
+  width: 15px;
+  height: 15px;
+  background-color: #20377a;
+  border-radius: 50px;
+  position: absolute;
+  left: calc(50% - 11px);
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items .imgBox img {
+  width: 260px;
+  height: 200px;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items:nth-child(even) {
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items:nth-last-child(1) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items:nth-last-child(1) .moreDot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  position: absolute;
+  left: calc(50% - 18px);
+  top: -10px;
+  cursor: pointer;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items:nth-last-child(1) .moreDot img {
+  width: 30px;
+}
+#purposeArea .wrap .purposeBox .ppItemBox .items:nth-last-child(1) .textBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 22px;
+  margin-top: 50px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 1080px) {
+  .purposeBox {
+    position: relative;
+  }
+  .purposeBox .ppItemBox::before {
+    content: "";
+    display: flex;
+    justify-content: start;
+  }
+  .purposeBox .items:nth-child(odd) {
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+  .purposeBox {
+    position: relative;
+  }
+  .purposeBox .ppItemBox::before {
+    content: "";
+    display: none;
+  }
+}
+#esgArea {
+  scroll-behavior: smooth;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+#esgArea p {
+  color: #20377A;
+}
+#esgArea .wrap {
+  width: 100%;
+  max-width: 1200px;
+}
+#esgArea .esgBox {
+  width: 100%;
+}
+#esgArea .esgBox .upperBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#esgArea .esgBox .upperBox .titleBox {
+  font-size: 36px;
+  width: 100%;
+}
+#esgArea .esgBox .upperBox .titleBox p {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#esgArea .esgBox .upperBox .titleBox p::before {
+  content: "ESG";
+  color: transparent;
+  -webkit-text-stroke: 1px #20377a;
+  font-weight: 800;
+  font-size: 120px;
+}
+#esgArea .esgBox .upperBox .titleBox p::after {
+  content: "";
+  display: block;
+  width: calc(100% - 25px);
+  height: 2px;
+  background-color: #20377a;
+  margin-top: 10px;
+}
+#esgArea .esgBox .upperBox .esgClick {
+  padding: 20px;
+  position: absolute;
+  right: 10%;
+}
+#esgArea .esgBox .upperBox .esgTitle {
+  display: flex;
+}
+#esgArea .esgBox .upperBox .esgTitle li {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+#esgArea .esgBox .upperBox .esgTitle li a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  color: #333;
+  background-color: #ccc;
+  text-decoration: none;
+}
+#esgArea .esgBox .upperBox .esgTitle li.active a {
+  color: #fff;
+  background-color: #0071bc;
+}
+#esgArea .esgBox .belowBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+#esgArea .esgBox .belowBox .esgTextBox {
+  display: flex;
+}
+#esgArea .esgBox .belowBox .esgTextBox .esgTexts {
+  display: flex;
+  width: 90%;
+}
+#esgArea .esgBox .belowBox .esgTextBox .esgTexts .leftBox {
+  width: 50%;
+  padding-top: 20px;
+  padding: 20px 20px 0 0;
+}
+#esgArea .esgBox .belowBox .esgTextBox .esgTexts .leftBox p:nth-child(1) {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+#esgArea .esgBox .belowBox .esgTextBox .esgTexts .leftBox p:nth-child(2) {
+  font-size: 16px;
+  line-height: 1.5;
+}
+#esgArea .esgBox .belowBox .esgTextBox .esgTexts .rightBox img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 800px) {
+  #esgArea .esgBox .upperBox {
+    flex-direction: column;
+  }
+  #esgArea .esgBox .upperBox .esgClick {
+    position: relative;
+    right: 0;
+  }
+  .belowBox .esgTextBox .esgTexts {
+    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+  .belowBox .esgTextBox .esgTexts .leftBox,
+  .belowBox .esgTextBox .esgTexts .rightBox {
+    display: inline-block;
+    width: 100%;
+    padding-top: 0;
+  }
+}/*# sourceMappingURL=aboutUs.css.map */

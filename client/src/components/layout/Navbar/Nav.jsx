@@ -3,7 +3,7 @@ import { useState } from "react";
 const Nav = ({ toggleNavbar }) => {
   return (
     <nav className={toggleNavbar ? "navbar hidden" : "navbar active"}>
-      <a href="./index">
+      <a href="./homepage">
         <picture className="logo-container">
           <source
             media="(min-width:1024px)"
@@ -49,7 +49,7 @@ const Nav = ({ toggleNavbar }) => {
             </a>
           </li>
           <li className="navItem about">
-            <a href="#">
+            <a href="/about-us">
               <img src="/00myIcon/about.png" alt="關於我們" />
               <p data-text="關於我們">關於我們</p>
             </a>
