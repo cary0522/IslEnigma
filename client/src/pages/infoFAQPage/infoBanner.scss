@@ -168,8 +168,12 @@ body {
     align-items: center;
     position: relative;
     gap: 2rem;
-  }
+    color: #fffdf8;
 
+    h1 {
+      color: white;
+    }
+  }
   .bannerLine {
     width: 10rem;
     position: relative;
