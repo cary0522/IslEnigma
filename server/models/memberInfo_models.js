@@ -22,9 +22,15 @@ const memberInfo_Model = {
                 order_id: order.order_id
               },
             });
+            const orderInfo = await prisma.order_info.findFirst({
+              where: {
+                order_id: order.order_id
+              },
+            });
             return {
               order,
               items,
+              orderInfo,
             };
           })
         );
