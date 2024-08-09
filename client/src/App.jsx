@@ -32,7 +32,7 @@ function App() {
         <Route path="/mappage" element={< MapPage />} />
         <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
-        <Route path="/restaurantpage/pagination" element={< RestaurantPaginationPage />} />
+        <Route path="/restaurantpage/pagination/:urlId" element={< RestaurantPaginationPage />} />
         <Route path="/boatpage" element={< BoatPage />} />
         <Route path="/infoEventPage" element={<InfoEventPage />} />
         <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />

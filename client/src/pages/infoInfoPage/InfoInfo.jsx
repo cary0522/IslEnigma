@@ -477,7 +477,6 @@ const InfoInfo = () => {
               </div>
             </div>
           </div>
-          <div className=" show"></div>
         </>
       )}
     </div>

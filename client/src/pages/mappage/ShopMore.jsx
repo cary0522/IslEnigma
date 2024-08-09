@@ -5,7 +5,7 @@ function ShopMore({ shop_more }) {
 	if (shop_more) {
 		return (
 			<a href={shop_more}>
-				<Button btnContent={"詳情請參閱此處 >"} />
+				<Button btnContent={"查看更多 >"} />
 			</a>
 		);
 	}
