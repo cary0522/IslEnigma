@@ -4,7 +4,7 @@ function BottomContent({restaurants}) {
 			<div className="contentImg">
 				<img
 					id="restaurantImage"
-					src="/public/resraurant/Oceanic Delights food 2.png"
+					src="/resraurant/Oceanic Delights food 2.png"
 					alt="Restaurant Image"
 				/>
 			</div>

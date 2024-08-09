@@ -3,18 +3,18 @@ import Banner from "./Banner";
 import Des from "./Des.jsx";
 import PhoneView from "./PhoneView.jsx";
 
-import imgBistro from "/public/resraurant/Starlit Bistro.png";
-import imgBistro2 from "/public/resraurant/Starlit Bistro food.png";
-import imgDream from "/public/resraurant/Dreamweaver Cafe.png";
-import imgDream2 from "/public/resraurant/Dreamweaver Cafe food.png";
-import imgOcean from "/public/resraurant/Oceanic Delights.png";
-import imgOcean2 from "/public/resraurant/Oceanic Delights food.png";
-import imgShadow from "/public/resraurant/Shadowplay Cafe.png";
-import imgShadow2 from "/public/resraurant/Shadowplay Cafe food.png";
-import imgTrance from "/public/resraurant/Trance Tavern.png";
-import imgTrance2 from "/public/resraurant/Trance Tavern food.png";
-import imgMall from "/public/resraurant/ShoppingMall.png";
-import imgMall2 from "/public/resraurant/ShoppingMall toy.png";
+import imgBistro from "/resraurant/Starlit Bistro.png";
+import imgBistro2 from "/resraurant/Starlit Bistro food.png";
+import imgDream from "/resraurant/Dreamweaver Cafe.png";
+import imgDream2 from "/resraurant/Dreamweaver Cafe food.png";
+import imgOcean from "/resraurant/Oceanic Delights.png";
+import imgOcean2 from "/resraurant/Oceanic Delights food.png";
+import imgShadow from "/resraurant/Shadowplay Cafe.png";
+import imgShadow2 from "/resraurant/Shadowplay Cafe food.png";
+import imgTrance from "/resraurant/Trance Tavern.png";
+import imgTrance2 from "/resraurant/Trance Tavern food.png";
+import imgMall from "/resraurant/ShoppingMall.png";
+import imgMall2 from "/resraurant/ShoppingMall toy.png";
 
 import "./restaurantPage.scss";
 

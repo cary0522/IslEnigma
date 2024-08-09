@@ -28,18 +28,18 @@ model customer_order {
   order_item   order_item[]
 }
 
-model event {
-  event_id     Int       @id @default(autoincrement())
-  type         String    @db.VarChar(100)
-  title        String    @db.VarChar(255)
-  content      String?
-  publish_time DateTime? @default(now()) @db.Timestamptz(6)
-  start_time   DateTime  @db.Timestamptz(6)
-  end_time     DateTime  @db.Timestamptz(6)
-  image        Json?
-  session      String?   @db.VarChar(100)
-  location     String?   @db.VarChar(255)
-}
+// model event {
+//   event_id     Int       @id @default(autoincrement())
+//   type         String    @db.VarChar(100)
+//   title        String    @db.VarChar(255)
+//   content      String?
+//   publish_time DateTime? @default(now()) @db.Timestamptz(6)
+//   start_time   DateTime  @db.Timestamptz(6)
+//   end_time     DateTime  @db.Timestamptz(6)
+//   image        Json?
+//   session      String?   @db.VarChar(100)
+//   location     String?   @db.VarChar(255)
+// }
 
 model facility {
   facility_id         Int               @id @default(autoincrement())
@@ -57,7 +57,7 @@ model facility {
   rule_others         String            @db.VarChar(255)
   remarks             String?
   facility_rule       facility_rule[]
-  restaurant_menu     restaurant_menu[]
+  // restaurant_menu     restaurant_menu[]
   more_about          more_about[]
 }
 
@@ -82,13 +82,13 @@ model member {
   customer_order customer_order[]
 }
 
-model news {
-  news_id     Int       @id @default(autoincrement())
-  title       String    @db.VarChar(255)
-  des         String
-  create_time DateTime? @default(now()) @db.Timestamptz(6)
-  image       Json?
-}
+// model news {
+//   news_id     Int       @id @default(autoincrement())
+//   title       String    @db.VarChar(255)
+//   des         String
+//   create_time DateTime? @default(now()) @db.Timestamptz(6)
+//   image       Json?
+// }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model order_info {
@@ -116,22 +116,22 @@ model order_item {
   ticket         ticket?        @relation(fields: [ticket_id], references: [ticket_id], onUpdate: NoAction)
 }
 
-model restaurant_menu {
-  restaurant_menu_id Int       @id @default(autoincrement())
-  facility_id        Int?
-  menu_item          String    @db.VarChar(255)
-  menu_content       String    @db.VarChar(255)
-  price              Decimal   @db.Decimal(10, 2)
-  facility           facility? @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction)
-}
+// model restaurant_menu {
+//   restaurant_menu_id Int       @id @default(autoincrement())
+//   facility_id        Int?
+//   menu_item          String    @db.VarChar(255)
+//   menu_content       String    @db.VarChar(255)
+//   price              Decimal   @db.Decimal(10, 2)
+//   facility           facility? @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction)
+// }
 
 model room {
   room_id     Int          @id @default(autoincrement())
   room_type   String       @db.VarChar(191)
-  bed_count   Int          @default(2)
-  description String?      @db.VarChar(191)
+  // bed_count   Int          @default(2)
+  // description String?      @db.VarChar(191)
   price       Int
-  available   Boolean
+  // available   Boolean
   capacity    Int          @default(2)
   img         Json?
   order_item  order_item[]

@@ -2,7 +2,7 @@ function AboutBoatPage() {
 	return (
 		<div className="aboutBoatPage">
 			<div className="aboutBoat">
-				<img src="/public/boat/boat.png" />
+				<img src="/boat/boat.png" />
 				<div>
 					<h2>關於接 Boat</h2>
 					<p>
