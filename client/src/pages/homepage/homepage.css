@@ -258,19 +258,29 @@
     font-size: 1rem;
   }
 }
+@media (max-width: 680px) {
+  * .weatherBox .weather .temperature,
+  * .weatherBox .weather .description {
+    font-size: 0.9rem;
+  }
+}
 @media (max-width: 568px) {
   * .weatherBox {
-    height: 34%;
+    height: 30%;
     padding: 2px;
+  }
+  * .weatherBox .weather .temperature,
+  * .weatherBox .weather .description {
+    font-size: 0.6rem;
   }
 }
 @media (max-width: 380px) {
   * .weatherBox {
-    height: 36%;
+    height: 32%;
   }
-  * .weatherBox .temperature,
-  * .weatherBox .description {
-    font-size: 0.7rem;
+  * .weatherBox .weather .temperature,
+  * .weatherBox .weather .description {
+    font-size: 0.5rem;
   }
 }
 
@@ -618,8 +628,16 @@
   border-radius: 50%;
   padding: 17px 20px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #73748c;
+  color: white;
   border: none;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+#newsArea .leftBox .btnShowLeft .toggleBtn:hover {
+  background-color: white;
+  color: #73748c;
+  border: 1px solid #73748c;
 }
 #newsArea .leftBox .leftBack {
   visibility: hidden;
@@ -668,15 +686,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  visibility: hidden;
 }
 #newsArea .leftBox .newsList .listBox .newsItem {
-  width: 30%;
   margin: 50px auto 0 auto;
   text-align: center;
   position: relative;
   right: calc(25% - 3px);
   border-radius: 30px;
+  box-shadow: -10px 5px 10px rgba(0, 0, 0, 0.5);
 }
 #newsArea .leftBox .newsList {
   width: 50%;
@@ -684,7 +701,7 @@
   text-align: center;
   position: relative;
   display: flex;
-  gap: 20px;
+  gap: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -723,7 +740,7 @@
   padding: 20px;
   border-radius: 20px;
   background: #fff;
-  z-index: 10 !important;
+  z-index: 10;
 }
 #newsArea .leftBox .listOutside div:nth-child(1) {
   display: flex;
@@ -748,6 +765,7 @@
   justify-content: left;
   align-items: center;
   gap: 10px;
+  line-height: 1.2;
 }
 #newsArea .leftBox .modal-visible {
   visibility: visible;
@@ -759,10 +777,10 @@
   cursor: pointer;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  color: #fff;
+  color: #73748c;
   border-radius: 30px;
-  border: none;
-  background-color: #73748c;
+  border: 2px dotted #73748c;
+  background-color: #fff;
 }
 #newsArea .leftBox .btnTrigger {
   width: 30px;
@@ -776,17 +794,29 @@
   margin: 2px 0 0 0;
   transition: all 0.2s ease;
 }
+#newsArea .leftBox .btnTrigger:hover {
+  transform: scale(1.15) rotate(-180deg);
+  background: linear-gradient(#7c65a3, #317da5);
+  border: 2px dotted white;
+  color: white;
+}
 #newsArea .leftBox .btnClose {
-  margin: 20px auto 0 auto;
-  padding: 9px 20px 10px 20px;
-  display: block;
-  border: none;
-  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #73748c;
+  border-radius: 50%;
+  position: absolute;
+  right: -3%;
+  top: -1%;
+  background-color: #fff;
+  transition: all 0.2s ease;
 }
 #newsArea .leftBox .btnClose:hover {
-  color: #fff;
-  border: 3px solid #7fadf2;
-  background-color: #73748c;
+  background: #73748c;
+  color: white;
 }
 #newsArea .leftBox .modal-overlay {
   width: 100%;
@@ -828,7 +858,15 @@
   padding: 17px 20px;
   border-radius: 50%;
   border: none;
-  background-color: #ccc;
+  background-color: #73748c;
+  color: white;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+#newsArea .rightBox .btnShowRight .toggleBtn:hover {
+  background-color: white;
+  color: #73748c;
+  border: 1px solid #73748c;
 }
 #newsArea .rightBox .rightBack {
   position: absolute;
@@ -836,9 +874,6 @@
   bottom: 30px;
   visibility: hidden;
   z-index: 1;
-}
-#newsArea .rightBox .btnShowRight:hover ~ .rightBox {
-  background-color: #000;
 }
 #newsArea .rightBox .logoImgBox {
   width: 40%;
@@ -974,6 +1009,7 @@
   #newsArea .rightBack,
   #newsArea .leftBack {
     margin-bottom: 5%;
+    cursor: pointer;
   }
 }
 @media (max-width: 880px) {
@@ -993,6 +1029,7 @@
   #newsArea .leftBox .listOutside {
     width: 70%;
     flex-direction: column;
+    font-size: 0.8rem;
   }
 }
 @media (max-width: 570px) {
@@ -1062,15 +1099,28 @@
   border-radius: 20px 0 20px 0;
   font-size: 16px;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 #parkMap .upperBox .mapCtrl .btnControl:nth-child(1) a {
   background-color: #a4ce95;
 }
+#parkMap .upperBox .mapCtrl .btnControl:nth-child(1) a:hover {
+  border-radius: 50px;
+  box-shadow: 2px 2px 3px #8fb481;
+}
 #parkMap .upperBox .mapCtrl .btnControl:nth-child(2) a {
   background-color: #6196a6;
 }
+#parkMap .upperBox .mapCtrl .btnControl:nth-child(2) a:hover {
+  border-radius: 50px;
+  box-shadow: 2px 2px 3px #558391;
+}
 #parkMap .upperBox .mapCtrl .btnControl:nth-child(3) a {
-  background-color: #5f5d9c;
+  background-color: #545289;
+}
+#parkMap .upperBox .mapCtrl .btnControl:nth-child(3) a:hover {
+  border-radius: 50px;
+  box-shadow: 2px 2px 3px #545289;
 }
 #parkMap .belowBox {
   display: flex;

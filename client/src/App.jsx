@@ -11,6 +11,7 @@ import Homepage from "./pages/homepage";
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
 import Hello from "./Hello"
+import AboutUsPage from "./pages/aboutUsPage"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
         <Route path="/homepage" element={< Homepage />} />
+        <Route path="/about-us" element={< AboutUsPage />} />
 
       </Route>
     </Routes>
