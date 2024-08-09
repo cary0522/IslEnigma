@@ -9,12 +9,6 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  color: #20377a;
-  font-size: 40px;
-  font-weight: 500;
-}
-
 /* bannerArea */
 #aboutUsBanner {
   width: 100%;

@@ -1,0 +1,378 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(255, 253, 248);
+}
+
+.button {
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  padding: 20px 70px;
+  margin: 20px 10%;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 4px solid #73748c;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+.button:hover::before, .button:focus::before {
+  border-radius: 40px;
+  top: -9px;
+  left: -9px;
+  right: -9px;
+  bottom: -9px;
+  border-color: #758694;
+  transition: 0.4s ease-in-out;
+}
+
+/* 通用樣式 */
+/* banner */
+/* 時刻表 */
+.boatPage {
+  font-family: "Noto Sans TC", "Arial", sans-serif;
+}
+.boatPage .banner {
+  background-image: url("/public/boat/boatBanner.png");
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  z-index: 1;
+  margin-top: 0px;
+  overflow: hidden;
+}
+.boatPage .banner .bannerContainer {
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+}
+.boatPage .banner .bannerContainer .logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boatPage .banner .bannerContainer .logoContainer img {
+  max-width: 100%;
+  width: 40%;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea {
+  margin-top: 300px;
+  width: 100%;
+  max-width: 700px;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea .divOutside {
+  width: 90%;
+  display: flex;
+  max-width: 700px;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea #imgLogoArea {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea .divPageName {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea .divPageName h3 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea .linePageName {
+  width: 20%;
+  height: 50%;
+  border-bottom: 3px solid white;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea .linePageName:first-of-type {
+  margin: 0 20px 0 auto;
+}
+.boatPage .banner .bannerContainer .logoContainer .logoArea .linePageName:last-of-type {
+  margin: 0 auto 0 20px;
+}
+@media screen and (max-width: 720px) {
+  .boatPage .banner {
+    height: 50vh;
+  }
+  .boatPage .banner .bannerContainer {
+    bottom: 130px;
+  }
+}
+.boatPage .mapImg {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px;
+  position: relative;
+}
+.boatPage .mapImg .timeTable {
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  width: 80%;
+  max-width: 800%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  margin-top: -100px;
+  padding: 0 15px;
+  z-index: 1;
+  position: absolute;
+  top: 20px;
+  display: flex;
+}
+.boatPage .mapImg .timeTable .timeLine {
+  font-size: 1.2rem;
+  color: rgb(115, 116, 140);
+  margin: 0px;
+}
+@media screen and (max-width: 720px) {
+  .boatPage .mapImg .timeTable .timeLine {
+    display: none;
+  }
+}
+.boatPage .mapImg .timeTable .timeItem {
+  display: flex;
+  align-items: center;
+}
+.boatPage .mapImg .timeTable .timeItem h4,
+.boatPage .mapImg .timeTable .timeItem p {
+  color: rgb(115, 116, 140);
+  text-align: center;
+  margin: 5px;
+}
+.boatPage .mapImg .timeTable .timeItem h4 {
+  font-size: 1.2rem;
+}
+.boatPage .mapImg .timeTable .timeItem p {
+  font-size: 1rem;
+}
+.boatPage .mapImg .timeTable .timeItem img {
+  width: 40px;
+}
+@media screen and (max-width: 1024px) {
+  .boatPage .mapImg .timeTable .timeItem h4 {
+    font-size: 0.9rem;
+  }
+  .boatPage .mapImg .timeTable .timeItem p {
+    font-size: 0.8rem;
+  }
+  .boatPage .mapImg .timeTable .timeItem img {
+    width: 30px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .boatPage .mapImg .timeTable {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    text-align: center;
+    width: auto;
+    padding: 0 20px;
+  }
+  .boatPage .mapImg .timeTable .timeItem {
+    padding: 0 10px;
+  }
+  .boatPage .mapImg .timeTable .timeItem h4,
+  .boatPage .mapImg .timeTable .timeItem p {
+    text-wrap: nowrap;
+    font-size: 1rem;
+  }
+  .boatPage .mapImg .timeTable .timeItem img {
+    margin: 5px;
+  }
+}
+.boatPage .mapImg .map {
+  margin-top: -120px;
+}
+.boatPage .mapImg .map img {
+  margin: 0;
+  width: 100%;
+}
+.boatPage .boatTablePage {
+  justify-content: center;
+  position: relative;
+}
+.boatPage .boatTablePage .boatH1 {
+  text-align: center;
+}
+.boatPage .boatTablePage .boatH1 h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  color: rgb(115, 116, 140);
+  margin-bottom: 40px;
+}
+.boatPage .boatTablePage .boatH1 p {
+  color: rgb(115, 116, 140);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+@media screen and (max-width: 720px) {
+  .boatPage .boatTablePage .boatH1 p {
+    font-size: 1rem;
+    margin: 0 10px;
+    line-height: 30px;
+  }
+}
+.boatPage .boatTablePage .scheduleContainer {
+  display: flex;
+  margin: 0 5%;
+}
+.boatPage .boatTablePage .scheduleContainer div {
+  flex: content;
+}
+.boatPage .boatTablePage .routeTitle {
+  margin: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgb(115, 116, 140);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.boatPage .aboutBoatPage {
+  justify-content: center;
+  padding: 20px;
+  margin: 50px 100px;
+}
+.boatPage .aboutBoatPage .aboutBoat {
+  display: flex;
+  width: 100%;
+}
+.boatPage .aboutBoatPage .aboutBoat img {
+  border-radius: 20px;
+  width: 50%;
+  max-width: 600px;
+}
+.boatPage .aboutBoatPage .aboutBoat div {
+  width: 50%;
+  margin-left: 50px;
+}
+.boatPage .aboutBoatPage .aboutBoat h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.boatPage .aboutBoatPage .aboutBoat h2,
+.boatPage .aboutBoatPage .aboutBoat p {
+  color: rgb(115, 116, 140);
+  letter-spacing: 2px;
+  line-height: 30px;
+}
+@media screen and (max-width: 720px) {
+  .boatPage .aboutBoatPage {
+    margin: 50px 20px;
+  }
+  .boatPage .aboutBoatPage .aboutBoat {
+    display: block;
+  }
+  .boatPage .aboutBoatPage .aboutBoat img,
+  .boatPage .aboutBoatPage .aboutBoat div {
+    width: 100%;
+    margin: 10px;
+  }
+}
+.boatPage .busMap {
+  justify-content: center;
+  padding: 20px;
+  margin: 50px 100px;
+}
+.boatPage .busMap h1 {
+  color: rgb(115, 116, 140);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.boatPage .busMap img {
+  width: 100%;
+}
+.boatPage .busMap p {
+  text-align: center;
+}
+.boatPage .busMap .busTimeTable {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px;
+}
+.boatPage .busMap .busTimeTable table {
+  width: 100%;
+  border-style: none;
+  color: rgb(115, 116, 140);
+}
+@media screen and (max-width: 720px) {
+  .boatPage .busMap {
+    margin: 50px 20px;
+  }
+  .boatPage .busMap table {
+    font-size: 0.8rem;
+  }
+}
+.boatPage table {
+  border-radius: 10px;
+  border: 2px solid #aceceb;
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: separate;
+  letter-spacing: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.boatPage table thead {
+  background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
+}
+.boatPage table thead td {
+  color: #e0e0e0;
+}
+.boatPage table tr:nth-child(even) {
+  background: linear-gradient(90deg, rgba(51, 125, 166, 0.2) -3.82%, rgba(122, 102, 164, 0.2) 101.87%);
+}
+.boatPage table th {
+  padding: 12px 15px;
+  text-align: center;
+  color: #e0e0e0;
+  font-weight: 700;
+  line-height: 32px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e0e0e0;
+}
+.boatPage table td {
+  padding: 12px 15px;
+  text-align: center;
+  color: #3b7ba5;
+  font-weight: 900;
+  line-height: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+.boatPage table tbody tr:hover {
+  background-color: #cad9ea;
+}
+.boatPage table tbody tr:last-child td {
+  border-bottom: none;
+}/*# sourceMappingURL=boatpage.css.map */

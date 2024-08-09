@@ -46,7 +46,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
+  font-family: "Noto Sans TC", "Arial", sans-serif;
   background: #fffdf8;
 }
 @media (max-width: 719px) {
@@ -64,7 +64,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
+  font-family: "Noto Sans TC", "Arial", sans-serif;
   background: #fffdf8;
 }
 @media (max-width: 719px) {
@@ -88,7 +88,7 @@ body {
 }
 .infoPage .card {
   border-radius: 300px;
-  background: linear-gradient(to right, #6797C8, #E08BAE);
+  background: linear-gradient(to right, #6797c8, #e08bae);
   color: white;
   display: flex;
   flex-direction: row;
@@ -187,17 +187,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6797C8;
-  border-color: #6797C8;
+  color: #6797c8;
+  border-color: #6797c8;
 }
 .infoPage .pagination .page-item .page-link:hover {
-  background-color: #E08BAE;
+  background-color: #e08bae;
   color: white;
-  border-color: #E08BAE;
+  border-color: #e08bae;
 }
 .infoPage .pagination .page-item.active .page-link {
-  background-color: #6797C8;
-  border-color: #6797C8;
+  background-color: #6797c8;
+  border-color: #6797c8;
   color: white;
 }
 
@@ -220,8 +220,10 @@ body {
 }
 .modal-content {
   border-radius: 25px;
-  padding: 0;
   display: flex;
+  padding: 0 !important;
+  margin: 0 auto;
+  margin-top: 1vh;
   flex-direction: column; /* 確保內容按列顯示 */
 }
 .modal-content .modal-header {
@@ -232,19 +234,16 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  margin: 0;
   border-bottom: none;
   position: relative;
   font-size: 1.3rem;
   font-weight: 800;
-  padding: 0;
-
 }
 .modal-content .modal-body {
   max-height: 70vh;
   overflow-y: auto;
   padding: 1rem;
-  /* padding: 0; */
-
 }
 .modal-content .modal-body p {
   color: #2c5d8f;
