@@ -4,7 +4,7 @@ function BusMap() {
 			<div>
 				<h1>遊園車上車地點與路線</h1>
 			</div>
-			<img src="/public/boat/map_design_nobg.png" />
+			<img src="/boat/map_design_nobg.png" />
 			<div>
 				<h1>遊園車時間表</h1>
 				<p>

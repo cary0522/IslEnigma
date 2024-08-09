@@ -17,7 +17,7 @@ function RestaurantPaginationPage() {
 			top: 0,
 			behavior: "smooth",
 		});
-		fetch("/public/restaurants.json")
+		fetch("/restaurants.json")
 			.then((response) => {
 				return response.json();
 			})

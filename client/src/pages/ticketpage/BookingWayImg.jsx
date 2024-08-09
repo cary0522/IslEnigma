@@ -1,8 +1,8 @@
 import React from "react";
 // images
-import imgKkday from "/public/images/imgKkady.png";
-import imgEast from "/public/images/imgEastSouth.png";
-import imgKlook from "/public/images/imgKlook.png";
+import imgKkday from "/images/imgKkady.png";
+import imgEast from "/images/imgEastSouth.png";
+import imgKlook from "/images/imgKlook.png";
 
 function BookingWayImg() {
 	return (

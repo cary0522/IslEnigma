@@ -1,6 +1,6 @@
-import timeTableImg from "/public/boat/ship_1016051.png";
-import busLogo from "/public/boat/busLogo.png";
-import boat2 from "/public/boat/transportation_boat2.png";
+import timeTableImg from "/boat/ship_1016051.png";
+import busLogo from "/boat/busLogo.png";
+import boat2 from "/boat/transportation_boat2.png";
 import { useEffect, useState } from "react";
 
 function MapImg() {

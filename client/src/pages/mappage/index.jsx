@@ -5,7 +5,7 @@ import Map from "./Map.jsx";
 // css
 import "./mapPage.scss";
 
-import imgLogo from "/public/images/logo.png";
+import imgLogo from "/images/logo.png";
 function MapPage() {
 	// 視螢幕寬度及滾動長度決定 btnArea 定位方式
 	let [isSticky, setIsSticky] = useState(false);

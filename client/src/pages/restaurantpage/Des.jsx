@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 function Des({ shop }) {
+
+	const linkHref = '/restaurantpage/pagination/'
 	return (
 		<section className="sectionContainer" key={shop.id}>
 			<div className="imageContainer">
@@ -20,7 +22,7 @@ function Des({ shop }) {
 						<p>{shop.openTime}</p>
 						<p>{shop.lastOrder}</p>
 					</div>
-					<a href="/restaurantpage/pagination" className="button">
+					<a href={linkHref+shop.id} className="button">
 						查看更多&nbsp;&gt;
 					</a>
 				</div>
