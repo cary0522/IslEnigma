@@ -68,7 +68,7 @@ const RoomBanner = () => {
               <a className="h2" href="#oceanserenity">
                 <i className="fa-solid fa-disease"></i>
               </a>
-              <a href="#oceanserenity">海洋之眼</a>
+              <a href="#oceanserenity">沉靜海洋</a>
             </div>
           </div>
           <div className="drop dropThree">
