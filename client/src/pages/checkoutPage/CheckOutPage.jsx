@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import "./CheckOutPage.css"
-import useCartStore from "../../zustand/cartStore"
 import PriceItem from "./PriceItem"
 import CheckTotal from "./CheckOutTotal"
 import CheckOutTotal from "./CheckOutTotal"
 import axios from "axios"
 import { Form, useLocation, useNavigate } from "react-router-dom"
 import { useCartItemsData } from "../../hooks/useCartItem"
+import { SERVER_URL } from "../../utils/helpers"
 
 const CheckOutPage = () => {
   const [orderInfo, setOrderInfo] = useState({
@@ -19,25 +19,23 @@ const CheckOutPage = () => {
   const navigate = useNavigate()
   // const { cartItems, loading, fetchCartData, setCartItems } = useCartStore()
   const { data, error, isLoading } = useCartItemsData()
-
+  console.log(data)
   const location = useLocation()
   // useEffect(() => {
   //   fetchCartData()
   // }, [location.pathname])
   if (isLoading) return <p>Loading...</p>
 
-  console.log(data)
-
   const handlePayment = async () => {
-    localStorage.setItem("order-info", {
+    // localStorage 存儲的格式必須是字符串
+    const infoData = {
       ...orderInfo,
-      order_id: cartItems[0].order_id,
-    })
+      order_id: data[0].order_id,
+    }
+    localStorage.setItem("order-info", JSON.stringify(infoData))
     const res = await axios.post(
-      "http://localhost:3001/cart/create-checkout-session",
-      {
-        cartItems,
-      }
+      `${SERVER_URL}/cart/create-checkout-session`,
+      data
     )
 
     const paymentUrl = res.data.url

@@ -9,8 +9,6 @@ import axios from "axios"
 import { fetchCartItem } from "../../hooks/useCartItem"
 import { useCartItemsData } from "../../hooks/useCartItem"
 
-// eslint-disable-next-line react/prop-types
-
 const ShoppingCartPage = () => {
   const { data, error, isLoading } = useCartItemsData()
 
@@ -28,7 +26,6 @@ const ShoppingCartPage = () => {
 
   // console.log(cartItems)
   if (isLoading) return <p>Loading...</p>
-
   return (
     <div className="shoppingCart">
       <div className="itemList">

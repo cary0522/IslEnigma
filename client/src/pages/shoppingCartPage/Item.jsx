@@ -1,4 +1,5 @@
 import { useUpdateQty } from "../../hooks/useUpdateQty"
+import { useRemoveCartItem } from "../../hooks/useDeleteItem"
 
 const Item = ({
   itemId,
@@ -11,10 +12,21 @@ const Item = ({
   peopleCount,
   ticketQuantity,
   setTicketQuantity,
-  handleDelete,
 }) => {
   const { mutate: updateQty, isLoading, isError } = useUpdateQty()
+  const { mutate: removeCartItem } = useRemoveCartItem()
 
+  const handleDelete = (id) => {
+    console.log(id)
+    removeCartItem(id, {
+      onSuccess: () => {
+        console.log("成功刪除一筆商品!")
+      },
+      onError: (error) => {
+        console.error("喔不!發生錯誤了!:", error)
+      },
+    })
+  }
   const handleUpdateQty = (newQty) => {
     updateQty(
       { id: itemId, quantity: newQty },

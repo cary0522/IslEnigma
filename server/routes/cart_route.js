@@ -4,28 +4,41 @@ const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 
-//controller
+// import controller
 const { cart_controller } = require("../controllers/cart_controller")
-const { get_cart_items, new_order, update_item_quantity } = cart_controller
+const {
+  get_cart_items,
+  new_order,
+  update_item_quantity,
+  remove_item,
+} = cart_controller
 
-//購物車商品
+// all items
 router.get("/", get_cart_items)
 
-//新增訂單
+// new order
 router.post("/", new_order)
 
-//更新商品數量
+// update item quantity
 router.put("/:id", update_item_quantity)
-router.delete("/:id", update_item_quantity)
 
+// delete item
+router.delete("/:id", remove_item)
+
+// create payment
 router.post("/create-checkout-session", async (req, res) => {
-  const cartItems = req.body
+  const data = req.body
+
+  const order_id = data[0].order_id
 
   try {
     const session = await stripe.checkout.sessions.create({
+      metadata: {
+        order_id,
+      },
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: req.body.cartItems.map((item) => {
+      line_items: data.map((item) => {
         return {
           price_data: {
             currency: "TWD",
@@ -40,6 +53,7 @@ router.post("/create-checkout-session", async (req, res) => {
       success_url: `http://localhost:5173/cart/shoppingSuccess?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `http://localhost:5173/cart/checkout`,
     })
+
     res.json({ url: session.url })
   } catch (e) {
     res.status(500).json(e)

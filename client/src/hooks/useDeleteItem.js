@@ -3,8 +3,11 @@ import axios from "axios"
 import { SERVER_URL } from "../utils/helpers"
 
 const removeCartItem = async (itemId) => {
-  await axios.delete(`${SERVER_URL}/cart/${itemId}`)
-  return itemId
+  const res = await axios.delete(`${SERVER_URL}/cart/${itemId}`)
+
+  console.log(res)
+
+  return res.data
 }
 
 export const useRemoveCartItem = () => {
@@ -12,11 +15,11 @@ export const useRemoveCartItem = () => {
 
   return useMutation({
     mutationFn: removeCartItem,
-    onSuccess: (itemId) => {
+    onSuccess: () => {
       queryClient.invalidateQueries(["cartItem"])
     },
     onError: (error) => {
-      console.error("Failed to remove item:", error)
+      console.error(error)
     },
   })
 }

@@ -12,42 +12,41 @@ const ShoppingSuccessPage = () => {
   const params = new URLSearchParams(location.search)
   const sessionIdParam = params.get("session_id")
 
-  useEffect(() => {
-    fetchCartData()
-  }, [fetchCartData])
+  // useEffect(() => {
+  //   fetchCartData()
+  // }, [fetchCartData])
 
-  useEffect(() => {
-    const orderInfo = localStorage.getItem(
-      "order-info",
-      JSON.stringify(cartItems)
-    )
+  // useEffect(() => {
+  //   const orderInfo = localStorage.getItem(
+  //     "order-info",
+  //     JSON.stringify(cartItems)
+  //   )
 
-    console.log("orderInfo")
-    if (sessionIdParam) {
-      axios
-        .post("http://localhost:3001/cart/payment-status", {
-          sessionIdParam,
-        })
-        .then((res) => {
-          if (res.data.status === "complete") {
-            console.log("Payment successful!")
+  //   if (sessionIdParam) {
+  //     axios
+  //       .post("http://localhost:3001/cart/payment-status", {
+  //         sessionIdParam,
+  //       })
+  //       .then((res) => {
+  //         if (res.data.status === "complete") {
+  //           console.log("Payment successful!")
 
-            const method = res.data.payment_method_types[0]
-            axios.post("http://localhost:3001/cart", {
-              cartItems,
-            })
-            axios.post("http://localhost:3001/cart/order-info", {
-              orderInfo,
-              method,
-            })
-          } else {
-            setStatus("Payment failed.")
-          }
-        })
-    } else {
-      navigate("/")
-    }
-  }, [cartItems])
+  //           const method = res.data.payment_method_types[0]
+  //           axios.post("http://localhost:3001/cart", {
+  //             cartItems,
+  //           })
+  //           axios.post("http://localhost:3001/cart/order-info", {
+  //             orderInfo,
+  //             method,
+  //           })
+  //         } else {
+  //           setStatus("Payment failed.")
+  //         }
+  //       })
+  //   } else {
+  //     navigate("/")
+  //   }
+  // }, [cartItems])
 
   return (
     <div className="successBox">

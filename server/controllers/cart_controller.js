@@ -22,8 +22,6 @@ const cart_controller = {
 
   new_order: async (req, res) => {
     const { cartItems } = req.body
-    console.log("items")
-    console.log(cartItems)
 
     if (cartItems.length === 0) return
     try {
@@ -43,7 +41,6 @@ const cart_controller = {
     res.json("good")
   },
   update_item_quantity: async (req, res) => {
-    console.log(123)
     const { quantity } = req.body
 
     const itemId = req.params.id
@@ -58,6 +55,22 @@ const cart_controller = {
         },
       })
       res.status(200).json(updatedItem)
+    } catch (err) {
+      res.status(500).json(err)
+    }
+  },
+
+  remove_item: async (req, res) => {
+    const id = req.params.id
+
+    try {
+      const response = await prisma.order_item.delete({
+        where: {
+          order_item_id: id,
+        },
+      })
+
+      res.status(200).json(response)
     } catch (err) {
       res.status(500).json(err)
     }
