@@ -46,6 +46,7 @@ body {
   font-family: "Noto Sans TC", "Arial", sans-serif;
 }
 .ticketPage .divAlert {
+  box-sizing: content-box;
   padding: 30px;
   max-width: 400px;
   width: 70%;
@@ -73,6 +74,14 @@ body {
     opacity: 1;
   }
 }
+.ticketPage .divAlert div {
+  box-sizing: content-box;
+}
+.ticketPage .divAlert div img {
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 .ticketPage .divAlert h2,
 .ticketPage .divAlert p,
 .ticketPage .divAlert svg {
@@ -89,6 +98,7 @@ body {
   line-height: 30px;
 }
 .ticketPage .divAlert .ticketIcon {
+  box-sizing: content-box;
   width: 80px;
   margin-bottom: 20px;
 }
@@ -283,6 +293,7 @@ body {
   }
 }
 .ticketPage #divBanner .divSafe {
+  box-sizing: content-box;
   position: absolute;
   background-color: rgb(181, 108, 138);
   color: white;
@@ -301,9 +312,12 @@ body {
   font-size: 0.8rem;
   padding: 2px 0 0 0;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 750px) {
   .ticketPage #divBanner .divSafe {
-    top: 60%;
+    padding: 10px;
+  }
+  .ticketPage #divBanner .divSafe h5 {
+    font-size: 0.7rem;
   }
 }
 @media screen and (max-width: 720px) {
@@ -311,9 +325,11 @@ body {
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 10px 20px;
   }
 }
 .ticketPage #divBanner .bookingArea {
+  box-sizing: content-box;
   transition: all 0.3s;
   width: 350px;
   position: absolute;
@@ -335,6 +351,7 @@ body {
   transition: all 0.5s;
 }
 .ticketPage #divBanner .bookingArea .divBookingItem {
+  box-sizing: content-box;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -352,6 +369,7 @@ body {
   border-radius: 20px;
   text-align: center;
   color: rgb(115, 116, 140);
+  box-sizing: content-box;
 }
 .ticketPage #divBanner .bookingArea .divBookingItem .divCalendar .calendarArea {
   position: absolute;
@@ -524,6 +542,9 @@ body {
           backdrop-filter: blur(8px);
   text-align: center;
 }
+.ticketPage #divBookingWay {
+  box-sizing: content-box;
+}
 .ticketPage #divBookingWay h1 {
   margin: 10px;
   font-size: 30px;
@@ -628,6 +649,9 @@ body {
     flex-wrap: wrap;
   }
 }
+.ticketPage #divCompare {
+  box-sizing: content-box;
+}
 .ticketPage #divCompare .divTable {
   position: relative;
   font-size: 24px;
@@ -722,6 +746,7 @@ body {
   margin: 30px auto;
 }
 .ticketPage #ticketRuleArea .ticketRuleTopBorder {
+  box-sizing: content-box;
   margin: 10px auto 0 auto;
   padding: 15px 20px;
   height: 18px;
@@ -760,6 +785,7 @@ body {
   transform: scale(1.2);
 }
 .ticketPage #ticketRuleArea .ticketRuleContent {
+  box-sizing: content-box;
   background-color: white;
   box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.25);
   border: 1px solid rgb(195, 195, 195);

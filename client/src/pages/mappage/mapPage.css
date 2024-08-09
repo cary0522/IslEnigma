@@ -86,6 +86,7 @@ body {
   width: 100vw;
   height: 90vh;
   overflow: auto;
+  scrollbar-width: none;
 }
 .mapPage #mapOutside #divInteractiveMap {
   position: relative;
@@ -111,6 +112,7 @@ body {
   z-index: 500;
 }
 .mapPage #mapOutside #divInteractiveMap .areaName {
+  box-sizing: content-box;
   border: 2px dashed rgb(115, 116, 140);
   color: rgb(115, 116, 140);
   border-radius: 20px;
@@ -183,6 +185,7 @@ body {
   left: 19.7%;
 }
 .mapPage #mapOutside #divInteractiveMap .divDes {
+  box-sizing: content-box;
   animation: desAnimation 0.3s;
   width: 270px;
   border-radius: 20px;
@@ -412,6 +415,11 @@ body {
   top: 60%;
   left: 30%;
 }
+@media screen and (max-width: 720px) {
+  .mapPage #mapOutside #divInteractiveMap {
+    margin-top: 100px;
+  }
+}
 .mapPage #mapOutside #btnArea {
   width: 50%;
   margin: 20px auto;
@@ -487,6 +495,7 @@ body {
   left: 50%;
 }
 .mapPage .divContent {
+  box-sizing: content-box;
   animation: divOpacity 0.5s forwards;
   height: 70%;
   border-radius: 20px;
@@ -514,13 +523,25 @@ body {
   }
 }
 .mapPage .divContent .divContentItem {
+  box-sizing: content-box;
   width: 50%;
   margin: 10px auto;
+}
+.mapPage .divContent .divContentItem .divOtherRules {
+  padding: 0 0 10px 0;
+}
+.mapPage .divContent .divContentItem div {
+  box-sizing: content-box;
 }
 .mapPage .divContent .divContentItem button {
   font-size: 15px;
   background-color: rgb(115, 116, 140);
   color: white;
+}
+@media screen and (max-width: 425px) {
+  .mapPage .divContent .divContentItem button {
+    font-size: 11px;
+  }
 }
 .mapPage .divContent .divContentItem:first-child {
   text-align: center;
@@ -536,6 +557,7 @@ body {
   font-size: 2rem;
   font-weight: 500;
   margin: 10px;
+  box-sizing: content-box;
 }
 .mapPage .divContent p {
   color: rgb(115, 116, 140);
@@ -544,6 +566,7 @@ body {
   letter-spacing: 2.5px;
   line-height: 25px;
   font-size: 1rem;
+  box-sizing: content-box;
 }
 .mapPage .divContent #btnXContent {
   position: absolute;
