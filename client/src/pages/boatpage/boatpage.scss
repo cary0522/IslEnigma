@@ -208,6 +208,15 @@ $background-color_5: #f1f1f1;
 				}
 			}
 		}
+
+		.scheduleContainer {
+			display: flex;
+			margin: 0 5%;
+			div {
+				flex: content;
+			}
+		}
+
 		.routeTitle {
 			margin: 40px;
 			text-align: center;
