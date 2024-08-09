@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 function MapImg() {
 	// 設定接 Boat、遊園車等候時間
-	let [timeBoat, setTimeBoat] = useState(20);
-	let [timeBus, setTimeBus] = useState(15);
+	let [timeBoat, setTimeBoat] = useState(10);
+	let [timeBus, setTimeBus] = useState(7);
 
 	useEffect(() => {
 		// 設定倒數遞迴函式，一秒後再次呼叫自己一次，在倒數時間大於一之前，會一秒執行一次
