@@ -92,7 +92,7 @@ const Banner = () => {
           <h1 className="bannerText">最新活動</h1>
           <div className="bannerLine"></div>
         </div>
-        <p className="bannerTagline">islEnigma Information</p>
+        {/* <p className="bannerTagline">islEnigma Information</p> */}
         <div className="bannerMenu">
           {/* 移動端下拉選單 */}
           <div id="mobileDropdown" className="customDropdown" ref={dropdownRef}>
