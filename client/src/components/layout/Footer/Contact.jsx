@@ -6,9 +6,9 @@ const Contact = () => {
         <a href="https://www.google.com/" target="_blank">
           <img src="/icon/line.png" alt="line icon" />
         </a>
-        <a href="https://www.google.com/" target="_blank">
+        {/* <a href="https://www.google.com/" target="_blank">
           <img src="/icon/twitter.png" alt="twitter icon" />
-        </a>
+        </a> */}
         <a href="https://www.google.com/" target="_blank">
           <img src="/icon/fb.png" alt="facebook icon" />
         </a>
@@ -20,7 +20,7 @@ const Contact = () => {
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
