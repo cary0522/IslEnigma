@@ -1,7 +1,8 @@
-import FirstRow from "./FirstRow"
-import "./Footer.css"
-import SecondRow from "./SecondRow"
-import ThirdRow from "./ThirdRow"
+import FirstRow from "./FirstRow";
+// import "./Footer.css";
+import "./Footer.css";
+import SecondRow from "./SecondRow";
+import ThirdRow from "./ThirdRow";
 
 const Footer = () => {
   return (
@@ -12,7 +13,7 @@ const Footer = () => {
         <ThirdRow />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

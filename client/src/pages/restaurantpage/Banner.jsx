@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LogoArea from "/src/components/common/LogoArea";
 
-import imgLogo from "/public/00logo/LogoType_Light_2.png";
+import imgLogo from "/00logo/LogoType_Light_2.png";
 
 
 function Banner({bannerList}) {
