@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { TbTriangleFilled } from "react-icons/tb";
+import React from 'react'
 
 function BtnDown(){
     return(

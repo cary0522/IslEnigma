@@ -12,7 +12,7 @@ function AlertInt({
 			return (
 				<div className="divAlert">
 					<div className="col-10 col-md-3">
-						<img src="/public/00myIcon/about.png" alt="" />
+						<img src="/00myIcon/about.png" alt="" />
 					</div>
 					<div className="col-10 col-md-9" id="divAlertContent">
 						<p>{alertContent}</p>
