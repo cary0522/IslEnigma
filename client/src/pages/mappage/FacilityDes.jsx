@@ -14,11 +14,11 @@ function FacilityDes({
 	}
 	if (desShow) {
 		for (let facility of facilityList) {
-			if (facility.id === desId) {
+			if (facility.facility_id === desId) {
 				return (
 					<>
 						<div className="divDes" style={style}>
-							<img src={facility.image} />
+							<img src={facility.images.image1} />
 							<div className="divDesContent">
 								<h1>{facility.title}</h1>
 								<div>{facility.des}</div>
@@ -27,7 +27,7 @@ function FacilityDes({
 									id="btnContent"
 									onClick={(e) => {
 										e.stopPropagation();
-										handleContent(facility.id);
+										handleContent(facility.facility_id);
 									}}
 								>
 									詳細介紹

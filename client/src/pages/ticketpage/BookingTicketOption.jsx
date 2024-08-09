@@ -13,7 +13,7 @@ function BookingTicketOption({
 	handleAlertShow
 }) {
 	return (
-		<div className="divBookingItem container">
+		<div className="divBookingItem">
 			<div className="col-6">
 				<p>{ticketOption}</p>
 				<small>{ticketPrice}</small>

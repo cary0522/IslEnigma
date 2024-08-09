@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const Nav = ({ toggleNavbar }) => {
   return (
@@ -43,7 +43,7 @@ const Nav = ({ toggleNavbar }) => {
             </a>
           </li>
           <li className="navItem traffic">
-            <a href="#">
+            <a href="/boatpage">
               <img src="/00myIcon/traffic-info.png" alt="交通資訊" />
               <p data-text="交通資訊">交通資訊</p>
             </a>
@@ -55,7 +55,7 @@ const Nav = ({ toggleNavbar }) => {
             </a>
           </li>
           <li className="navItem info">
-            <a href="#">
+            <a href="/infoEventPage">
               <img src="/00myIcon/park-info.png" alt="樂園資訊" />
               <p data-text="樂園資訊">樂園資訊</p>
             </a>
@@ -72,7 +72,7 @@ const Nav = ({ toggleNavbar }) => {
         </a>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

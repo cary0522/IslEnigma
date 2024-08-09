@@ -1,0 +1,1908 @@
+@import "../../components/reset.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+// 變數定義
+$font-family: "Noto Sans TC", "Arial", sans-serif;
+$background-color: #fffdf8;
+$main-color: linear-gradient(
+  to right,
+  rgb(49, 124, 165),
+  hsla(263, 25%, 52%, 1)
+);
+$text-color: #fff;
+$primary-color: #333;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} // @include flex-center;
+
+// 響應式設計 Mixin
+@mixin responsive($breakpoint) {
+  @if $breakpoint == huge {
+    @media (min-width: 1921px) {
+      @content;
+    }
+  } @else if $breakpoint == large {
+    @media (min-width: 1440px) and (max-width: 1920px) {
+      @content;
+    }
+  } @else if $breakpoint == medium {
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      @content;
+    }
+  } @else if $breakpoint == small {
+    @media (min-width: 720px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (max-width: 719px) {
+      @content;
+    }
+  }
+}
+
+/* 全局樣式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", "Arial", sans-serif;
+  background: #fffdf8;
+
+  @include responsive(mobile) {
+    height: 100vh;
+    position: relative; // 為絕對定位的子元素提供定位上下文
+  }
+}
+
+// #footer {
+//   margin-top: 100px;
+// }
+
+@keyframes smoothSlide1 {
+  0% {
+    transform: translateX(300%);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  80% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes smoothSlide {
+  0% {
+    transform: translateX(-300%);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+  80% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+// 神秘新聞區域
+.mysteryNews {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 100px;
+  background-color: #fffdf8;
+  // background-color: #e8f9ff;
+  padding: 50px 150px;
+  padding-bottom: 0;
+  // overflow: hidden;
+
+  //新聞標題
+  .sectionTitleRow {
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    .sectionTitle {
+      background: $main-color;
+      color: #fffdf8;
+      align-self: flex-start;
+      width: fit-content;
+      padding: 20px;
+      font-size: 4rem;
+      font-weight: bold;
+      // margin: 0 0 0 20px;
+      margin-left: 0;
+      border-top-right-radius: 25px;
+      position: relative;
+      text-align: center;
+      animation: smoothSlide1 6s ease-in-out infinite alternate;
+      animation-delay: 5s;
+      transform-origin: left center;
+
+      @include responsive(mobile) {
+        font-size: 2rem;
+      }
+    }
+
+    .sectionTitleLine {
+      width: 100%;
+      height: 2px;
+      bottom: 2px;
+      border-radius: 10px;
+      position: relative;
+      background: $main-color;
+    }
+  }
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  //去除所有槽
+  .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+  }
+
+  .container-fluid {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .itemA {
+    color: #2c5d8f;
+    font-weight: 800;
+    line-height: 1.5rem;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+
+  //左邊
+  .left-column {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    padding-right: 5px;
+    // min-height: 100vh;
+    height: 100vh;
+
+    .box_1 {
+      .image {
+        width: 100%;
+        height: 100%; // 讓圖片填滿整個高度
+        object-fit: cover;
+        border-radius: 30px;
+      }
+    }
+
+    .box_2 {
+      height: 26%; // 改為自適應高度
+      margin-bottom: 10px; // 添加一些底部邊距
+
+      .image2 {
+        width: 100%;
+        height: 180px; // 讓圖片填滿整個容器
+        object-fit: cover;
+        border-radius: 30px;
+      }
+    }
+    .box_3 {
+      flex-grow: 1; // 讓它填充剩餘空間
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; // 內容從頂部開始
+
+      .content-2 {
+        font-size: 0.8rem;
+        line-height: 1.4; // 添加行高
+        max-height: none; // 移除最大高度限制
+        overflow: visible; // 允許內容完全顯示
+      }
+    }
+
+    hr {
+      margin: 8px 0;
+    }
+
+    .title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      line-height: 1.5rem;
+    }
+
+    .time {
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .content {
+      font-size: 0.8rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+    }
+
+    .content-2 {
+      display: -webkit-box;
+      font-size: 0.8rem;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+    }
+
+    .seeMore {
+      font-size: 0.8rem;
+      width: fit-content;
+      padding: 10px 15px;
+      background: linear-gradient(to right, #3a77b0, #6b5b95);
+      border-radius: 20px;
+      color: white;
+      display: inline-block;
+      font-weight: 600;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .ticketSection {
+      width: 100%;
+      padding: 1.2rem 80px;
+      background: linear-gradient(to right, #3a77b0, #6b5b95);
+      color: white;
+      border: 0;
+      @include flex-center;
+      height: 100%;
+      gap: 1rem;
+      border-radius: 5rem;
+      align-items: center;
+      box-shadow: 0px 3px 3px 0px rgba(255, 255, 255, 0.25) inset,
+        0px 3px 3px 0px rgba(83, 54, 131, 0.5);
+
+      .ticketIcon {
+        width: 50%;
+      }
+      span {
+        width: 50%;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-right: 50px;
+      }
+    }
+
+    @include responsive(small) {
+      height: 105vh;
+
+      .image2 {
+        height: 20px;
+      }
+
+      .ticketSection {
+        @include flex-center;
+        width: 50%;
+        // height: 100%;
+        margin-left: 10%;
+      }
+    }
+
+    @include responsive(mobile) {
+      margin-bottom: 20px;
+      height: 103vh;
+    }
+
+    .box_1,
+    .box_2 {
+      .row {
+        height: 30%; // 確保行填滿整個盒子高度
+      }
+    }
+
+    .ticketSection {
+      @include flex-center;
+      width: 80%;
+      // height: 75%;
+      margin-top: 0.5rem;
+      margin-left: 10%;
+    }
+  }
+
+  //中間
+  .center-column {
+    height: 100vh;
+    border: #2c5d8f 1px solid;
+    border-radius: 20px;
+    overflow: hidden;
+    color: #2c5d8f;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .mainContent {
+      // flex: 1;
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.3s ease;
+      overflow: hidden;
+      position: relative;
+
+      .mainImageItem {
+        height: 50vh; // 固定圖片高度為視窗高度的50%
+        margin: 20px 20px 10px;
+        border-radius: 30px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 30px;
+        }
+      }
+
+      .imageOverlay {
+        flex: 1;
+        padding: 0 20px 10px;
+        overflow-y: auto;
+
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin-bottom: 5px;
+          color: #2c5d8f;
+        }
+
+        .time {
+          font-size: 1rem;
+          color: #666;
+          margin-bottom: 5px;
+          font-weight: 800;
+        }
+
+        p {
+          font-size: 1rem;
+          font-weight: 600;
+          line-height: 1.5rem;
+          color: #2c5d8f;
+        }
+      }
+    }
+
+    .subNews {
+      position: relative;
+      background-color: #f0f0f0;
+      padding: 10px;
+      height: 20%;
+
+      border-top: 1px solid #ddd;
+      display: flex;
+      align-items: left;
+
+      .imageItem {
+        height: 120px;
+        width: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+
+      .textItem {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-items: flex-start;
+        justify-content: flex-start;
+        align-self: start;
+        text-align: left;
+        margin-left: 0;
+
+        h4 {
+          color: #3a77b0;
+          margin: 5px 0;
+          font-size: 1rem;
+          text-align: left;
+          margin-left: 0;
+        }
+
+        p {
+          font-size: 1.1rem;
+          color: #333;
+          font-weight: 600;
+          margin-bottom: 5px;
+          margin-left: 0;
+        }
+
+        .date {
+          font-size: 0.9rem;
+          color: #666;
+          margin-left: 0;
+        }
+      }
+
+      .buttonItem {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+
+        button {
+          padding: 5px 15px;
+          margin-left: 10px;
+          border: none;
+          border-radius: 20px;
+          background-color: #3a77b0;
+          color: #fff;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #2c5d8f;
+          }
+        }
+      }
+    }
+  }
+
+  @include responsive(medium) {
+    .center-column {
+      height: 100vh;
+      p.content {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+
+  @include responsive(small) {
+    .center-column {
+      .subNews {
+        height: auto; // 在較小的螢幕上允許高度自適應
+        .imageItem {
+          height: 100%;
+          width: 100%;
+        }
+        .buttonItem {
+          justify-content: center;
+          margin-top: 10px;
+        }
+      }
+
+      p.content {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+
+  @include responsive(mobile) {
+    .center-column {
+      // margin-bottom: 50px;
+      height: auto;
+
+      .subNews {
+        height: auto; // 在較小的螢幕上允許高度自適應
+        .imageItem {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .mainContent {
+        .mainImageItem {
+          height: 40vh; // 在更小的螢幕上減少圖片高度
+        }
+      }
+    }
+  }
+
+  //右邊
+  .right-column {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    align-items: flex-start;
+    overflow: visible;
+
+    @include responsive(medium) {
+      // height: 100vh;
+      // margin-bottom: 0;
+    }
+
+    @include responsive(small) {
+      // height: 100vh;
+      // margin-top: 50px;
+      .box_1 {
+        // display: none;
+      }
+    }
+
+    @include responsive(mobile) {
+      margin-top: 40px;
+      height: 120vh;
+    }
+
+    .box_1 {
+      // height: auto;
+    }
+
+    .scrollable-area {
+      height: 45%;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #3a77b0 #f0f0f0;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f0f0f0;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #3a77b0;
+        border-radius: 3px;
+      }
+
+      .news-item {
+        display: flex;
+        padding: 10px 0;
+        overflow: hidden;
+
+        .news-image {
+          flex: 0 0 40%;
+          margin-right: 10px;
+          overflow: hidden;
+          height: 85px;
+          border-radius: 20px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 5px;
+          }
+        }
+
+        .news-content {
+          flex: 1;
+          overflow: hidden;
+
+          .news-title {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            object-position: center;
+          }
+
+          .news-date {
+            font-size: 0.7em;
+            color: #666;
+            font-weight: 800;
+            margin-bottom: 3px;
+          }
+
+          .news-excerpt {
+            font-size: 0.8em;
+            color: #333;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+      }
+
+      hr {
+        margin: 5px 0;
+        border-top: 1px solid #ddd;
+      }
+    }
+
+    .box_5 {
+      height: 30%;
+      margin-bottom: 10px;
+    }
+
+    .box_2,
+    .box_3,
+    .box_4 {
+      height: 33.33%;
+      min-height: 100px;
+      @include flex-center;
+    }
+
+    hr {
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    .itemA {
+      background-color: #b7b7b7;
+      padding: 5px;
+      border-radius: 5px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .image {
+      background-color: #3a77b0;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      overflow: hidden;
+      margin-right: 10px;
+      border-radius: 10px;
+    }
+
+    .box_1 {
+      overflow: visible;
+      background-color: #2c5d8f;
+      padding: 0;
+      border-radius: 30px;
+
+      .box1 {
+        padding: 0;
+        overflow: visible; // 改為 visible，讓鼻子可以伸出去
+        transition: 0.3s ease;
+        position: relative; // 添加相對定位
+
+        &.flipCard {
+          background-color: transparent;
+          perspective: 1000px;
+          cursor: pointer;
+          height: 140px;
+          width: 100%;
+
+          &:hover {
+            .flipCardInner {
+              transform: rotateY(180deg);
+            }
+          }
+        }
+
+        .flipCardInner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          transition: transform 0.8s;
+          transform-style: preserve-3d;
+          display: flex;
+          gap: 30px;
+
+          img {
+            display: block;
+          }
+        }
+
+        .flipCardFront,
+        .flipCardBack {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-radius: 30px;
+        }
+
+        .flipCardFront {
+          background-color: #2c5d8f;
+          color: white;
+        }
+
+        .flipCardBack {
+          background-color: #ffb700;
+          color: white;
+          transform: rotateY(180deg);
+          overflow: hidden;
+
+          .subImage {
+            transition: transform 0.3s ease;
+            position: relative; // 使用絕對定位
+            // left: -50px;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            border-radius: 20px;
+          }
+
+          .subTitle {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            background-color: #4f3800c9;
+            padding: 10px 20px;
+            border-radius: 20px;
+          }
+        }
+
+        .mainImage {
+          transition: transform 0.3s ease;
+          position: relative; // 使用絕對定位
+          left: -50px;
+          bottom: 0;
+          max-width: 60%;
+          object-fit: contain;
+
+          &:hover {
+            max-width: 80%;
+            transform: scale(1.1);
+          }
+        }
+
+        .elefTitle {
+          position: absolute;
+          font-size: 2rem;
+          color: white;
+          font-weight: 800;
+          right: 50px;
+          bottom: 18px;
+          max-width: 50%;
+          z-index: 1; // 確保標題在大象上方
+        }
+        @include responsive(small) {
+          .elefTitle {
+            position: absolute;
+            font-size: 4rem;
+            color: white;
+            right: 60px;
+            bottom: 5px;
+            max-width: 50%;
+            z-index: 1; // 確保標題在大象上方
+          }
+
+          .mainImage {
+            max-width: 18%;
+            left: -200px;
+          }
+        }
+        @include responsive(mobile) {
+          .elefTitle {
+            position: absolute;
+            font-size: 2.5rem;
+            color: white;
+            right: 60px;
+            bottom: 15px;
+            max-width: 50%;
+            z-index: 1; // 確保標題在大象上方
+          }
+
+          .mainImage {
+            max-width: 30%;
+            left: -100px;
+          }
+        }
+      }
+    }
+    .box_5 {
+      height: 30%; // 或者使用固定高度，如 200px
+      // margin-bottom: 10px;
+      border-radius: 30px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100%; // 確保容器填滿 .box_5
+      // overflow: hidden;
+      border-radius: 30px;
+
+      .mainVideo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 95%;
+        border: none;
+        border-radius: 40px;
+      }
+
+      .title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 5px 10px;
+        font-size: 0.9em;
+        text-align: center;
+        margin: 0;
+      }
+    }
+
+    @include responsive(mobile) {
+      .box_1 {
+        margin-top: 0;
+      }
+    }
+  }
+  .ticket-section {
+    background: linear-gradient(to right, #3a77b0, #6b5b95);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 2rem;
+
+    .ticket-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 1rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  .left-column,
+  .center-column,
+  .right-column {
+    min-height: 100vh; // 改為 min-height
+    overflow-y: auto; // 允許垂直滾動
+
+    @include responsive(mobile) {
+      min-height: auto; // 在移動端取消最小高度限制
+    }
+  }
+
+  .title,
+  .news-title,
+  .imageOverlay h3 {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background-color: #2c5d8f;
+      transition: width 0.3s ease;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .image-container,
+  .mainImageItem,
+  .news-image {
+    &:hover {
+      + .news-content .news-title::after,
+      + .imageOverlay h3::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // 做新聞區塊整體的響應
+  @include responsive(large) {
+    padding: 20px 100px;
+    padding-bottom: 0;
+  }
+  @include responsive(medium) {
+    padding: 40px 80px;
+    padding-bottom: 0;
+  }
+  @include responsive(small) {
+    padding: 30px 50px;
+    padding-bottom: 0;
+    margin-top: 30px;
+
+    // .right-column {
+    //   height: 100px;
+    // }
+  }
+  @include responsive(mobile) {
+    padding: 20px 20px;
+    margin-top: 50px;
+    padding-bottom: 0;
+
+    .sectionTitle {
+      font-size: 20px;
+    }
+
+    .left-column,
+    .center-column,
+    .right-column {
+      .newsItem,
+      .performerCard {
+        min-height: auto;
+        margin-bottom: 15px;
+      }
+    }
+
+    .center-column {
+      height: auto;
+      .mainImageItem .image-overlay {
+        position: static;
+        background: #3a77b0;
+      }
+
+      .subNews {
+        flex-direction: column;
+
+        .textItem,
+        .imageItem {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+
+        .textItem {
+          display: flex;
+          justify-items: flex-start;
+          justify-content: flex-start;
+          align-self: start;
+        }
+      }
+    }
+
+    .col-3 {
+      width: 100%;
+    }
+  }
+}
+
+//這塊要重新選
+// .image:hover .title::after,
+// .mainImageItem:hover + .imageOverlay h3::after,
+// .news-image:hover + .news-content .news-title::after,
+// .title:hover::after,
+// .news-title:hover::after,
+// .imageOverlay h3:hover::after {
+//   width: 100%;
+// }
+
+//看更多按鈕
+.seeMore,
+.btn-prev,
+.btn-next {
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: darken(#3a77b0, 10%);
+    transform: scale(1.05) translateY(-2px);
+  }
+}
+
+//票卡按鈕
+.ticketSection {
+  transition: all 0.3s ease;
+  box-shadow: inset 0px 2px 5px #333;
+  box-shadow: 5px -5px 5px #ffffff;
+
+  &:hover {
+    box-shadow: 0px 5px 1px #333;
+    transform: scale(1.05) and translateY(7px);
+    background: linear-gradient(
+      to right,
+      darken(#6f8ca7, 100%),
+      darken(#6b5b95, 100%)
+    );
+
+    .ticketIcon {
+      transform: scale(1.1);
+    }
+
+    span {
+      color: lighten(#fff, 20%);
+      transform: scale(1.05);
+    }
+  }
+
+  .ticketIcon,
+  span {
+    transition: all 0.3s ease;
+  }
+}
+
+.more-section {
+  background: linear-gradient(to right, #3a77b0, #6b5b95);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  font-weight: 800;
+  width: 30%;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.2rem;
+  padding: 20px 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 30px;
+
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
+//看更多按鈕
+.more-section {
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(
+      to right,
+      darken(#3a77b0, 10%),
+      darken(#6b5b95, 10%)
+    );
+    transform: scale(1.05) translateY(-2px);
+
+    span {
+      color: lighten(#fff, 20%);
+    }
+  }
+}
+
+// 通用的圖片容器樣式
+.image-container {
+  position: relative;
+  border-radius: 20px; // 保持圓角效果
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: "\f1e0";
+    font-family: "Font Awesome 5 Free";
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}
+
+//確定有image-container
+// 中間列
+.center-column {
+  .mainImageItem {
+    @extend .image-container;
+  }
+
+  .subNews .imageItem {
+    @extend .image-container;
+  }
+}
+
+// 右列
+.right-column {
+  .scrollable-area .news-image {
+    @extend .image-container;
+  }
+
+  .box_1 .box1 {
+    // overflow: hidden;
+    transition: background-color 0.3s ease;
+
+    .mainImage {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background-color: darken(#3a77b0, 10%);
+
+      .mainImage {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// -------------今日活動樣式
+
+//整體樣式
+.todayActivities {
+  padding: 50px 110px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 100%;
+  margin: 0;
+  background-color: #fffdf8;
+  overflow: hidden;
+
+  .sectionTitleRow {
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    .sectionTitle {
+      background: $main-color;
+      color: #fffdf8;
+      align-self: flex-start;
+      width: fit-content;
+      padding: 20px;
+      font-size: 4rem;
+      font-weight: bold;
+      // margin: 0 0 0 20px;
+      margin-right: 0;
+      border-top-right-radius: 25px;
+      position: relative;
+      text-align: center;
+      animation: smoothSlide 7s ease-in-out infinite alternate;
+      animation-delay: 2.5s;
+      transform-origin: left center;
+
+      @include responsive(mobile) {
+        // width: 40%;
+        font-size: 2rem;
+      }
+    }
+
+    .sectionTitleLine {
+      width: 100%;
+      height: 2px;
+      bottom: 2px;
+      border-radius: 10px;
+      position: relative;
+      background: $main-color;
+    }
+  }
+
+  #toggleButton {
+    background: $main-color;
+    border-radius: 50px;
+    color: $text-color;
+    border: none;
+    font-size: 1.2rem;
+    padding: 20px 25px;
+    margin: 15px 0;
+    width: 30%;
+    cursor: pointer;
+    align-self: center;
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: darken(#337ab7, 10%);
+      transform: scale(1.1);
+    }
+
+    @include responsive(mobile) {
+      width: 50%;
+    }
+  }
+
+  #todayActivitiesTable,
+  #yearlyActivitiesTable {
+    width: 100%;
+    .tableA {
+      width: 100%;
+      border: 2px solid #aceceb;
+      border-radius: 10px;
+      text-align: center;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      th {
+        // padding: 0.8rem;
+
+        color: #e0e0e0;
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 32px; /* 200% */
+        padding: 0.5rem 0.5rem;
+        // text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      td:nth-child(1) {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 800;
+      }
+
+      td {
+        // padding: 0.8rem;
+        color: #3b7ba5;
+        padding: 0.5rem 0.5rem;
+        width: 20%;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 2rem; /* 200% */
+        // text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+
+        @include responsive(mobile) {
+          font-size: 0.9rem;
+        }
+      }
+
+      thead {
+        background: $main-color;
+        color: $text-color;
+      }
+
+      tbody tr {
+        transition: background-color 0.3s ease;
+
+        &:nth-child(even) {
+          background: linear-gradient(
+            90deg,
+            rgba(51, 125, 166, 0.2) -3.82%,
+            rgba(122, 102, 164, 0.2) 101.87%
+          );
+        }
+
+        &:hover {
+          background-color: darken(#dce6f1, 5%);
+        }
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // 隱藏年度活動表格
+  #yearlyActivitiesTable {
+    display: none;
+  }
+}
+
+// 活動注意事項樣式
+
+.activityNotes {
+  position: relative;
+  margin-top: 20px;
+  margin: 20px 110px;
+  // display: flex;
+  // padding: 500px;
+  background-color: #f8f8f8;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 100px;
+
+  .roomRulesheader {
+    display: flex;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 20px;
+    background: $main-color;
+    color: $background-color;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+      flex-grow: 1;
+      padding-left: 10px;
+    }
+
+    .roomRulesIcon {
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      margin-left: 20px;
+      transition: transform 0.5s ease;
+      transform: rotate(45deg) translateX(-3px);
+    }
+
+    .roomRulesDecorator {
+      display: flex;
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 50px;
+
+    li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+      padding: 20px;
+      line-height: 1.4;
+      color: #666;
+      font-weight: 600;
+      color: #78819f;
+
+      &:last-child {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .activityContent {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .imgContainer {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 100px;
+    width: 100%;
+    height: 300px;
+
+    .imgbox {
+      display: flex;
+      position: relative;
+
+      img {
+        position: absolute;
+        width: 50%;
+        max-width: 160px;
+        height: auto;
+      }
+
+      img:first-of-type {
+        right: 6%; /* 調整右側城堡的位置 */
+        top: 150px;
+        opacity: 1;
+        width: 130px; /* 設置最大寬度 */
+      }
+
+      img:last-of-type {
+        right: 18%; /* 調整左側城堡的位置 */
+        width: 130px; /* 設置最大寬度 */
+        transform: scaleX(-1); /* 水平翻轉 */
+        top: 150px;
+        opacity: 1;
+      }
+
+      #wheel {
+        position: absolute;
+        top: 70px;
+        max-width: 200px;
+        right: 10%; /* 調整右側城堡的位置 */
+        height: auto;
+
+        .ferris-wheel {
+          width: 200px;
+          height: 200px;
+        }
+
+        .wheel {
+          stroke-width: 2;
+          fill: none;
+        }
+        .spoke {
+          stroke-width: 1;
+        }
+        .cabin {
+          stroke-width: 1;
+        }
+        .support {
+          stroke-width: 4;
+          fill: none;
+        }
+      }
+
+      // 響應式調整
+      @include responsive(huge) {
+        img:first-of-type {
+          right: -10px;
+        }
+
+        img:last-of-type {
+          right: 140px;
+        }
+        #wheel {
+          max-width: 150px;
+          right: 85px;
+        }
+      }
+
+      @include responsive(large) {
+        img:first-of-type {
+          opacity: 0.5;
+          right: 11px;
+        }
+
+        img:last-of-type {
+          opacity: 0.5;
+          right: 140px;
+        }
+        #wheel {
+          max-width: 150px;
+          right: 85px;
+        }
+      }
+
+      @include responsive(medium) {
+        img:first-of-type {
+          opacity: 0.7;
+          right: 11px;
+        }
+
+        img:last-of-type {
+          opacity: 0.7;
+          right: 140px;
+        }
+        #wheel {
+          opacity: 0.7;
+          max-width: 150px;
+          right: 85px;
+        }
+      }
+
+      @include responsive(small) {
+        img:first-of-type {
+          opacity: 0.5; // 降低透明度
+
+          right: -60px;
+        }
+
+        img:last-of-type {
+          opacity: 0.5; // 降低透明度
+
+          right: 70px;
+        }
+        #wheel {
+          max-width: 150px;
+          right: 2%;
+          opacity: 0.7; // 降低透明度
+        }
+      }
+
+      @include responsive(mobile) {
+        img:first-of-type {
+          max-width: 120px;
+          right: -63px;
+          opacity: 0.2; // 進一步降低透明度
+          top: 157px;
+        }
+
+        img:last-of-type {
+          max-width: 100px;
+          top: 173px;
+          right: 57px;
+          opacity: 0.2; // 進一步降低透明度
+        }
+        #wheel {
+          max-width: 120px;
+          right: 30px;
+          opacity: 0.3; // 進一步降低透明度
+        }
+      }
+    }
+  }
+
+  @include responsive(mobile) {
+    margin: 30px;
+    margin-bottom: 100px;
+
+    h3 {
+      font-size: 16px;
+    }
+
+    ul {
+      padding-left: 20px;
+      // color: #909bbd;
+    }
+    ul li {
+      font-size: 0.8rem;
+      color: #78819f;
+    }
+  }
+}
+
+@include responsive(mobile) {
+  .todayActivities {
+    padding: 30px;
+
+    .sectionTitle {
+      font-size: 20px;
+    }
+
+    th {
+      font-size: 1px;
+    }
+  }
+
+  .description-column {
+    display: none;
+  }
+}
+
+.testimg {
+  width: 100%;
+  height: 100%;
+}
+
+//====================
+.mysteryNews2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // margin-top: 100px;
+  background-color: #fffdf8;
+  padding: 0 100px;
+
+  // 做新聞區塊2整體的響應
+  @include responsive(large) {
+    padding: 20px 100px;
+  }
+  @include responsive(medium) {
+    padding: 40px 80px;
+  }
+  @include responsive(small) {
+    padding: 30px 50px;
+  }
+  @include responsive(mobile) {
+    padding: 20px 20px;
+    margin-top: 50px;
+  }
+
+  .row {
+    margin: 0;
+    height: 80vh;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    height: 100%;
+    padding: 0 10px;
+  }
+
+  .leftColumn {
+    .topNews,
+    .bottomNews {
+      position: relative;
+      height: 48%;
+      margin-bottom: 4%;
+      border-radius: 15px;
+      overflow: hidden;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      .content {
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 0.5rem 1.5rem;
+
+        h3 {
+          margin: 0;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+
+    .topSection {
+      height: 28%;
+      margin-bottom: 1%;
+      display: flex;
+
+      .infoBlock,
+      .descriptionBlock,
+      .imageBlock {
+        padding: 10px;
+        background: white;
+        border-radius: 15px;
+        margin-right: 1%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      .infoBlock {
+        flex: 1.2;
+
+        .title {
+          font-size: 1.3rem;
+          margin-bottom: 5px;
+          color: #2c5d8f;
+        }
+
+        p {
+          font-size: 0.9rem;
+          margin-bottom: 10px;
+          color: #333;
+          text-align: start;
+        }
+
+        .title {
+          font-weight: bold;
+          line-height: 1.6rem;
+        }
+
+        .time {
+          font-size: 1rem;
+          font-weight: 800;
+          text-align: left;
+          margin: 0;
+          color: #2c5d8f;
+        }
+
+        .btnMore {
+          background: linear-gradient(to right, #3a77b0, #6b5b95);
+          border: none;
+          border-radius: 20px;
+          padding: 10px 15px;
+          color: white;
+          align-self: flex-start;
+          margin-top: auto;
+          transition: 0.3s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .descriptionBlock {
+        flex: 1.5;
+
+        p {
+          font-size: 0.95rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #2c5d8f;
+          font-weight: 600;
+          line-height: 1.3;
+          display: -webkit-box;
+          -webkit-line-clamp: 7;
+          -webkit-box-orient: vertical;
+        }
+      }
+
+      .imageBlock {
+        flex: 1.7;
+        overflow: hidden;
+        transition: 0.3s;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+          overflow: hidden;
+          transition: 0.3s;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    .mainNews {
+      border: #2c5d8f solid 1px;
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 15px;
+      overflow: hidden;
+
+      .imageContainer {
+        height: 60%;
+        width: 100%;
+        border-radius: 30px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 30px;
+          transition: 0.3s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .content {
+        height: 40%;
+        padding: 15px;
+        background: white;
+        // overflow-y: auto;
+        overflow: hidden;
+
+        h2 {
+          font-size: 1.5rem;
+          color: #2c5d8f;
+          margin-bottom: 5px;
+          font-weight: 800;
+        }
+
+        .date {
+          font-size: 1rem;
+          color: #666;
+          margin: 20px 10px;
+          font-size: 1rem;
+          font-weight: 800;
+          text-align: left;
+          margin: 0;
+        }
+
+        .description {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: #2c5d8f;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+}
+@include responsive(small) {
+  .mainNews {
+    height: 100%;
+  }
+}
+
+// 響應式調整
+@include responsive(mobile) {
+  .mysteryNews2 {
+    padding: 0 20px;
+
+    .row {
+      height: auto;
+    }
+
+    .leftColumn,
+    .rightColumn {
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .leftColumn {
+      height: 50vh;
+    }
+
+    .rightColumn {
+      .topSection {
+        flex-direction: column;
+        height: auto;
+
+        .infoBlock,
+        .descriptionBlock,
+        .imageBlock {
+          margin-right: 0;
+          margin-bottom: 10px;
+          height: auto;
+        }
+      }
+
+      .mainNews {
+        padding: 15px;
+
+        .imageContainer {
+          height: 180px;
+          width: 100%;
+        }
+
+        .content {
+          height: auto;
+
+          h2 {
+            font-size: 1.4rem;
+          }
+          .date {
+            margin: 10px 0px;
+          }
+          .description {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}

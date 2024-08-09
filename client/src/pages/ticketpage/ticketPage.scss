@@ -4,6 +4,7 @@
 .ticketPage {
 	font-family: "Noto Sans TC", "Arial", sans-serif;
 	.divAlert {
+		box-sizing: content-box;
 		padding: 30px;
 		max-width: 400px;
 		width: 70%;
@@ -20,13 +21,20 @@
 		z-index: 1000;
 		align-items: center;
 		text-align: center;
-		animation: alertShow 0.3s ease-out ;
+		animation: alertShow 0.3s ease-out;
 		@keyframes alertShow {
-			from{
+			from {
 				opacity: 0;
 			}
-			to{
+			to {
 				opacity: 1;
+			}
+		}
+		div{
+			box-sizing: content-box;
+			img{
+				max-width: 100%;
+				object-fit: contain;
 			}
 		}
 		h2,
@@ -45,6 +53,7 @@
 			line-height: 30px;
 		}
 		.ticketIcon {
+			box-sizing: content-box;
 			width: 80px;
 			margin-bottom: 20px;
 		}
@@ -154,7 +163,7 @@
 	}
 	#divBanner {
 		position: relative;
-		img{
+		img {
 			max-width: 100%;
 			object-fit: contain;
 		}
@@ -224,6 +233,7 @@
 			}
 		}
 		.divSafe {
+			box-sizing: content-box;
 			position: absolute;
 			background-color: $backgroundColorSafe;
 			color: $colorSvg;
@@ -240,16 +250,21 @@
 				font-size: 0.8rem;
 				padding: 2px 0 0 0;
 			}
-			@media screen and (max-width: 992px) {
-				top: 60%;
+			@media screen and (max-width: 750px) {
+				padding: 10px ;
+				h5{
+					font-size: .7rem;	
+				}
 			}
 			@media screen and (max-width: 720px) {
 				top: 70%;
 				left: 50%;
 				transform: translate(-50%, -50%);
+				padding: 10px 20px;
 			}
 		}
 		.bookingArea {
+			box-sizing: content-box;
 			transition: all 0.3s;
 			width: 350px;
 			position: absolute;
@@ -270,12 +285,14 @@
 				}
 			}
 			.divBookingItem {
+				box-sizing: content-box;
 				display: flex;
 				justify-content: space-around;
 				align-items: center;
 				margin: 10px;
 				padding: 10px;
 				height: 50px;
+				
 				.divCalendar {
 					position: relative;
 					display: flex;
@@ -285,6 +302,7 @@
 						border-radius: 20px;
 						text-align: center;
 						color: $colorText;
+						box-sizing: content-box;
 					}
 					.calendarArea {
 						position: absolute;
@@ -292,14 +310,6 @@
 						right: 0;
 						z-index: 4;
 						.react-calendar {
-							@keyframes divAnimation {
-								0% {
-									opacity: 0;
-								}
-								100% {
-									opacity: 1;
-								}
-							}
 							animation: divAnimation 0.5s;
 							width: 350px;
 							height: auto;
@@ -308,6 +318,14 @@
 							backdrop-filter: blur($backgroundBlur);
 							border-radius: 20px;
 							padding: 10px;
+							@keyframes divAnimation {
+								0% {
+									opacity: 0;
+								}
+								100% {
+									opacity: 1;
+								}
+							}
 							abbr {
 								text-decoration: none;
 							}
@@ -384,13 +402,13 @@
 				top: 45%;
 				left: 50%;
 				transform: translate(-50%, -50%);
-				.divBookingItem{
+				.divBookingItem {
 					height: 30px;
 				}
-				button{
+				button {
 					font-size: 15px;
-					padding:10px 70px
-				};
+					padding: 10px 70px;
+				}
 			}
 		}
 		.btnDown {
@@ -405,7 +423,7 @@
 			left: 45%;
 			transform: translate(-50%, -50%);
 			animation: btnDown 1s infinite 0.5s;
-			transition: all .3s;
+			transition: all 0.3s;
 			.btnDwnTriangle {
 				position: absolute;
 				bottom: -15%;
@@ -455,6 +473,7 @@
 		text-align: center;
 	}
 	#divBookingWay {
+		box-sizing: content-box;
 		h1 {
 			margin: 10px;
 			font-size: 30px;
@@ -505,7 +524,7 @@
 					justify-content: center;
 					align-items: center;
 					cursor: pointer;
-					img{
+					img {
 						max-width: 100%;
 						object-fit: contain;
 					}
@@ -548,6 +567,7 @@
 		}
 	}
 	#divCompare {
+		box-sizing: content-box;
 		.divTable {
 			position: relative;
 			font-size: 24px;
@@ -632,6 +652,7 @@
 	#ticketRuleArea {
 		margin: 30px auto;
 		.ticketRuleTopBorder {
+			box-sizing: content-box;
 			margin: 10px auto 0 auto;
 			padding: 15px 20px;
 			height: 18px;
@@ -674,6 +695,7 @@
 			}
 		}
 		.ticketRuleContent {
+			box-sizing: content-box;
 			background-color: $colorSvg;
 			box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.25);
 			border: 1px solid rgba(195, 195, 195, 1);

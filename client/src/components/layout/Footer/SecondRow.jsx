@@ -1,5 +1,6 @@
 import Contact from "./Contact"
 import FAQ from "./FAQ"
+import MobileFaq from './MobileFaq'
 import GoToBox from "./GoToBox"
 import JoinUs from "./JoinUs"
 import MiddleBox from "./MiddleBox"
@@ -11,6 +12,7 @@ const SecondRow = () => {
       <FAQ />
       <Contact />
       <MiddleBox />
+      <MobileFaq />
       <MobileContact />
       <JoinUs />
       <GoToBox />
