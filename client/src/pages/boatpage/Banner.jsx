@@ -8,7 +8,7 @@ function Banner() {
 			<div className="banner" id="banner">
 				<div className="bannerContainer">
 					<div className="logoContainer">
-						<LogoArea imgLogo={imgLogo} areaName={"飲食購物"} />
+						<LogoArea imgLogo={imgLogo} areaName={"交通資訊"} />
 					</div>
 				</div>
 			</div>
