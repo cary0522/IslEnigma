@@ -27,7 +27,7 @@ const HamburgerMenu = ({
         >
           &times;
         </span>
-        <a href="./index">
+        <a href="./homepage">
           <img
             src="/00logo/LogoType_Light_1.png"
             alt="Logo"
@@ -75,8 +75,8 @@ const HamburgerMenu = ({
           <Icon.CarFront />
           <span> 交通資訊</span> <span>&gt;</span>
         </a>
-        <a href="#">
-          <Icon.InfoCircle /> <span>關於islEnigma</span>
+        <a href="/about-us">
+          <Icon.InfoCircle /> <span>關於我們</span>
           <span>&gt;</span>
         </a>
         <a href="/infoEventPage">
