@@ -11,11 +11,13 @@ const {
   new_order,
   update_item_quantity,
   remove_item,
+  new_cart_item,
 } = cart_controller
 
 // all items
 router.get("/", get_cart_items)
 
+router.post("/new_cart_item", new_cart_item)
 // new order
 router.post("/", new_order)
 
@@ -27,14 +29,16 @@ router.delete("/:id", remove_item)
 
 // create payment
 router.post("/create-checkout-session", async (req, res) => {
-  const data = req.body
-
+  console.log(req.body)
+  const { data, orderInfo } = req.body
   const order_id = data[0].order_id
-
+  const order_info_json = JSON.stringify(orderInfo)
   try {
     const session = await stripe.checkout.sessions.create({
+      //metadata只接受string
       metadata: {
         order_id,
+        order_info: order_info_json,
       },
       payment_method_types: ["card"],
       mode: "payment",

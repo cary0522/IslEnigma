@@ -365,8 +365,8 @@ body {
   right: 5%;
   top: calc(50% + 60px);
   transform: translateY(-50%);
-  width: 585px;
-  height: 400px;
+  width: 600px;
+  height: 500px;
   background-color: rgba(255, 255, 255, 0.8078431373);
   border-radius: 20px;
   box-shadow: -5px 6px 4.2px rgba(0, 0, 0, 0.24);
@@ -416,6 +416,14 @@ body {
   td {
   height: 16.7%;
 }
+
+/* #reservationCalendar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
 .quickModal
   .modalLeft
   #reservationCalendar
@@ -498,6 +506,18 @@ body {
   color: white;
   align-items: flex-end;
 }
+
+.quickModal .dateInputs .dateInput p {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  align-items: flex-end;
+}
+
 .quickModal .guestInputs {
   display: flex;
   flex-direction: column;
@@ -1977,3 +1997,13 @@ body {
 }
 
 /*# sourceMappingURL=room.css.map */
+
+/* 日歷 */
+.react-daterange-picker__wrapper {
+  display: none;
+}
+
+.react-calendar {
+  width: 280px;
+  margin-right: 100px;
+}

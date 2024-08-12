@@ -98,21 +98,21 @@ model order_info {
   customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
 }
 
-  model order_item {
-    order_item_id  String         @id @db.VarChar(191)
-    order_id       String         @db.VarChar(191)
-    room_id        String?        @db.VarChar(191)
-    ticket_id      String?        @db.VarChar(191)
-    check_in_date  DateTime?
-    check_out_date DateTime?
-    people_count   Int?
-    quantity       Int
-    booked_date    DateTime?
-    valid_date     DateTime?
-    customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
-    room           room?          @relation(fields: [room_id], references: [room_id], onUpdate: NoAction)
-    ticket         ticket?        @relation(fields: [ticket_id], references: [ticket_id], onUpdate: NoAction)
-  }
+model order_item {
+  order_item_id  String         @id @db.VarChar(191)
+  order_id       String         @db.VarChar(191)
+  room_id        String?        @db.VarChar(191)
+  ticket_id      String?        @db.VarChar(191)
+  check_in_date  DateTime?
+  check_out_date DateTime?
+  people_count   Int?
+  quantity       Int
+  booked_date    DateTime?
+  valid_date     DateTime?
+  customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+  room           room?          @relation(fields: [room_id], references: [room_id], onUpdate: NoAction)
+  ticket         ticket?        @relation(fields: [ticket_id], references: [ticket_id], onUpdate: NoAction)
+}
 
 model restaurant_menu {
   restaurant_menu_id Int       @id @default(autoincrement())
@@ -125,7 +125,7 @@ model restaurant_menu {
 model room {
   room_id     String       @id @db.VarChar(191)
   room_type   String       @db.VarChar(191)
-  bed_count   Int          @default(2)
+  room_count  Int          @default(2)
   description String?      @db.VarChar(191)
   price       Int
   available   Boolean

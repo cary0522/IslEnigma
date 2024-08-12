@@ -5,8 +5,6 @@ import { SERVER_URL } from "../utils/helpers"
 const removeCartItem = async (itemId) => {
   const res = await axios.delete(`${SERVER_URL}/cart/${itemId}`)
 
-  console.log(res)
-
   return res.data
 }
 

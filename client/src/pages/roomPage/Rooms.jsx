@@ -6,7 +6,6 @@ import RoomTypes from "./RoomTypes"
 import Slogan from "./Slogan"
 import Rules from "./Rules"
 import FourMealsPlan from "./Meals"
-import FeatureModal from "./FeatureModal"
 
 const Rooms = () => {
   return (
@@ -14,9 +13,8 @@ const Rooms = () => {
       <Banner />
       {/* 跳出框1 */}
       <ConfPopup />
-      {/* 跳出框2 */}
-      <Feature />
       {/* 特色 */}
+      <Feature />
       {/* 房型 */}
       <RoomTypes />
       {/* 一泊四食 */}

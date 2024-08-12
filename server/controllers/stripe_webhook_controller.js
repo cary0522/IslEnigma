@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
-const stripe_webhook = async (req, res) => {
+const stripe_webhook_controller = async (req, res) => {
   const sig = req.headers["stripe-signature"]
   const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET
   let event
@@ -11,7 +11,18 @@ const stripe_webhook = async (req, res) => {
     switch (event.type) {
       case "checkout.session.completed":
         const session = event.data.object
-        const { order_id } = session.metadata
+        const payment_method = session.payment_method_types[0]
+        const { order_id, order_info } = session.metadata
+
+        const parsed_order_info = JSON.parse(order_info)
+
+        console.log({
+          data: {
+            ...parsed_order_info,
+            order_id,
+            payment_method,
+          },
+        })
         if (order_id) {
           try {
             await prisma.customer_order.update({
@@ -22,8 +33,16 @@ const stripe_webhook = async (req, res) => {
                 status: "PAID",
               },
             })
+            const info_res = await prisma.order_info.create({
+              data: {
+                ...parsed_order_info,
+                order_id,
+                payment_method,
+                order_info_id: Math.round(Math.random() * 10),
+              },
+            })
           } catch (err) {
-            res.status(500).json(err)
+            console.log(err)
           }
         }
 
@@ -48,4 +67,4 @@ const stripe_webhook = async (req, res) => {
   }
 }
 
-module.exports = stripe_webhook
+module.exports = stripe_webhook_controller

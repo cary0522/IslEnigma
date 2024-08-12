@@ -1,35 +1,53 @@
 import { Outlet, useLocation } from "react-router-dom"
-import "./BreadCrumb.css"
+import "./ShoppingCartPage.css"
 
+import arrow from "/shoppingCart/breadcrumbArrow.png"
+import cartIcon from "/shoppingCart/shoppingCartIcon.png"
+import checkoutIcon from "/shoppingCart/checkoutIcon.png"
+
+import successIcon from "/shoppingCart/purchaseSuccess.png"
 const BreadCrumb = () => {
+  const location = useLocation()
+  console.log(location.pathname)
+
+  let pageName = ""
+
+  switch (true) {
+    case location.pathname.includes("checkout"):
+      pageName = "checkOutPage"
+      break
+
+    case location.pathname.includes("cart"):
+      pageName = "shoppingCart"
+      break
+
+    case location.pathname.includes("success"):
+      pageName = "shoppingSuccess"
+      break
+
+    default:
+      pageName = ""
+  }
+
   return (
-    <main>
-      <div className="breadcrumb">
-        <div className="active-now">
-          <img
-            src="/shoppingCart/shoppingCartIcon.png"
-            alt="/Shopping Cart Icon"
-          />
+    <>
+      <main id={pageName} className="main">
+        <div class="breadcrumb">
+          <div className={pageName === "shoppingCart" ? "activeNow" : ""}>
+            <img src={cartIcon} alt="購物車" />
+          </div>
+          <img src={arrow} alt="箭頭" class="breadcrumbArrow" />
+          <div className={pageName === "checkOutPage" ? "activeNow" : ""}>
+            <img src={checkoutIcon} alt="結帳" />
+          </div>
+          <img src={arrow} alt="箭頭" class="breadcrumbArrow" />
+          <div className={pageName === "shoppingSuccess" ? "activeNow" : ""}>
+            <img src={successIcon} alt="購買成功" />
+          </div>
         </div>
-        <img
-          className="breadcrumbArrow"
-          src="/shoppingCart/breadcrumbArrow.png"
-          alt="Breadcrumb Arrow"
-        />
-        <div>
-          <img src="/shoppingCart/checkoutIcon.png" alt="Checkout Icon" />
-        </div>
-        <img
-          className="breadcrumbArrow"
-          src="/shoppingCart/breadcrumbArrow.png"
-          alt="Breadcrumb Arrow"
-        />
-        <div>
-          <img src="/shoppingCart/purchaseSuccess.png" alt="Purchase Success" />
-        </div>
-      </div>
-      <Outlet />
-    </main>
+        <Outlet />
+      </main>
+    </>
   )
 }
 

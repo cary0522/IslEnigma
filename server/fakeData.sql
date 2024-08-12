@@ -15,11 +15,10 @@ VALUES
 ('1', 1, 100, 'CREATED', '2024-08-09 12:00:00')
 
 --假room
-
 INSERT INTO room (
     room_id, 
     room_type, 
-    bed_count, 
+    room_count, 
     description, 
     price, 
     available, 
@@ -39,7 +38,6 @@ VALUES (
 
 
 --假ticket
-
 INSERT INTO ticket (
     ticket_id, 
     type, 
@@ -54,7 +52,6 @@ VALUES (
 
 
 --假訂單  room
-
     INSERT INTO order_item (
         order_item_id, 
         order_id, 
@@ -68,7 +65,7 @@ VALUES (
         valid_date
     )
     VALUES (
-        '1',  -- order_item_id (使用你自己的逻辑生成唯一 ID)
+        '2',  -- order_item_id (使用你自己的逻辑生成唯一 ID)
         '1', -- order_id (关联到已有的 customer_order)
         '1',      -- room_id (可选，假设已有的 room_id)
         NULL,           -- ticket_id (可选，如果不适用，可以设为 NULL)
@@ -79,9 +76,9 @@ VALUES (
         NOW(),          -- booked_date (预订日期)
         NULL            -- valid_date (可选，如不适用，可以设为 NULL)
     );
-    --假訂單  ticket
 
 
+ --假訂單  ticket
 INSERT INTO order_item (
     order_item_id, 
     order_id, 

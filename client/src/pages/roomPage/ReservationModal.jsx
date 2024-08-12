@@ -1,81 +1,265 @@
+import { useEffect, useState } from "react"
+// date range picker
+import "@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css"
+import "react-calendar/dist/Calendar.css"
+import DateRangePicker from "@wojtekmaj/react-daterange-picker"
+import { useQueryRooms } from "../../hooks/useQueryRooms"
+import { useNewCartItem } from "../../hooks/useNewCartItem"
+import { useCartItemsData } from "../../hooks/useCartItem"
+
 const ReservationModal = ({ setToggleReservation }) => {
+  const {
+    data: cartItems,
+    error,
+    isLoading: loadingCartItem,
+  } = useCartItemsData()
+  const { mutate: queryRooms, isLoading, data } = useQueryRooms()
+
+  const {
+    mutate: newCartItem,
+    isLoading: addingItem,
+    data: item,
+  } = useNewCartItem()
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [value, onChange] = useState([])
+  const [queryData, setQueryData] = useState({
+    dateRange: [],
+    roomCount: 1,
+    people: 1,
+    roomType: "",
+  })
+
+  const formattedDate = (date) => {
+    if (!date) return ""
+    return date.toLocaleDateString({
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    })
+  }
+
+  const handleUpdate = (e) => {
+    const { name, className } = e.target
+
+    setQueryData((prev) => {
+      let updatedValue = prev[name]
+
+      switch (className) {
+        case "increase":
+          ++updatedValue
+          break
+        case "decrease":
+          --updatedValue
+          break
+        default:
+          break
+      }
+      if (updatedValue < 1) updatedValue = 1
+      if (updatedValue > 5) updatedValue = 5
+
+      return {
+        ...prev,
+        [name]: updatedValue,
+      }
+    })
+  }
+  const handleSearch = () => {
+    setTotalPrice(0)
+    queryRooms(queryData)
+  }
+
+  const validateSearch = () => {
+    const { dateRange } = queryData
+    return dateRange.length === 0
+  }
+
+  const handleSelect = (e) => {
+    const selectedOption = e.target.options[e.target.selectedIndex]
+    const price = selectedOption.getAttribute("data-price")
+    const roomType = selectedOption.getAttribute("data-name")
+    const roomId = selectedOption.value
+
+    setQueryData((prev) => ({
+      ...prev,
+      roomType,
+      roomId,
+    }))
+    setTotalPrice(price)
+  }
+  const handleAddCart = () => {
+    const orderId = cartItems.order_id
+
+    const itemData = {
+      ...queryData,
+      order_id: orderId,
+    }
+    newCartItem(itemData)
+  }
+
+  useEffect(() => {
+    if (value && value.length === 2) {
+      setQueryData((prev) => ({
+        ...prev,
+        dateRange: value,
+      }))
+    }
+  }, [value])
+  // useEffect(() => {
+  //   if (data) {
+  //     setRoomOption(data)
+  //   }
+  // }, [data])
+
   return (
-    <div id="quickReservationModal" class="quickModal">
-      <div class="quickModalContent">
+    <div id="quickReservationModal" className="quickModal">
+      <div className="quickModalContent">
         <span
-          class="closeQuickModal"
+          className="closeQuickModal"
           onClick={() => {
             setToggleReservation(false)
           }}
         >
           &times;
         </span>
-        <div class="modalLeft">
+        <div className="modalLeft">
           <h2>
-            露營訂房<i class="bi bi-calendar-week-fill"></i>
+            露營訂房<i className="bi bi-calendar-week-fill"></i>
           </h2>
-          <div id="reservationCalendar"></div>
+          <div>
+            <DateRangePicker
+              onChange={onChange}
+              value={value}
+              clearIcon={false}
+              closeCalendar={false}
+              disableCalendar={false}
+              isOpen={true}
+              shouldCloseCalendar={({ reason }) => reason !== "outsideAction"}
+              locale="en-us"
+            />
+          </div>
         </div>
-        <div class="modalRight">
-          <div class="reservationForm">
-            <div class="dateInputs">
-              <div class="dateInput">
-                <label for="checkInDate">入住日期:</label>
-                <input type="text" id="checkInDate" readonly />
+        <div className="modalRight">
+          <div className="reservationForm">
+            <div className="dateInputs">
+              <div className="dateInput">
+                <label htmlFor="checkInDate">入住日期:</label>
+                <input
+                  type="text"
+                  id="checkInDate"
+                  readOnly
+                  value={formattedDate(queryData.dateRange[0]) || ""} // 确保有值或空字符串
+                />
               </div>
-              <div class="dateInput">
-                <label for="checkOutDate">退房日期:</label>
-                <input type="text" id="checkOutDate" readonly />
+              <div className="dateInput">
+                <label htmlFor="checkOutDate">退房日期:</label>
+                <input
+                  type="text"
+                  id="checkOutDate"
+                  readOnly
+                  value={formattedDate(queryData.dateRange[1]) || ""}
+                />
               </div>
             </div>
-            <div class="guestInputs">
-              <div class="inputGroup">
-                <label>床數</label>
-                <div class="numberInput">
-                  <button class="decrease">-</button>
+            <div className="guestInputs">
+              <div className="inputGroup">
+                <label>間數</label>
+                <div className="numberInput">
+                  <button
+                    className="decrease"
+                    name="roomCount"
+                    onClick={handleUpdate}
+                  >
+                    -
+                  </button>
                   <input
                     type="number"
-                    id="bedCount"
-                    value="1"
+                    id="roomCount"
+                    value={queryData.roomCount || ""}
                     min="0"
                     max="4"
-                    readonly
+                    readOnly
                   />
-                  <button class="increase">+</button>
+                  <button
+                    className="increase"
+                    name="roomCount"
+                    onClick={handleUpdate}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-              <div class="inputGroup">
+              <div className="inputGroup">
                 <label>人數</label>
-                <div class="numberInput">
-                  <button class="decrease">-</button>
+                <div className="numberInput">
+                  <button
+                    className="decrease"
+                    name="people"
+                    onClick={handleUpdate}
+                  >
+                    -
+                  </button>
                   <input
                     type="number"
                     id="guestCount"
-                    value="1"
+                    value={queryData.people || ""}
                     min="0"
                     max="10"
-                    readonly
+                    readOnly
                   />
-                  <button class="increase">+</button>
+                  <button
+                    className="increase"
+                    name="people"
+                    onClick={handleUpdate}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
-              <div class="totalPrice">
+              <button
+                className="btn"
+                onClick={handleSearch}
+                disabled={validateSearch()}
+              >
+                搜索
+              </button>
+              <div className="totalPrice">
                 <span>NT$</span>
-                <input type="text" id="totalPriceInput" value="0" readonly />
+                <input
+                  type="text"
+                  id="totalPriceInput"
+                  value={totalPrice}
+                  readOnly
+                />
               </div>
             </div>
-            <div class="roomTypeSelectWrapper">
-              <select id="roomTypeSelect" class="roomTypeSelect">
-                <option value="" disabled selected>
-                  選擇房型
-                </option>
-                <option value="Grass">簡約帳篷 | 草原步調</option>
-                <option value="Ocean">豪華帳棚 | 沉靜海洋</option>
-                <option value="Isle">高級帳篷 | 島嶼蹤跡</option>
-                <option value="Starry">圓球帳篷 | 夢幻星空</option>
-              </select>
-            </div>
-            <button id="searchResults">加入購物車</button>
+            {data && (
+              <div className="roomTypeSelectWrapper">
+                <select
+                  id="roomTypeSelect"
+                  className="roomTypeSelect"
+                  onChange={handleSelect}
+                  value={queryData.roomType || ""}
+                >
+                  <option value="" disabled>
+                    選擇房型
+                  </option>
+                  {data.map((room) => (
+                    <option
+                      key={room.room_id}
+                      value={room.room_id}
+                      data-price={room.price}
+                      data-name={room.room_type}
+                    >
+                      {room.room_type}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            <button id="searchResults" onClick={handleAddCart}>
+              加入購物車
+            </button>
           </div>
         </div>
       </div>
