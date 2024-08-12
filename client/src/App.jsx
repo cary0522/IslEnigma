@@ -1,8 +1,22 @@
-import { Outlet, Route, Routes, useLocation } from "react-router-dom";
-import "./App.css";
-import Layout from "./components/layout/Layout";
-import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage";
-import CheckOutPage from "./pages/checkoutPage/CheckOutPage";
+
+import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom"
+
+import "./App.css"
+import Layout from "./components/layout/Layout"
+import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage"
+import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
+
+import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
+import CartLayout from "./components/layout/CartLayout"
+import Restaurant from "./pages/restaurantPage/Restaurant"
+import Rooms from "./pages/roomPage/Rooms"
+import Login from "./pages/loginPage/Login"
+import Register from "./pages/registerPage/Register"
+//toast
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { useAuthContext } from "./context/AuthContext"
+
 import MapPage from "./pages/mappage";
 import TicketPage from "./pages/ticketpage";
 import RestaurantPage from "./pages/restaurantpage"
@@ -13,23 +27,45 @@ import InfoInfoPage from "./pages/infoInfoPage";
 import InfoFAQPage from "./pages/infoFAQPage";
 import RoomMorePage from "./pages/roomMorePage";
 import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
-
-import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
-import CartLayout from "./components/layout/CartLayout"
 import Hello from "./Hello"
 import AboutUsPage from "./pages/aboutUsPage";
 
 
 function App() {
+  const { member } = useAuthContext()
+
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="cart" element={<CartLayout />}>
-          <Route index element={<ShoppingCart />} />
-          <Route path="checkout" element={<CheckOutPage />} />
-          <Route path="shoppingSuccess" element={<ShoppingSuccessPage />} />
-        </Route>
-        <Route path="/mappage" element={< MapPage />} />
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/register"
+            element={member ? <Navigate to="/rooms" /> : <Register />}
+          />
+
+          <Route
+            path="/login"
+            element={member ? <Navigate to="/rooms" /> : <Login />}
+          />
+          <Route path="cart" element={<CartLayout />}>
+            <Route
+              index
+              element={!member ? <Navigate to="/login" /> : <ShoppingCart />}
+            />
+            <Route
+              path="checkout"
+              element={!member ? <Navigate to="/login" /> : <CheckOutPage />}
+            />
+            <Route
+              path="shoppingSuccess"
+              element={
+                !member ? <Navigate to="/login" /> : <ShoppingSuccessPage />
+              }
+            />
+          </Route>
+          <Route path="restaurant" element={<Restaurant />} />
+          <Route path="rooms" element={<Rooms />} />
+           <Route path="/mappage" element={< MapPage />} />
         <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
         <Route path="/restaurantpage/pagination/:urlId" element={< RestaurantPaginationPage />} />
@@ -37,15 +73,16 @@ function App() {
         <Route path="/infoEventPage" element={<InfoEventPage />} />
         <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />
         <Route path="/infoEvent/infoFAQPage" element={<InfoFAQPage />} />
-
         {/* <Route path="/roomPage" element={< RoomPage />}/> */}
         <Route path="/room/roomMorePage" element={<RoomMorePage />} />
         <Route path="/homepage" element={< Homepage />} />
         <Route path="/about-us" element={< AboutUsPage />} />
-
-      </Route>
-    </Routes>
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </>
   );
+
 }
 
 export default App;

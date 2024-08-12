@@ -1,32 +1,35 @@
-const express = require("express")
-const app = express()
-const cart_route = require("./routes/cart_route")
-const cors = require("cors")
-
-const map_route = require('./routes/map_route')
-const ticket_route = require('./routes/ticket_route')
-
 require("dotenv").config()
 
+const express = require("express")
+const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
+const cors = require("cors")
+const app = express()
+app.use(cookieParser())
+require("dotenv").config()
+const member_route = require("./routes/member_route")
+const cart_route = require("./routes/cart_route")
+const stripe_webhook_route = require("./routes/stripe_webhook_route")
+const search_rooms_route = require("./routes/search_rooms_route")
+const map_route = require('./routes/map_route')
+const ticket_route = require('./routes/ticket_route')
+const { PORT } = require("./utils/config_env")
+
 app.use(express.urlencoded({ extended: true }))
+app.use(cors({ origin: "http://localhost:5173", credentials: true }))
+
+app.use(
+  "/webhook",
+  bodyParser.raw({ type: "application/json" }),
+  stripe_webhook_route
+)
 app.use(express.json())
-
-const corsOptions = {
-  origin: "http://localhost:5173",
-  credentials: true,
-}
-
-app.use(cors(corsOptions))
-
-// 掛載 todo 路由
+app.use("/member", member_route)
+app.use("/rooms", search_rooms_route)
 app.use("/cart", cart_route)
 app.use('/map',map_route)
 app.use('/ticket',ticket_route)
 
-// 根路由重定向到 /todo
-
-const port = process.env.PORT || 3001
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
+app.listen(PORT || 8080, () => {
+  console.log(`Server is running on port ${PORT}`)
 })

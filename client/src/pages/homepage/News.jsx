@@ -162,7 +162,7 @@ class News extends React.Component {
                         <div className="newsList" style={{ visibility: leftListBoxVisible ? 'visible' : 'hidden' }}>
                             <div className={`listBox ${modalVisible1 ? 'modal-visible' : ''}`} style={{ visibility: contentShow1 ? 'visible' : 'hidden' }}>
                                 <div className="newsItem">
-                                    <img src="/homepage/poster.jpg"
+                                    <img src="/homepage/news1.png"
                                         width="280px" />
                                     <h2>【8/10 - 8/12 夏日狂歡節】</h2>
                                     <p>來參加我們的夏日狂歡節<br />
@@ -205,7 +205,7 @@ class News extends React.Component {
                             </div>
                             <div className={`listBox ${modalVisible3 ? 'modal-visible' : ''}`} style={{ visibility: contentShow3 ? 'visible' : 'hidden' }}>
                                 <div className="newsItem">
-                                    <img src="/homepage/poster.jpg"
+                                    <img src="/homepage/news3.png"
                                         width="280px" />
                                     <h2>【安全須知】</h2>
                                     <p>為了您的安全<br />請遵守遊樂園的安全規則<br />
@@ -226,7 +226,7 @@ class News extends React.Component {
                             </div>
                             <div className={`listBox ${modalVisible4 ? 'modal-visible' : ''}`} style={{ visibility: contentShow4 ? 'visible' : 'hidden' }}>
                                 <div className="newsItem">
-                                    <img src="/homepage/poster.jpg"
+                                    <img src="/homepage/news4.png"
                                         width="280px" />
                                     <h2>【謎樣樂園遊園指南】</h2>
                                     <p>查看我們的遊園指南<br />了解各個區域的設施位置<br />餐飲選擇和衛生間分佈<br />讓您的遊園之旅更加順利</p>

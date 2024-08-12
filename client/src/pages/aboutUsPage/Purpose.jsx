@@ -17,25 +17,25 @@ const Purpose = () => {
                             </div>
                             <span className="dot"></span>
                             <div className="imgBox">
-                                <img src="/aboutUs/origin2.png"/>
+                                <img src="/aboutUs/purpose1.png"/>
                             </div>
                         </div>
                         <div className="items">
                             <div className="word">
-                                <p>追求快樂，樂無止盡</p>
+                                <p>迷失樂園，探索奇幻</p>
                             </div>
                             <span className="dot"></span>
                             <div className="imgBox">
-                                <img src="/aboutUs/origin2.png"/>
+                                <img src="/aboutUs/purpose2.png"/>
                             </div>
                         </div>
                         <div className="items">
                             <div className="word">
-                                <p>追求快樂，樂無止盡</p>
+                                <p>啟程冒險，尋找精彩</p>
                             </div>
                             <span className="dot"></span>
                             <div className="imgBox">
-                                <img src="/aboutUs/origin2.png"/>
+                                <img src="/aboutUs/purpose3.png"/>
                             </div>
                         </div>
                         <div className="items">

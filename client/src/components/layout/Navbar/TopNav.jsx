@@ -3,6 +3,9 @@ import { IoPersonOutline } from "react-icons/io5"
 import * as Icon from "react-bootstrap-icons"
 import { useState } from "react"
 import { FaLeaf } from "react-icons/fa"
+import { useAuthContext } from "../../../context/AuthContext"
+import { Link } from "react-router-dom"
+import { useLogout } from "../../../hooks/useLogout"
 
 const TopNav = ({
   isPlaying,
@@ -12,7 +15,14 @@ const TopNav = ({
   toggleHamburgerMenu,
   setToggleHamburgerMenu,
 }) => {
-  const [isLogin, setLogin] = useState(true)
+  const { member } = useAuthContext()
+  const { mutate } = useLogout()
+
+  //登出
+  const handleLogout = () => {
+    mutate()
+  }
+
   return (
     <div className="topNav">
       <div className="headerLeft">
@@ -56,9 +66,9 @@ const TopNav = ({
         <a href="/cart" className="btnShoppingCart">
           <CiShoppingCart />
         </a>
-        <div className="userMenuContainer">
-          <a href="./login" className="btn btnLogin">
-            {!isLogin ? (
+        <div class="userMenuContainer">
+          <a href="./login" class="btn btnLogin">
+            {!member ? (
               <>
                 {" "}
                 <Icon.PersonFill />
@@ -66,17 +76,17 @@ const TopNav = ({
               </>
             ) : (
               <>
-                <img src="/00myIcon/baby.png" className="userAvatar" />
-                <span className="loginText">張甄畇</span>
+                <img src="/00myIcon/baby.png" class="userAvatar" />
+                <span class="loginText">{member.name}</span>
               </>
             )}
           </a>
-          {isLogin && (
-            <div className="dropdown-content">
-              <a href="/profile">會員中心</a>
-              <a href="#" className="logoutBtn">
+          {member && (
+            <div class="dropdown-content">
+              <Link to="/profile">會員中心</Link>
+              <p class="logoutBtn" onClick={handleLogout}>
                 登出
-              </a>
+              </p>
             </div>
           )}
         </div>
