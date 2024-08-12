@@ -8,7 +8,7 @@ import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
-import Restaurant from "./pages/restaurantPage/Restaurant"
+import Restaurant from "./pages/restaurantpage/Restaurant"
 import Rooms from "./pages/roomPage/Rooms"
 import Login from "./pages/loginPage/Login"
 import Register from "./pages/registerPage/Register"

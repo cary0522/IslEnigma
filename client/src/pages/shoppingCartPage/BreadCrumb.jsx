@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom"
-import "./ShoppingCartPage.css"
+import "./ShoppingCartPage.scss"
 
 import arrow from "/shoppingCart/breadcrumbArrow.png"
 import cartIcon from "/shoppingCart/shoppingCartIcon.png"
