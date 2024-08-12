@@ -1,10 +1,10 @@
-import * as Icon from "react-bootstrap-icons"
+import * as Icon from "react-bootstrap-icons";
 
-import { FaFacebook } from "react-icons/fa"
-import { BsInstagram } from "react-icons/bs"
-import { TfiYoutube } from "react-icons/tfi"
-import { FaLine } from "react-icons/fa"
-import { IoTicketSharp } from "react-icons/io5"
+import { FaFacebook } from "react-icons/fa";
+import { BsInstagram } from "react-icons/bs";
+import { TfiYoutube } from "react-icons/tfi";
+import { FaLine } from "react-icons/fa";
+import { IoTicketSharp } from "react-icons/io5";
 
 const HamburgerMenu = ({
   toggleHamburgerMenu,
@@ -22,12 +22,12 @@ const HamburgerMenu = ({
           id="closeBtn"
           className="closeBtn"
           onClick={() => {
-            setToggleHamburgerMenu(false)
+            setToggleHamburgerMenu(false);
           }}
         >
           &times;
         </span>
-        <a href="./index">
+        <a href="./homepage">
           <img
             src="/00logo/LogoType_Light_1.png"
             alt="Logo"
@@ -58,28 +58,28 @@ const HamburgerMenu = ({
         </div>
       </div>
       <nav className="menuItems">
-        <a href="#">
+        <a href="/mappage">
           <Icon.Building /> <span>樂園設施</span> <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/ticketpage">
           <Icon.TicketPerforated />
           <span> 訂票資訊</span> <span>&gt;</span>
         </a>
         <a href="#">
           <Icon.House /> <span>訂房資訊</span> <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/restaurantpage">
           <Icon.Cart3 /> <span>飲食購物</span> <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/boatpage">
           <Icon.CarFront />
           <span> 交通資訊</span> <span>&gt;</span>
         </a>
-        <a href="#">
-          <Icon.InfoCircle /> <span>關於islEnigma</span>
+        <a href="/about-us">
+          <Icon.InfoCircle /> <span>關於我們</span>
           <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/infoEventPage">
           <Icon.PatchQuestion />
           <span> 樂園資訊</span> <span>&gt;</span>
         </a>
@@ -107,7 +107,7 @@ const HamburgerMenu = ({
         <IoTicketSharp size={30} />
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default HamburgerMenu
+export default HamburgerMenu;

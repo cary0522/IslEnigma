@@ -762,7 +762,7 @@ body {
     height: 135px;
     padding: 20px;
     justify-content: center;
-    background-image: url("./public/00myIcon/bottom-selection.png");
+    background-image: url("../../public/00myIcon/bottom-selection.png");
     background-repeat: no-repeat;
     background-size: 100% 80%;
     background-position: center bottom;
@@ -816,7 +816,7 @@ body {
   #navbarAll .logo,
   #navbarAll .ticketImg {
     display: none;
-  }
+  } 
   #navbarAll .topNav .topLogo {
     display: flex;
     height: 40px;

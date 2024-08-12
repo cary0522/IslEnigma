@@ -72,7 +72,7 @@ const TopNav = ({
               <>
                 {" "}
                 <Icon.PersonFill />
-                <span class="loginText">Login</span>
+                <span className="loginText">Login</span>
               </>
             ) : (
               <>

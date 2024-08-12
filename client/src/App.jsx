@@ -1,3 +1,4 @@
+
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom"
 
 import "./App.css"
@@ -15,6 +16,20 @@ import Register from "./pages/registerPage/Register"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { useAuthContext } from "./context/AuthContext"
+
+import MapPage from "./pages/mappage";
+import TicketPage from "./pages/ticketpage";
+import RestaurantPage from "./pages/restaurantpage"
+import Homepage from "./pages/homepage";
+import BoatPage from './pages/boatpage'
+import InfoEventPage from "./pages/infoEventPage";
+import InfoInfoPage from "./pages/infoInfoPage";
+import InfoFAQPage from "./pages/infoFAQPage";
+import RoomMorePage from "./pages/roomMorePage";
+import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
+import Hello from "./Hello"
+import AboutUsPage from "./pages/aboutUsPage";
+
 
 function App() {
   const { member } = useAuthContext()
@@ -50,11 +65,24 @@ function App() {
           </Route>
           <Route path="restaurant" element={<Restaurant />} />
           <Route path="rooms" element={<Rooms />} />
+           <Route path="/mappage" element={< MapPage />} />
+        <Route path="/ticketpage" element={< TicketPage />} />
+        <Route path="/restaurantpage" element={< RestaurantPage />} />
+        <Route path="/restaurantpage/pagination/:urlId" element={< RestaurantPaginationPage />} />
+        <Route path="/boatpage" element={< BoatPage />} />
+        <Route path="/infoEventPage" element={<InfoEventPage />} />
+        <Route path="/infoEventPage/infoInfoPage" element={<InfoInfoPage />} />
+        <Route path="/infoEvent/infoFAQPage" element={<InfoFAQPage />} />
+        {/* <Route path="/roomPage" element={< RoomPage />}/> */}
+        <Route path="/room/roomMorePage" element={<RoomMorePage />} />
+        <Route path="/homepage" element={< Homepage />} />
+        <Route path="/about-us" element={< AboutUsPage />} />
         </Route>
       </Routes>
       <ToastContainer />
     </>
-  )
+  );
+
 }
 
-export default App
+export default App;

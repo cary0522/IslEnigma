@@ -1,0 +1,579 @@
+@import "../../components/reset.scss";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+
+.mapPage {
+	font-family: "Noto Sans TC", "Arial", sans-serif;
+	.logoArea {
+		margin-top: 150px;
+		width: 100%;
+		.divOutside {
+			width: 100%;
+			display: flex;
+		}
+		#imgLogoArea {
+			width: 700px;
+			margin: 0 auto;
+		}
+		.divPageName {
+			margin: 0 auto;
+			width: 700px;
+			display: flex;
+			justify-content: center;
+			h3 {
+				font-size: 2rem;
+				margin: 0;
+			}
+		}
+		.linePageName {
+			width: 20%;
+			height: 50%;
+			border-bottom: 3px solid black;
+			&:first-of-type {
+				margin: 0 20px 0 auto;
+			}
+			&:last-of-type {
+				margin: 0 auto 0 20px;
+			}
+		}
+		@media screen and (max-width: 720px) {
+			display: none;
+		}
+	}
+	// 整體地圖區最外層容器，控制高度不要被放大的圖片撐開
+	#mapOutside {
+		width: 100vw;
+		height: 90vh;
+		overflow: auto;
+		scrollbar-width: none;
+		// 定位用容器，要跟著圖片一起放大才不會影響圖釘定位
+		#divInteractiveMap {
+			position: relative;
+			width: 1220px;
+			height: 720px;
+			@media screen and (max-width: 720px) {
+				overflow: scroll;
+			}
+			// 地圖
+			#imgInteractiveMap {
+				margin: 30px 0;
+				width: 1220px;
+				height: 658px;
+				object-fit: cover;
+			}
+			#mapSvg {
+				position: absolute;
+				top: -50%;
+				left: 0;
+				z-index: 500;
+			}
+			.areaName {
+				box-sizing: content-box;
+				border: 2px dashed $colorText;
+				color: $colorText;
+				border-radius: 20px;
+				width: 80px;
+				text-align: center;
+				font-size: 20px;
+				padding: 10px;
+				position: absolute;
+			}
+			#areaName1 {
+				top: 20px;
+				left: 25%;
+			}
+			#areaName2 {
+				top: 10%;
+				left: 85%;
+			}
+			#areaName3 {
+				top: 60%;
+				left: 90%;
+			}
+			#areaName4 {
+				top: 30%;
+				left: -5%;
+			}
+			#areaName5 {
+				top: 60%;
+				left: -2%;
+			}
+			#areaName6 {
+				top: 75%;
+				left: 12%;
+			}
+			.imgAreaItem {
+				position: absolute;
+				top: 0;
+				left: 0;
+				&:hover {
+					filter: brightness(110%);
+				}
+			}
+			#area1 {
+				width: 55%;
+				top: 4.5%;
+				left: 8%;
+			}
+			#area2 {
+				width: 35%;
+				top: 6%;
+				left: 53%;
+			}
+			#area3 {
+				width: 37%;
+				top: 22%;
+				left: 56%;
+			}
+			#area4 {
+				width: 36%;
+				top: 32%;
+				left: 23.5%;
+			}
+			#area5 {
+				width: 19%;
+				top: 32%;
+				left: 5.7%;
+			}
+			#area6 {
+				width: 60.2%;
+				top: 56%;
+				left: 19.7%;
+			}
+			.divDes {
+				box-sizing: content-box;
+				animation: desAnimation 0.3s;
+				width: 270px;
+				border-radius: 20px;
+				background-color: rgba(255, 255, 255, 0.8);
+				box-shadow: inset -3px 6px 5px rgba(255, 255, 255, 0.39),
+					-3px 4px 5px rgba(0, 0, 0, 0.25);
+				backdrop-filter: blur(4px);
+				position: absolute;
+				display: flex;
+				padding: 15px;
+				z-index: 2;
+				color: $colorText;
+				@keyframes desAnimation {
+					0% {
+						opacity: 0;
+					}
+					100% {
+						opacity: 1;
+					}
+				}
+				h1 {
+					font-size: 1rem;
+					margin: 0 0 15px 0;
+				}
+				img {
+					width: 50px;
+					height: 50px;
+					margin: auto 5px auto 0;
+					object-fit: cover;
+					border-radius: 50%;
+				}
+				.divDesContent {
+					font-weight: 500;
+					line-height: 20px;
+					letter-spacing: 2.5px;
+					padding: 0 5px;
+					margin: 5px 2px;
+					font-size: 0.8rem;
+					button {
+						width: auto;
+						padding: 5px 15px;
+						margin: 15px 0 0 0;
+						background-color: $colorText;
+						color: $colorSvg;
+					}
+				}
+				#btnX {
+					cursor: pointer;
+					z-index: 3;
+				}
+			}
+			// 設施圖釘共同樣式
+			.mapPointContainer {
+				position: absolute;
+				// 包住圖釘圖及設施分類圖
+				.svgContainer {
+					width: 50px;
+					height: 65px;
+					position: relative;
+					background-image: url("./mapPoint.svg");
+					cursor: pointer;
+					// 圖釘hover效果
+					@keyframes svgHover {
+						0% {
+							transform: translateX(0) rotate(0deg) scale(1);
+						}
+						20% {
+							transform: translateX(3px) rotate(5deg) scale(1.2);
+						}
+						40% {
+							transform: translateX(-3px) rotate(-5deg) scale(1.2);
+						}
+						60% {
+							transform: translateX(3px) rotate(5deg) scale(1.2);
+						}
+						80% {
+							transform: translateX(-3px) rotate(-5deg) scale(1.2);
+						}
+						100% {
+							transform: translateX(0px) rotate(0deg) scale(1);
+						}
+					}
+					&:hover {
+						animation: svgHover 0.8s;
+						background-image: url("./mapPointHover.svg");
+					}
+					// 地標內的分類svg圖樣式
+					svg {
+						font-size: 30px;
+						color: $colorSvg;
+						position: absolute;
+						top: 8px;
+						left: 9px;
+					}
+				}
+			}
+			// 設施個別定位，透過各別 id 設定
+			#view_fall {
+				top: 0%;
+				left: 10%;
+			}
+			#VR_maze {
+				top: 15%;
+				left: 28%;
+			}
+			#view_garden {
+				top: 7%;
+				left: 40%;
+			}
+			#view_forest {
+				top: 5%;
+				left: 55%;
+			}
+			#shop_restaurant_sky {
+				top: 23%;
+				left: 25%;
+			}
+			#shop_cafe_dream {
+				top: 15%;
+				left: 10%;
+			}
+			#theater_sea {
+				top: 21%;
+				left: 55%;
+			}
+			#view_sea_tunnel {
+				top: 19%;
+				left: 62%;
+			}
+			#facility_rainbow {
+				top: 10%;
+				left: 75%;
+			}
+			#VR_coral {
+				top: 5%;
+				left: 63%;
+			}
+			#shop_restaurant_sea {
+				top: 3%;
+				left: 72%;
+			}
+			#facility_river {
+				top: 45%;
+				left: 60%;
+			}
+			#facility_sky_tower {
+				top: 22%;
+				left: 70%;
+			}
+			#facility_carousel {
+				top: 25%;
+				left: 78%;
+			}
+			#facility_roller_coaster {
+				top: 35%;
+				left: 75%;
+			}
+			#facility_wheel {
+				top: 50%;
+				left: 68%;
+			}
+			#shop_cafe_light {
+				top: 50%;
+				left: 75%;
+			}
+			#shop_bar {
+				top: 35%;
+				left: 30%;
+			}
+			#toilet {
+				top: 35%;
+				left: 37%;
+			}
+			#visitor_center {
+				top: 50%;
+				left: 45%;
+			}
+			#shop_shopping {
+				top: 30%;
+				left: 13%;
+			}
+			#port {
+				top: 45%;
+				left: 2%;
+			}
+			#ticket_center {
+				top: 50%;
+				left: 8%;
+			}
+			#medical_station {
+				top: 43%;
+				left: 12%;
+			}
+			#bus_station_enter {
+				top: 45%;
+				left: 23%;
+			}
+			#bus_station_oasis {
+				top: 25%;
+				left: 45%;
+			}
+			#bus_station_high {
+				top: 30%;
+				left: 60%;
+			}
+			#bus_station_lost {
+				top: 38%;
+				left: 68%;
+			}
+			#bus_station_room {
+				top: 60%;
+				left: 55%;
+			}
+			#bus_station_visitor_center {
+				top: 60%;
+				left: 45%;
+			}
+			#room_center {
+				top: 75%;
+				left: 56%;
+			}
+			#room_grassland {
+				top: 65%;
+				left: 70%;
+			}
+			#room_forest {
+				top: 75%;
+				left: 40%;
+			}
+			#room_lake {
+				top: 60%;
+				left: 30%;
+			}
+			@media screen and (max-width:720px) {
+				margin-top: 100px;
+			}
+		}
+		// 互動按鈕點擊區域
+		#btnArea {
+			width: 50%;
+			margin: 20px auto;
+			padding: 20px;
+			border-radius: 65px;
+			background-color: $backgroundColorDivLight;
+			box-shadow: inset -3px 6px 5px rgba(255, 255, 255, 0.39),
+				-3px 4px 5px rgba(0, 0, 0, 0.25);
+			backdrop-filter: blur(8px);
+			transform: translate(-50%, -50%);
+			display: flex;
+			justify-content: space-around;
+			transition: all 0.8s ease-in-out;
+			svg {
+				color: $colorSvg;
+				margin: 0 3px;
+				cursor: pointer;
+				font-size: 40px;
+				&:hover {
+					animation: iconHover 0.8s;
+				}
+				@keyframes iconHover {
+					0% {
+						transform: translateX(0) rotate(0deg);
+					}
+					20% {
+						transform: translateX(3px) rotate(5deg);
+					}
+					40% {
+						transform: translateX(-1px) rotate(-5deg);
+					}
+					60% {
+						transform: translateX(3px) rotate(5deg);
+					}
+					80% {
+						transform: translateX(-1px) rotate(-5deg);
+					}
+					100% {
+						transform: translateX(0) rotate(0deg);
+					}
+				}
+			}
+			@media screen and (max-width: 900px) {
+				width: 70%;
+			}
+			@media screen and (max-width: 720px) {
+				width: 88%;
+			}
+			@media screen and (max-width: 576px) {
+				margin: 5px;
+				padding: 10px;
+			}
+		}
+		.btnAreaFixed {
+			position: fixed;
+			bottom: 0%;
+			left: 50%;
+			@media screen and (max-width: 720px) {
+				bottom: 15%;
+			}
+		}
+		.btnAreaSticky {
+			position: sticky;
+			bottom: 8%;
+			left: 50%;
+		}
+	}
+	// 詳細介紹區塊樣式
+	.divContent {
+		box-sizing: content-box;
+		animation: divOpacity 0.5s forwards;
+		height: 70%;
+		border-radius: 20px;
+		background-color: rgba(255, 255, 255, 0.9);
+		box-shadow: inset 0px 4px 5px rgba(217, 217, 217, 0.56),
+			0px 4px 4px rgba(0, 0, 0, 0.35);
+		backdrop-filter: blur(4px);
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		margin: 70px auto;
+		padding: 20px 15px;
+		z-index: 10;
+		color: $colorText;
+		overflow-y: scroll;
+		@keyframes divOpacity {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+		.divContentItem {
+			box-sizing: content-box;
+			width: 50%;
+			margin: 10px auto;
+			.divOtherRules{
+				padding: 0 0 10px 0;
+			}
+			div{
+				box-sizing: content-box;
+			}
+			button {
+				font-size: 15px;
+				background-color: $colorText;
+				color: $colorSvg;
+				@media screen and (max-width:425px) {
+					font-size: 11px;
+				}
+			}
+		}
+		.divContentItem:first-child {
+			text-align: center;
+			img {
+				width: 90%;
+				height: 90%;
+				object-fit: cover;
+				border-radius: 20px;
+			}
+		}
+		h1 {
+			font-size: 2rem;
+			font-weight: 500;
+			margin: 10px;
+			box-sizing: content-box;
+		}
+		p {
+			color: $colorText;
+			font-weight: 400;
+			margin: 10px;
+			letter-spacing: 2.5px;
+			line-height: 25px;
+			font-size: 1rem;
+			box-sizing: content-box;
+		}
+		#btnXContent {
+			position: absolute;
+			font-size: 1.5rem;
+			top: 15px;
+			right: 15px;
+			z-index: 10;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		@media screen and (max-width: 720px) {
+			height: 60%;
+			margin: 0px auto 20px auto;
+			display: block;
+			.divContentItem {
+				width: 100%;
+			}
+			.divContentItem:first-child {
+				img {
+					height: 350px;
+				}
+			}
+			h1 {
+				margin: 20px 10px 10px 10px;
+			}
+		}
+		.contentItemOutside {
+			display: flex;
+			justify-content: center;
+			.contentItem {
+				width: 30%;
+				background-color: $colorText;
+				border-radius: 20px;
+				margin: 5px;
+				padding: 5px;
+				color: $colorSvg;
+				text-align: center;
+				svg {
+					font-size: 40px;
+					margin: 5px;
+				}
+				p {
+					margin: 5px;
+					color: $colorSvg;
+				}
+				@media screen and (max-width: 720px) {
+					svg {
+						font-size: 25px;
+					}
+				}
+				@media screen and (min-width: 1200px) {
+					width: 25%;
+					svg {
+						font-size: 25px;
+					}
+				}
+			}
+		}
+	}
+}

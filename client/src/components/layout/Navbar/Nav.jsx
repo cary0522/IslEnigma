@@ -1,10 +1,12 @@
+
 import { useState } from "react"
 import { Link } from "react-router-dom"
+
 
 const Nav = ({ toggleNavbar }) => {
   return (
     <nav className={toggleNavbar ? "navbar hidden" : "navbar active"}>
-      <a href="./index">
+      <a href="./homepage">
         <picture className="logo-container">
           <source
             media="(min-width:1024px)"
@@ -20,13 +22,13 @@ const Nav = ({ toggleNavbar }) => {
       <div className="navRight">
         <ul className="navLink">
           <li className="navItem facility">
-            <a href="#">
+            <a href="/mappage">
               <img src="/00myIcon/facility.png" alt="樂園設施" />
               <p data-text="樂園設施">樂園設施</p>
             </a>
           </li>
           <li className="navItem ticket">
-            <a href="#">
+            <a href="/ticketpage">
               <img src="/00myIcon/ticket-info.png" alt="訂票資訊" />
               <p data-text="訂票資訊">訂票資訊</p>
             </a>
@@ -38,42 +40,42 @@ const Nav = ({ toggleNavbar }) => {
             </Link>
           </li>
           <li className="navItem food">
-            <a href="#">
+            <a href="/restaurantpage">
               <img src="/00myIcon/restaurant-info.png" alt="飲食購物" />
               <p data-text="飲食購物">飲食購物</p>
             </a>
           </li>
           <li className="navItem traffic">
-            <a href="#">
+            <a href="/boatpage">
               <img src="/00myIcon/traffic-info.png" alt="交通資訊" />
               <p data-text="交通資訊">交通資訊</p>
             </a>
           </li>
           <li className="navItem about">
-            <a href="#">
+            <a href="/about-us">
               <img src="/00myIcon/about.png" alt="關於我們" />
               <p data-text="關於我們">關於我們</p>
             </a>
           </li>
           <li className="navItem info">
-            <a href="#">
+            <a href="/infoEventPage">
               <img src="/00myIcon/park-info.png" alt="樂園資訊" />
               <p data-text="樂園資訊">樂園資訊</p>
             </a>
           </li>
           <li className="navItem menber">
-            <a href="#">
+            <a href="/login">
               <img src="/00myIcon/menber.png" alt="登入" />
               <p data-text="會員">會員</p>
             </a>
           </li>
         </ul>
-        <a href="/ticket">
+        <a href="/ticketpage">
           <img src="/00myIcon/ticket.png" alt="Ticket" className="ticketImg" />
         </a>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
