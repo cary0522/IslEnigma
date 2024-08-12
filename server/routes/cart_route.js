@@ -2,96 +2,46 @@ const express = require("express")
 const router = express.Router()
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
-
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 
-//到資料庫查找購物車
+// import controller
+const { cart_controller } = require("../controllers/cart_controller")
+const {
+  get_cart_items,
+  new_order,
+  update_item_quantity,
+  remove_item,
+  new_cart_item,
+} = cart_controller
 
-router.get("/", async (req, res) => {
-  const shoppingCartWithItems = await prisma.customer_order.findFirst({
-    where: {
-      member_id: 1,
-      status: "CREATED",
-    },
-    include: {
-      order_item: {
-        include: {
-          room: true,
-          ticket: true,
-        },
-      },
-    },
-  })
-  res.status(200).json(shoppingCartWithItems)
-})
+// all items
+router.get("/", get_cart_items)
 
-//新增訂單
-router.post("/", async (req, res) => {
-  const { cartItems } = req.body
-  console.log("items")
-  console.log(cartItems)
+router.post("/new_cart_item", new_cart_item)
+// new order
+router.post("/", new_order)
 
-  if (cartItems.length === 0) return
-  try {
-    const updatedOrderItem = await prisma.customer_order.update({
-      where: {
-        order_id: cartItems[0].order_id,
-      },
-      data: {
-        status: "PAID",
-      },
-    })
-    return res.json(updatedOrderItem)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: "Failed to update order item status" })
-  }
-  res.json("good")
-})
+// update item quantity
+router.put("/:id", update_item_quantity)
 
-//更新商品數量
-router.put("/:id", async (req, res) => {
-  const { quantity } = req.body
+// delete item
+router.delete("/:id", remove_item)
 
-  const itemId = req.params.id
-
-  try {
-    const updatedItem = await prisma.order_item.update({
-      where: {
-        order_item_id: itemId,
-      },
-      data: {
-        quantity,
-      },
-    })
-    res.status(200).json(updatedItem)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
-router.delete("/:id", async (req, res) => {
-  const itemId = req.params.id
-
-  try {
-    const deletedItem = await prisma.order_item.delete({
-      where: {
-        order_item_id: itemId,
-      },
-    })
-    res.status(200).json(deletedItem)
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
-
+// create payment
 router.post("/create-checkout-session", async (req, res) => {
-  const cartItems = req.body
-
+  const { data, orderInfo } = req.body
+  const order_id = data.order_id
+  const order_info_json = JSON.stringify(orderInfo)
   try {
     const session = await stripe.checkout.sessions.create({
+      //metadata只接受string
+      metadata: {
+        order_id,
+        order_info: order_info_json,
+      },
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: req.body.cartItems.map((item) => {
+      line_items: data.order_item.map((item) => {
         return {
           price_data: {
             currency: "TWD",
@@ -106,8 +56,11 @@ router.post("/create-checkout-session", async (req, res) => {
       success_url: `http://localhost:5173/cart/shoppingSuccess?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `http://localhost:5173/cart/checkout`,
     })
+
     res.json({ url: session.url })
+    console.log(session)
   } catch (e) {
+    console.log(e)
     res.status(500).json(e)
   }
 })
@@ -137,8 +90,6 @@ router.post("/order-info", async (req, res) => {
         payment_method: "CREDITCARD",
       },
     })
-
-    console.log(res)
   } catch (e) {
     console.log(e)
     res.status(500).json(e)

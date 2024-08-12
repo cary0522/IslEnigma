@@ -7,6 +7,10 @@
   );
   color: white;
 }
+
+#navbarAll input {
+  color: #000;
+}
 body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
@@ -129,7 +133,7 @@ body {
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
-#navbarAll .dropdown-content a {
+#navbarAll .dropdown-content * {
   color: #344668;
   padding: 9px 12px;
   text-decoration: none;
@@ -137,7 +141,8 @@ body {
   font-size: 14px;
   transition: 0.3s;
 }
-#navbarAll .dropdown-content a:hover {
+#navbarAll .dropdown-content *:hover {
+  cursor: pointer;
   background-color: #7288a5;
   color: whitesmoke;
   border-radius: 20px;
@@ -876,6 +881,17 @@ body {
 /* 控制下拉選單 */
 #navbarAll .dropdown-content a,
 #navbarAll .memberDropdown a {
+  color: #344668;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: 0.3s;
+  text-align: center;
+}
+
+#navbarAll .dropdown-content p,
+#navbarAll .memberDropdown p {
   color: #344668;
   padding: 12px 16px;
   text-decoration: none;

@@ -1,5 +1,5 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { useUpdateQty } from "../../hooks/useUpdateQty"
+import { useRemoveCartItem } from "../../hooks/useDeleteItem"
 
 const Item = ({
   itemId,
@@ -12,31 +12,40 @@ const Item = ({
   peopleCount,
   ticketQuantity,
   setTicketQuantity,
-  handleDelete,
 }) => {
-  useEffect(() => {
-    setTicketQuantity(quantity)
-  }, [])
+  const { mutate: updateQty, isLoading, isError } = useUpdateQty()
+  const { mutate: removeCartItem } = useRemoveCartItem()
 
-  const updateQuantity = async (newQuantity) => {
-    try {
-      const res = await axios.put(`http://localhost:3001/cart/${itemId}`, {
-        quantity: newQuantity,
-      })
-
-      const updatedItem = res.data
-    } catch (error) {
-      console.error("Failed to update quantity", error)
-    }
+  const handleDelete = (id) => {
+    console.log(id)
+    removeCartItem(id, {
+      onSuccess: () => {
+        console.log("成功刪除一筆商品!")
+      },
+      onError: (error) => {
+        console.error("喔不!發生錯誤了!:", error)
+      },
+    })
+  }
+  const handleUpdateQty = (newQty) => {
+    updateQty(
+      { id: itemId, quantity: newQty },
+      {
+        onSuccess: () => {
+          console.log("Quantity updated successfully!")
+        },
+        onError: (error) => {
+          console.error("Error updating quantity:", error)
+        },
+      }
+    )
   }
 
   const handlePlus = () => {
-    console.log(123)
     if (ticketQuantity < 10) {
       const newQuantity = ticketQuantity + 1
       setTicketQuantity(newQuantity)
-
-      updateQuantity(newQuantity)
+      handleUpdateQty(newQuantity)
     }
   }
 
@@ -44,7 +53,7 @@ const Item = ({
     if (ticketQuantity > 1) {
       const newQuantity = ticketQuantity - 1
       setTicketQuantity(newQuantity)
-      updateQuantity(newQuantity)
+      handleUpdateQty(newQuantity)
     }
   }
 
@@ -62,11 +71,11 @@ const Item = ({
             {roomType ?? ticketType}
             <hr />
           </p>
-          {checkInDate ? <p>入住日期:{checkInDate}</p> : ""}
-          {checkOutDate ? <p>退房日期:{checkOutDate}</p> : ""}
-          {peopleCount ? <p>入住人數:{peopleCount}</p> : ""}
+          {checkInDate && <p>入住日期:{checkInDate}</p>}
+          {checkOutDate && <p>退房日期:{checkOutDate}</p>}
+          {peopleCount && <p>入住人數:{peopleCount}</p>}
 
-          {bedCount ? <p>床數:{bedCount}</p> : <p>張數: {ticketQuantity}</p>}
+          {bedCount ? <p>床數:{bedCount}</p> : <p>張數: {quantity}</p>}
         </div>
         <div className="shoppingCartCounterBox">
           {ticketType && (
@@ -74,7 +83,7 @@ const Item = ({
               <div onClick={handleMinus}>
                 <img src="shoppingCart/minus.png" alt="Minus Icon" />
               </div>
-              <p>{ticketQuantity}</p>
+              <p>{quantity}</p>
               <div onClick={handlePlus}>
                 <img src="shoppingCart/plus.png" alt="Plus Icon" />
               </div>
