@@ -1,55 +1,16 @@
 //@author: TerryXU
+//東西太多了改成用 FP
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const memberInfo_Model = {
-  order:{
-    read:async(memberId)=>{
-      try{
-        const orders = await prisma.customer_order.findMany({
-          where:{
-            memberId:memberId,
-            status:"PAID'",
-          }
-        });
-        if (orders.length === 0) {
-          return [];
-        }
-        const orderData = await Promise.all(
-          orders.map(async (order) => {
-            const items = await prisma.order_detail.findMany({
-              where: {
-                order_id: order.order_id
-              },
-            });
-            const orderInfo = await prisma.order_info.findFirst({
-              where: {
-                order_id: order.order_id
-              },
-            });
-            return {
-              order,
-              items,
-              orderInfo,
-            };
-          })
-        );
-        return orderData;
-      }
-      catch(error){
-        console.log(error);
-      }
-    }
-  },
-  payMethod:{
-    create:{},
-    read:{},
-    delete:{},
-  },
-  memberInfo:{
-    read:{},
-    update:{},
-  }
-}
+const order = async (req, res) => {};
+const payMethod = async (req, res) => {};
+const memberInfo = async (req, res) => {};
+const Password = async (req, res) => {};
 
-module.exports = memberInfo_Model;
+module.exports = {
+  order,
+  payMethod,
+  memberInfo,
+  Password,
+};

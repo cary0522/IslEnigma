@@ -1,8 +1,9 @@
 //@author :TerryXU
 //東西太多了改成用 FP
-const memberInfo_Model = require('../models/memberInfo_Model');
+const {}= require('');
 
 const getOrder = async (req, res) => { /* ... */ };
+
 
 const getPayMethod = async (req, res) => { /* ... */ };
 const postPayMethod = async (req, res) => { /* ... */ };
@@ -13,6 +14,7 @@ const postMemberInfo = async (req, res) => { /* ... */ };
 
 const getChangePassword = async (req, res) => { /* ... */ };
 const changePassword = async (req, res) => { /* ... */ };
+const forgotPassword = async (req, res) => { /* ... */ };
 
 module.exports = {
   getOrder,
@@ -22,5 +24,6 @@ module.exports = {
   getMemberInfo,
   postMemberInfo,
   getChangePassword,
-  changePassword
+  changePassword,
+  forgotPassword
 };
