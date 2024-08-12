@@ -8,7 +8,7 @@ $main-color: linear-gradient(
 );
 $text-color: #fff;
 $primary-color: #333;
-
+.infoFAQPage{
 // Mixins
 //Mixin 是 SCSS 中的一個功能，允許你定義一組可重用的 CSS 屬性，然後在需要的地方引用它們。
 @mixin flex-center {
@@ -438,3 +438,4 @@ body {
 }
 
 //----------------------------------------FAQ  end
+}

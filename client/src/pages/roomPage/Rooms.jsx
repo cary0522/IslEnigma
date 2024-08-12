@@ -1,7 +1,7 @@
 import Banner from "./Banner"
 import ConfPopup from "./ConfPopup"
 import Feature from "./Feature"
-import "./Rooms.css"
+import "./Rooms.scss"
 import RoomTypes from "./RoomTypes"
 import Slogan from "./Slogan"
 import Rules from "./Rules"
@@ -9,7 +9,7 @@ import FourMealsPlan from "./Meals"
 
 const Rooms = () => {
   return (
-    <>
+    <div className="roomsPage">
       <Banner />
       {/* 跳出框1 */}
       <ConfPopup />
@@ -23,7 +23,7 @@ const Rooms = () => {
       <Slogan />
       {/* 訂房須知 */}
       <Rules />
-    </>
+    </div>
   )
 }
 
