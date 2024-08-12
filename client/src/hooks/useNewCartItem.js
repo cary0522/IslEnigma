@@ -5,6 +5,7 @@ import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 
 export const newCartItem = async (data) => {
+  console.log(data)
   try {
     const res = await axios.post(`${SERVER_URL}/cart/new_cart_item`, data, {
       withCredentials: true,

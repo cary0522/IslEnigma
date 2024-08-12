@@ -15,6 +15,7 @@ export const useRemoveCartItem = () => {
     mutationFn: removeCartItem,
     onSuccess: () => {
       queryClient.invalidateQueries(["cartItem"])
+      console.log("成功刪除商品")
     },
     onError: (error) => {
       console.error(error)

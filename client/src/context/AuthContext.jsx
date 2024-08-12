@@ -8,7 +8,6 @@ export const AuContextProvider = ({ children }) => {
   const [member, setMember] = useState(
     JSON.parse(localStorage.getItem("member")) || null
   )
-
   return (
     <AuthContext.Provider value={{ member, setMember }}>
       {children}

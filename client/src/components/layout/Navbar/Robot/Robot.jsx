@@ -28,6 +28,8 @@ const Robot = () => {
       ])
 
       try {
+        setMessage("")
+
         const res = await axios.post("http://localhost:3000/get_completion", {
           user_input: message,
         })
@@ -38,8 +40,6 @@ const Robot = () => {
       } catch (error) {
         console.error("Error fetching bot response:", error)
       }
-
-      setMessage("")
     }
   }
 

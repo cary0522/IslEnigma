@@ -18,8 +18,7 @@ import { useAuthContext } from "./context/AuthContext"
 
 function App() {
   const { member } = useAuthContext()
-  console.log(123)
-  console.log(member)
+
   return (
     <>
       <Routes>

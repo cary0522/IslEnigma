@@ -1,7 +1,12 @@
+import { useRemoveCartItem } from "../../hooks/useDeleteItem"
 import { useUpdateQty } from "../../hooks/useUpdateQty"
 import { formatDate } from "../../utils/helpers"
+// icon
+import { FaTrashCan } from "react-icons/fa6"
 
 const CartItem = ({ item }) => {
+  const { mutate: removeCartItem } = useRemoveCartItem()
+
   const { mutate: updateQty, isLoading: qtyLoading, isError } = useUpdateQty()
 
   const handleUpdateQty = (newQty) => {
@@ -33,12 +38,23 @@ const CartItem = ({ item }) => {
     }
   }
 
+  const handleDelete = (id) => {
+    const isConfirmed = window.confirm("確定要刪除這個商品嗎？")
+    if (isConfirmed) {
+      removeCartItem(id)
+    }
+  }
+
   return (
     <div class="item">
       <div class="itemTop">
         <div class="itemContent">
           <div class="imgContainer">
-            <img src="public/roomImg.png" alt="房間圖片" class="roomImg" />
+            <img
+              src="shoppingCart/roomImg.png"
+              alt="房間圖片"
+              class="roomImg"
+            />
           </div>
           <div class="shoppingCartItemInfo">
             <h5 class="itemTitle">{item.room.room_type}</h5>
@@ -62,8 +78,13 @@ const CartItem = ({ item }) => {
               </div>
             </div>
           </div>
-          <div class="shoppingCartGarbageCan">
-            <i class="bi bi-trash3-fill"></i>
+          <div
+            class="shoppingCartGarbageCan"
+            onClick={() => {
+              handleDelete(item.order_item_id)
+            }}
+          >
+            <FaTrashCan />
           </div>
         </div>
       </div>

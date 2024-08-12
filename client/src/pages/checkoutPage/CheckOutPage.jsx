@@ -7,7 +7,7 @@ import CheckOutTotal from "./CheckOutTotal"
 import axios from "axios"
 import { Form, useLocation, useNavigate } from "react-router-dom"
 import { useCartItemsData } from "../../hooks/useCartItem"
-import { SERVER_URL } from "../../utils/helpers"
+import { formatDate, SERVER_URL } from "../../utils/helpers"
 
 const CheckOutPage = () => {
   const { data, error, isLoading } = useCartItemsData()
@@ -45,6 +45,9 @@ const CheckOutPage = () => {
     }))
   }
 
+  const test = () => {
+    alert(123)
+  }
   return (
     // <div className="checkOutContainer">
     //   <div className="orderInfo">
@@ -159,10 +162,10 @@ const CheckOutPage = () => {
             </div>
           </div>
           <div class="payment-method dropdown-section">
-            <div class="title" onclick="toggleDropdown(this)">
+            {/* <div class="title" onclick="toggleDropdown(this)">
               <h2>付款方式</h2>
               <i class="bi bi-chevron-down dropdown-icon"></i>
-            </div>
+            </div> */}
             <div class="dropdown-content">
               <div class="payment-info">
                 <div class="payment-option" onclick="selectPaymentOption(this)">
@@ -237,16 +240,28 @@ const CheckOutPage = () => {
         <div class="checkout-right">
           <div class="order-summary">
             <h2>訂單摘要</h2>
-            <div class="order-item">
-              <img src="public/roomImg.png" alt="客房圖片" class="room-img" />
-              <div class="item-details">
-                <h3>簡約帳篷 | 草原步調 特別優惠價</h3>
-                <p>入住日期:2024/09/02</p>
-                <p>數量: 一間</p>
-                <p class="item-price">NT$ 12,500</p>
-              </div>
-            </div>
-            <div class="order-item">
+            {data.order_item.map((item) => {
+              return (
+                <>
+                  <div class="order-item">
+                    <img
+                      src="/shoppingCart/roomImg.png"
+                      alt="客房圖片"
+                      class="room-img"
+                    />
+                    <div class="item-details">
+                      <h3>簡約帳篷 | 草原步調 特別優惠價</h3>
+                      <p>入住日期:{formatDate(item.check_in_date)}</p>
+                      <p>數量: {item.quantity}</p>
+                      <p class="item-price">
+                        NT$ {item.room.price * item.quantity}
+                      </p>
+                    </div>
+                  </div>
+                </>
+              )
+            })}
+            {/* <div class="order-item">
               <img
                 src="https://i.mj.run/u/6d8aa752-4375-4c2e-b46b-012f73974faf/578ae76eff4ac5a8e014647ede78abf64a83cce813d34b66d8ab8008b315541e_384_N.png"
                 alt="VIP票券"
@@ -258,15 +273,26 @@ const CheckOutPage = () => {
                 <p>數量: 一張</p>
                 <p class="item-price">NT$ 5,000</p>
               </div>
-            </div>
+            </div> */}
             <div class="price-summary">
               <div class="price-row total">
                 <span>付款金額</span>
-                <span class="total-price">NT$ 17,500</span>
+                <span class="total-price">
+                  NT${" "}
+                  {data.order_item.reduce((total, item) => {
+                    const roomPrice = item.room?.price || 0
+                    const ticketPrice = item.ticket?.price || 0
+                    const itemTotal =
+                      roomPrice * item.quantity + ticketPrice * item.quantity
+                    return total + itemTotal
+                  }, 0)}
+                </span>
               </div>
             </div>
           </div>
-          <button class="confirm-payment">確認付款</button>
+          <button class="confirm-payment" onClick={handleCreatePayment}>
+            確認付款
+          </button>
           <button class="back-btn">返回上一步</button>
         </div>
       </div>

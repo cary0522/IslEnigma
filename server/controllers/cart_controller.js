@@ -4,21 +4,26 @@ const prisma = new PrismaClient()
 
 const cart_controller = {
   get_cart_items: async (req, res) => {
-    const shoppingCartWithItems = await prisma.customer_order.findFirst({
-      where: {
-        member_id: 1,
-        status: "CREATED",
-      },
-      include: {
-        order_item: {
-          include: {
-            room: true,
-            ticket: true,
+    try {
+      const shoppingCartWithItems = await prisma.customer_order.findFirst({
+        where: {
+          member_id: 1,
+          status: "CREATED",
+        },
+        include: {
+          order_item: {
+            include: {
+              room: true,
+              ticket: true,
+            },
           },
         },
-      },
-    })
-    res.status(200).json(shoppingCartWithItems)
+      })
+      console.log(shoppingCartWithItems)
+      res.status(200).json(shoppingCartWithItems)
+    } catch (err) {
+      console.log(err)
+    }
   },
 
   new_order: async (req, res) => {

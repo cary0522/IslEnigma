@@ -29,9 +29,8 @@ router.delete("/:id", remove_item)
 
 // create payment
 router.post("/create-checkout-session", async (req, res) => {
-  console.log(req.body)
   const { data, orderInfo } = req.body
-  const order_id = data[0].order_id
+  const order_id = data.order_id
   const order_info_json = JSON.stringify(orderInfo)
   try {
     const session = await stripe.checkout.sessions.create({
@@ -42,7 +41,7 @@ router.post("/create-checkout-session", async (req, res) => {
       },
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: data.map((item) => {
+      line_items: data.order_item.map((item) => {
         return {
           price_data: {
             currency: "TWD",
@@ -59,7 +58,9 @@ router.post("/create-checkout-session", async (req, res) => {
     })
 
     res.json({ url: session.url })
+    console.log(session)
   } catch (e) {
+    console.log(e)
     res.status(500).json(e)
   }
 })
@@ -89,8 +90,6 @@ router.post("/order-info", async (req, res) => {
         payment_method: "CREDITCARD",
       },
     })
-
-    console.log(res)
   } catch (e) {
     console.log(e)
     res.status(500).json(e)

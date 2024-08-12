@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const Nav = ({ toggleNavbar }) => {
   return (
@@ -31,10 +32,10 @@ const Nav = ({ toggleNavbar }) => {
             </a>
           </li>
           <li className="navItem book">
-            <a href="#">
+            <Link to="rooms">
               <img src="/00myIcon/booking-info.png" alt="訂房資訊" />
               <p data-text="訂房資訊">訂房資訊</p>
-            </a>
+            </Link>
           </li>
           <li className="navItem food">
             <a href="#">

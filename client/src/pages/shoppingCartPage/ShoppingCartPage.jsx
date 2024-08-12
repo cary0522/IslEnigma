@@ -109,21 +109,23 @@ const ShoppingCartPage = () => {
             <span class="title">小計:</span>
             <span>
               NT$
-              {data.order_item.map((item) => {
+              {data.order_item.reduce((total, item) => {
                 const roomPrice = item.room?.price || 0
                 const ticketPrice = item.ticket?.price || 0
-                return roomPrice * item.quantity + ticketPrice * item.quantity
-              })}
+                const itemTotal =
+                  roomPrice * item.quantity + ticketPrice * item.quantity
+                return total + itemTotal
+              }, 0)}
             </span>
           </div>
-          <div class="onSale">
+          {/* <div class="onSale">
             <span class="title">首購優惠:</span>
             <span>NT$1,800</span>
-          </div>
-          <button class="buyNow">
-            <Link to="checkout"> 前往購買手續</Link>
+          </div> */}
+          <Link to="checkout" class="buyNow">
+            前往購買手續
             <img src={arrow} alt="箭頭" class="breadcrumbArrow" />
-          </button>
+          </Link>
           <button class="continueShopping">繼續購物</button>
         </div>
         <div class="customerService">
@@ -131,7 +133,11 @@ const ShoppingCartPage = () => {
             <img class="customerAlermImg" src="./public/對話框.png" alt="" />
             <p>需要訂房嗎?</p>
           </div>
-          <img class="customerImg" src="./public/客服人員.png" alt="客服" />
+          <img
+            class="customerImg"
+            src="/shoppingCart/客服人員.png"
+            alt="客服"
+          />
         </div>
       </div>
     </div>

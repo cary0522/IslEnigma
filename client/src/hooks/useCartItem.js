@@ -4,6 +4,7 @@ import { SERVER_URL } from "../utils/helpers"
 
 export const fetchCartItem = async () => {
   const res = await axios.get(`${SERVER_URL}/cart`)
+
   return res.data
 }
 
