@@ -1,24 +1,26 @@
 //@author :TerryXU
+//東西太多了改成用 FP
 const memberInfo_Model = require('../models/memberInfo_Model');
-const { get } = require('../routes/member_routes');
 
+const getOrder = async (req, res) => { /* ... */ };
 
-const memberInfo_controllers = {
-getOrder: async (req, res) => {
-  const userId = req.user.id;
-  const order = await memberInfo_Model.getOrder(userId);
-  if (order) {
-    res.status(200).json(order);
-  } else {
-    res.status(400).json({ error: 'No order' });
-  }
-},
-getPayMethod: async (req, res) => {
-  
-},
-postPayMethod: async (req, res) => {},
-postMemberInfo: async (req, res) => {},
-changePassword: async (req, res) => {},
-  
+const getPayMethod = async (req, res) => { /* ... */ };
+const postPayMethod = async (req, res) => { /* ... */ };
+const deletePayMethod = async (req, res) => { /* ... */ };
+
+const getMemberInfo = async (req, res) => { /* ... */ };
+const postMemberInfo = async (req, res) => { /* ... */ };
+
+const getChangePassword = async (req, res) => { /* ... */ };
+const changePassword = async (req, res) => { /* ... */ };
+
+module.exports = {
+  getOrder,
+  getPayMethod,
+  postPayMethod,
+  deletePayMethod,
+  getMemberInfo,
+  postMemberInfo,
+  getChangePassword,
+  changePassword
 };
-module.exports = memberInfo_controllers;

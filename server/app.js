@@ -10,7 +10,6 @@ app.use(cors({ credentials: true, origin: ['http://localhost:5500', 'http://127.
 app.use(cookieParser());
 app.use(express.json()); 
 app.use('/member', member_router);
-app.use('/bookHotel',bookHotel_router);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

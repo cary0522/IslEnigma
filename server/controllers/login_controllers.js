@@ -7,22 +7,28 @@ const validReCaptcha = require('../utils/validReCaptcha');
 const login_controllers = {
   login: async (req, res) => {
     try {
-      const { account, password,token} = req.body;
+      const { account, password, token } = req.body;
       const member = await login_Model.read(account);
       const isReCaptchaValid = await validReCaptcha.valid(token);
       if (!isReCaptchaValid.success) {
-        console.log('ReCaptcha 驗證失敗');
-        return res.status(400).json({ error: 'ReCaptcha 驗證失敗:>' });
+        return res.status(422).json({
+          "error": "ReCaptcha 驗證失敗",
+          "message": "提供的 ReCaptcha 響應無效或已過期。請重試。"
+        });
       }
       if (!member) {
-        console.log('找不到用戶，是否以註冊?');
-        return res.status(400).json({ error: '找不到用戶，是否已註冊?' });
+        return res.status(404).json({
+          error: '未找到',
+          message: '找不到用戶，是否以註冊?',
+        });
       }
 
       const isPasswordCorrect = await passwordHelpers.compare(password, member.password);
       if (!isPasswordCorrect) {
-        console.log('密碼錯誤~~');
-        return res.status(400).json({ error: '密碼錯誤~~' });
+        return res.status(401).json({
+          error: '認證失敗',
+          message: '密碼不正確。',
+        });
       }
       const payload = {
         account: member.account,
