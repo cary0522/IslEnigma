@@ -19,7 +19,7 @@ import { useAuthContext } from "./context/AuthContext"
 
 import MapPage from "./pages/mappage";
 import TicketPage from "./pages/ticketpage";
-import RestaurantPage from "./pages/restaurantpage"
+import RestaurantPage from "./pages/restaurantPage"
 import Homepage from "./pages/homepage";
 import BoatPage from './pages/boatpage'
 import InfoEventPage from "./pages/infoEventPage";
@@ -65,7 +65,7 @@ function App() {
           </Route>
           <Route path="restaurant" element={<Restaurant />} />
           <Route path="rooms" element={<Rooms />} />
-           <Route path="/mappage" element={< MapPage />} />
+          <Route path="/mappage" element={< MapPage />} />
         <Route path="/ticketpage" element={< TicketPage />} />
         <Route path="/restaurantpage" element={< RestaurantPage />} />
         <Route path="/restaurantpage/pagination/:urlId" element={< RestaurantPaginationPage />} />
