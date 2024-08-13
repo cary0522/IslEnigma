@@ -5,6 +5,7 @@ const { JWT_SECRET } = require("../utils/config_env")
 const authMiddleware = {
   verifyToken: (req, res, next) => {
     const token = req.cookies.JWTToken
+
     if (!token) {
       return res.status(401).json({ error: "No token" })
     }

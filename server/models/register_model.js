@@ -13,7 +13,7 @@ const register_model = {
           name,
           address: memberData.address,
           phone: memberData.phone_number,
-          birth: memberData.birth_date,
+          birth: new Date(memberData.birth_date),
           account: memberData.account,
           password: hashedPassword,
         },

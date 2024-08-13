@@ -42,39 +42,38 @@ body {
   transition: 0.4s ease-in-out;
 }
 
-/* 全局樣式 */
-body {
+.infoFAQPage {
+  /* 全局樣式 */
+  /* 全局樣式 */
+}
+.infoFAQPage body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans TC", "Arial", sans-serif;
   background: #fffdf8;
 }
 @media (max-width: 719px) {
-  body {
+  .infoFAQPage body {
     height: 100vh;
     position: relative;
   }
 }
-
-#footer {
+.infoFAQPage #footer {
   margin-top: -60px;
 }
-
-/* 全局樣式 */
-body {
+.infoFAQPage body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans TC", "Arial", sans-serif;
   background: #fffdf8;
 }
 @media (max-width: 719px) {
-  body {
+  .infoFAQPage body {
     height: 100vh;
     position: relative;
   }
 }
-
-.bannerWrapper {
+.infoFAQPage .bannerWrapper {
   width: 100%;
   background-image: url("../../public/07poster_banner/banner (8).png");
   background-size: cover;
@@ -131,7 +130,7 @@ body {
   }
 }
 @media (max-width: 719px) {
-  .bannerWrapper {
+  .infoFAQPage .bannerWrapper {
     min-height: auto;
     width: 90%;
     height: 75vh;
@@ -143,13 +142,17 @@ body {
     animation: bigzoomInOut 10s ease-in-out infinite;
   }
 }
-.bannerWrapper .bannerTextGroup {
+.infoFAQPage .bannerWrapper .bannerTextGroup {
   display: flex;
   align-items: center;
   position: relative;
   gap: 2rem;
+  color: #fffdf8;
 }
-.bannerWrapper .bannerLine {
+.infoFAQPage .bannerWrapper .bannerTextGroup h1 {
+  color: white;
+}
+.infoFAQPage .bannerWrapper .bannerLine {
   width: 10rem;
   position: relative;
   bottom: 10px;
@@ -157,11 +160,11 @@ body {
   background-color: white;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerLine {
+  .infoFAQPage .bannerWrapper .bannerLine {
     display: none;
   }
 }
-.bannerWrapper::before {
+.infoFAQPage .bannerWrapper::before {
   content: "";
   position: absolute;
   top: -10px;
@@ -174,11 +177,11 @@ body {
   display: none;
 }
 @media (max-width: 719px) {
-  .bannerWrapper::before {
+  .infoFAQPage .bannerWrapper::before {
     display: block;
   }
 }
-.bannerWrapper .outBall {
+.infoFAQPage .bannerWrapper .outBall {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -202,26 +205,26 @@ body {
     background-color: #337ab7;
   }
 }
-.bannerWrapper .outBall {
+.infoFAQPage .bannerWrapper .outBall {
   display: none;
   animation: rotate 5s linear infinite;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .outBall {
+  .infoFAQPage .bannerWrapper .outBall {
     display: block;
   }
 }
-.bannerWrapper .outBall.outBall1 {
+.infoFAQPage .bannerWrapper .outBall.outBall1 {
   position: relative;
   bottom: 65%;
   right: -35%;
 }
-.bannerWrapper .outBall.outBall2 {
+.infoFAQPage .bannerWrapper .outBall.outBall2 {
   position: relative;
   bottom: -5%;
   left: -38%;
 }
-.bannerWrapper .bannerContent {
+.infoFAQPage .bannerWrapper .bannerContent {
   text-align: center;
   position: relative;
   top: 120px;
@@ -234,27 +237,27 @@ body {
   flex-direction: column;
 }
 @media (min-width: 1921px) {
-  .bannerWrapper .bannerContent {
+  .infoFAQPage .bannerWrapper .bannerContent {
     max-width: 1600px;
   }
 }
 @media (min-width: 1440px) and (max-width: 1920px) {
-  .bannerWrapper .bannerContent {
+  .infoFAQPage .bannerWrapper .bannerContent {
     max-width: 1300px;
   }
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .bannerWrapper .bannerContent {
+  .infoFAQPage .bannerWrapper .bannerContent {
     max-width: 1000px;
   }
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerContent {
+  .infoFAQPage .bannerWrapper .bannerContent {
     padding: 0px;
     top: 0;
   }
 }
-.bannerWrapper .bannerWrapper .line {
+.infoFAQPage .bannerWrapper .bannerWrapper .line {
   display: none;
   width: 1px;
   height: 120px;
@@ -263,11 +266,11 @@ body {
   overflow: hidden;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerWrapper .line {
+  .infoFAQPage .bannerWrapper .bannerWrapper .line {
     display: block;
   }
 }
-.bannerWrapper .bannerWrapper .line::before {
+.infoFAQPage .bannerWrapper .bannerWrapper .line::before {
   content: "";
   position: absolute;
   top: -100%;
@@ -286,26 +289,26 @@ body {
   }
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerWrapper .line {
+  .infoFAQPage .bannerWrapper .bannerWrapper .line {
     display: block;
   }
 }
-.bannerWrapper .bannerLogo {
+.infoFAQPage .bannerWrapper .bannerLogo {
   width: 50%;
   animation: slideInFromTop 1s ease-out;
 }
-.bannerWrapper .bannerLogo img {
+.infoFAQPage .bannerWrapper .bannerLogo img {
   width: 100%;
   height: auto;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerLogo {
+  .infoFAQPage .bannerWrapper .bannerLogo {
     width: 40vw;
     margin-top: 5rem;
     margin-bottom: 2rem;
   }
 }
-.bannerWrapper .bannerText {
+.infoFAQPage .bannerWrapper .bannerText {
   display: flex;
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -313,29 +316,29 @@ body {
   flex-wrap: nowrap;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerText {
+  .infoFAQPage .bannerWrapper .bannerText {
     font-size: 2rem;
     animation: slideInFromTop 1s ease-out;
   }
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerTagline {
+  .infoFAQPage .bannerWrapper .bannerTagline {
     font-size: 1rem;
     margin-bottom: 1rem;
   }
 }
-.bannerWrapper .customDropdown {
+.infoFAQPage .bannerWrapper .customDropdown {
   display: none;
   animation: slideInFromBottom 1s ease-out;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .customDropdown {
+  .infoFAQPage .bannerWrapper .customDropdown {
     display: block;
     position: relative;
     width: 60%;
     margin: 10px auto;
   }
-  .bannerWrapper .customDropdown .dropdownSelected {
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownSelected {
     padding: 10px 20px 10px 30px;
     background-color: #ffffff;
     color: #3b7ba5;
@@ -346,14 +349,14 @@ body {
     text-align: center;
     transition: 0.3s;
   }
-  .bannerWrapper .customDropdown .dropdownSelected i {
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownSelected i {
     margin-left: 10px;
   }
-  .bannerWrapper .customDropdown .dropdownSelected:hover {
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownSelected:hover {
     background-color: #3b7ba5;
     color: #ffffff;
   }
-  .bannerWrapper .customDropdown .dropdownOptions {
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions {
     position: absolute;
     background-color: #f9f9f9;
     top: 100%;
@@ -365,36 +368,36 @@ body {
     margin: 0;
     border-radius: 10px;
   }
-  .bannerWrapper .customDropdown .dropdownOptions li {
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions li {
     padding: 0;
   }
-  .bannerWrapper .customDropdown .dropdownOptions .dropdownOption {
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions .dropdownOption {
     color: #3b7ba5;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: center;
   }
-  .bannerWrapper .customDropdown .dropdownOptions .dropdownOption:hover {
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions .dropdownOption:hover {
     background-color: #3b7ba5;
     color: white;
   }
 }
 @media (max-width: 719px) and (max-width: 719px) {
-  .bannerWrapper .customDropdown {
+  .infoFAQPage .bannerWrapper .customDropdown {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
   }
-  .bannerWrapper .customDropdown option {
+  .infoFAQPage .bannerWrapper .customDropdown option {
     background-color: #557e99;
     color: #fff;
     display: block;
     padding: 10px;
   }
 }
-.bannerWrapper .textMemo {
+.infoFAQPage .bannerWrapper .textMemo {
   position: relative;
   font-size: 0.8rem;
   color: #ffffff;
@@ -402,44 +405,44 @@ body {
   display: none;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .textMemo {
+  .infoFAQPage .bannerWrapper .textMemo {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 }
-.bannerWrapper .bannerMenu {
+.infoFAQPage .bannerWrapper .bannerMenu {
   display: flex;
   justify-content: center;
   margin-top: 6rem;
   width: 100%;
 }
 @media (max-width: 719px) {
-  .bannerWrapper .bannerMenu {
+  .infoFAQPage .bannerWrapper .bannerMenu {
     flex-direction: column;
     align-items: center;
     margin-top: 0rem;
   }
 }
-.bannerWrapper .bannerItemGroup {
+.infoFAQPage .bannerWrapper .bannerItemGroup {
   display: flex;
   animation: slideInFromBottom 1s ease-out;
   gap: 5rem;
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .bannerWrapper .bannerItemGroup {
+  .infoFAQPage .bannerWrapper .bannerItemGroup {
     gap: 3rem;
   }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  .bannerWrapper .bannerItemGroup {
+  .infoFAQPage .bannerWrapper .bannerItemGroup {
     gap: 0.5rem;
   }
-  .bannerWrapper .bannerItemGroup .menuItem {
+  .infoFAQPage .bannerWrapper .bannerItemGroup .menuItem {
     transform: scale(0.8);
   }
 }
-.bannerWrapper .menuItem {
+.infoFAQPage .bannerWrapper .menuItem {
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -460,7 +463,7 @@ body {
   border: 2px solid #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-.bannerWrapper .menuItem .menuNumber {
+.infoFAQPage .bannerWrapper .menuItem .menuNumber {
   position: absolute;
   font-weight: 800;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -470,17 +473,17 @@ body {
   text-shadow: 3px 2px 0 #a7a7a7;
   z-index: 10;
 }
-.bannerWrapper .menuItem:hover {
+.infoFAQPage .bannerWrapper .menuItem:hover {
   transform: translateY(-10px);
   background-color: rgb(187, 223, 255);
 }
-.bannerWrapper .menuItem:hover::after {
+.infoFAQPage .bannerWrapper .menuItem:hover::after {
   bottom: 0;
 }
-.bannerWrapper .menuItem:hover .menuIcon img {
+.infoFAQPage .bannerWrapper .menuItem:hover .menuIcon img {
   transform: scale(1.2);
 }
-.bannerWrapper .menuItem p {
+.infoFAQPage .bannerWrapper .menuItem p {
   margin: 0;
   font-size: 0.9rem;
   font-weight: bold;
@@ -488,7 +491,7 @@ body {
   position: relative;
   z-index: 2;
 }
-.bannerWrapper .menuItem::before {
+.infoFAQPage .bannerWrapper .menuItem::before {
   content: "";
   position: absolute;
   width: calc(100% + 10px);
@@ -500,38 +503,38 @@ body {
   transform: translate(20px, -20px);
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .bannerWrapper .menuItem {
+  .infoFAQPage .bannerWrapper .menuItem {
     padding: 0px;
   }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  .bannerWrapper .menuItem {
+  .infoFAQPage .bannerWrapper .menuItem {
     padding: 10px;
   }
 }
 @media (max-width: 719px) {
-  .bannerWrapper .menuItem {
+  .infoFAQPage .bannerWrapper .menuItem {
     display: none;
   }
 }
-.bannerWrapper .menuIcon {
+.infoFAQPage .bannerWrapper .menuIcon {
   color: #417bb8;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.bannerWrapper .menuIcon img {
+.infoFAQPage .bannerWrapper .menuIcon img {
   width: 3.7rem;
   transition: transform 0.3s ease;
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .bannerWrapper .menuIcon {
+  .infoFAQPage .bannerWrapper .menuIcon {
     max-width: 3.5rem;
   }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  .bannerWrapper .menuIcon {
+  .infoFAQPage .bannerWrapper .menuIcon {
     font-size: 3rem;
   }
 }/*# sourceMappingURL=infoBanner.css.map */
