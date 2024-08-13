@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author: 許哲誠
 const jwt=require('jsonwebtoken');
 require('dotenv').config({ path: '../.env' });
 const secretKey=process.env.JWT_SECRET;

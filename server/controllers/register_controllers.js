@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author: 許哲誠
 const register_Model = require('../models/register_Model');
 
 

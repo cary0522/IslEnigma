@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author: 許哲誠
 const login_Model = require('../models/login_Model');
 const passwordHelpers = require('../utils/passwordHelpers');
 const generateToken = require('../utils/jwtHelpers');
@@ -7,6 +7,7 @@ const validReCaptcha = require('../utils/validReCaptcha');
 const login_controllers = {
   login: async (req, res) => {
     try {
+      console.log('login_controllers');
       const { account, password } = req.body;
       const member = await login_Model.read(account);
       // const isReCaptchaValid = await validReCaptcha.valid(token);
@@ -34,8 +35,6 @@ const login_controllers = {
         account: member.account,
         id: member.member_id,
       };
-      console.log('payload:', payload);
-      console.log('member:', member); 
       const cookieToken = await generateToken.generateToken(payload);
       await cookieHelpers.setAuthCookie(res, cookieToken);
       res.status(200).json({ message: 'Login successful' });

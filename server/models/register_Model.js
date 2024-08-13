@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author: 許哲誠
 const { PrismaClient } = require('@prisma/client');
 const passwordHelpers= require('../utils/passwordHelpers');
 const prisma = new PrismaClient();
@@ -12,7 +12,7 @@ const register_Model = {
           name: memberData.name,
           address: memberData.address,
           phone: memberData.phone,
-          birth:memberData.birth,
+          birth:new Date(memberData.birth),
           account: memberData.account,
           password:hashedPassword,
         },

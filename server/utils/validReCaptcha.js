@@ -1,4 +1,4 @@
-//@author: Terry XU
+//@author: 許哲誠
 const axios = require('axios');
 require('dotenv').config({ path: '../.env' });
 const validReCaptcha = {

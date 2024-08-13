@@ -1,27 +1,56 @@
-//@author: TerryXU
-//東西太多了改成用 FP
+//@author: 許哲誠
+//東西太多了考慮改用FP
 const { PrismaClient } = require('@prisma/client');
-const { create } = require('./register_Model');
-const { read } = require('./login_Model');
 const prisma = new PrismaClient();
-
+const passwordHelpers = require('../utils/passwordHelpers');
 const order = {
-  read: async(memberId) => {
+  read: async (memberId, res) => {
     try {
-      const order = await prisma.order.findMany({
+      const orders = await prisma.customer_order.findMany({
         where: {
-          member_Id: memberId,
+          member_id: memberId,
+          status: "PAID",
         },
       });
-      return order;
+
+      for (const order of orders) {
+        const orderID = order.order_id;
+        const orderItems = await prisma.order_item.findMany({
+          where: {
+            order_id: orderID,
+          },
+          select: {
+            room_id: true,
+            ticket_id: true,
+            check_in_date: true,
+            check_out_date: true,
+            quantity: true,
+          }
+        });
+        const orderInfo = await prisma.order_info.findFirst({
+          where: {
+            order_id: orderID,
+          },
+          select: {
+            customer: true,
+            address: true,
+            phone_number : true,
+            payment_method: true,
+          }
+        });
+        order.orderItems = orderItems;
+        order.orderInfo = orderInfo;
+      }
+
+      return orders;
     } catch (error) {
-      console.log(error);
-      throw error;
+      console.error('getOrder error:', error);
+      res.status(500).json({ error: 'bad Server' });
     }
-  }
+  },
 };
 const payMethod = {
-  create: async(memberId,payMethodData) => {
+  create: async (memberId, payMethodData) => {
     try {
       const newPayMethod = await prisma.credit_card.create({
         data: {
@@ -30,14 +59,14 @@ const payMethod = {
           expiry: new Date(payMethodData.expiry),
           cvv: payMethodData.cvv,
         },
-      }); 
+      });
       return true;
     } catch (error) {
       console.log(error);
       throw error;
     }
   },
-  read: async(memberId) => {
+  read: async (memberId) => {
     try {
       const payMethod = await prisma.credit_card.findMany({
         where: {
@@ -50,31 +79,97 @@ const payMethod = {
       throw error;
     }
   },
-  delete: async(memberId,payMethodNum) => {
+  delete: async (memberId, payMethodNum) => {
     try {
       const creditCard = await prisma.credit_card.findFirst({
         where: {
           member_id: memberId,
           number: payMethodNum,
-        }
+        },
       });
       const deleteCreditCard = await prisma.credit_card.delete({
         where: {
           credit_card_id: creditCard.credit_card_id,
-        }
+        },
       });
+      return true;
     } catch (error) {
       console.log(error);
       throw error;
     }
-  }
+  },
 };
-const memberInfo = {};
-const Password = {};
+const memberInfo = {
+  read: async (memberId) => {
+    try {
+      const memberInfo = await prisma.member.findUnique({
+        where: {
+          member_id: memberId,
+        },
+      });
+      return memberInfo;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+  update: async (memberId, memberInfoData) => {
+    try {
+      const updateMemberInfo = await prisma.member.update({
+        where: {
+          member_id: memberId,
+        },
+        data: {
+          email: memberInfoData.email,
+          name: memberInfoData.name,
+          address: memberInfoData.address,
+          phone: memberInfoData.phone,
+          birth: new Date(memberInfoData.birth),
+        },
+      });
+      return true;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+};
+const password = {
+  read: async (memberId) => {
+    try {
+      const password = await prisma.member.findUnique({
+        where: {
+          member_id: memberId,
+        },
+      });
+      return password;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+  update: async (memberId, newPassword) => {
+    try {
+      const hashedPassword = await passwordHelpers.hash(newPassword);
+      const updatePassword = await prisma.member.update({
+        where: {
+          member_id: memberId,
+        },
+        data: {
+          password: hashedPassword,
+        },
+      });
+      return true;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+};
 
 module.exports = {
   order,
   payMethod,
   memberInfo,
-  Password,
+  password,
 };

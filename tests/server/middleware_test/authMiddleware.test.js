@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author: 許哲誠
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('../../../server/middlewares/authToken');
 
