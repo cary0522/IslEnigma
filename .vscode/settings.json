@@ -6,9 +6,9 @@
       "port": 5432,
       "driver": "PostgreSQL",
       "name": "islenigma",
-      "database": "islEnigma",
+      "database": "islenigma",
       "username": "postgres",
-      "password": "root"
+      "password": "password"
     }
   ]
 }

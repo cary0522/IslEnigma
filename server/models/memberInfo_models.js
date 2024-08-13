@@ -9,7 +9,7 @@ const order = {
       const orders = await prisma.customer_order.findMany({
         where: {
           member_id: memberId,
-          status: "PAID",
+          status: 'PAID',
         },
       });
 
@@ -25,7 +25,7 @@ const order = {
             check_in_date: true,
             check_out_date: true,
             quantity: true,
-          }
+          },
         });
         const orderInfo = await prisma.order_info.findFirst({
           where: {
@@ -34,9 +34,9 @@ const order = {
           select: {
             customer: true,
             address: true,
-            phone_number : true,
+            phone_number: true,
             payment_method: true,
-          }
+          },
         });
         order.orderItems = orderItems;
         order.orderInfo = orderInfo;
@@ -166,8 +166,45 @@ const password = {
     }
   },
 };
-
+const ticket = {
+  read: async (ticketId) => {
+    try {
+      const ticket = await prisma.ticket.findUnique({
+        where: {
+          ticket_id: ticketId,
+        },
+        select: {
+          type: true,
+        },
+      });
+      return {name:ticket.type};
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+};
+const room = {
+  read: async (roomId) => {
+    try {
+      const room = await prisma.room.findUnique({
+        where: {
+          room_id: roomId,
+        },
+        select: {
+          room_type: true,
+        },
+      });
+      return {name:room.room_type};
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+};
 module.exports = {
+  ticket,
+  room,
   order,
   payMethod,
   memberInfo,

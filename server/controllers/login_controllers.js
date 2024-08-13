@@ -7,7 +7,6 @@ const validReCaptcha = require('../utils/validReCaptcha');
 const login_controllers = {
   login: async (req, res) => {
     try {
-      console.log('login_controllers');
       const { account, password } = req.body;
       const member = await login_Model.read(account);
       // const isReCaptchaValid = await validReCaptcha.valid(token);
