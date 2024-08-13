@@ -1,5 +1,6 @@
-import { useUpdateQty } from "../../hooks/useUpdateQty"
-import { useRemoveCartItem } from "../../hooks/useDeleteItem"
+import { useUpdateQty } from "../../hooks/useUpdateQty";
+import { useRemoveCartItem } from "../../hooks/useDeleteItem";
+import "./ShoppingCart.scss";
 
 const Item = ({
   itemId,
@@ -13,49 +14,49 @@ const Item = ({
   ticketQuantity,
   setTicketQuantity,
 }) => {
-  const { mutate: updateQty, isLoading, isError } = useUpdateQty()
-  const { mutate: removeCartItem } = useRemoveCartItem()
+  const { mutate: updateQty, isLoading, isError } = useUpdateQty();
+  const { mutate: removeCartItem } = useRemoveCartItem();
 
   const handleDelete = (id) => {
-    console.log(id)
+    console.log(id);
     removeCartItem(id, {
       onSuccess: () => {
-        console.log("成功刪除一筆商品!")
+        console.log("成功刪除一筆商品!");
       },
       onError: (error) => {
-        console.error("喔不!發生錯誤了!:", error)
+        console.error("喔不!發生錯誤了!:", error);
       },
-    })
-  }
+    });
+  };
   const handleUpdateQty = (newQty) => {
     updateQty(
       { id: itemId, quantity: newQty },
       {
         onSuccess: () => {
-          console.log("Quantity updated successfully!")
+          console.log("Quantity updated successfully!");
         },
         onError: (error) => {
-          console.error("Error updating quantity:", error)
+          console.error("Error updating quantity:", error);
         },
       }
-    )
-  }
+    );
+  };
 
   const handlePlus = () => {
     if (ticketQuantity < 10) {
-      const newQuantity = ticketQuantity + 1
-      setTicketQuantity(newQuantity)
-      handleUpdateQty(newQuantity)
+      const newQuantity = ticketQuantity + 1;
+      setTicketQuantity(newQuantity);
+      handleUpdateQty(newQuantity);
     }
-  }
+  };
 
   const handleMinus = () => {
     if (ticketQuantity > 1) {
-      const newQuantity = ticketQuantity - 1
-      setTicketQuantity(newQuantity)
-      handleUpdateQty(newQuantity)
+      const newQuantity = ticketQuantity - 1;
+      setTicketQuantity(newQuantity);
+      handleUpdateQty(newQuantity);
     }
-  }
+  };
 
   return (
     <div className="item">
@@ -95,7 +96,7 @@ const Item = ({
             src="shoppingCart/garbageCan.png"
             alt="Garbage Can Icon"
             onClick={() => {
-              handleDelete(itemId)
+              handleDelete(itemId);
             }}
           />
         </div>
@@ -103,7 +104,7 @@ const Item = ({
       <hr />
       <div className="itemBottom"></div>
     </div>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;

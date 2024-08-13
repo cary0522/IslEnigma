@@ -1,5 +1,5 @@
 import { Link, useLocation, useParams } from "react-router-dom";
-import "./ShoppingSuccessPage.scss";
+// import "./ShoppingSuccessPage.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useCartStore from "../../zustand/cartStore";
@@ -49,8 +49,8 @@ const ShoppingSuccessPage = () => {
 	// }, [cartItems])
 
 	return (
-		<div className="ShoppingSuccessPage">
-			<div className="successBox">
+		<>
+			<div id="shoppingSuccess" className="successBox">
 				<img
 					className="big-ticket"
 					src="/shoppingSuccess/bigger-ticket.png"
@@ -71,7 +71,7 @@ const ShoppingSuccessPage = () => {
 					<Link to="/cart">返回購物車</Link>
 				</button>
 			</div>
-		</div>
+		</>
 	);
 };
 

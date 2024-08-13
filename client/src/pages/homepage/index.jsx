@@ -9,7 +9,7 @@ import ParkMap from "./ParkMap";
 
 function Homepage() {
     return (
-        <>
+        <div>
             <div id="banner">
                 <HomeBanner />
                 <QuickLink />
@@ -23,7 +23,7 @@ function Homepage() {
             <div id="parkMap">
                 <ParkMap/>
             </div>
-        </>
+        </div>
     )
 }
 

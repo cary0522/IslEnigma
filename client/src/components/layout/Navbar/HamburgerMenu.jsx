@@ -65,7 +65,7 @@ const HamburgerMenu = ({
           <Icon.TicketPerforated />
           <span> 訂票資訊</span> <span>&gt;</span>
         </a>
-        <a href="#">
+        <a href="/rooms">
           <Icon.House /> <span>訂房資訊</span> <span>&gt;</span>
         </a>
         <a href="/restaurantpage">

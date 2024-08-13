@@ -6,6 +6,7 @@ const prisma = new PrismaClient()
 const register_model = {
   create: async (memberData) => {
     try {
+      console.log('123')
       const hashedPassword = await passwordHelpers.hash(memberData.password)
       const name = memberData.first_name + memberData.last_name
       const newMember = await prisma.member.create({
@@ -13,7 +14,7 @@ const register_model = {
           name,
           address: memberData.address,
           phone: memberData.phone_number,
-          birth: memberData.birth_date,
+          birth: new Date(memberData.birth_date),
           account: memberData.account,
           password: hashedPassword,
         },
