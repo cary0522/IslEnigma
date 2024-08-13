@@ -319,7 +319,7 @@ $white: #fff;
 		.weatherBox {
 			height: 30%;
 			padding: 2px;
-			.weather{
+			.weather {
 				.temperature,
 				.description {
 					font-size: 0.6rem;
@@ -330,7 +330,7 @@ $white: #fff;
 	@media (max-width: 380px) {
 		.weatherBox {
 			height: 32%;
-			.weather{
+			.weather {
 				.temperature,
 				.description {
 					font-size: 0.5rem;
@@ -457,8 +457,7 @@ $white: #fff;
 			border: 10px solid #9894e1;
 			border-radius: 50%;
 			width: 240px;
-			box-shadow:
-				0 0 15px rgba(0, 0, 0, 0.1),
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.1),
 				inset 0 0 0 5px rgba(255, 255, 255, 0.5);
 			height: 240px;
 			p {
@@ -918,7 +917,6 @@ $white: #fff;
 			&:hover {
 				background: #73748c;
 				color: white;
-
 			}
 		}
 
@@ -1277,9 +1275,7 @@ $white: #fff;
 			padding: 20px;
 			width: 150px;
 			text-align: center;
-			transition:
-				transform 0.3s,
-				box-shadow 0.3s;
+			transition: transform 0.3s, box-shadow 0.3s;
 			border-radius: 20px 0 20px 20px;
 		}
 		.card img {

@@ -1,6 +1,6 @@
 import { useUpdateQty } from "../../hooks/useUpdateQty";
 import { useRemoveCartItem } from "../../hooks/useDeleteItem";
-import "./ShoppingCartPage.scss";
+import "./ShoppingCart.scss";
 
 const Item = ({
   itemId,
