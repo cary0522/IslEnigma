@@ -31,8 +31,6 @@ const ShoppingCartPage = () => {
 
   if (isLoading) return <p>Loading...</p>
 
-  console.log(data.order_item)
-
   return (
     // <div className="shoppingCart">
     //   <div className="itemList">
@@ -58,64 +56,72 @@ const ShoppingCartPage = () => {
     //   </div>
     //   <TotalPrice cartItems={data.order_item} ticketQuantity={ticketQuantity} />
     // </div>
+
     <div class="shoppingCart">
-      <div class="itemList">
-        {data.order_item.map((item) => {
-          return <CartItem item={item} />
-        })}
-        {/* <div class="item">
-          <div class="itemTop">
-            <div class="itemContent">
-              <div class="imgContainer ticketimgContainer">
-                <img
-                  src="https://i.mj.run/u/6d8aa752-4375-4c2e-b46b-012f73974faf/578ae76eff4ac5a8e014647ede78abf64a83cce813d34b66d8ab8008b315541e_384_N.png"
-                  alt="VIP票券"
-                  class="ticketImg"
-                />
-              </div>
-              <div class="shoppingCartItemInfo">
-                <h5 class="itemTitle">VIP尊榮票券</h5>
-                <p class="itemDate">入園日期：2024/12/25</p>
-              </div>
+      {data ? (
+        <div class="itemList">
+          {data.order_item.map((item) => {
+            return <CartItem item={item} />
+          })}
+
+          {/* <div class="item">
+        <div class="itemTop">
+          <div class="itemContent">
+            <div class="imgContainer ticketimgContainer">
+              <img
+                src="https://i.mj.run/u/6d8aa752-4375-4c2e-b46b-012f73974faf/578ae76eff4ac5a8e014647ede78abf64a83cce813d34b66d8ab8008b315541e_384_N.png"
+                alt="VIP票券"
+                class="ticketImg"
+              />
             </div>
-            <div class="btngroups">
-              <div class="shoppingCartCounterBox">
-                <div class="shoppingCartCounter">
-                  <div class="minusButton">
-                    <span> - </span>
-                  </div>
-                  <span>0</span>
-                  <div class="plusButton">
-                    <span> ＋ </span>
-                  </div>
+            <div class="shoppingCartItemInfo">
+              <h5 class="itemTitle">VIP尊榮票券</h5>
+              <p class="itemDate">入園日期：2024/12/25</p>
+            </div>
+          </div>
+          <div class="btngroups">
+            <div class="shoppingCartCounterBox">
+              <div class="shoppingCartCounter">
+                <div class="minusButton">
+                  <span> - </span>
+                </div>
+                <span>0</span>
+                <div class="plusButton">
+                  <span> ＋ </span>
                 </div>
               </div>
-              <div class="shoppingCartGarbageCan">
-                <i class="bi bi-trash3-fill"></i>{" "}
-              </div>
+            </div>
+            <div class="shoppingCartGarbageCan">
+              <i class="bi bi-trash3-fill"></i>{" "}
             </div>
           </div>
-          <div class="itemBottom">
-            <button class="changeButton">
-              <i class="bi bi-pencil-square"></i>改變心意
-            </button>
-            <p class="itemPrice">NT$ 100,000</p>
-          </div>
-        </div> */}
-      </div>
+        </div>
+        <div class="itemBottom">
+          <button class="changeButton">
+            <i class="bi bi-pencil-square"></i>改變心意
+          </button>
+          <p class="itemPrice">NT$ 100,000</p>
+         *+</div>
+      </div> */}
+        </div>
+      ) : (
+        <div>購物車上未有任何商品</div>
+      )}
       <div class="right">
         <div class="totalPriceContainer">
           <div class="totalPrice">
             <span class="title">小計:</span>
             <span>
               NT$
-              {data.order_item.reduce((total, item) => {
-                const roomPrice = item.room?.price || 0
-                const ticketPrice = item.ticket?.price || 0
-                const itemTotal =
-                  roomPrice * item.quantity + ticketPrice * item.quantity
-                return total + itemTotal
-              }, 0)}
+              {data?.order_item && data.order_item.length > 0
+                ? data.order_item.reduce((total, item) => {
+                    const roomPrice = item.room?.price || 0
+                    const ticketPrice = item.ticket?.price || 0
+                    const itemTotal =
+                      roomPrice * item.quantity + ticketPrice * item.quantity
+                    return total + itemTotal
+                  }, 0)
+                : 0}
             </span>
           </div>
           {/* <div class="onSale">
