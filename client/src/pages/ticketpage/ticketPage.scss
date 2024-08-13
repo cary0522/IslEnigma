@@ -309,15 +309,19 @@
 						top: 50%;
 						right: 0;
 						z-index: 4;
+						.react-date-picker__wrapper {
+							display: none;
+						}
 						.react-calendar {
 							animation: divAnimation 0.5s;
 							width: 350px;
-							height: auto;
-							background-color: $backgroundColorBooking;
-							box-shadow: $backgroundShadow;
-							backdrop-filter: blur($backgroundBlur);
-							border-radius: 20px;
-							padding: 10px;
+							
+							// height: auto;
+							// background-color: $backgroundColorBooking;
+							// box-shadow: $backgroundShadow;
+							// backdrop-filter: blur($backgroundBlur);
+							// border-radius: 20px;
+							// padding: 10px;
 							@keyframes divAnimation {
 								0% {
 									opacity: 0;
