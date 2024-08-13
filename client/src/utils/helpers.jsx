@@ -1,7 +1,6 @@
 export const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
-// export const ReCAPTCHA_SITE_KEY = import.meta.env.VITE_ReCAPTCHA_SITE_KEY
-export const ReCAPTCHA_SITE_KEY = "6LfODyEqAAAAAHAx65WeHz1Vv-GzbKLoWogDROzR"
+export const ReCAPTCHA_SITE_KEY = import.meta.env.VITE_ReCAPTCHA_SITE_KEY
 
 export const formatDate = (str) => {
   const date = new Date(str)
