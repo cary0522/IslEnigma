@@ -17,10 +17,10 @@ import "./infoFAQ.scss";
 
 const InfoFAQPage = () => {
   return (
-    <>
+    <div className="infoFAQPage">
       <Banner />
       <FAQ />
-    </>
+    </div>
   );
 };
 

@@ -28,6 +28,7 @@ import RoomMorePage from "./pages/roomMorePage";
 import RestaurantPaginationPage from "./pages/restaurantPaginationPage";
 import Hello from "./Hello";
 import AboutUsPage from "./pages/aboutUsPage";
+import Profile from "./pages/profilePage/Profile";
 
 function App() {
   const { member } = useAuthContext();
@@ -45,6 +46,9 @@ function App() {
             path="/login"
             element={member ? <Navigate to="/rooms" /> : <Login />}
           />
+
+          <Route path="/profile" element={<Profile />} />
+
           <Route path="cart" element={<CartLayout />}>
             <Route
               index

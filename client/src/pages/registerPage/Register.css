@@ -1,6 +1,6 @@
 .index {
   margin-top: 130px;
-  height: 800px;
+  height: 900px;
 }
 
 .register-container {
@@ -122,6 +122,7 @@ a.submit-btn {
 }
 
 .submit-btn:hover {
+  cursor: pointer;
   color: #fff;
   border: none;
   background: var(--nav-17, linear-gradient(270deg, #7c65a3 0%, #317da5 100%));

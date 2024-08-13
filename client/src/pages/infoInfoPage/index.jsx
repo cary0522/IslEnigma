@@ -16,7 +16,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const InfoInfoPage = () => {
     return (
-        <div>
+        <div className='infoInfoPage'>
 
             <Banner />
             <InfoInfo />
