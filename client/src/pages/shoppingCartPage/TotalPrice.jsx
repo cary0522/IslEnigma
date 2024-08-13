@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 // import "./TotalPrice.css"
-import "./ShoppingCartPage.scss";
-
 import { useEffect, useState } from "react";
 const totalPrice = ({ cartItems, ticketQuantity }) => {
   const [totalPrice, setTotalPrice] = useState(0);

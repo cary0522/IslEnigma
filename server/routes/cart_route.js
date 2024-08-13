@@ -3,6 +3,7 @@ const router = express.Router()
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
+const authMiddleware = require("../middlewares/authToken")
 
 // import controller
 const { cart_controller } = require("../controllers/cart_controller")
@@ -15,7 +16,7 @@ const {
 } = cart_controller
 
 // all items
-router.get("/", get_cart_items)
+router.get("/", authMiddleware.verifyToken, get_cart_items)
 
 router.post("/new_cart_item", new_cart_item)
 // new order
@@ -32,6 +33,7 @@ router.post("/create-checkout-session", async (req, res) => {
   const { data, orderInfo } = req.body
   const order_id = data.order_id
   const order_info_json = JSON.stringify(orderInfo)
+
   try {
     const session = await stripe.checkout.sessions.create({
       //metadata只接受string
@@ -48,7 +50,7 @@ router.post("/create-checkout-session", async (req, res) => {
             product_data: {
               name: item.room?.room_type || item.ticket?.type,
             },
-            unit_amount: item.room?.price * 100 || item.ticket?.price * 100,
+            unit_amount: item.room?.price || item.ticket?.price,
           },
           quantity: item.quantity,
         }
