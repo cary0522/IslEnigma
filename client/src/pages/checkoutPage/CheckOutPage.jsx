@@ -6,8 +6,14 @@ import { formatDate, SERVER_URL } from "../../utils/helpers"
 
 const CheckOutPage = () => {
   const { data, isLoading } = useCartItemsData()
-  const navigate = useNavigate()
 
+  const navigate = useNavigate()
+  const errMsg = {
+    color: "red",
+    fontSize: "14px",
+    display: "flex",
+    alignItems: "center",
+  }
   const {
     register,
     handleSubmit,
@@ -21,7 +27,6 @@ const CheckOutPage = () => {
   })
 
   if (isLoading) return <p>is loading...</p>
-
   const handleCreatePayment = async (formData) => {
     const res = await axios.post(`${SERVER_URL}/cart/create-checkout-session`, {
       data,
@@ -51,7 +56,9 @@ const CheckOutPage = () => {
                       id="name"
                       placeholder="王小明"
                     />
-                    {errors.customer && <p>{errors.customer.message}</p>}
+                    {errors.customer && (
+                      <p style={errMsg}>{errors.customer.message}</p>
+                    )}
                   </div>
                   <div class="form-group">
                     <label for="phone">電話</label>
@@ -64,7 +71,7 @@ const CheckOutPage = () => {
                       placeholder="0912 345 678"
                     />
                     {errors.phone_number && (
-                      <p>{errors.phone_number.message}</p>
+                      <p style={errMsg}>{errors.phone_number.message}</p>
                     )}
                   </div>
                   <div class="form-group address">
@@ -75,7 +82,9 @@ const CheckOutPage = () => {
                       id="address"
                       placeholder="請輸入詳細地址"
                     />
-                    {errors.address && <p>{errors.address.message}</p>}
+                    {errors.address && (
+                      <p style={errMsg}>{errors.address.message}</p>
+                    )}
                   </div>
                 </div>
               </div>

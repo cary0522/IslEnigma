@@ -49,7 +49,7 @@ body {
   font-family: "Noto Sans TC", "Arial", sans-serif;
 }
 .boatPage .banner {
-  background-image: url("/public/boat/boatBanner.png");
+  background-image: url("/boat/boatBanner.png");
   background-size: cover;
   background-position: center;
   height: 70vh;

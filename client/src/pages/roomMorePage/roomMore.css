@@ -42,24 +42,24 @@ body {
   transition: 0.4s ease-in-out;
 }
 
-/* 全局樣式 */
-body {
+.room-more-page {
+  /* 全局樣式 */
+}
+.room-more-page body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans TC", "Arial", sans-serif;
   background: #fffdf8;
 }
 @media (max-width: 719px) {
-  body {
+  .room-more-page body {
     height: 100vh;
     position: relative;
   }
 }
-
-#footer {
+.room-more-page #footer {
   margin-top: 10px;
 }
-
 @keyframes slideInFromBottom {
   0% {
     transform: translateY(100%);
@@ -88,8 +88,7 @@ body {
     transform: translateY(20px) rotate(270deg);
   }
 }
-
-.rain {
+.room-more-page .rain {
   position: absolute;
   z-index: 2;
   top: -50px;
@@ -98,7 +97,6 @@ body {
   height: 50px;
   animation: rain linear infinite;
 }
-
 @keyframes rain {
   0% {
     transform: translateY(-50px);
@@ -107,7 +105,7 @@ body {
     transform: translateY(calc(100vh + 50px));
   }
 }
-#roomBanner {
+.room-more-page #roomBanner {
   width: 100%;
   background-image: url("../../public/roomMorePage/room (6).jpeg");
   background-size: cover;
@@ -126,38 +124,38 @@ body {
   overflow: hidden;
   border-radius: none !important;
 }
-#roomBanner.raining {
+.room-more-page #roomBanner.raining {
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../public/roomMorePage/room (6).jpeg");
 }
 @media (max-width: 719px) {
-  #roomBanner {
+  .room-more-page #roomBanner {
     height: 100vh;
   }
 }
-#roomBanner .bannerContent {
+.room-more-page #roomBanner .bannerContent {
   text-align: center;
   margin-top: 5rem;
   max-width: 100%;
 }
 @media (max-width: 719px) {
-  #roomBanner {
+  .room-more-page #roomBanner {
     top: 0;
   }
 }
-#roomBanner .bannerLogo {
+.room-more-page #roomBanner .bannerLogo {
   width: 35%;
   margin: 0 auto 1rem;
 }
-#roomBanner .bannerLogo img {
+.room-more-page #roomBanner .bannerLogo img {
   width: 100%;
   height: auto;
 }
 @media (max-width: 719px) {
-  #roomBanner .bannerLogo {
+  .room-more-page #roomBanner .bannerLogo {
     width: 60vw;
   }
 }
-#roomBanner .bannerTextGroup {
+.room-more-page #roomBanner .bannerTextGroup {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,55 +163,59 @@ body {
   margin-bottom: 2rem;
   max-width: 35%;
 }
-#roomBanner .bannerTextGroup .bannerLine {
+.room-more-page #roomBanner .bannerTextGroup h1 {
+  color: white;
+  font-weight: 800;
+}
+.room-more-page #roomBanner .bannerTextGroup .bannerLine {
   width: 10rem;
   height: 1px;
   background-color: white;
 }
 @media (max-width: 719px) {
-  #roomBanner .bannerTextGroup .bannerLine {
+  .room-more-page #roomBanner .bannerTextGroup .bannerLine {
     width: 5rem;
   }
 }
-#roomBanner .bannerTitle {
+.room-more-page #roomBanner .bannerTitle {
   font-size: 2rem;
   margin: 0;
   white-space: nowrap;
 }
 @media (max-width: 719px) {
-  #roomBanner .bannerTitle {
+  .room-more-page #roomBanner .bannerTitle {
     font-size: 1.5rem;
   }
 }
-#roomBanner .bannerTagline {
+.room-more-page #roomBanner .bannerTagline {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 2rem;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomBanner .bannerTagline {
+  .room-more-page #roomBanner .bannerTagline {
     padding: 0 150px;
     line-height: 1.5;
   }
 }
 @media (max-width: 719px) {
-  #roomBanner .bannerTagline {
+  .room-more-page #roomBanner .bannerTagline {
     padding: 0 80px;
     line-height: 1.5;
   }
 }
-#roomBanner .bannerButtons {
+.room-more-page #roomBanner .bannerButtons {
   display: flex;
   width: 350px;
   justify-content: center;
   gap: 10px;
 }
 @media (max-width: 719px) {
-  #roomBanner .bannerButtons {
+  .room-more-page #roomBanner .bannerButtons {
     width: 300px;
   }
 }
-#roomBanner .primaryButton {
+.room-more-page #roomBanner .primaryButton {
   background: rgba(255, 255, 255, 0.094);
   color: #ffffff;
   border: white 1px solid;
@@ -226,20 +228,20 @@ body {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-#roomBanner .primaryButton:hover {
+.room-more-page #roomBanner .primaryButton:hover {
   background: #e4e3e6;
   color: #3b7ba5;
   transform: translateY(-5px);
   box-shadow: 0px 4px 4px rgba(211, 211, 211, 0.5);
 }
-#roomBanner .primaryButton:hover i {
+.room-more-page #roomBanner .primaryButton:hover i {
   transform: scale(1.2);
 }
-#roomBanner .primaryButton:active {
+.room-more-page #roomBanner .primaryButton:active {
   transform: translateY(-2px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
-#roomBanner .footprints {
+.room-more-page #roomBanner .footprints {
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -248,11 +250,11 @@ body {
   height: 120px;
 }
 @media (max-width: 719px) {
-  #roomBanner .footprints {
+  .room-more-page #roomBanner .footprints {
     bottom: 10vh;
   }
 }
-#roomBanner .footprint {
+.room-more-page #roomBanner .footprint {
   position: absolute;
   font-size: 26px;
   color: rgba(255, 255, 255, 0.7);
@@ -260,41 +262,40 @@ body {
   animation: footstep 4s infinite;
   transform: rotate(270deg);
 }
-#roomBanner .footprint-left {
+.room-more-page #roomBanner .footprint-left {
   left: 0;
 }
-#roomBanner .footprint-right {
+.room-more-page #roomBanner .footprint-right {
   right: 0;
   transform: rotate(270deg);
 }
 @media (min-width: 1921px) {
-  #roomBanner .footprint {
+  .room-more-page #roomBanner .footprint {
     display: none;
   }
 }
 @media (min-width: 1440px) and (max-width: 1920px) {
-  #roomBanner .footprint {
+  .room-more-page #roomBanner .footprint {
     display: none;
   }
 }
-#roomBanner .footprint:nth-child(1) {
+.room-more-page #roomBanner .footprint:nth-child(1) {
   animation-delay: 0s;
   top: 0%;
 }
-#roomBanner .footprint:nth-child(2) {
+.room-more-page #roomBanner .footprint:nth-child(2) {
   animation-delay: 1s;
   top: 25%;
 }
-#roomBanner .footprint:nth-child(3) {
+.room-more-page #roomBanner .footprint:nth-child(3) {
   animation-delay: 2s;
   top: 50%;
 }
-#roomBanner .footprint:nth-child(4) {
+.room-more-page #roomBanner .footprint:nth-child(4) {
   animation-delay: 3s;
   top: 75%;
 }
-
-.containerMain {
+.room-more-page .containerMain {
   display: flex;
   position: relative;
   flex-wrap: wrap;
@@ -304,16 +305,16 @@ body {
   animation: slideInFromBottom 1s ease-out;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  .containerMain {
+  .room-more-page .containerMain {
     display: none;
   }
 }
 @media (max-width: 719px) {
-  .containerMain {
+  .room-more-page .containerMain {
     display: none;
   }
 }
-.containerMain .drop {
+.room-more-page .containerMain .drop {
   position: relative;
   width: 120px;
   height: 120px;
@@ -326,7 +327,7 @@ body {
   align-items: center;
   transition: 0.5s ease-in-out;
 }
-.containerMain .drop::before {
+.room-more-page .containerMain .drop::before {
   content: "";
   position: absolute;
   top: 10px;
@@ -337,14 +338,14 @@ body {
   border-radius: 50%;
   opacity: 0.9;
 }
-.containerMain .drop:hover {
+.room-more-page .containerMain .drop:hover {
   border-radius: 50%;
 }
-.containerMain .drop:hover .content .h2 {
+.room-more-page .containerMain .drop:hover .content .h2 {
   color: #699dbf;
   transform: scale(1.1);
 }
-.containerMain .drop .content {
+.room-more-page .containerMain .drop .content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -352,7 +353,7 @@ body {
   transition: 0.3s;
   z-index: 99999;
 }
-.containerMain .drop .content .h2 {
+.room-more-page .containerMain .drop .content .h2 {
   width: 150px;
   border-radius: 50%;
   display: flex;
@@ -362,7 +363,7 @@ body {
   color: #ffffff;
   transition: 0.3s;
 }
-.containerMain .drop .content a {
+.room-more-page .containerMain .drop .content a {
   color: #fff;
   border-radius: 20px;
   text-decoration: none;
@@ -370,14 +371,14 @@ body {
   opacity: 0.75;
   transition: 0.3s;
 }
-.containerMain .drop .content a:hover {
+.room-more-page .containerMain .drop .content a:hover {
   opacity: 1;
 }
-.containerMain .dropOne {
+.room-more-page .containerMain .dropOne {
   border-radius: 50% 70% 70% 40%/30% 30% 70% 70%;
   /* 作外框 */
 }
-.containerMain .dropOne::after {
+.room-more-page .containerMain .dropOne::after {
   content: "";
   position: absolute;
   width: 120px;
@@ -385,11 +386,11 @@ body {
   border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
   border: 1px solid #ffffff;
 }
-.containerMain .dropTwo {
+.room-more-page .containerMain .dropTwo {
   border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   /* 作外框 */
 }
-.containerMain .dropTwo::after {
+.room-more-page .containerMain .dropTwo::after {
   content: "";
   position: absolute;
   width: 120px;
@@ -397,11 +398,11 @@ body {
   border-radius: 45% 55% 50% 50%/39% 56% 44% 61%;
   border: 1px solid #ffffff;
 }
-.containerMain .dropThree {
+.room-more-page .containerMain .dropThree {
   border-radius: 40% 60% 70% 30%/40% 40% 60% 50%;
   /* 作外框 */
 }
-.containerMain .dropThree::after {
+.room-more-page .containerMain .dropThree::after {
   content: "";
   position: absolute;
   width: 120px;
@@ -409,11 +410,11 @@ body {
   border-radius: 45% 55% 50% 50%/65% 34% 66% 35%;
   border: 1px solid #ffffff;
 }
-.containerMain .dropFour {
+.room-more-page .containerMain .dropFour {
   border-radius: 70% 30% 50% 50%/30% 60% 40% 70%;
   /* 作外框 */
 }
-.containerMain .dropFour::after {
+.room-more-page .containerMain .dropFour::after {
   content: "";
   position: absolute;
   width: 120px;
@@ -421,54 +422,53 @@ body {
   border-radius: 45% 55% 50% 50%/42% 42% 58% 58%;
   border: 1px solid #ffffff;
 }
-
-#roomMore {
+.room-more-page #roomMore {
   max-width: 1300px;
   margin: 0 auto;
   margin-top: 100px;
   padding: 2rem;
 }
 @media (max-width: 719px) {
-  #roomMore {
+  .room-more-page #roomMore {
     margin-top: 50px;
   }
 }
-#roomMore .roomItem {
+.room-more-page #roomMore .roomItem {
   display: flex;
   margin-bottom: 3rem;
   gap: 1.5rem;
 }
-#roomMore .roomItem.odd {
+.room-more-page #roomMore .roomItem.odd {
   flex-direction: row-reverse;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem {
+  .room-more-page #roomMore .roomItem {
     flex-direction: column;
     gap: 0rem;
   }
-  #roomMore .roomItem.odd {
+  .room-more-page #roomMore .roomItem.odd {
     flex-direction: column;
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem {
+  .room-more-page #roomMore .roomItem {
     flex-direction: column;
     gap: 0rem;
   }
-  #roomMore .roomItem.odd {
+  .room-more-page #roomMore .roomItem.odd {
     flex-direction: column;
   }
 }
-#roomMore .roomItem .roomCarousel {
+.room-more-page #roomMore .roomItem .roomCarousel {
   flex: 0 0 50%;
   max-width: 600px;
 }
-.odd #roomMore .roomItem .roomCarousel {
+.odd .room-more-page #roomMore .roomItem .roomCarousel {
   margin-right: 0;
   margin-left: 2rem;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem .roomCarousel {
+  .room-more-page #roomMore .roomItem .roomCarousel {
     flex: 1 0 auto;
     max-width: 100%;
     margin-right: 0;
@@ -477,7 +477,7 @@ body {
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem .roomCarousel {
+  .room-more-page #roomMore .roomItem .roomCarousel {
     flex: 1 0 auto;
     max-width: 100%;
     margin-right: 0;
@@ -485,28 +485,28 @@ body {
     margin-bottom: 1rem;
   }
 }
-#roomMore .roomItem .roomCarousel .carousel {
+.room-more-page #roomMore .roomItem .roomCarousel .carousel {
   margin-bottom: 1rem;
 }
-#roomMore .roomItem .roomCarousel .carousel .carousel-inner {
+.room-more-page #roomMore .roomItem .roomCarousel .carousel .carousel-inner {
   border-radius: 20px;
   overflow: hidden;
 }
-#roomMore .roomItem .roomCarousel .carousel .carousel-item img {
+.room-more-page #roomMore .roomItem .roomCarousel .carousel .carousel-item img {
   width: 100%;
   height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   transition: 0.3s;
 }
-#roomMore .roomItem .roomCarousel .carousel .carousel-item img:hover {
+.room-more-page #roomMore .roomItem .roomCarousel .carousel .carousel-item img:hover {
   transform: scale(1.1);
 }
-#roomMore .roomItem .roomCarousel .thumbnails {
+.room-more-page #roomMore .roomItem .roomCarousel .thumbnails {
   display: flex;
   justify-content: space-between;
 }
-#roomMore .roomItem .roomCarousel .thumbnails img {
+.room-more-page #roomMore .roomItem .roomCarousel .thumbnails img {
   width: 32%;
   height: 80px;
   -o-object-fit: cover;
@@ -515,16 +515,16 @@ body {
   cursor: pointer;
   transition: 0.3s ease;
 }
-#roomMore .roomItem .roomCarousel .thumbnails img:hover {
+.room-more-page #roomMore .roomItem .roomCarousel .thumbnails img:hover {
   opacity: 0.8;
   transform: scale(1.1);
 }
-#roomMore .roomItem .roomInfo {
+.room-more-page #roomMore .roomItem .roomInfo {
   flex: 1;
   padding: 1rem;
   position: relative;
 }
-#roomMore .roomItem .roomInfo .backgroundImageGrass {
+.room-more-page #roomMore .roomItem .roomInfo .backgroundImageGrass {
   position: absolute;
   top: -40px;
   right: 0;
@@ -537,7 +537,7 @@ body {
   opacity: 0.2;
   z-index: 1;
 }
-#roomMore .roomItem .roomInfo .backgroundImageIsland {
+.room-more-page #roomMore .roomItem .roomInfo .backgroundImageIsland {
   position: absolute;
   top: -50px;
   right: 0;
@@ -550,16 +550,16 @@ body {
   opacity: 0.2;
   z-index: 1;
 }
-#roomMore .roomItem .roomInfo .roomTypeEng,
-#roomMore .roomItem .roomInfo .roomType,
-#roomMore .roomItem .roomInfo .roomMoreSlogan,
-#roomMore .roomItem .roomInfo .roomDesc,
-#roomMore .roomItem .roomInfo .roomTags,
-#roomMore .roomItem .roomInfo .roomDetails,
-#roomMore .roomItem .roomInfo .roomActions {
+.room-more-page #roomMore .roomItem .roomInfo .roomTypeEng,
+.room-more-page #roomMore .roomItem .roomInfo .roomType,
+.room-more-page #roomMore .roomItem .roomInfo .roomMoreSlogan,
+.room-more-page #roomMore .roomItem .roomInfo .roomDesc,
+.room-more-page #roomMore .roomItem .roomInfo .roomTags,
+.room-more-page #roomMore .roomItem .roomInfo .roomDetails,
+.room-more-page #roomMore .roomItem .roomInfo .roomActions {
   position: relative;
 }
-#roomMore .roomItem .roomInfo .roomTypeEng {
+.room-more-page #roomMore .roomItem .roomInfo .roomTypeEng {
   font-size: 2rem;
   font-weight: 800;
   line-height: 1.2;
@@ -570,16 +570,16 @@ body {
   color: #3b7ba5;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem .roomInfo .roomTypeEng {
+  .room-more-page #roomMore .roomItem .roomInfo .roomTypeEng {
     font-size: 1.6rem;
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem .roomInfo .roomTypeEng {
+  .room-more-page #roomMore .roomItem .roomInfo .roomTypeEng {
     font-size: 1.5rem;
   }
 }
-#roomMore .roomItem .roomInfo .roomType {
+.room-more-page #roomMore .roomItem .roomInfo .roomType {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   line-height: 1.5;
@@ -587,35 +587,35 @@ body {
   font-weight: 600;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem .roomInfo .roomType {
+  .room-more-page #roomMore .roomItem .roomInfo .roomType {
     font-size: 1.2rem;
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem .roomInfo .roomType {
+  .room-more-page #roomMore .roomItem .roomInfo .roomType {
     font-size: 1.1rem;
   }
 }
-#roomMore .roomItem .roomInfo .roomMoreSlogan {
+.room-more-page #roomMore .roomItem .roomInfo .roomMoreSlogan {
   font-style: italic;
   margin-bottom: 1rem;
   color: #7f8f99;
   font-weight: 800;
 }
-#roomMore .roomItem .roomInfo .roomDesc {
+.room-more-page #roomMore .roomItem .roomInfo .roomDesc {
   margin-bottom: 1rem;
   color: #3b7ba5;
   font-weight: 600;
   line-height: 1.5;
 }
-#roomMore .roomItem .roomInfo .roomTags {
+.room-more-page #roomMore .roomItem .roomInfo .roomTags {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
   color: #3b7ba5;
   gap: 10px;
 }
-#roomMore .roomItem .roomInfo .roomTags span.tag {
+.room-more-page #roomMore .roomItem .roomInfo .roomTags span.tag {
   display: block;
   background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
   color: #fff;
@@ -626,24 +626,24 @@ body {
   margin-bottom: 0.5rem;
   transition: all 0.3s;
 }
-#roomMore .roomItem .roomInfo .roomTags span.tag:hover {
+.room-more-page #roomMore .roomItem .roomInfo .roomTags span.tag:hover {
   transform: scale(1.1rem);
   font-size: large;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem .roomInfo .roomTags span.tag {
+  .room-more-page #roomMore .roomItem .roomInfo .roomTags span.tag {
     padding: 0.3rem 0.8rem;
     font-size: 1rem;
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem .roomInfo .roomTags span.tag {
+  .room-more-page #roomMore .roomItem .roomInfo .roomTags span.tag {
     padding: 0.3rem 0.8rem;
     font-size: 1rem;
     margin-right: 0.5rem;
   }
 }
-#roomMore .roomItem .roomInfo .roomDetails {
+.room-more-page #roomMore .roomItem .roomInfo .roomDetails {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
@@ -653,23 +653,23 @@ body {
   font-size: 0.8rem;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem .roomInfo .roomDetails {
+  .room-more-page #roomMore .roomItem .roomInfo .roomDetails {
     grid-template-columns: repeat(8, 1fr);
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem .roomInfo .roomDetails {
+  .room-more-page #roomMore .roomItem .roomInfo .roomDetails {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
   }
 }
-#roomMore .roomItem .roomInfo .roomDetails .detailItem {
+.room-more-page #roomMore .roomItem .roomInfo .roomDetails .detailItem {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-#roomMore .roomItem .roomInfo .roomDetails .detailItem i {
+.room-more-page #roomMore .roomItem .roomInfo .roomDetails .detailItem i {
   font-size: 2rem;
   margin-bottom: 0.5rem;
   background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
@@ -677,27 +677,27 @@ body {
   -webkit-text-fill-color: transparent;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem .roomInfo .roomDetails .detailItem i {
+  .room-more-page #roomMore .roomItem .roomInfo .roomDetails .detailItem i {
     font-size: 1.5rem;
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem .roomInfo .roomDetails .detailItem i {
+  .room-more-page #roomMore .roomItem .roomInfo .roomDetails .detailItem i {
     font-size: 1.3rem;
   }
 }
-#roomMore .roomItem .roomInfo .roomActions {
+.room-more-page #roomMore .roomItem .roomInfo .roomActions {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-#roomMore .roomItem .roomInfo .roomActions .roomMemo {
+.room-more-page #roomMore .roomItem .roomInfo .roomActions .roomMemo {
   font-style: italic;
   margin-bottom: 0;
   flex: 1;
   color: #9ba7ce;
 }
-#roomMore .roomItem .roomInfo .roomActions .checkFacilities {
+.room-more-page #roomMore .roomItem .roomInfo .roomActions .checkFacilities {
   background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
   color: #fff;
   border: none;
@@ -707,65 +707,63 @@ body {
   transition: 0.3s ease;
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomMore .roomItem .roomInfo .roomActions .checkFacilities {
+  .room-more-page #roomMore .roomItem .roomInfo .roomActions .checkFacilities {
     padding: 0.7rem 1.3rem;
     font-size: 0.95em;
   }
 }
 @media (max-width: 719px) {
-  #roomMore .roomItem .roomInfo .roomActions .checkFacilities {
+  .room-more-page #roomMore .roomItem .roomInfo .roomActions .checkFacilities {
     padding: 0.6rem 1.2rem;
     font-size: 0.9em;
   }
 }
-#roomMore .roomItem .roomInfo .roomActions .checkFacilities:hover {
+.room-more-page #roomMore .roomItem .roomInfo .roomActions .checkFacilities:hover {
   opacity: 0.9;
   transform: scale(1.1);
 }
-
-.roomItem.even {
+.room-more-page .roomItem.even {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.roomItem.odd {
+.room-more-page .roomItem.odd {
   background-color: rgba(188, 188, 188, 0.1);
 }
-
-#roomFacilities {
+.room-more-page #roomFacilities {
   padding: 2rem;
   background-color: #fffdf8;
 }
-#roomFacilities h2 {
+.room-more-page #roomFacilities h2 {
   text-align: center;
   color: #3b7ba5;
   font-size: 2rem;
   margin-bottom: 2rem;
 }
-#roomFacilities .facilitiesGrid {
+.room-more-page #roomFacilities .facilitiesGrid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 1.5rem;
   padding: 0 110px;
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  #roomFacilities .facilitiesGrid {
+  .room-more-page #roomFacilities .facilitiesGrid {
     grid-template-columns: repeat(6, 1fr);
     padding: 0 80px;
   }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  #roomFacilities .facilitiesGrid {
+  .room-more-page #roomFacilities .facilitiesGrid {
     grid-template-columns: repeat(5, 1fr);
     padding: 0 50px;
   }
 }
 @media (max-width: 719px) {
-  #roomFacilities .facilitiesGrid {
+  .room-more-page #roomFacilities .facilitiesGrid {
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     padding: 0 20px;
   }
 }
-#roomFacilities .facilitiesGrid .facilityItem {
+.room-more-page #roomFacilities .facilitiesGrid .facilityItem {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -775,10 +773,10 @@ body {
   font-size: 0.9rem;
   transition: 0.3s;
 }
-#roomFacilities .facilitiesGrid .facilityItem:hover {
+.room-more-page #roomFacilities .facilitiesGrid .facilityItem:hover {
   transform: scale(1.2);
 }
-#roomFacilities .facilitiesGrid .facilityItem .iconWrapper {
+.room-more-page #roomFacilities .facilitiesGrid .facilityItem .iconWrapper {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -789,34 +787,33 @@ body {
   margin-bottom: 0.5rem;
   transition: 0.3s;
 }
-#roomFacilities .facilitiesGrid .facilityItem .iconWrapper:hover {
+.room-more-page #roomFacilities .facilitiesGrid .facilityItem .iconWrapper:hover {
   background-color: #699dbf;
 }
-#roomFacilities .facilitiesGrid .facilityItem .iconWrapper:hover i {
+.room-more-page #roomFacilities .facilitiesGrid .facilityItem .iconWrapper:hover i {
   color: #e4e3e6;
 }
 @media (max-width: 719px) {
-  #roomFacilities .facilitiesGrid .facilityItem .iconWrapper {
+  .room-more-page #roomFacilities .facilitiesGrid .facilityItem .iconWrapper {
     width: 50px;
     height: 50px;
   }
 }
-#roomFacilities .facilitiesGrid .facilityItem .iconWrapper i {
+.room-more-page #roomFacilities .facilitiesGrid .facilityItem .iconWrapper i {
   font-size: 1.5rem;
   color: #3b7ba5;
 }
 @media (max-width: 719px) {
-  #roomFacilities .facilitiesGrid .facilityItem .iconWrapper i {
+  .room-more-page #roomFacilities .facilitiesGrid .facilityItem .iconWrapper i {
     font-size: 1.2rem;
   }
 }
 @media (max-width: 719px) {
-  #roomFacilities .facilitiesGrid .facilityItem span {
+  .room-more-page #roomFacilities .facilitiesGrid .facilityItem span {
     font-size: 0.8rem;
   }
 }
-
-.roomSlogan {
+.room-more-page .roomSlogan {
   position: relative;
   width: calc(100% - 220px);
   height: 300px;
@@ -825,55 +822,55 @@ body {
   margin: 50px 110px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
-.roomSlogan img {
+.room-more-page .roomSlogan img {
   transition: 0.3s;
 }
-.roomSlogan img:hover {
+.room-more-page .roomSlogan img:hover {
   transform: scale(1.2);
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .roomSlogan {
+  .room-more-page .roomSlogan {
     width: calc(100% - 160px);
     height: 250px;
     margin: 40px 80px;
   }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  .roomSlogan {
+  .room-more-page .roomSlogan {
     width: calc(100% - 100px);
     height: 200px;
     margin: 30px 50px;
   }
 }
 @media (max-width: 719px) {
-  .roomSlogan {
+  .room-more-page .roomSlogan {
     width: calc(100% - 40px);
     height: 200px;
     margin: 100px 20px;
     border-radius: 100px/50%;
   }
 }
-.roomSlogan__container {
+.room-more-page .roomSlogan__container {
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
-.roomSlogan__slide {
+.room-more-page .roomSlogan__slide {
   width: 50%;
   height: 100%;
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
 }
-.roomSlogan__slide img {
+.room-more-page .roomSlogan__slide img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.roomSlogan__content {
+.room-more-page .roomSlogan__content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -883,44 +880,44 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   width: 80%;
 }
-.roomSlogan__content h2 {
+.room-more-page .roomSlogan__content h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .roomSlogan__content h2 {
+  .room-more-page .roomSlogan__content h2 {
     font-size: 1.8rem;
   }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  .roomSlogan__content h2 {
+  .room-more-page .roomSlogan__content h2 {
     font-size: 1.5rem;
   }
 }
 @media (max-width: 719px) {
-  .roomSlogan__content h2 {
+  .room-more-page .roomSlogan__content h2 {
     font-size: 1rem;
   }
 }
-.roomSlogan__content h3 {
+.room-more-page .roomSlogan__content h3 {
   font-size: 1.5rem;
 }
 @media (min-width: 1024px) and (max-width: 1439px) {
-  .roomSlogan__content h3 {
+  .room-more-page .roomSlogan__content h3 {
     font-size: 1.3rem;
   }
 }
 @media (min-width: 720px) and (max-width: 1023px) {
-  .roomSlogan__content h3 {
+  .room-more-page .roomSlogan__content h3 {
     font-size: 1.1rem;
   }
 }
 @media (max-width: 719px) {
-  .roomSlogan__content h3 {
+  .room-more-page .roomSlogan__content h3 {
     font-size: 0.8rem;
   }
 }
-.roomSlogan__indicators {
+.room-more-page .roomSlogan__indicators {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -929,11 +926,11 @@ body {
   z-index: 10;
 }
 @media (max-width: 719px) {
-  .roomSlogan__indicators {
+  .room-more-page .roomSlogan__indicators {
     bottom: 10px;
   }
 }
-.roomSlogan__indicator {
+.room-more-page .roomSlogan__indicator {
   width: 12px;
   height: 12px;
   border-radius: 10px;
@@ -943,17 +940,17 @@ body {
   transition: 0.3s ease;
 }
 @media (max-width: 719px) {
-  .roomSlogan__indicator {
+  .room-more-page .roomSlogan__indicator {
     width: 8px;
     height: 8px;
     margin: 0 3px;
   }
-  .roomSlogan__indicator.active {
+  .room-more-page .roomSlogan__indicator.active {
     background-color: #fff;
     width: 16px;
   }
 }
-.roomSlogan__indicator.active {
+.room-more-page .roomSlogan__indicator.active {
   background-color: #fff;
   width: 24px;
 }/*# sourceMappingURL=roomMore.css.map */
