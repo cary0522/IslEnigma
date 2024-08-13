@@ -1,2049 +1,2229 @@
-$color_1: whitesmoke;
-$color_2: #699dbf;
-$color_3: #ffffff;
-$color_4: #fff;
-$color_5: #3b7ba5;
-$color_6: rgba(255, 255, 255, 0.7);
-$color_7: #73748c;
-$color_8: white;
-$color_9: #6d95aa;
-$color_10: #636363;
-$color_11: #aaa;
-$color_12: #000;
-$color_13: #333;
-$color_14: #666;
-$color_15: #ff6600;
-$color_16: #e4e3e6;
-$color_17: rgba(255, 255, 255, 0.404);
-$color_18: #5d8aa9;
-$color_19: #317ca5;
-$color_20: #aee8d1;
-$font-family_1: "Noto Sans TC", sans-serif;
-$font-family_2: "Font Awesome 5 Free";
-$background-color_1: white;
-$background-color_2: rgba(255, 255, 255, 0.8078431373);
-$background-color_3: #3b7ba5;
-$background-color_4: rgba(255, 255, 255, 0.3);
-$background-color_5: rgba(255, 255, 255, 0.2);
-$background-color_6: transparent;
-$background-color_7: #d9d9d9;
-$background-color_8: #7288a5;
-$background-color_9: #317ca5;
-$background-color_10: #b1e9ff;
-$background-color_11: #e4e3e6;
-$background-color_12: #6d95aa;
-$background-color_13: rgba(0, 0, 0, 0.7);
-$background-color_14: #fff;
-$background-color_15: rgba(0, 0, 0, 0.1);
-$background-color_16: rgba(0, 0, 0, 0.2);
-$background-color_17: #f0f0f0;
-$background-color_18: #fffdf8;
-$background-color_19: #f5f5f5;
-$background-color_20: rgba(255, 255, 255, 0.5);
-$background-color_21: #f9f9f9;
-$background-color_22: rgba(0, 0, 0, 0.5);
-$background-color_23: rgba(255, 255, 255, 0.1);
+.roomsPage {
+  $color_1: whitesmoke;
+  $color_2: #699dbf;
+  $color_3: #ffffff;
+  $color_4: #fff;
+  $color_5: #3b7ba5;
+  $color_6: rgba(255, 255, 255, 0.7);
+  $color_7: #73748c;
+  $color_8: white;
+  $color_9: #6d95aa;
+  $color_10: #636363;
+  $color_11: #aaa;
+  $color_12: #000;
+  $color_13: #333;
+  $color_14: #666;
+  $color_15: #ff6600;
+  $color_16: #e4e3e6;
+  $color_17: rgba(255, 255, 255, 0.404);
+  $color_18: #5d8aa9;
+  $color_19: #317ca5;
+  $color_20: #aee8d1;
+  $font-family_1: "Noto Sans TC", sans-serif;
+  $font-family_2: "Font Awesome 5 Free";
+  $background-color_1: white;
+  $background-color_2: rgba(255, 255, 255, 0.8078431373);
+  $background-color_3: #3b7ba5;
+  $background-color_4: rgba(255, 255, 255, 0.3);
+  $background-color_5: rgba(255, 255, 255, 0.2);
+  $background-color_6: transparent;
+  $background-color_7: #d9d9d9;
+  $background-color_8: #7288a5;
+  $background-color_9: #317ca5;
+  $background-color_10: #b1e9ff;
+  $background-color_11: #e4e3e6;
+  $background-color_12: #6d95aa;
+  $background-color_13: rgba(0, 0, 0, 0.7);
+  $background-color_14: #fff;
+  $background-color_15: rgba(0, 0, 0, 0.1);
+  $background-color_16: rgba(0, 0, 0, 0.2);
+  $background-color_17: #f0f0f0;
+  $background-color_18: #fffdf8;
+  $background-color_19: #f5f5f5;
+  $background-color_20: rgba(255, 255, 255, 0.5);
+  $background-color_21: #f9f9f9;
+  $background-color_22: rgba(0, 0, 0, 0.5);
+  $background-color_23: rgba(255, 255, 255, 0.1);
 
-/* 全局樣式 */
-.roomsPage{
-@keyframes footstep {
-	0% {
-		opacity: 0;
-		transform: translateY(-20px) rotate(90deg);
-	}
-	20% {
-		opacity: 1;
-		transform: translateY(0) rotate(90deg);
-	}
-	80% {
-		opacity: 1;
-		transform: translateY(0) rotate(90deg);
-	}
-	100% {
-		opacity: 0;
-		transform: translateY(20px) rotate(90deg);
-	}
-}
-@keyframes footstep {
-	0% {
-		opacity: 0;
-		transform: translateY(-20px) rotate(80deg) scaleY(-1);
-	}
-	20% {
-		opacity: 1;
-		transform: translateY(0) rotate(90deg) scaleY(-1);
-	}
-	80% {
-		opacity: 1;
-		transform: translateY(0) rotate(90deg) scaleY(-1);
-	}
-	100% {
-		opacity: 0;
-		transform: translateY(20px) rotate(100deg) scaleY(-1);
-	}
-}
-/* #reservationCalendar {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-@keyframes slideIn {
-	from {
-		transform: translateY(-50px);
-		opacity: 0;
-	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-/*# sourceMappingURL=room.css.map */
-/* 日歷 */
-body {
-	margin: 0;
-	padding: 0;
-	font-family: $font-family_1;
-	background: #fffdf8;
-}
-#footer {
-	margin-top: 100px;
-}
-#roomBanner {
-	width: 100%;
-	top: 50px;
-	height: 100vh;
-	overflow: hidden;
-	background-image: url("/03rooms/room (49).png");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center top;
-	color: $color_1;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	.containerMain {
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		flex-wrap: wrap;
-		justify-content: center;
-		margin-left: 40px;
-		gap: 20px;
-		padding: 10px;
-		transform: scale(0.8);
-		.drop {
-			position: relative;
-			width: 120px;
-			height: 120px;
-			background: rgba(255, 255, 255, 0.1);
-			backdrop-filter: blur(10px);
-			box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05), 25px 35px 30px rgba(0, 0, 0, 0.05), 25px 30px 30px rgba(0, 0, 0, 0.05), inset -20px -20px 25px rgba(255, 255, 255, 0.544);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			transition: 0.5s ease-in-out;
-			&::before {
-				content: "";
-				position: absolute;
-				top: 10px;
-				left: 20px;
-				width: 10px;
-				height: 10px;
-				background: #fff;
-				border-radius: 50%;
-				opacity: 0.9;
-			}
-			&:hover {
-				border-radius: 50%;
-				.content {
-					h2 {
-						color: $color_2;
-						transform: scale(1.1);
-					}
-				}
-			}
-			.content {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 10px;
-				transition: 0.3s;
-				h2 {
-					width: 150px;
-					border-radius: 50%;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					font-size: 2.5rem;
-					color: $color_3;
-					transition: 0.3s;
-				}
-				a {
-					padding: 8px 20px;
-					color: $color_4;
-					border-radius: 20px;
-					text-decoration: none;
-					font-weight: 500;
-					opacity: 0.75;
-					transition: 0.3s;
-					&:hover {
-						opacity: 1;
-					}
-				}
-			}
-		}
-		.dropOne {
-			border-radius: 50% 70% 70% 40%/30% 30% 70% 70%;
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
-				border: 1px solid #ffffff;
-			}
-		}
-		.dropTwo {
-			border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 45% 55% 50% 50%/39% 56% 44% 61%;
-				border: 1px solid #ffffff;
-			}
-		}
-		.dropThree {
-			border-radius: 40% 60% 70% 30%/40% 40% 60% 50%;
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 45% 55% 50% 50%/65% 34% 66% 35%;
-				border: 1px solid #ffffff;
-			}
-		}
-		.dropFour {
-			border-radius: 70% 30% 50% 50%/30% 60% 40% 70%;
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 45% 55% 50% 50%/42% 42% 58% 58%;
-				border: 1px solid #ffffff;
-			}
-		}
-	}
-	.bannerContent {
-		text-align: center;
-		max-width: 100%;
-		margin-right: 200px;
-	}
-	.bannerLogo {
-		width: 35%;
-		margin: 0 auto 2rem;
-		img {
-			width: 100%;
-			height: auto;
-		}
-	}
-	.bannerTextGroup {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 2rem;
-		margin-bottom: 2rem;
-		max-width: 35%;
-		.bannerLine {
-			width: 10rem;
-			height: 1px;
-			background-color: $background-color_1;
-		}
-	}
-	.bannerTitle {
-		font-size: 2rem;
-		margin: 0;
-		white-space: nowrap;
-	}
-	.bannerTagline {
-		font-size: 1rem;
-		margin-bottom: 2rem;
-	}
-	.bannerButtons {
-		display: flex;
-		width: 350px;
-		justify-content: center;
-		gap: 10px;
-	}
-	.primaryButton {
-		background: rgba(255, 255, 255, 0.094);
-		color: $color_3;
-		border: white 1px solid;
-		padding: 10px 20px;
-		border-radius: 25px;
-		font-weight: 500;
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		cursor: pointer;
-		transition: 0.3s ease;
-		&:hover {
-			background: #e4e3e6;
-			color: $color_5;
-			transform: translateY(-5px);
-			box-shadow: 0px 4px 4px rgba(211, 211, 211, 0.5);
-			i {
-				transform: scale(1.2);
-			}
-		}
-		&:active {
-			transform: translateY(-2px);
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-		}
-	}
-	.footprints {
-		position: absolute;
-		bottom: 10px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 90px;
-		height: 150px;
-	}
-	.footprint {
-		position: absolute;
-		font-size: 24px;
-		color: $color_6;
-		opacity: 0;
-		animation: footstep 4s infinite;
-		transform: rotate(90deg);
-		&:nth-child(1) {
-			animation-delay: 0s;
-			top: 0%;
-		}
-		&:nth-child(2) {
-			animation-delay: 1s;
-			top: 25%;
-		}
-		&:nth-child(3) {
-			animation-delay: 2s;
-			top: 50%;
-		}
-		&:nth-child(4) {
-			animation-delay: 3s;
-			top: 75%;
-		}
-	}
-	.footprint-left {
-		left: 0;
-	}
-	.footprint-right {
-		right: 0;
-		transform: rotate(90deg) scaleY(-1);
-	}
-}
-.quickModal {
-	position: fixed;
-	z-index: 1000;
-	right: 5%;
-	top: calc(50% + 60px);
-	transform: translateY(-50%);
-	width: 600px;
-	height: 500px;
-	background-color: $background-color_2;
-	border-radius: 20px;
-	box-shadow: -5px 6px 4.2px rgba(0, 0, 0, 0.24);
-	box-shadow: inset -5px 6px 4.2px rgba(255, 255, 255, 0.5);
-	backdrop-filter: blur(4.8px);
-	overflow: hidden;
-	border: 1px solid #fffdf8;
-	.quickModalContent {
-		display: flex;
-		height: 100%;
-	}
-	.modalLeft {
-		width: 50%;
-		margin: 15px;
-		h2 {
-			color: $color_7;
-			font-size: 1.3rem;
-			padding-bottom: 20px;
-			text-align: center;
-			i {
-				margin-left: 0.5rem;
-			}
-		}
-		#reservationCalendar {
-			height: 80%;
-			.ui-datepicker {
-				height: 100%;
-				.ui-datepicker-calendar {
-					height: calc(100% - 50px);
-					td {
-						height: 16.7%;
-						a {
-							height: 100%;
-							display: flex;
-							align-items: center;
-							justify-content: center;
-						}
-					}
-				}
-			}
-		}
-	}
-	.modalRight {
-		width: 50%;
-		background-color: $background-color_3;
-		color: $color_8;
-		padding: 20px;
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		box-sizing: border-box;
-	}
-	.closeQuickModal {
-		position: absolute;
-		right: 10px;
-		top: 10px;
-		font-size: 20px;
-		color: $color_8;
-		background-color: $background-color_4;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-		z-index: 10;
-		transition: 0.3s;
-		&:hover {
-			transform: rotate(45deg);
-		}
-	}
-	.reservationForm {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 0.3rem;
-		width: 100%;
-		margin-top: 10px;
-		height: 100%;
-	}
-	.dateInputs {
-		width: 100%;
-		margin-left: 0;
-		padding-left: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 10px;
-		.dateInput {
-			display: flex;
-			flex-direction: column;
-			gap: 5px;
-			label {
-				font-size: 14px;
-				color: $color_8;
-				margin: 0;
-			}
-			input {
-				width: 100%;
-				padding: 8px;
-				border: none;
-				border-radius: 50px;
-				font-size: 14px;
-				background-color: $background-color_5;
-				color: $color_8;
-				align-items: flex-end;
-			}
-			p {
-				width: 100%;
-				padding: 8px;
-				border: none;
-				border-radius: 50px;
-				font-size: 14px;
-				background-color: $background-color_5;
-				color: $color_8;
-				align-items: flex-end;
-			}
-		}
-	}
-	.guestInputs {
-		width: 100%;
-		margin-left: 0;
-		padding-left: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 10px;
-		.inputGroup {
-			display: flex;
-			margin-left: 20px;
-			align-items: center;
-			justify-items: flex-start;
-			gap: 10px;
-			label {
-				font-size: 14px;
-				color: $color_8;
-			}
-			.numberInput {
-				display: flex;
-				align-items: center;
-				border-radius: 5px;
-				overflow: hidden;
-				button {
-					width: 24px;
-					height: 24px;
-					background-color: $background-color_6;
-					border: none;
-					color: $color_8;
-					cursor: pointer;
-					font-size: 1.2rem;
-					border-radius: 50px;
-					background-color: $background-color_5;
-				}
-				input {
-					width: 40px;
-					text-align: center;
-					border: none;
-					font-size: 16px;
-					background-color: $background-color_6;
-					color: $color_8;
-				}
-			}
-		}
-	}
-	.totalPrice {
-		background-color: $background-color_7;
-		padding: 10px;
-		width: 90%;
-		border-radius: 10px;
-		text-align: center;
-		font-size: 18px;
-		font-weight: bold;
-		margin-bottom: 10px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 5%;
-		span {
-			color: $color_7;
-		}
-		input {
-			width: 50%;
-			padding: 8px;
-			margin-right: 10px;
-			border: none;
-			border-radius: 50px;
-			font-size: 14px;
-			background-color: $background-color_6;
-			color: $color_7;
-			font-size: 1rem;
-			font-weight: 600;
-		}
-	}
-	#searchResults {
-		padding: 10px;
-		background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
-		color: $color_8;
-		border: none;
-		border-radius: 25px;
-		cursor: pointer;
-		transition: opacity 0.3s;
-		font-size: 14px;
-		width: 100%;
-		margin-top: 5px;
-		border: 1px solid #fffdf8;
-		transition: 0.3s;
-		&:hover {
-			opacity: 0.9;
-			transform: translateY(-5px);
-			background: linear-gradient(to right, rgb(79, 140, 173), rgb(143, 124, 172));
-		}
-	}
-	.roomTypeSelectWrapper {
-		position: relative;
-		width: 100%;
-		transition: 0.3s;
-		&::after {
-			content: "\f078";
-			font-family: $font-family_2;
-			font-weight: 900;
-			position: absolute;
-			top: 50%;
-			right: 10px;
-			transform: translateY(-50%);
-			pointer-events: none;
-			color: $color_8;
-		}
-		&:hover {
-			opacity: 0.9;
-			transform: translateY(-5px);
-		}
-		.roomTypeSelect {
-			width: 100%;
-			padding: 10px 30px 10px 10px;
-			background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
-			color: $color_8;
-			border: none;
-			border-radius: 50px;
-			border: 1px white solid;
-			appearance: none;
-			cursor: pointer;
-			font-size: 16px;
-			option {
-				background-color: $background-color_8;
-				color: $color_1;
-				align-items: center;
-				text-align: center;
-				&:hover {
-					outline: none;
-					box-shadow: 0 0 0 2px rgba(114, 130, 182, 0.988);
-				}
-			}
-			&:focus {
-				outline: none;
-				box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
-			}
-		}
-	}
-}
-.ui-datepicker {
-	font-size: 14px;
-	width: 100%;
-	.ui-datepicker-header {
-		background-color: $background-color_3;
-		color: $color_8;
-	}
-	.ui-state-default {
-		background: none;
-		border: none;
-		text-align: center;
-	}
-	.ui-state-highlight {
-		background-color: $background-color_10;
-		color: $color_8;
-	}
-	.check-in {
-		a {
-			background-color: $background-color_3 !important;
-			color: $color_8 !important;
-		}
-	}
-	.check-out {
-		a {
-			background-color: $background-color_3 !important;
-			color: $color_8 !important;
-		}
-	}
-	.in-range {
-		a {
-			background-color: $background-color_11;
-		}
-	}
-}
-#roomFeature {
-	padding: 100px;
-	background: #fffdf8;
-	position: relative;
-	.featureHeader {
-		text-align: left;
-		color: $color_9;
-		margin-bottom: 2rem;
-	}
-	.featureTitle {
-		font-size: 2rem;
-		color: $color_5;
-		margin-bottom: 0.8rem;
-		font-weight: 800;
-	}
-	.featureSubtitle {
-		font-size: 1.2rem;
-		color: $color_9;
-	}
-	.decoLine {
-		background-color: $background-color_12;
-		width: 100%;
-		height: 1px;
-		margin-bottom: 0.8rem;
-		display: flex;
-	}
-	.carouselButtonContainer {
-		display: flex;
-		align-items: center;
-	}
-	.featureCarousel {
-		position: relative;
-		max-width: 1200px;
-		margin: 0 auto;
-		overflow: hidden;
-		flex-grow: 8;
-		padding: 10px 0;
-	}
-	.carouselContainer {
-		display: flex;
-		transition: transform 0.5s ease;
-		width: 100%;
-	}
-	.carouselSlide {
-		flex: 0 0 33.3333333333%;
-		padding: 0 10px;
-		box-sizing: border-box;
-		cursor: pointer;
-		transition: transform 0.3s ease;
-		overflow: hidden;
-		border-radius: 12px;
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-		&:hover {
-			transform: scale(1.05);
-			.hoverOverlay {
-				opacity: 0.8;
-				backdrop-filter: blur(2px);
-			}
-			.overlay {
-				transform: translateY(-60%);
-				height: 40%;
-				.hoverOverlay {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-		}
-		.imgContainer {
-			width: 100%;
-			padding-top: 66.67%;
-			position: relative;
-			overflow: hidden;
-			border-radius: 20px;
-			aspect-ratio: 16/9;
-		}
-		img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-		.overlay {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			background: rgba(0, 0, 0, 0.5);
-			height: 20%;
-			color: $color_8;
-			padding: 1rem;
-			text-align: center;
-			transition: transform 0.3s ease;
-			.slideCaption {
-				font-size: 1.2rem;
-				display: block;
-				margin-bottom: 10px;
-			}
-			.hoverOverlay {
-				opacity: 0;
-				transform: translateY(100%);
-				width: fit-content;
-				padding: 0.5rem;
-				border: 1px solid #f7f7f7;
-				border-radius: 30px;
-				transition: all 0.3s ease;
-			}
-		}
-	}
-	.carouselButton {
-		position: relative;
-		display: flex;
-		color: $color_7;
-		border: none;
-		font-size: 2rem;
-		background: none;
-		cursor: pointer;
-		transition: 0.3s ease;
-		z-index: 10;
-		&:hover {
-			color: $color_10;
-			transform: scale(1.2);
-		}
-	}
-	.carouselButton.prev {
-		margin-right: 10px;
-	}
-	.carouselButton.next {
-		margin-left: 10px;
-	}
-}
-.modal {
-	display: none;
-	position: fixed;
-	z-index: 1000;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: $background-color_13;
-	overflow-y: auto;
-	.modalContent {
-		background-color: $background-color_14;
-		margin: 5% auto;
-		position: relative;
-		padding: 30px;
-		border-radius: 10px;
-		width: 90%;
-		max-width: 1200px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	}
-	.closeModal {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		color: $color_11;
-		font-size: 28px;
-		font-weight: bold;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		width: 40px;
-		height: 40px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 50%;
-		background-color: $background-color_15;
-		&:hover {
-			color: $color_12;
-			transform: rotate(90deg) scale(1.2);
-			background-color: $background-color_16;
-		}
-	}
-	.modalInner {
-		display: flex;
-		gap: 30px;
-	}
-	.modalImage {
-		flex: 0 0 60%;
-		img {
-			width: 100%;
-			height: auto;
-			border-radius: 10px;
-			object-fit: cover;
-			aspect-ratio: 4/3;
-		}
-	}
-	.modalDetails {
-		flex: 0 0 40%;
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-		padding-right: 30px;
-		color: $color_13;
-	}
-	.modalTitle {
-		color: $color_5;
-		font-size: 28px;
-		margin-bottom: 5px;
-	}
-	.modalEnglishTitle {
-		font-size: 22px;
-		font-weight: bold;
-		color: $color_14;
-		margin-bottom: 10px;
-	}
-	.promotionDescription {
-		font-size: 16px;
-		line-height: 1.6;
-		margin-bottom: 15px;
-		color: $color_14;
-	}
-	.promotionTags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		margin-bottom: 15px;
-		span {
-			background-color: $background-color_17;
-			color: $color_13;
-			padding: 5px 10px;
-			border-radius: 15px;
-			font-size: 14px;
-		}
-	}
-	.promotionDates {
-		margin-bottom: 15px;
-		text-align: center;
-		h3 {
-			font-size: 18px;
-			margin-bottom: 5px;
-			color: $color_5;
-		}
-		p {
-			color: $color_5;
-		}
-	}
-	.promotionDetails {
-		font-size: 16px;
-		margin-bottom: 10px;
-		color: $color_5;
-	}
-	.promotionLimit {
-		font-size: 16px;
-		margin-bottom: 10px;
-		color: $color_5;
-	}
-	.promotionContact {
-		font-size: 18px;
-		font-weight: bold;
-		color: $color_15;
-		margin-top: 20px;
-	}
-}
-#roomTypes {
-	padding: 0 100px;
-	font-family: $font-family_1;
-	background-color: $background-color_18;
-	.typeHeader {
-		text-align: right;
-		color: $color_9;
-		margin-bottom: 2rem;
-		.typeTitle {
-			font-size: 2rem;
-			color: $color_5;
-			margin-bottom: 0.8rem;
-			font-weight: 800;
-		}
-		.typeSubtitle {
-			font-size: 1.2rem;
-			color: $color_9;
-		}
-	}
-	.decoLine {
-		background-color: $background-color_12;
-		width: 100%;
-		height: 1px;
-		margin-bottom: 0.8rem;
-		display: flex;
-	}
-	.roomGrid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 0rem 0rem;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-	.roomCard {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		position: relative;
-		transition: 0.3s ease;
-		overflow: visible;
-		&:nth-child(even) {
-			margin-top: 6rem;
-		}
-		&:hover {
-			.roomImage {
-				transform: scale(1.05);
-			}
-			.roomInfo {
-				transform: translateY(20px);
-			}
-			.roomNumber {
-				border: #e4e3e6 1.5px solid;
-				background: #6d95aa;
-				color: $color_16;
-			}
-			.decorativeLine {
-				width: 200px;
-				border-radius: 5px;
-				&::before {
-					width: 45px;
-				}
-				&::after {
-					width: 45px;
-				}
-			}
-		}
-		.decorativeLine {
-			width: 50px;
-			height: 2px;
-			background-color: $background-color_3;
-			border-radius: 5px;
-			margin: 0.5rem auto;
-			position: relative;
-			transition: width 0.3s ease;
-			&::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				height: 100%;
-				width: 0;
-				background-color: $background-color_12;
-				transition: width 0.3s ease;
-				border-radius: 5px;
-				left: 0;
-			}
-			&::after {
-				content: "";
-				position: absolute;
-				top: 0;
-				height: 100%;
-				width: 0;
-				background-color: $background-color_12;
-				transition: width 0.3s ease;
-				border-radius: 5px;
-				right: 0;
-			}
-		}
-		.roomNumber {
-			position: absolute;
-			top: -20px;
-			left: 20px;
-			background: white;
-			color: $color_9;
-			border: #3b7ba5 1px solid;
-			width: 90px;
-			height: 90px;
-			font-size: 2rem;
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-weight: bold;
-			z-index: 3;
-			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-			transition: 0.5s;
-		}
-		.roomImage {
-			width: 500px;
-			height: 300px;
-			border-radius: 150px;
-			overflow: hidden;
-			position: relative;
-			transition: transform 0.3s ease;
-			z-index: 2;
-			.roomCarousel {
-				width: 100%;
-				height: 100%;
-				position: relative;
-				overflow: hidden;
-				img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					position: absolute;
-					top: 0;
-					left: 0;
-					opacity: 0;
-					transition: opacity 0.5s ease-in-out;
-				}
-				img.active {
-					opacity: 1;
-				}
-			}
-			.carouselNav {
-				position: absolute;
-				top: 50%;
-				width: 100%;
-				display: flex;
-				justify-content: space-between;
-				z-index: 10;
-				button {
-					background: rgba(255, 255, 255, 0.5);
-					border: none;
-					border-radius: 50px;
-					color: $color_13;
-					font-size: 1.5rem;
-					margin: 0 5%;
-					cursor: pointer;
-					transition: background 0.3s ease;
-					&:hover {
-						background: rgba(255, 255, 255, 0.8);
-					}
-				}
-			}
-			h3 {
-				position: absolute;
-				bottom: calc(50% - 1.5rem);
-				left: 0;
-				width: 100%;
-				text-align: center;
-				color: $color_8;
-				font-size: 1.5rem;
-			}
-			.imageIndicators {
-				position: absolute;
-				bottom: 20px;
-				left: calc(50% - 13px);
-				display: flex;
-				justify-content: center;
-				gap: 5px;
-				span {
-					width: 0.5rem;
-					height: 8px;
-					background: white;
-					border-radius: 50px;
-					transition: 0.3s;
-				}
-				span.active {
-					background: #6d95aa;
-					width: 15px;
-				}
-			}
-		}
-		.roomInfo {
-			width: 100%;
-			background: white;
-			border-radius: 150px;
-			padding-top: 7rem;
-			height: 250px;
-			margin-top: -100px;
-			border: #3b7ba5 1px solid;
-			text-align: center;
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-			transition: transform 0.3s ease;
-			z-index: 1;
-			h4 {
-				color: $color_9;
-				margin-bottom: 0.5rem;
-				font-size: 1.2rem;
-			}
-			a {
-				color: $color_8;
-			}
-			p {
-				color: $color_14;
-				font-size: 0.9rem;
-				margin-bottom: 0.8rem;
-			}
-			.moreButton {
-				background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
-				color: $color_8;
-				border: none;
-				padding: 0.5rem 2rem;
-				border-radius: 20px;
-				cursor: pointer;
-				z-index: 10;
-				font-size: 0.9rem;
-				position: relative;
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-				&::after {
-					content: "";
-					position: absolute;
-					top: 5px;
-					left: 5px;
-					right: -5px;
-					bottom: -5px;
-					border: 1px solid rgb(49, 124, 165);
-					border-radius: 20px;
-					pointer-events: none;
-					z-index: 9;
-					transition: all 0.3s ease;
-				}
-				&:hover {
-					transform: translate(3px, 3px);
-					box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-					&::after {
-						top: 2px;
-						left: 2px;
-						right: -2px;
-						bottom: -2px;
-					}
-				}
-			}
-		}
-	}
-}
-#roomONFM {
-	margin-top: 30px;
-	display: flex;
-	padding: 50px 0;
-	font-family: $font-family_1;
-	background-color: $background-color_19;
-	position: relative;
-	&::before {
-		content: "";
-		position: absolute;
-		top: 20px;
-		left: 20px;
-		bottom: 40px;
-		border-radius: 20px;
-		border-top-left-radius: 150px;
-		width: 27%;
-		background: linear-gradient( 225deg, rgba(124, 101, 163, 0.4862745098), rgba(49, 124, 165, 0.4784313725) );
-		z-index: 1;
-	}
-	.roomONFMVerticalTitle {
-		writing-mode: vertical-rl;
-		padding: 0px;
-		font-size: 5rem;
-		font-weight: bold;
-		color: $color_17;
-		display: flex;
-		align-items: center;
-		position: relative;
-		z-index: 2;
-	}
-	.roomONFMVerticalTitle.left {
-		left: 60px;
-		top: 50px;
-	}
-	.roomONFMVerticalTitle.right {
-		right: 60px;
-		top: 200px;
-	}
-	.roomONFMContent {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		z-index: 2;
-	}
-	.roomONFMTitleContainer {
-		width: 100%;
-		max-width: 50%;
-		margin-bottom: 30px;
-	}
-	.roomONFMTitle {
-		font-size: 28px;
-		margin-bottom: 20px;
-		font-weight: bold;
-		color: $color_5;
-	}
-	.roomONFMDescription {
-		font-size: 14px;
-		line-height: 1.6;
-		color: $color_18;
-	}
-	.roomONFMContainer {
-		display: flex;
-		justify-content: space-between;
-		align-items: stretch;
-		flex-wrap: nowrap;
-		height: 400px;
-		max-width: 1200px;
-		width: 100%;
-		padding: 0 20px;
-		position: relative;
-		z-index: 2;
-	}
-	.roomONFMItem {
-		flex: 1;
-		position: relative;
-		overflow: visible;
-		transition: all 0.5s ease;
-		margin: 0 8px;
-		border-radius: 20px;
-		cursor: pointer;
-		border-radius: 10px;
-		aspect-ratio: 11/24;
-		&:nth-child(5) {
-			&::after {
-				content: "";
-				position: absolute;
-				top: 10px;
-				left: 10px;
-				right: -100px;
-				bottom: -50px;
-				background: linear-gradient(225deg, #7c65a3, #317ca5);
-				z-index: -1;
-				opacity: 0.7;
-				border-radius: inherit;
-				border-bottom-right-radius: 200px;
-				pointer-events: none;
-			}
-		}
-		&:nth-child(2) {
-			&::after {
-				content: "";
-				position: absolute;
-				top: 10px;
-				left: 5px;
-				right: -10px;
-				bottom: -10px;
-				background: linear-gradient(225deg, #7c65a3, #317ca5);
-				z-index: -1;
-				opacity: 0.7;
-				border-radius: inherit;
-				pointer-events: none;
-			}
-		}
-		&:nth-child(3) {
-			&::after {
-				content: "";
-				position: absolute;
-				top: 10px;
-				left: 5px;
-				right: -10px;
-				bottom: -10px;
-				background: linear-gradient(225deg, #7c65a3, #317ca5);
-				z-index: -1;
-				opacity: 0.7;
-				border-radius: inherit;
-				pointer-events: none;
-			}
-		}
-		&:nth-child(4) {
-			&::after {
-				content: "";
-				position: absolute;
-				top: 10px;
-				left: 5px;
-				right: -10px;
-				bottom: -10px;
-				background: linear-gradient(225deg, #7c65a3, #317ca5);
-				z-index: -1;
-				opacity: 0.7;
-				border-radius: inherit;
-				pointer-events: none;
-			}
-		}
-		&:hover {
-			flex: 4;
-			aspect-ratio: auto;
-			.roomONFMItemTitle {
-				opacity: 1;
-				bottom: 20px;
-				border-left: white 3px solid;
-				padding-left: 3px;
-				p {
-					font-size: 1rem;
-					line-height: 1.5rem;
-				}
-			}
-			.roomONFMItemVerticalTitle {
-				opacity: 0;
-			}
-		}
-	}
-	.roomONFMItem.active {
-		flex: 4;
-		aspect-ratio: auto;
-		.roomONFMItemTitle {
-			opacity: 1;
-			bottom: 20px;
-			border-left: white 3px solid;
-			padding-left: 3px;
-			p {
-				font-size: 1rem;
-				line-height: 1.5rem;
-			}
-		}
-		.roomONFMItemVerticalTitle {
-			opacity: 0;
-		}
-	}
-	.roomONFMImage {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		border-radius: 20px;
-		transition: transform 0.5s ease;
-		position: relative;
-		z-index: 1;
-	}
-	.roomONFMItemTitle {
-		position: absolute;
-		bottom: -50px;
-		left: 20px;
-		color: $color_4;
-		font-size: 24px;
-		font-weight: bold;
-		opacity: 0;
-		transition: all 0.5s ease;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-		z-index: 2;
-	}
-	.roomONFMItemVerticalTitle {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%) rotate(-90deg);
-		color: $color_4;
-		font-size: 18px;
-		font-weight: bold;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-		transition: opacity 0.5s ease;
-		z-index: 2;
-	}
-}
-.roomSlogan {
-	position: relative;
-	width: calc(100% - 220px);
-	height: 300px;
-	overflow: hidden;
-	border-radius: 200px;
-	margin: 50px 110px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-	img {
-		transition: 0.3s;
-		&:hover {
-			transform: scale(1.2);
-		}
-	}
-}
-.roomSlogan__container {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	transition: transform 0.5s ease-in-out;
-}
-.roomSlogan__slide {
-	width: 50%;
-	height: 100%;
-	flex-shrink: 0;
-	overflow: hidden;
-	position: relative;
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-}
-.roomSlogan__content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	color: $color_4;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	width: 80%;
-	h2 {
-		font-size: 2rem;
-		margin-bottom: 0.5rem;
-	}
-	h3 {
-		font-size: 1.5rem;
-	}
-}
-.roomSlogan__indicators {
-	position: absolute;
-	bottom: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-	z-index: 10;
-}
-.roomSlogan__indicator {
-	width: 12px;
-	height: 12px;
-	border-radius: 10px;
-	background-color: $background-color_20;
-	margin: 0 5px;
-	cursor: pointer;
-	transition: 0.3s ease;
-}
-.roomSlogan__indicator.active {
-	background-color: $background-color_14;
-	width: 24px;
-}
-.roomRules {
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 20px;
-	font-family: $font-family_1;
-}
-.roomRules__title {
-	font-size: 24px;
-	color: $color_19;
-	margin-bottom: 20px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #e0e0e0;
-}
-.roomRules__accordion {
-	background-color: $background-color_14;
-	border-radius: 10px;
-	overflow: hidden;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-.roomRules__item {
-	border-bottom: 1px solid #e0e0e0;
-	&:last-child {
-		border-bottom: none;
-	}
-}
-.roomRules__header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 20px;
-	background: linear-gradient(to right, #317ca5, #7e6ca8);
-	color: $color_4;
-	cursor: pointer;
-	transition: background 0.5s ease;
-	h3 {
-		font-size: 18px;
-		margin: 0;
-		flex-grow: 1;
-		padding-left: 10px;
-	}
-}
-.roomRules__icon {
-	width: 10px;
-	height: 10px;
-	border-right: 2px solid #fff;
-	border-bottom: 2px solid #fff;
-	transform: rotate(45deg);
-	transition: transform 0.5s ease;
-}
-.roomRules__decorator {
-	width: 12px;
-	height: 12px;
-	background-color: $background-color_14;
-	border-radius: 50%;
-}
-.roomRules__content {
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.5s ease;
-	background-color: $background-color_21;
-	p {
-		margin: 0;
-		padding: 15px 20px;
-		line-height: 1.5;
-		color: $color_9;
-	}
-}
-.roomRules__item.active {
-	.roomRules__header {
-		background: linear-gradient(to right, #266487, #634e8a);
-	}
-	.roomRules__icon {
-		transform: rotate(225deg) translateX(-3px);
-	}
-	.roomRules__content {
-		max-height: 1000px;
-	}
-}
-.popupOverlay {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: $background-color_22;
-	z-index: 1000;
-	justify-content: center;
-	align-items: center;
-}
-.popupContent {
-	background: linear-gradient(to right, rgb(79, 140, 173), rgb(143, 124, 172));
-	padding: 30px;
-	border-radius: 20px;
-	text-align: center;
-	max-width: 400px;
-	width: 90%;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	color: $color_8;
-	.tentIcon {
-		width: 80px;
-		margin-bottom: 20px;
-	}
-	h2 {
-		font-size: 24px;
-		margin-bottom: 15px;
-	}
-	p {
-		font-size: 16px;
-		margin-bottom: 20px;
-	}
-	.socialLinks {
-		margin-bottom: 25px;
-		p {
-			margin-bottom: 10px;
-		}
-		.socialIcon {
-			display: inline-block;
-			margin: 0 10px;
-			i.bi {
-				width: 30px;
-				height: 30px;
-				font-size: 2rem;
-				color: $color_8;
-				transition: 0.3s ease;
-				&:hover {
-					transform: translateX(5px);
-					font-size: 2.2rem;
-					color: $color_20;
-					text-shadow: 2px 2px #266487;
-				}
-			}
-		}
-	}
-	.actionBtn {
-		padding: 10px 20px;
-		border: none;
-		border-radius: 25px;
-		font-size: 16px;
-		cursor: pointer;
-		transition: background-color 0.3s ease, transform 0.3s ease;
-		margin: 0 10px;
-		&:hover {
-			transform: translateY(-2px);
-		}
-		&:active {
-			transform: translateY(1px);
-		}
-	}
-	#goToCartBtn {
-		background: linear-gradient(to right, rgb(79, 140, 173), rgb(143, 124, 172));
-		border: 1px solid white;
-		color: $color_8;
-		&:hover {
-			background: linear-gradient(to right, rgb(97, 157, 190), rgb(163, 148, 187));
-		}
-	}
-	#continueShoppingBtn {
-		background-color: $background-color_6;
-		color: $color_8;
-		border: 1px solid white;
-		&:hover {
-			background-color: $background-color_23;
-		}
-	}
-}
-.popupOverlay.active {
-	display: flex;
-	animation: fadeIn 0.3s ease-out;
-	.popupContent {
-		animation: slideIn 0.3s ease-out;
-	}
-}
-.react-daterange-picker__wrapper {
-	display: none;
-}
-.react-calendar {
-	width: 280px;
-	margin-right: 100px;
-}
-@media (max-width: 719px) {
-	body {
-		height: 100vh;
-		position: relative;
-	}
-	#roomBanner {
-		.containerMain {
-			display: none;
-		}
-		top: 0;
-		.bannerContent {
-			margin-right: 0px;
-		}
-		.bannerLogo {
-			width: 60vw;
-		}
-		.bannerTextGroup {
-			.bannerLine {
-				width: 5rem;
-			}
-		}
-		.bannerTitle {
-			font-size: 1.5rem;
-		}
-		.bannerTagline {
-			padding: 0 80px;
-			line-height: 1.2rem;
-		}
-		.bannerButtons {
-			width: 300px;
-		}
-		.footprints {
-			bottom: 10vh;
-			height: 120px;
-		}
-	}
-	.quickModal {
-		left: 50%;
-		top: 50%;
-		right: auto;
-		bottom: auto;
-		transform: translate(-50%, -50%);
-		width: 100%;
-		max-width: 325px;
-		height: 60%;
-		max-height: 600px;
-		border-radius: 20px;
-		overflow-y: auto;
-		.quickModalContent {
-			flex-direction: column;
-			height: auto;
-			justify-content: center;
-			width: 80%;
-			gap: 30px;
-		}
-		.closeQuickModal {
-			background-color: $background-color_9;
-			right: 10px;
-			top: 10px;
-		}
-		.modalLeft {
-			width: 95%;
-			height: auto;
-			margin: 15px 15px 0;
-			h2 {
-				font-size: 1.2rem;
-				padding-bottom: 15px;
-			}
-			#reservationCalendar {
-				height: 250px;
-			}
-		}
-		.modalRight {
-			width: 95%;
-			height: auto;
-			margin: 0 15px 15px;
-			padding: 15px;
-			border-radius: 15px;
-		}
-		.reservationForm {
-			gap: 10px;
-		}
-		.dateInputs {
-			width: 100%;
-		}
-		.guestInputs {
-			width: 100%;
-			.inputGroup {
-				margin-left: 0;
-			}
-		}
-		.totalPrice {
-			width: 100%;
-		}
-	}
-	#roomFeature {
-		padding: 0px;
-		.carouselContainer {
-			width: 100%;
-		}
-		.featureHeader {
-			transform: scale(0.7);
-			margin-left: 0rem;
-			margin-top: 60px;
-			margin-bottom: 0;
-		}
-		.carouselSlide {
-			flex: 0 0 100%;
-		}
-		.carouselButton {
-			padding: 5px 5px;
-			font-size: 20px;
-		}
-	}
-	.modal {
-		.modalContent {
-			width: 95%;
-			padding: 20px;
-			margin: 10% auto;
-		}
-		.modalInner {
-			flex-direction: column;
-		}
-		.modalImage {
-			flex: 0 0 100%;
-		}
-		.modalDetails {
-			flex: 0 0 100%;
-		}
-		.modalTitle {
-			font-size: 24px;
-		}
-		.modalEnglishTitle {
-			font-size: 20px;
-		}
-	}
-	#roomTypes {
-		padding: 40px 20px;
-		.typeHeader {
-			.typeTitle {
-				font-size: 1.5rem;
-			}
-			.typeSubtitle {
-				font-size: 1rem;
-			}
-		}
-		.roomGrid {
-			gap: 2rem 0;
-		}
-		.roomCard {
-			.roomNumber {
-				width: 70px;
-				height: 70px;
-				font-size: 1.5rem;
-			}
-			.roomImage {
-				width: 350px;
-				height: 200px;
-				border-radius: 150px;
-			}
-			.roomInfo {
-				h4 {
-					font-size: 1rem;
-				}
-				p {
-					font-size: 0.8rem;
-				}
-			}
-		}
-	}
-	#roomONFM {
-		padding: 20px;
-		flex-direction: column;
-		.roomONFMTitleContainer {
-			padding: 0 15px;
-			max-width: 100%;
-		}
-		.roomONFMTitle {
-			font-size: 20px;
-		}
-		.roomONFMDescription {
-			font-size: 12px;
-		}
-		.roomONFMContainer {
-			padding: 0 15px;
-			flex-direction: column;
-			height: auto;
-		}
-		.roomONFMItem {
-			width: 100%;
-			margin-bottom: 10px;
-			margin-left: 0;
-			aspect-ratio: 16/6;
-			height: 120px;
-			&:hover {
-				flex: none;
-				height: 200px;
-				aspect-ratio: 16/11;
-			}
-			&:nth-child(1) {
-				&::after {
-					content: "";
-					position: absolute;
-					top: 10px;
-					left: 5px;
-					right: -10px;
-					bottom: -10px;
-					background: linear-gradient(225deg, #7c65a3, #317ca5);
-					z-index: -1;
-					opacity: 0.7;
-					border-radius: inherit;
-					pointer-events: none;
-				}
-			}
-			&:nth-child(5) {
-				&::after {
-					content: "";
-					position: absolute;
-					top: 10px;
-					left: 5px;
-					right: -10px;
-					bottom: -10px;
-					background: linear-gradient(225deg, #7c65a3, #317ca5);
-					z-index: -1;
-					opacity: 0.7;
-					border-radius: inherit;
-					pointer-events: none;
-				}
-			}
-		}
-		.roomONFMItem.active {
-			flex: none;
-			height: 200px;
-			aspect-ratio: 16/11;
-		}
-		.roomONFMItemTitle {
-			font-size: 16px;
-			opacity: 1;
-			bottom: 10px;
-			p {
-				font-size: 0.9rem;
-				line-height: 1.3rem;
-			}
-		}
-		.roomONFMVerticalTitle {
-			display: none;
-		}
-		.roomONFMItemVerticalTitle {
-			display: none;
-		}
-	}
-	.roomSlogan {
-		width: calc(100% - 40px);
-		height: 200px;
-		margin: 100px 20px;
-		border-radius: 100px/50%;
-	}
-	.roomSlogan__content {
-		h2 {
-			font-size: 1rem;
-		}
-		h3 {
-			font-size: 0.8rem;
-		}
-	}
-	.roomSlogan__indicators {
-		bottom: 10px;
-	}
-	.roomSlogan__indicator {
-		width: 8px;
-		height: 8px;
-		margin: 0 3px;
-	}
-	.roomSlogan__indicator.active {
-		background-color: $background-color_14;
-		width: 16px;
-	}
-	.roomRules {
-		padding: 10px 30px;
-	}
-	.roomRules__title {
-		font-size: 20px;
-	}
-	.roomRules__header {
-		h3 {
-			font-size: 16px;
-		}
-	}
-	.roomRules__content {
-		p {
-			font-size: 14px;
-		}
-	}
-}
-@media (min-width: 720px) and (max-width: 1023px) {
-	#roomBanner {
-		.containerMain {
-			display: none;
-		}
-		top: 0;
-		.bannerContent {
-			margin-right: 0px;
-		}
-		.bannerTagline {
-			padding: 0 150px;
-			line-height: 1.2rem;
-		}
-	}
-	#roomTypes {
-		padding: 60px 30px;
-		.typeHeader {
-			.typeTitle {
-				font-size: 1.8rem;
-			}
-		}
-		.roomGrid {
-			gap: 3rem 0;
-		}
-		.roomCard {
-			&:nth-child(even) {
-				margin-top: 0;
-			}
-			.roomImage {
-				width: 400px;
-				height: 240px;
-			}
-		}
-	}
-	#roomONFM {
-		.roomONFMContent {
-			width: 80vw;
-		}
-	}
-	.roomSlogan {
-		width: calc(100% - 100px);
-		height: 200px;
-		margin: 30px 50px;
-	}
-	.roomSlogan__content {
-		h2 {
-			font-size: 1.5rem;
-		}
-		h3 {
-			font-size: 1.1rem;
-		}
-	}
-}
-@media (min-width: 1024px) and (max-width: 1439px) {
-	#roomTypes {
-		padding: 80px 50px;
-		.roomGrid {
-			gap: 3rem 1.5rem;
-		}
-		.roomCard {
-			.roomImage {
-				width: 450px;
-				height: 270px;
-			}
-		}
-	}
-	#roomONFM {
-		padding: 40px 0;
-		.roomONFMContainer {
-			height: auto;
-			max-height: 350px;
-			transform: scale(0.9);
-		}
-		.roomONFMTitle {
-			font-size: 24px;
-		}
-		.roomONFMVerticalTitle {
-			font-size: 4rem;
-		}
-		.roomONFMDescription {
-			font-size: 13px;
-		}
-	}
-	.roomSlogan {
-		width: calc(100% - 160px);
-		height: 250px;
-		margin: 40px 80px;
-	}
-	.roomSlogan__content {
-		h2 {
-			font-size: 1.8rem;
-		}
-		h3 {
-			font-size: 1.3rem;
-		}
-	}
-}
-@media (max-width: 768px) {
-	#roomTypes {
-		padding: 0px;
-		.carouselContainer {
-			width: 100%;
-		}
-		.typeHeader {
-			transform: scale(0.7);
-			margin-left: 0rem;
-			margin-top: 60px;
-			margin-bottom: 0;
-		}
-		.roomGrid {
-			grid-template-columns: 1fr;
-		}
-		.roomCard {
-			&:nth-child(even) {
-				margin-top: 0;
-			}
-		}
-	}
-}
+  // 響應式設計 Mixin
+  @mixin responsive($breakpoint) {
+    @if $breakpoint == huge {
+      @media (min-width: 1921px) {
+        @content;
+      }
+    } @else if $breakpoint == large {
+      @media (min-width: 1440px) and (max-width: 1920px) {
+        @content;
+      }
+    } @else if $breakpoint == medium {
+      @media (min-width: 1024px) and (max-width: 1439px) {
+        @content;
+      }
+    } @else if $breakpoint == small {
+      @media (min-width: 720px) and (max-width: 1023px) {
+        @content;
+      }
+    } @else if $breakpoint == mobile {
+      @media (max-width: 719px) {
+        @content;
+      }
+    }
+  }
+
+  /* 全局樣式 */
+
+  //腳印動畫本人
+  @keyframes footsteproom {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px) rotate(90deg);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(0) rotate(90deg);
+    }
+    80% {
+      opacity: 1;
+      transform: translateY(0) rotate(90deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px) rotate(90deg);
+    }
+  }
+  // 處理腳印
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  /*# sourceMappingURL=room.css.map */
+  /* 日歷 */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-family_1;
+    background: #fffdf8;
+  }
+
+  #roomBanner {
+    width: 100%;
+    top: 50px;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("/03rooms/room (49).png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    color: $color_1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .containerMain {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-left: 40px;
+      gap: 20px;
+      padding: 10px;
+      transform: scale(0.8);
+      .drop {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05),
+          25px 35px 30px rgba(0, 0, 0, 0.05), 25px 30px 30px rgba(0, 0, 0, 0.05),
+          inset -20px -20px 25px rgba(255, 255, 255, 0.544);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s ease-in-out;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 20px;
+          width: 10px;
+          height: 10px;
+          background: #fff;
+          border-radius: 50%;
+          opacity: 0.9;
+        }
+        &:hover {
+          border-radius: 50%;
+          .content {
+            h2 {
+              color: $color_2;
+              transform: scale(1.1);
+            }
+          }
+        }
+        .content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          transition: 0.3s;
+          h2 {
+            width: 150px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: $color_3;
+            transition: 0.3s;
+          }
+          a {
+            padding: 8px 20px;
+            color: $color_4;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            opacity: 0.75;
+            transition: 0.3s;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .dropOne {
+        border-radius: 50% 70% 70% 40%/30% 30% 70% 70%;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
+          border: 1px solid #ffffff;
+        }
+      }
+      .dropTwo {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          border-radius: 45% 55% 50% 50%/39% 56% 44% 61%;
+          border: 1px solid #ffffff;
+        }
+      }
+      .dropThree {
+        border-radius: 40% 60% 70% 30%/40% 40% 60% 50%;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          border-radius: 45% 55% 50% 50%/65% 34% 66% 35%;
+          border: 1px solid #ffffff;
+        }
+      }
+      .dropFour {
+        border-radius: 70% 30% 50% 50%/30% 60% 40% 70%;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          border-radius: 45% 55% 50% 50%/42% 42% 58% 58%;
+          border: 1px solid #ffffff;
+        }
+      }
+    }
+    .bannerContent {
+      text-align: center;
+      max-width: 100%;
+      margin-right: 200px;
+    }
+    .bannerLogo {
+      width: 35%;
+      margin: 0 auto 2rem;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .bannerTextGroup {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      max-width: 35%;
+      .bannerLine {
+        width: 10rem;
+        height: 1px;
+        background-color: $background-color_1;
+      }
+    }
+    .bannerTitle {
+      font-size: 2rem;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .bannerTagline {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .bannerButtons {
+      display: flex;
+      width: 350px;
+      justify-content: center;
+      gap: 10px;
+    }
+    .primaryButton {
+      background: rgba(255, 255, 255, 0.094);
+      color: $color_3;
+      border: white 1px solid;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      &:hover {
+        background: #e4e3e6;
+        color: $color_5;
+        transform: translateY(-5px);
+        box-shadow: 0px 4px 4px rgba(211, 211, 211, 0.5);
+        i {
+          transform: scale(1.2);
+        }
+      }
+      &:active {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+    }
+    //腳印動畫包裝
+    .footprints {
+      position: absolute;
+      bottom: 10px; //從底部開始
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 120px;
+      bottom: 8vh;
+
+      @include responsive(mobile) {
+        bottom: 10vh;
+      }
+    }
+
+    //腳印本人
+    .footprint {
+      position: absolute;
+      font-size: 30px;
+      color: rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      animation: footsteproom 4s infinite;
+      transform: rotate(0deg); // 使腳尖朝下
+
+      &-left {
+        left: 0;
+      }
+
+      &-right {
+        right: 0;
+        // transform: rotate(270deg); // 使用 scaleY 而不是 scaleX
+      }
+
+      //出現時間
+      &:nth-child(1) {
+        animation-delay: 0s;
+        top: 0%;
+      }
+      &:nth-child(2) {
+        animation-delay: 1s;
+        top: 25%;
+      }
+      &:nth-child(3) {
+        animation-delay: 2s;
+        top: 50%;
+      }
+      &:nth-child(4) {
+        animation-delay: 3s;
+        top: 75%;
+      }
+    }
+  }
+
+  .quickModal {
+    position: fixed;
+    z-index: 1000;
+    right: 5%;
+    top: calc(50% + 60px);
+    transform: translateY(-50%);
+    width: 600px;
+    // height: 500px;
+    background-color: $background-color_2;
+    border-radius: 20px;
+    box-shadow: -5px 6px 4.2px rgba(0, 0, 0, 0.24);
+    box-shadow: inset -5px 6px 4.2px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4.8px);
+    overflow: hidden;
+    border: 1px solid #fffdf8;
+
+    //日曆
+    .react-daterange-picker__calendar {
+      display: flex;
+      position: relative !important;
+      margin-bottom: 10px;
+      width: 390px;
+      height: fit-content !important;
+      //   height: 100vh;
+    }
+    .react-calendar {
+      color: #333;
+      border-radius: 20px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52),
+        0 4px 4px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+
+      .react-calendar__tile--active {
+        background-color: #3b7ba5;
+      }
+    }
+    .quickModalContent {
+      display: flex;
+      height: 100%;
+    }
+    .modalLeft {
+      width: 50%;
+      margin: 15px;
+      //   height: 100vh;
+      h2 {
+        color: $color_7;
+        font-size: 1.3rem;
+        padding-bottom: 20px;
+        text-align: center;
+        font-weight: 800;
+        i {
+          margin-left: 0.5rem;
+        }
+      }
+
+      #reservationCalendar {
+        height: 80%;
+        .ui-datepicker {
+          height: 100%;
+          .ui-datepicker-calendar {
+            height: calc(100% - 50px);
+            td {
+              height: 16.7%;
+              a {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+          }
+        }
+      }
+    }
+    .modalRight {
+      width: 50%;
+      background-color: $background-color_3;
+      color: $color_8;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      //   height: 100%;
+      box-sizing: border-box;
+    }
+    .buttonSearch {
+      cursor: pointer;
+      display: flex;
+      //   margin-left: 0;
+      border: white 1px solid;
+      padding: 8px 30px;
+      width: fit-content;
+      border-radius: 100px;
+      color: #ffffff;
+      font-weight: 800;
+      background: #73748c;
+      transition: 0.3s;
+      gap: 5px;
+
+      &:hover {
+        transform: translateY(-3px);
+        background-color: #73748cbd;
+      }
+    }
+    .closeQuickModal {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 20px;
+      color: $color_8;
+      background-color: $background-color_4;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: 0.3s;
+      &:hover {
+        transform: rotate(45deg);
+      }
+    }
+    .reservationForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      width: 100%;
+      //   margin-top: 30px;
+      justify-content: center;
+      //   margin: 20px 0;
+      height: 100%;
+    }
+    .dateInputs {
+      width: 100%;
+      margin-left: 0;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      .dateInput {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        label {
+          font-size: 16px;
+          font-weight: 600;
+          color: $color_8;
+          margin: 0;
+        }
+        input {
+          width: 100%;
+          padding: 8px;
+          border: none;
+          border-radius: 50px;
+          font-size: 14px;
+          background-color: $background-color_5;
+          color: $color_8;
+          align-items: flex-end;
+        }
+        p {
+          width: 100%;
+          padding: 8px;
+          border: none;
+          border-radius: 50px;
+          font-size: 14px;
+          background-color: $background-color_5;
+          color: $color_8;
+          align-items: flex-end;
+        }
+      }
+    }
+    .guestInputs {
+      width: 100%;
+      margin-left: 0;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 5px;
+      .apple {
+        display: flex;
+        align-items: center;
+      }
+      .inputGroup {
+        display: flex;
+        padding-top: 5px;
+        margin-left: 0px;
+        padding-left: 0;
+        align-items: center;
+        justify-items: flex-start;
+        gap: 10px;
+
+        label {
+          font-size: 16px;
+          font-weight: 600;
+          color: $color_8;
+        }
+        .numberInput {
+          display: flex;
+          align-items: center;
+          border-radius: 5px;
+          //   overflow: hidden;
+          button {
+            width: 24px;
+            height: 24px;
+            background-color: $background-color_6;
+            border: none;
+            color: $color_8;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 50px;
+            background-color: $background-color_5;
+            &:hover {
+              transform: scale(1.08);
+              font-size: 1.5rem;
+              background-color: rgba(245, 245, 245, 0.519);
+            }
+          }
+          input {
+            width: 40px;
+            text-align: end;
+            border: none;
+            font-size: 16px;
+            background-color: $background-color_6;
+            color: $color_8;
+          }
+        }
+      }
+    }
+    .totalPrice {
+      background-color: $background-color_7;
+      padding: 10px;
+      width: 100%;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5%;
+      span {
+        color: $color_7;
+      }
+      input {
+        width: 50%;
+        padding: 8px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 50px;
+        font-size: 14px;
+        background-color: $background-color_6;
+        color: $color_7;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+    #searchResults {
+      padding: 10px;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgb(49, 124, 165),
+        hsl(263, 25%, 52%)
+      );
+      color: $color_8;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      font-size: 14px;
+      width: 100%;
+      margin-top: 5px;
+      border: 1px solid #fffdf8;
+      transition: 0.3s;
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-5px);
+        background: linear-gradient(
+          to right,
+          rgb(79, 140, 173),
+          rgb(143, 124, 172)
+        );
+      }
+    }
+    .roomTypeSelectWrapper {
+      position: relative;
+      width: 100%;
+      transition: 0.3s;
+      &::after {
+        content: "\f078";
+        font-family: $font-family_2;
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: $color_8;
+      }
+      &:hover {
+        opacity: 0.9;
+        transform: translateY(-5px);
+      }
+      .roomTypeSelect {
+        width: 100%;
+        padding: 10px 30px 10px 10px;
+        background: linear-gradient(
+          to right,
+          rgb(49, 124, 165),
+          hsl(263, 25%, 52%)
+        );
+        color: $color_8;
+        border: none;
+        border-radius: 50px;
+        border: 1px white solid;
+        appearance: none;
+        cursor: pointer;
+        font-size: 16px;
+        option {
+          background-color: $background-color_8;
+          color: $color_1;
+          align-items: center;
+          text-align: center;
+          &:hover {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(114, 130, 182, 0.988);
+          }
+        }
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  }
+  .ui-datepicker {
+    font-size: 14px;
+    width: 100%;
+    .ui-datepicker-header {
+      background-color: $background-color_3;
+      color: $color_8;
+    }
+    .ui-state-default {
+      background: none;
+      border: none;
+      text-align: center;
+    }
+    .ui-state-highlight {
+      background-color: $background-color_10;
+      color: $color_8;
+    }
+    .check-in {
+      a {
+        background-color: $background-color_3 !important;
+        color: $color_8 !important;
+      }
+    }
+    .check-out {
+      a {
+        background-color: $background-color_3 !important;
+        color: $color_8 !important;
+      }
+    }
+    .in-range {
+      a {
+        background-color: $background-color_11;
+      }
+    }
+  }
+  #roomFeature {
+    padding: 100px;
+    background: #fffdf8;
+    position: relative;
+    .featureHeader {
+      text-align: left;
+      color: $color_9;
+      margin-bottom: 2rem;
+    }
+    .featureTitle {
+      font-size: 2rem;
+      color: $color_5;
+      margin-bottom: 0.8rem;
+      font-weight: 800;
+    }
+    .featureSubtitle {
+      font-size: 1.2rem;
+      color: $color_9;
+    }
+    .decoLine {
+      background-color: $background-color_12;
+      width: 100%;
+      height: 1px;
+      margin-bottom: 0.8rem;
+      display: flex;
+    }
+    .carouselButtonContainer {
+      display: flex;
+      align-items: center;
+    }
+    .featureCarousel {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      flex-grow: 8;
+      padding: 10px 0;
+    }
+    .carouselContainer {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+    }
+    .carouselSlide {
+      flex: 0 0 33.3333333333%;
+      padding: 0 10px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      &:hover {
+        transform: scale(1.05);
+        .hoverOverlay {
+          opacity: 0.8;
+          backdrop-filter: blur(2px);
+        }
+        .overlay {
+          transform: translateY(-60%);
+          height: 40%;
+          .hoverOverlay {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      }
+      .imgContainer {
+        width: 100%;
+        padding-top: 66.67%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        aspect-ratio: 16/9;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        height: 20%;
+        color: $color_8;
+        padding: 1rem;
+        text-align: center;
+        transition: transform 0.3s ease;
+        .slideCaption {
+          font-size: 1.2rem;
+          display: block;
+          margin-bottom: 10px;
+        }
+        .hoverOverlay {
+          opacity: 0;
+          transform: translateY(100%);
+          width: fit-content;
+          padding: 0.5rem;
+          border: 1px solid #f7f7f7;
+          border-radius: 30px;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+    .carouselButton {
+      position: relative;
+      display: flex;
+      color: $color_7;
+      border: none;
+      font-size: 2rem;
+      background: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 10;
+      &:hover {
+        color: $color_10;
+        transform: scale(1.2);
+      }
+    }
+    .carouselButton.prev {
+      margin-right: 10px;
+    }
+    .carouselButton.next {
+      margin-left: 10px;
+    }
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background-color_13;
+    overflow-y: auto;
+    .modalContent {
+      background-color: $background-color_14;
+      margin: 5% auto;
+      position: relative;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1200px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .closeModal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: $color_11;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      background-color: $background-color_15;
+      &:hover {
+        color: $color_12;
+        transform: rotate(90deg) scale(1.2);
+        background-color: $background-color_16;
+      }
+    }
+    .modalInner {
+      display: flex;
+      gap: 30px;
+    }
+    .modalImage {
+      flex: 0 0 60%;
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+      }
+    }
+    .modalDetails {
+      flex: 0 0 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-right: 30px;
+      color: $color_13;
+    }
+    .modalTitle {
+      color: $color_5;
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+    .modalEnglishTitle {
+      font-size: 22px;
+      font-weight: bold;
+      color: $color_14;
+      margin-bottom: 10px;
+    }
+    .promotionDescription {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: $color_14;
+    }
+    .promotionTags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+      span {
+        background-color: $background-color_17;
+        color: $color_13;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 14px;
+      }
+    }
+    .promotionDates {
+      margin-bottom: 15px;
+      text-align: center;
+      h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: $color_5;
+      }
+      p {
+        color: $color_5;
+      }
+    }
+    .promotionDetails {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: $color_5;
+    }
+    .promotionLimit {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: $color_5;
+    }
+    .promotionContact {
+      font-size: 18px;
+      font-weight: bold;
+      color: $color_15;
+      margin-top: 20px;
+    }
+  }
+  #roomTypes {
+    padding: 0 100px;
+    font-family: $font-family_1;
+    background-color: $background-color_18;
+    .typeHeader {
+      text-align: right;
+      color: $color_9;
+      margin-bottom: 2rem;
+      .typeTitle {
+        font-size: 2rem;
+        color: $color_5;
+        margin-bottom: 0.8rem;
+        font-weight: 800;
+      }
+      .typeSubtitle {
+        font-size: 1.2rem;
+        color: $color_9;
+      }
+    }
+    .decoLine {
+      background-color: $background-color_12;
+      width: 100%;
+      height: 1px;
+      margin-bottom: 0.8rem;
+      display: flex;
+    }
+    .roomGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0rem 0rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .roomCard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transition: 0.3s ease;
+      overflow: visible;
+      &:nth-child(even) {
+        margin-top: 6rem;
+      }
+      &:hover {
+        .roomImage {
+          transform: scale(1.05);
+        }
+        .roomInfo {
+          transform: translateY(20px);
+        }
+        .roomNumber {
+          border: #e4e3e6 1.5px solid;
+          background: #6d95aa;
+          color: $color_16;
+        }
+        .decorativeLine {
+          width: 200px;
+          border-radius: 5px;
+          &::before {
+            width: 45px;
+          }
+          &::after {
+            width: 45px;
+          }
+        }
+      }
+      .decorativeLine {
+        width: 50px;
+        height: 2px;
+        background-color: $background-color_3;
+        border-radius: 5px;
+        margin: 0.5rem auto;
+        position: relative;
+        transition: width 0.3s ease;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 0;
+          background-color: $background-color_12;
+          transition: width 0.3s ease;
+          border-radius: 5px;
+          left: 0;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 0;
+          background-color: $background-color_12;
+          transition: width 0.3s ease;
+          border-radius: 5px;
+          right: 0;
+        }
+      }
+      .roomNumber {
+        position: absolute;
+        top: -20px;
+        left: 20px;
+        background: white;
+        color: $color_9;
+        border: #3b7ba5 1px solid;
+        width: 90px;
+        height: 90px;
+        font-size: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        z-index: 3;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: 0.5s;
+      }
+      .roomImage {
+        width: 500px;
+        height: 300px;
+        border-radius: 150px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease;
+        z-index: 2;
+        .roomCarousel {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+          }
+          img.active {
+            opacity: 1;
+          }
+        }
+        .carouselNav {
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          z-index: 10;
+          button {
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50px;
+            color: $color_13;
+            font-size: 1.5rem;
+            margin: 0 5%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            &:hover {
+              background: rgba(255, 255, 255, 0.8);
+            }
+          }
+        }
+        h3 {
+          position: absolute;
+          bottom: calc(50% - 1.5rem);
+          left: 0;
+          width: 100%;
+          text-align: center;
+          color: $color_8;
+          font-size: 1.5rem;
+        }
+        .imageIndicators {
+          position: absolute;
+          bottom: 20px;
+          left: calc(50% - 13px);
+          display: flex;
+          justify-content: center;
+          gap: 5px;
+          span {
+            width: 0.5rem;
+            height: 8px;
+            background: white;
+            border-radius: 50px;
+            transition: 0.3s;
+          }
+          span.active {
+            background: #6d95aa;
+            width: 15px;
+          }
+        }
+      }
+      .roomInfo {
+        width: 100%;
+        background: white;
+        border-radius: 150px;
+        padding-top: 7rem;
+        height: 250px;
+        margin-top: -100px;
+        border: #3b7ba5 1px solid;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        z-index: 1;
+        h4 {
+          color: $color_9;
+          margin-bottom: 0.5rem;
+          font-size: 1.2rem;
+        }
+        a {
+          color: $color_8;
+        }
+        p {
+          color: $color_14;
+          font-size: 0.9rem;
+          margin-bottom: 0.8rem;
+        }
+        .moreButton {
+          background: linear-gradient(
+            to right,
+            rgb(49, 124, 165),
+            hsl(263, 25%, 52%)
+          );
+          color: $color_8;
+          border: none;
+          padding: 0.5rem 2rem;
+          border-radius: 20px;
+          cursor: pointer;
+          z-index: 10;
+          font-size: 0.9rem;
+          position: relative;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid rgb(49, 124, 165);
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 9;
+            transition: all 0.3s ease;
+          }
+          &:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            &::after {
+              top: 2px;
+              left: 2px;
+              right: -2px;
+              bottom: -2px;
+            }
+          }
+        }
+      }
+    }
+  }
+  #roomONFM {
+    margin-top: 30px;
+    display: flex;
+    padding: 50px 0;
+    font-family: $font-family_1;
+    background-color: $background-color_19;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      bottom: 40px;
+      border-radius: 20px;
+      border-top-left-radius: 150px;
+      width: 27%;
+      background: linear-gradient(
+        225deg,
+        rgba(124, 101, 163, 0.4862745098),
+        rgba(49, 124, 165, 0.4784313725)
+      );
+      z-index: 1;
+    }
+    .roomONFMVerticalTitle {
+      writing-mode: vertical-rl;
+      padding: 0px;
+      font-size: 5rem;
+      font-weight: bold;
+      color: $color_17;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .roomONFMVerticalTitle.left {
+      left: 60px;
+      top: 50px;
+    }
+    .roomONFMVerticalTitle.right {
+      right: 60px;
+      top: 200px;
+    }
+    .roomONFMContent {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .roomONFMTitleContainer {
+      width: 100%;
+      max-width: 50%;
+      margin-bottom: 30px;
+    }
+    .roomONFMTitle {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: $color_5;
+    }
+    .roomONFMDescription {
+      font-size: 14px;
+      line-height: 1.6;
+      color: $color_18;
+    }
+    .roomONFMContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      height: 400px;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .roomONFMItem {
+      flex: 1;
+      position: relative;
+      overflow: visible;
+      transition: all 0.5s ease;
+      margin: 0 8px;
+      border-radius: 20px;
+      cursor: pointer;
+      border-radius: 10px;
+      aspect-ratio: 11/24;
+      &:nth-child(5) {
+        &::after {
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          right: -150px;
+          bottom: -50px;
+          background: linear-gradient(225deg, #7c65a3, #317ca5);
+          z-index: -1;
+          opacity: 0.7;
+          border-radius: inherit;
+          border-bottom-right-radius: 200px;
+          pointer-events: none;
+        }
+      }
+      &:nth-child(2) {
+        &::after {
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 5px;
+          right: -10px;
+          bottom: -10px;
+          background: linear-gradient(225deg, #7c65a3, #317ca5);
+          z-index: -1;
+          opacity: 0.7;
+          border-radius: inherit;
+          pointer-events: none;
+        }
+      }
+      &:nth-child(3) {
+        &::after {
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 5px;
+          right: -10px;
+          bottom: -10px;
+          background: linear-gradient(225deg, #7c65a3, #317ca5);
+          z-index: -1;
+          opacity: 0.7;
+          border-radius: inherit;
+          pointer-events: none;
+        }
+      }
+      &:nth-child(4) {
+        &::after {
+          content: "";
+          position: absolute;
+          top: 10px;
+          left: 5px;
+          right: -10px;
+          bottom: -10px;
+          background: linear-gradient(225deg, #7c65a3, #317ca5);
+          z-index: -1;
+          opacity: 0.7;
+          border-radius: inherit;
+          pointer-events: none;
+        }
+      }
+      &:hover {
+        flex: 4;
+        aspect-ratio: auto;
+        .roomONFMItemTitle {
+          opacity: 1;
+          bottom: 20px;
+          border-left: white 3px solid;
+          padding-left: 3px;
+          p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+          }
+        }
+        .roomONFMItemVerticalTitle {
+          opacity: 0;
+        }
+      }
+    }
+    .roomONFMItem.active {
+      flex: 4;
+      aspect-ratio: auto;
+      .roomONFMItemTitle {
+        opacity: 1;
+        bottom: 20px;
+        border-left: white 3px solid;
+        padding-left: 3px;
+        p {
+          font-size: 1rem;
+          line-height: 1.5rem;
+        }
+      }
+      .roomONFMItemVerticalTitle {
+        opacity: 0;
+      }
+    }
+    .roomONFMImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.5s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .roomONFMItemTitle {
+      position: absolute;
+      bottom: -50px;
+      left: 20px;
+      color: $color_4;
+      font-size: 24px;
+      font-weight: bold;
+      opacity: 0;
+      transition: all 0.5s ease;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+    .roomONFMItemVerticalTitle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+      color: $color_4;
+      font-size: 18px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      transition: opacity 0.5s ease;
+      z-index: 2;
+    }
+  }
+  .roomSlogan {
+    position: relative;
+    width: calc(100% - 220px);
+    height: 300px;
+    overflow: hidden;
+    border-radius: 200px;
+    margin: 50px 110px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    img {
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+  .roomSlogan__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  .roomSlogan__slide {
+    width: 50%;
+    height: 100%;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .roomSlogan__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: $color_4;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+  .roomSlogan__indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 10;
+  }
+  .roomSlogan__indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 10px;
+    background-color: $background-color_20;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .roomSlogan__indicator.active {
+    // background-color: $background-color_14;
+    width: 24px;
+  }
+  .roomRules {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    font-family: $font-family_1;
+    border-radius: 20px 20px 0px 0px;
+    transition: all 0.5s ease 0s;
+
+    @include responsive(medium) {
+      //   margin: auto 100px;
+      width: 80%;
+    }
+
+    @include responsive(small) {
+      //   margin: auto 100px;
+      width: 80%;
+    }
+
+    @include responsive(mobile) {
+      //   margin: auto 100px;
+      margin-top: -70px;
+    }
+  }
+  .roomRules__title {
+    font-size: 24px;
+    color: $color_19;
+    padding-bottom: 10px;
+    // border-bottom: 1px solid #e0e0e0;
+    border-radius: 20px 20px 0px 0px;
+    transition: all 0.5s ease 0s;
+  }
+  .roomRules__accordion {
+    // background-color: $background-color_14;
+    border-radius: 10px;
+    overflow: hidden;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #fffdf8;
+    transition: all 0.5s ease 0s;
+    // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .roomRules__item {
+    border-radius: 20px 20px 0px 0px;
+    transition: all 0.5s ease 0s;
+    margin-bottom: 20px;
+    // border-bottom: 1px solid #e0e0e0;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  .roomRules__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(to right, #317ca5, #7e6ca8);
+    color: $color_4;
+    cursor: pointer;
+    border-radius: 20px 20px 0px 0px;
+    transition: all 0.5s ease 0s;
+    transition: background 0.5s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+      flex-grow: 1;
+      padding-left: 20px;
+    }
+  }
+  .roomRules__icon {
+    width: 10px;
+    height: 10px;
+    margin-left: 20px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease;
+  }
+  .roomRules__decorator {
+    width: 12px;
+    height: 12px;
+    background-color: $background-color_14;
+    border-radius: 50%;
+  }
+  .roomRules__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    // background-color: $background-color_21;
+    p {
+      margin: 0;
+      padding: 15px 20px;
+      line-height: 1.5;
+      color: $color_9;
+    }
+  }
+  .roomRules__item.active {
+    .roomRules__header {
+      border-radius: 50px 20px 0px 0px;
+      transition: all 0.5s ease 0s;
+      background: linear-gradient(to right, #266487, #634e8a);
+    }
+    .roomRules__icon {
+      transform: rotate(225deg) translateX(-3px);
+    }
+    .roomRules__content {
+      //   border-radius: 50px 20px 0px 0px;
+      transition: all 0.5s ease 0s;
+      max-height: 1000px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .popupOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background-color_22;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  .popupContent {
+    background: linear-gradient(
+      to right,
+      rgb(79, 140, 173),
+      rgb(143, 124, 172)
+    );
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: $color_8;
+    .tentIcon {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .socialLinks {
+      margin-bottom: 25px;
+      p {
+        margin-bottom: 10px;
+      }
+      .socialIcon {
+        display: inline-block;
+        margin: 0 10px;
+        i.bi {
+          width: 30px;
+          height: 30px;
+          font-size: 2rem;
+          color: $color_8;
+          transition: 0.3s ease;
+          &:hover {
+            transform: translateX(5px);
+            font-size: 2.2rem;
+            color: $color_20;
+            text-shadow: 2px 2px #266487;
+          }
+        }
+      }
+    }
+    .actionBtn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin: 0 10px;
+      &:hover {
+        transform: translateY(-2px);
+      }
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+    #goToCartBtn {
+      background: linear-gradient(
+        to right,
+        rgb(79, 140, 173),
+        rgb(143, 124, 172)
+      );
+      border: 1px solid white;
+      color: $color_8;
+      &:hover {
+        background: linear-gradient(
+          to right,
+          rgb(97, 157, 190),
+          rgb(163, 148, 187)
+        );
+      }
+    }
+    #continueShoppingBtn {
+      background-color: $background-color_6;
+      color: $color_8;
+      border: 1px solid white;
+      &:hover {
+        background-color: $background-color_23;
+      }
+    }
+  }
+  .popupOverlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+    .popupContent {
+      animation: slideIn 0.3s ease-out;
+    }
+  }
+  .react-daterange-picker__wrapper {
+    display: none;
+  }
+  .react-calendar {
+    width: 280px;
+    margin-right: 100px;
+  }
+
+  .react-calendar abbr {
+    text-decoration: none;
+  }
+  @media (max-width: 719px) {
+    body {
+      height: 100vh;
+      position: relative;
+    }
+
+    .react-calendar {
+      width: 300px;
+      margin-right: 110px;
+    }
+
+    #roomBanner {
+      .containerMain {
+        display: none;
+      }
+      top: 0;
+      .bannerContent {
+        margin-right: 0px;
+      }
+      .bannerLogo {
+        width: 60vw;
+      }
+      .bannerTextGroup {
+        .bannerLine {
+          width: 5rem;
+        }
+      }
+      .bannerTitle {
+        font-size: 1.5rem;
+      }
+      .bannerTagline {
+        padding: 0 80px;
+        line-height: 1.2rem;
+      }
+      .bannerButtons {
+        width: 300px;
+      }
+      .footprints {
+        bottom: 10vh;
+        height: 120px;
+      }
+    }
+    .quickModal {
+      left: 50%;
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 325px;
+      height: 60%;
+      max-height: 600px;
+      border-radius: 20px;
+      overflow-y: auto;
+      padding-bottom: 20px;
+      .quickModalContent {
+        flex-direction: column;
+        height: auto;
+        justify-content: center;
+        width: 90%;
+        margin-top: 10px;
+        gap: 10px;
+      }
+      .closeQuickModal {
+        background-color: $background-color_9;
+        right: 10px;
+        top: 10px;
+      }
+      .modalLeft {
+        width: 95%;
+        height: 365px;
+        // margin: 15px 15px 0;
+        margin: 5px;
+        h2 {
+          font-size: 1.2rem;
+          padding-bottom: 10px;
+        }
+        #reservationCalendar {
+          height: 250px;
+        }
+      }
+      .modalRight {
+        width: 95%;
+        height: auto;
+        // margin: 0 15px 15px;
+        padding: 10px 20px;
+        border-radius: 15px;
+      }
+      .reservationForm {
+        gap: 10px;
+      }
+      .dateInputs {
+        // justify-content: flex-start;
+        margin-left: 0;
+        padding-left: 0;
+        width: 100%;
+
+        .dateInput {
+          margin-left: 0;
+          padding-left: 0;
+          width: 100%;
+        }
+      }
+      .guestInputs {
+        // margin-left: 100px;
+        // margin-right: 20px;
+        width: 100%;
+        .inputGroup {
+          margin-left: 0;
+          .numberInput input {
+            text-align: center;
+          }
+        }
+      }
+      .totalPrice {
+        width: 100%;
+        margin-bottom: 0;
+      }
+    }
+    #roomFeature {
+      padding: 0px;
+      .carouselContainer {
+        width: 100%;
+      }
+      .featureHeader {
+        transform: scale(0.7);
+        margin-left: 0rem;
+        margin-top: 60px;
+        margin-bottom: 0;
+      }
+      .carouselSlide {
+        flex: 0 0 100%;
+      }
+      .carouselButton {
+        padding: 5px 5px;
+        font-size: 20px;
+      }
+    }
+    .modal {
+      .modalContent {
+        width: 95%;
+        padding: 20px;
+        margin: 10% auto;
+      }
+      .modalInner {
+        flex-direction: column;
+      }
+      .modalImage {
+        flex: 0 0 100%;
+      }
+      .modalDetails {
+        flex: 0 0 100%;
+      }
+      .modalTitle {
+        font-size: 24px;
+      }
+      .modalEnglishTitle {
+        font-size: 20px;
+      }
+    }
+    #roomTypes {
+      padding: 40px 20px;
+      .typeHeader {
+        .typeTitle {
+          font-size: 1.5rem;
+        }
+        .typeSubtitle {
+          font-size: 1rem;
+        }
+      }
+      .roomGrid {
+        gap: 2rem 0;
+      }
+      .roomCard {
+        .roomNumber {
+          width: 70px;
+          height: 70px;
+          font-size: 1.5rem;
+        }
+        .roomImage {
+          width: 350px;
+          height: 200px;
+          border-radius: 150px;
+        }
+        .roomInfo {
+          h4 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+    #roomONFM {
+      padding: 20px;
+      flex-direction: column;
+      .roomONFMTitleContainer {
+        padding: 0 15px;
+        max-width: 100%;
+      }
+      .roomONFMTitle {
+        font-size: 20px;
+      }
+      .roomONFMDescription {
+        font-size: 12px;
+      }
+      .roomONFMContainer {
+        padding: 0 15px;
+        flex-direction: column;
+        height: auto;
+      }
+      .roomONFMItem {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0;
+        aspect-ratio: 16/6;
+        height: 120px;
+        &:hover {
+          flex: none;
+          height: 200px;
+          aspect-ratio: 16/11;
+        }
+        &:nth-child(1) {
+          &::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(225deg, #7c65a3, #317ca5);
+            z-index: -1;
+            opacity: 0.7;
+            border-radius: inherit;
+            pointer-events: none;
+          }
+        }
+        &:nth-child(5) {
+          &::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(225deg, #7c65a3, #317ca5);
+            z-index: -1;
+            opacity: 0.7;
+            border-radius: inherit;
+            pointer-events: none;
+          }
+        }
+      }
+      .roomONFMItem.active {
+        flex: none;
+        height: 200px;
+        aspect-ratio: 16/11;
+      }
+      .roomONFMItemTitle {
+        font-size: 16px;
+        opacity: 1;
+        bottom: 10px;
+        p {
+          font-size: 0.9rem;
+          line-height: 1.3rem;
+        }
+      }
+      .roomONFMVerticalTitle {
+        display: none;
+      }
+      .roomONFMItemVerticalTitle {
+        display: none;
+      }
+    }
+    .roomSlogan {
+      width: calc(100% - 40px);
+      height: 200px;
+      margin: 100px 20px;
+      border-radius: 100px/50%;
+    }
+    .roomSlogan__content {
+      h2 {
+        font-size: 1rem;
+      }
+      h3 {
+        font-size: 0.8rem;
+      }
+    }
+    .roomSlogan__indicators {
+      bottom: 10px;
+    }
+    .roomSlogan__indicator {
+      width: 8px;
+      height: 8px;
+      margin: 0 3px;
+    }
+    .roomSlogan__indicator.active {
+      background-color: $background-color_14;
+      width: 16px;
+    }
+    .roomRules {
+      padding: 10px 30px;
+    }
+    .roomRules__title {
+      font-size: 20px;
+    }
+    .roomRules__header {
+      h3 {
+        font-size: 16px;
+      }
+    }
+    .roomRules__content {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+  @media (min-width: 720px) and (max-width: 1023px) {
+    #roomBanner {
+      .containerMain {
+        display: none;
+      }
+      top: 0;
+      .bannerContent {
+        margin-right: 0px;
+      }
+      .bannerTagline {
+        padding: 0 150px;
+        line-height: 1.2rem;
+      }
+    }
+    #roomTypes {
+      padding: 60px 30px;
+      .typeHeader {
+        .typeTitle {
+          font-size: 1.8rem;
+        }
+      }
+      .roomGrid {
+        gap: 3rem 0;
+      }
+      .roomCard {
+        &:nth-child(even) {
+          margin-top: 0;
+        }
+        .roomImage {
+          width: 400px;
+          height: 240px;
+        }
+      }
+    }
+    #roomONFM {
+      .roomONFMContent {
+        width: 80vw;
+      }
+    }
+    .roomSlogan {
+      width: calc(100% - 100px);
+      height: 200px;
+      margin: 30px 50px;
+    }
+    .roomSlogan__content {
+      h2 {
+        font-size: 1.5rem;
+      }
+      h3 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    #roomTypes {
+      padding: 80px 50px;
+      .roomGrid {
+        gap: 3rem 1.5rem;
+      }
+      .roomCard {
+        .roomImage {
+          width: 450px;
+          height: 270px;
+        }
+      }
+    }
+    #roomONFM {
+      padding: 40px 0;
+      .roomONFMContainer {
+        height: auto;
+        max-height: 350px;
+        transform: scale(0.9);
+      }
+      .roomONFMTitle {
+        font-size: 24px;
+      }
+      .roomONFMVerticalTitle {
+        font-size: 4rem;
+      }
+      .roomONFMDescription {
+        font-size: 13px;
+      }
+    }
+    .roomSlogan {
+      width: calc(100% - 160px);
+      height: 250px;
+      margin: 40px 80px;
+    }
+    .roomSlogan__content {
+      h2 {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    #roomTypes {
+      padding: 0px;
+      .carouselContainer {
+        width: 100%;
+      }
+      .typeHeader {
+        transform: scale(0.7);
+        margin-left: 0rem;
+        margin-top: 60px;
+        margin-bottom: 0;
+      }
+      .roomGrid {
+        grid-template-columns: 1fr;
+      }
+      .roomCard {
+        &:nth-child(even) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
 }
