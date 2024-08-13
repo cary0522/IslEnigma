@@ -99,7 +99,7 @@ function BookingArea({
 					<input
 						required
 						type="tel"
-						className="col-6"
+						className="col-8"
 						value={bookingDate}
 						onClick={(e) => {
 							showCalendar(e);
@@ -113,7 +113,7 @@ function BookingArea({
 						onClick={(e) => {
 							showCalendar(e);
 						}}
-						className="col-6"
+						className="col-4"
 					/>
 					<DateCalendar
 						date={date}

@@ -66,8 +66,8 @@ const TopNav = ({
         <a href="/cart" className="btnShoppingCart">
           <CiShoppingCart />
         </a>
-        <div class="userMenuContainer">
-          <a href="./login" class="btn btnLogin">
+        <div className="userMenuContainer">
+          <a href="./login" className="btn btnLogin">
             {!member ? (
               <>
                 {" "}
@@ -76,15 +76,15 @@ const TopNav = ({
               </>
             ) : (
               <>
-                <img src="/00myIcon/baby.png" class="userAvatar" />
-                <span class="loginText">{member.name}</span>
+                <img src="/00myIcon/baby.png" className="userAvatar" />
+                <span className="loginText">{member.name}</span>
               </>
             )}
           </a>
           {member && (
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <Link to="/profile">會員中心</Link>
-              <p class="logoutBtn" onClick={handleLogout}>
+              <p className="logoutBtn" onClick={handleLogout}>
                 登出
               </p>
             </div>

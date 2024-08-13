@@ -1,5 +1,5 @@
 import LoginImg from "/00logo/favicon.ico"
-import "./Register.css"
+import "./Register.scss"
 import { useForm } from "react-hook-form"
 import { useRegister } from "../../hooks/useRegister"
 import { Line } from "react-bootstrap-icons"
@@ -22,6 +22,7 @@ const Register = () => {
     mutate(memberData)
   }
   return (
+    <div className="RegisterPage">
     <div className="index">
       <div className="register-container">
         <div className="register-image">
@@ -192,6 +193,7 @@ const Register = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   )
 }
