@@ -19,12 +19,13 @@ export const useRegister = () => {
     mutationFn: register,
     onSuccess: (data) => {
       const successMsg = data.message
-      console.log(successMsg)
       toast(successMsg)
       navigate("/login")
     },
     onError: (error) => {
       const errMsg = error.response?.data?.error || "發生錯誤!"
+
+      console.log(error.response.data)
       console.log(errMsg)
       toast.error(errMsg)
     },

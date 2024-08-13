@@ -20,7 +20,7 @@ import "./infoEvent.scss";
 
 const InfoEventPage = () => {
   return (
-    <div>
+    <div className="infoEventPage">
       <Banner />
       <MysteryNews />
       <TodayActivities />

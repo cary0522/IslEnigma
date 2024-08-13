@@ -492,8 +492,8 @@ body {
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   position: absolute;
-  bottom: 20%;
-  left: 45%;
+  bottom: 10%;
+  left: 50%;
   transform: translate(-50%, -50%);
   animation: btnDown 1s infinite 0.5s;
   transition: all 0.3s;
@@ -527,9 +527,21 @@ body {
     transform: translateY(0) rotate(0deg);
   }
 }
-@media screen and (min-width: 720px) {
+@media screen and (max-width: 1200px) {
   .ticketPage #divBanner .btnDown {
     display: none;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .btnDown {
+    display: block;
+    bottom: 18%;
+    left: 47%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .ticketPage #divBanner .btnDown {
+    left: 45%;
   }
 }
 .ticketPage .divBackground {

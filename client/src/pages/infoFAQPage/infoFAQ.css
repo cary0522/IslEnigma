@@ -1,64 +1,64 @@
 @charset "UTF-8";
-/* 全局樣式 */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
-body {
+.infoFAQPage {
+  /* 全局樣式 */
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+}
+.infoFAQPage body {
   margin: 0;
   padding: 0;
   font-family: "Noto Sans TC", sans-serif;
   background: #ffffff;
 }
 @media (max-width: 719px) {
-  body {
+  .infoFAQPage body {
     height: 100vh;
     position: relative;
   }
 }
-
-#footer {
+.infoFAQPage #footer {
   margin-top: 20px;
 }
-
-#faqPage {
+.infoFAQPage #faqPage {
   margin-top: 150px;
 }
-#faqPage header {
+.infoFAQPage #faqPage header {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50vw;
   gap: 1rem;
 }
-#faqPage .FAQLine {
+.infoFAQPage #faqPage .FAQLine {
   width: 10rem;
   position: relative;
   bottom: 10px;
   height: 1px;
   background-color: #2c5d8f;
 }
-#faqPage img {
+.infoFAQPage #faqPage img {
   background-color: #2c5d8f;
   padding: 5px;
   border-radius: 50px;
   width: 50px !important;
   height: 50px !important;
 }
-#faqPage .contain {
+.infoFAQPage #faqPage .contain {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
 }
-#faqPage header {
+.infoFAQPage #faqPage header {
   text-align: center;
   margin-bottom: 30px;
 }
-#faqPage header h1 {
+.infoFAQPage #faqPage header h1 {
   color: #2c5d8f;
   font-size: 2.5rem;
   line-height: 3rem;
   margin-bottom: 10px;
   font-weight: 800;
 }
-#faqPage .chat-container {
+.infoFAQPage #faqPage .chat-container {
   background: linear-gradient(to right, rgba(49, 124, 165, 0.5), hsla(263, 25%, 52%, 0.5));
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -67,7 +67,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
 }
-#faqPage .initial-options-container {
+.infoFAQPage #faqPage .initial-options-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -80,7 +80,7 @@ body {
   margin-left: 40px;
   transition: 0.3s;
 }
-#faqPage .initial-option-btn {
+.infoFAQPage #faqPage .initial-option-btn {
   flex: 0 1 auto;
   min-width: 150px;
   max-width: 200px;
@@ -97,18 +97,18 @@ body {
   align-items: center;
   text-align: left;
 }
-#faqPage .initial-option-btn:hover {
+.infoFAQPage #faqPage .initial-option-btn:hover {
   background-color: #3498db;
   color: #fff;
   transform: scale(1.1);
 }
-#faqPage .initial-option-btn .option-icon {
+.infoFAQPage #faqPage .initial-option-btn .option-icon {
   width: 30px;
   height: 30px;
   margin-right: 8px;
   flex-shrink: 0;
 }
-#faqPage .message {
+.infoFAQPage #faqPage .message {
   position: relative;
   margin-bottom: 15px;
   padding: 15px 20px;
@@ -122,7 +122,7 @@ body {
   align-items: flex-start;
   letter-spacing: 1px;
 }
-#faqPage .message.bot-message {
+.infoFAQPage #faqPage .message.bot-message {
   background-color: #e9ecef;
   float: left;
   clear: both;
@@ -132,7 +132,7 @@ body {
   color: #2c5d8f;
   font-weight: 800;
 }
-#faqPage .message.user-message {
+.infoFAQPage #faqPage .message.user-message {
   background: linear-gradient(to right, #6797c8, #e08bae);
   color: #fff;
   float: right;
@@ -144,7 +144,7 @@ body {
   font-weight: 600;
   justify-content: flex-end;
 }
-#faqPage .mascot {
+.infoFAQPage #faqPage .mascot {
   position: absolute;
   left: -70px;
   top: 0;
@@ -155,7 +155,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-#faqPage .options-container {
+.infoFAQPage #faqPage .options-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -163,7 +163,7 @@ body {
   width: 100%;
   clear: both;
 }
-#faqPage .option-btn {
+.infoFAQPage #faqPage .option-btn {
   transition: all 0.3s ease;
   border: 1px solid #3498db;
   color: #3498db;
@@ -179,98 +179,97 @@ body {
   text-align: left;
   margin-left: 80px;
 }
-#faqPage .option-btn:hover {
+.infoFAQPage #faqPage .option-btn:hover {
   background-color: #3498db;
   color: #fff;
 }
-#faqPage .option-btn .option-icon {
+.infoFAQPage #faqPage .option-btn .option-icon {
   width: 24px;
   height: 24px;
   margin-right: 8px;
   flex-shrink: 0;
 }
-#faqPage .option-btn.return-to-main {
+.infoFAQPage #faqPage .option-btn.return-to-main {
   margin-top: 10px;
   background-color: #f1f1f1;
   border-color: #999;
   color: #333;
   justify-content: center;
 }
-#faqPage .option-btn.return-to-main:hover {
+.infoFAQPage #faqPage .option-btn.return-to-main:hover {
   background-color: #e0e0e0;
   color: #000;
 }
-#faqPage footer {
+.infoFAQPage #faqPage footer {
   text-align: center;
   margin-top: 20px;
   font-size: 0.9rem;
   color: #666;
 }
-#faqPage p a,
-#faqPage p {
+.infoFAQPage #faqPage p a,
+.infoFAQPage #faqPage p {
   color: #2c5d8f;
 }
 @media (max-width: 719px) {
-  #faqPage .container {
+  .infoFAQPage #faqPage .container {
     padding: 10px;
   }
-  #faqPage header h1 {
+  .infoFAQPage #faqPage header h1 {
     font-size: 2rem;
   }
-  #faqPage header p {
+  .infoFAQPage #faqPage header p {
     font-size: 1rem;
   }
-  #faqPage .message {
+  .infoFAQPage #faqPage .message {
     font-size: 14px;
   }
-  #faqPage .option-btn {
+  .infoFAQPage #faqPage .option-btn {
     font-size: 12px;
     padding: 8px 12px;
     width: 70%;
   }
-  #faqPage .initial-options-container {
+  .infoFAQPage #faqPage .initial-options-container {
     transform: scale(0.8);
     left: -100;
     width: 120%;
     margin-left: -20px;
   }
-  #faqPage .option-btn {
+  .infoFAQPage #faqPage .option-btn {
     width: 100%;
     text-align: left;
     margin-left: 0;
   }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
-  #faqPage .container {
+  .infoFAQPage #faqPage .container {
     max-width: 90%;
   }
-  #faqPage .option-btn {
+  .infoFAQPage #faqPage .option-btn {
     font-size: 12px;
     padding: 6px 12px;
     width: 85%;
   }
 }
-
-.feedback-message {
+.infoFAQPage .feedback-message {
   background-color: #f0f0f0;
   border-radius: 10px;
   padding: 50px;
   margin-top: 10px;
 }
-.feedback-message .message-content {
+.infoFAQPage .feedback-message .message-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.feedback-message p {
+.infoFAQPage .feedback-message p {
   margin: 5px 0;
 }
-.feedback-message .feedback-buttons {
+.infoFAQPage .feedback-message .feedback-buttons {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
-.feedback-message .feedback-buttons button {
+.infoFAQPage .feedback-message .feedback-buttons button {
   padding: 5px 10px;
   border: 1px solid #3498db;
   background-color: transparent;
@@ -279,12 +278,11 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.feedback-message .feedback-buttons button:hover {
+.infoFAQPage .feedback-message .feedback-buttons button:hover {
   background-color: #3498db;
   color: #fff;
 }
-
-#feedbackModal {
+.infoFAQPage #feedbackModal {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -294,7 +292,7 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
-#feedbackModal .modal-content {
+.infoFAQPage #feedbackModal .modal-content {
   background-color: #fefefe;
   margin: 40vh auto;
   padding: 50px;
@@ -307,14 +305,14 @@ body {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-#feedbackModal #modalMessage {
+.infoFAQPage #feedbackModal #modalMessage {
   margin-bottom: 20px;
   font-size: 18px;
   padding: 20px;
   color: #2c5d8f;
   font-weight: 800;
 }
-#feedbackModal #modalClose {
+.infoFAQPage #feedbackModal #modalClose {
   background: linear-gradient(to right, rgb(49, 124, 165), hsl(263, 25%, 52%));
   color: white;
   padding: 10px 20px;
@@ -324,6 +322,6 @@ body {
   font-size: 16px;
   transition: background-color 0.3s;
 }
-#feedbackModal #modalClose:hover {
+.infoFAQPage #feedbackModal #modalClose:hover {
   background: linear-gradient(to right, rgb(67, 146, 188), hsla(263, 25%, 52%, 0.8));
 }/*# sourceMappingURL=infoFAQ.css.map */

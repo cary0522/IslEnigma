@@ -1,5 +1,5 @@
 import LoginImg from "/00logo/favicon.ico"
-import "./Register.css"
+import "./Register.scss"
 import { useForm } from "react-hook-form"
 import { useRegister } from "../../hooks/useRegister"
 import { Line } from "react-bootstrap-icons"
@@ -18,9 +18,11 @@ const Register = () => {
   const phoneRegex = /^09\d{8}$/
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   const onSubmit = (memberData) => {
+    console.log(123)
     mutate(memberData)
   }
   return (
+    <div className="RegisterPage">
     <div className="index">
       <div className="register-container">
         <div className="register-image">
@@ -175,7 +177,12 @@ const Register = () => {
               </div>
             </div>
             <div className="form-actions">
-              <button className="submit-btn register-button">創建新帳號</button>
+              <button
+                className="submit-btn register-button"
+                onClick={handleSubmit}
+              >
+                創建新帳號
+              </button>
               <p className="login-link">
                 已有帳號？
                 <Link className="login-href" to="/login">
@@ -186,6 +193,7 @@ const Register = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   )
 }

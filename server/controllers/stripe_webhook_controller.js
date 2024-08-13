@@ -11,34 +11,33 @@ const stripe_webhook_controller = async (req, res) => {
     switch (event.type) {
       case "checkout.session.completed":
         const session = event.data.object
+
+        //付款方式
         const payment_method = session.payment_method_types[0]
+
+        //訂單的總價
+        const total_amount = session.amount_total
         const { order_id, order_info } = session.metadata
 
         const parsed_order_info = JSON.parse(order_info)
-
-        console.log({
-          data: {
-            ...parsed_order_info,
-            order_id,
-            payment_method,
-          },
-        })
+        const { customer, phone_number, address } = parsed_order_info
+        console.log(customer, phone_number, address)
         if (order_id) {
           try {
             await prisma.customer_order.update({
               where: {
-                order_id,
+                order_id: parseInt(order_id),
               },
               data: {
                 status: "PAID",
+                total_amount,
               },
             })
             const info_res = await prisma.order_info.create({
               data: {
                 ...parsed_order_info,
-                order_id,
+                order_id: parseInt(order_id),
                 payment_method,
-                order_info_id: Math.round(Math.random() * 10),
               },
             })
           } catch (err) {
