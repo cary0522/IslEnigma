@@ -1,0 +1,188 @@
+$color_1: var(--02, #73748c);
+$color_2: #73748c;
+$color_3: rgb(76, 0, 255);
+$color_4: #d67376;
+$color_5: inherit;
+$color_6: #fff;
+$font-family_1: "Noto Sans TC";
+$background-color_1: #f0f5ff;
+$background-color_2: #e0c6c72f;
+$background-color_3: #fff;
+.RegisterPage {
+	.index {
+		margin-top: 130px;
+		height: 900px;
+	}
+	.register-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.form-container {
+		flex: 1;
+	}
+	.register-image {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			width: 400px;
+			height: auto;
+			border-radius: 10px;
+			margin: 20px;
+		}
+	}
+	.form-row {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 20px;
+		.form-group {
+			width: 100%;
+		}
+	}
+	.form-group {
+		margin-bottom: 20px;
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-size: 1rem;
+			color: $color_2;
+		}
+	}
+	.register-title {
+		color: $color_1;
+		margin: 20px;
+		font-family: $font-family_1;
+		font-size: 36px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.inputBlock {
+		margin-top: 10px;
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #d0d0d0;
+		border-radius: 8px;
+		background-color: $background-color_1;
+		box-sizing: border-box;
+		font-size: 16px;
+		border-radius: 50px;
+		&::content {
+			border: 1px solid #d0d0d0;
+		}
+		&:focus {
+			outline: none;
+			border: 1px solid black;
+		}
+	}
+	.login-href {
+		color: $color_3;
+	}
+	.inputError {
+		margin-top: 10px;
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #d67376;
+		background-color: $background-color_2;
+		border-radius: 8px;
+		box-sizing: border-box;
+		font-size: 16px;
+		border-radius: 50px;
+	}
+	.inputError-message {
+		color: $color_4;
+		font-size: 12px;
+		margin-top: 5px;
+	}
+	.submit-btn {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		background: none;
+		font: inherit;
+		color: $color_5;
+		line-height: normal;
+		width: 150px;
+		height: 50px;
+		border: 1px solid #376c93;
+		background: #fff;
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		font-weight: 400;
+		background-color: $background-color_3;
+		border-radius: 50px;
+		font-size: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		cursor: pointer;
+		text-decoration: none;
+		&:hover {
+			cursor: pointer;
+			color: $color_6;
+			border: none;
+			background: var(
+				--nav-17,
+				linear-gradient(270deg, #7c65a3 0%, #317da5 100%)
+			);
+		}
+	}
+	a.submit-btn {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		background: none;
+		font: inherit;
+		color: $color_5;
+		line-height: normal;
+		width: 150px;
+		height: 50px;
+		border: 1px solid #376c93;
+		background: #fff;
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+		font-weight: 400;
+		background-color: $background-color_3;
+		border-radius: 50px;
+		font-size: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		cursor: pointer;
+		text-decoration: none;
+	}
+	.form-actions {
+		margin: 20px 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	.login-link {
+		color: $color_2;
+		text-decoration: none;
+	}
+	.error-message {
+		color: $color_4;
+		font-size: 16px;
+	}
+	.checkbox {
+		margin: 0;
+		label {
+			margin-left: 5px;
+		}
+		.inputError-message {
+			color: $color_4;
+			font-size: 12px;
+		}
+	}
+}

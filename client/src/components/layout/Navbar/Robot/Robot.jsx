@@ -66,12 +66,12 @@ const Robot = () => {
 
   return (
     <div id="chatbot">
-      <div class="chatBot" onClick={() => setToggleBot(!toggleBot)}>
+      <div className="chatBot" onClick={() => setToggleBot(!toggleBot)}>
         <img src="/robotIcon/robotIcon.png  " alt="Chat Bot" />
       </div>
       {toggleBot && (
-        <div class="chatBotContainer" id="chatBotContainer">
-          <div class="chatBotHeader">
+        <div className="chatBotContainer" id="chatBotContainer">
+          <div className="chatBotHeader">
             <span>IslEnigma遊樂園智能助理</span>
             <span
               className="closeRobot"
@@ -83,7 +83,7 @@ const Robot = () => {
             </span>
           </div>
 
-          <div class="chatBotMessages" id="chatBotMessages">
+          <div className="chatBotMessages" id="chatBotMessages">
             {messages.map((msg) => {
               return (
                 <div
@@ -96,7 +96,7 @@ const Robot = () => {
               )
             })}
             {messages.length <= 1 && (
-              <div class="optionsContainer">
+              <div className="optionsContainer">
                 {optionsData.map((data, index) => {
                   return (
                     <button
@@ -112,8 +112,8 @@ const Robot = () => {
               </div>
             )}
           </div>
-          <div class="chatBotInput">
-            <button class="menuButton">☰</button>
+          <div className="chatBotInput">
+            <button className="menuButton">☰</button>
             <input
               type="text"
               id="chatBotInput"

@@ -1,4 +1,4 @@
-import "./Restaurant.css"
+// import "./Restaurant.css"
 
 const Restaurant = () => {
   return (
