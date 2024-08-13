@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 
 .ticketPage {
+	margin-bottom: 100px;
 	font-family: "Noto Sans TC", "Arial", sans-serif;
 	.divAlert {
 		box-sizing: content-box;
@@ -315,13 +316,11 @@
 						.react-calendar {
 							animation: divAnimation 0.5s;
 							width: 350px;
-							
-							// height: auto;
-							// background-color: $backgroundColorBooking;
-							// box-shadow: $backgroundShadow;
-							// backdrop-filter: blur($backgroundBlur);
-							// border-radius: 20px;
-							// padding: 10px;
+							background-color: $backgroundColorBooking;
+							box-shadow: $backgroundShadow;
+							backdrop-filter: blur($backgroundBlur);
+							border-radius: 20px;
+							padding: 10px;
 							@keyframes divAnimation {
 								0% {
 									opacity: 0;
@@ -584,6 +583,7 @@
 			position: relative;
 			font-size: 24px;
 			color: $colorSvg;
+			box-sizing: content-box;
 			.iconCrown {
 				color: rgba(246, 187, 66, 1);
 				position: absolute;
@@ -613,7 +613,9 @@
 			.divTableHead {
 				width: 100%;
 				display: flex;
+				box-sizing: content-box;
 				div {
+					box-sizing: content-box;
 					width: 30%;
 					padding: 20px;
 					span {
@@ -634,6 +636,7 @@
 			.divTableTr {
 				display: flex;
 				border-top: 1px solid white;
+				box-sizing: content-box;
 				div {
 					width: 30%;
 					padding: 20px;
@@ -654,6 +657,7 @@
 				color: rgba(246, 187, 66, 1);
 			}
 			.ticketPrice {
+				box-sizing: content-box;
 				text-shadow: 2px 1px 0px rgba(246, 187, 66, 1);
 			}
 			@media screen and (max-width: 992px) {
