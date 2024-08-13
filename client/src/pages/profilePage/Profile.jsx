@@ -1,35 +1,34 @@
-import "./Profile.scss";
-import { useState } from "react";
-import Order from "./Order";
-import PayMethod from "./PayMethod";
-
-import MemberDetail from "./MemberDetail";
-import ChangePassword from "./ChangePassword";
-import Sidebar from "./Sidebar";
+import "./Profile.scss"
+import { useState } from "react"
+import Order from "./Order"
+import PayMethod from "./PayMethod"
+import MemberDetail from "./MemberDetail"
+import ChangePassword from "./ChangePassword"
+import Sidebar from "./Sidebar"
 const Profile = () => {
-  const [activeButton, setActiveButton] = useState("order");
+  const [activeButton, setActiveButton] = useState("order")
   const handleButtonClick = (buttonId) => {
-    setActiveButton(buttonId);
-  };
+    setActiveButton(buttonId)
+  }
 
   const renderContent = () => {
     switch (activeButton) {
       case "order":
-        return <Order />;
+        return <Order />
 
       case "payMethod":
-        return <PayMethod />;
+        return <PayMethod />
 
       case "accountInfo":
-        return <MemberDetail />;
+        return <MemberDetail />
 
       case "changePassword":
-        return <ChangePassword />;
+        return <ChangePassword />
 
       default:
-        return null;
+        return null
     }
-  };
+  }
 
   return (
     <div className="container">
@@ -41,7 +40,7 @@ const Profile = () => {
         <div id="content-group">{renderContent()}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
