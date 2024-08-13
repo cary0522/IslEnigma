@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
-import axios from "axios"
-import { useCartItemsData } from "../../hooks/useCartItem"
-import { useUpdateQty } from "../../hooks/useUpdateQty"
-import { useRemoveCartItem } from "../../hooks/useDeleteItem"
-import CartItem from "./CartItem"
-import arrow from "/shoppingCart/breadcrumbArrow.png"
-import "./ShoppingCartPage.scss"
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
+import { useCartItemsData } from "../../hooks/useCartItem";
+import { useUpdateQty } from "../../hooks/useUpdateQty";
+import { useRemoveCartItem } from "../../hooks/useDeleteItem";
+import CartItem from "./CartItem";
+import arrow from "/shoppingCart/breadcrumbArrow.png";
+import "./shoppingCart.scss";
 
 const ShoppingCartPage = () => {
-  const { mutate: removeCartItem } = useRemoveCartItem()
-  const { data, error, isLoading } = useCartItemsData()
-  const [ticketQuantity, setTicketQuantity] = useState(1)
+  const { mutate: removeCartItem } = useRemoveCartItem();
+  const { data, error, isLoading } = useCartItemsData();
+  const [ticketQuantity, setTicketQuantity] = useState(1);
 
-  const location = useLocation()
+  const location = useLocation();
   const handleDelete = async (itemId) => {
-    await axios.delete(`http://localhost:3001/cart/${itemId}`)
-  }
+    await axios.delete(`http://localhost:3001/cart/${itemId}`);
+  };
 
   // useEffect(() => {
   //   fetchCartData()
@@ -24,7 +24,7 @@ const ShoppingCartPage = () => {
 
   // console.log(cartItems)
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     // <div className="shoppingCart">
@@ -53,10 +53,11 @@ const ShoppingCartPage = () => {
     // </div>
 
     <div class="shoppingCart">
+      <div className="apple"></div>
       {data ? (
         <div class="itemList">
           {data.order_item.map((item) => {
-            return <CartItem item={item} />
+            return <CartItem item={item} />;
           })}
 
           {/* <div class="item">
@@ -110,11 +111,11 @@ const ShoppingCartPage = () => {
               NT$
               {data?.order_item && data.order_item.length > 0
                 ? data.order_item.reduce((total, item) => {
-                    const roomPrice = item.room?.price || 0
-                    const ticketPrice = item.ticket?.price || 0
+                    const roomPrice = item.room?.price || 0;
+                    const ticketPrice = item.ticket?.price || 0;
                     const itemTotal =
-                      roomPrice * item.quantity + ticketPrice * item.quantity
-                    return total + itemTotal
+                      roomPrice * item.quantity + ticketPrice * item.quantity;
+                    return total + itemTotal;
                   }, 0)
                 : 0}
             </span>
@@ -142,7 +143,7 @@ const ShoppingCartPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShoppingCartPage
+export default ShoppingCartPage;
