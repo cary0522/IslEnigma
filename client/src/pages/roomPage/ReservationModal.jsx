@@ -77,7 +77,7 @@ const ReservationModal = ({ setToggleReservation }) => {
     const selectedOption = e.target.options[e.target.selectedIndex]
     const price = selectedOption.getAttribute("data-price")
     const roomType = selectedOption.getAttribute("data-name")
-    const roomId = selectedOption.value
+    const roomId = parseInt(selectedOption.value)
 
     setQueryData((prev) => ({
       ...prev,
