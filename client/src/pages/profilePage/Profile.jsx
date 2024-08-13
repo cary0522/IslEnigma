@@ -1,3 +1,4 @@
+
 import "./Profile.css"
 import { useState } from "react"
 import Order from "./Order"
@@ -44,4 +45,5 @@ const Profile = () => {
   )
 }
 
-export default Profile
+
+export default Profile;
