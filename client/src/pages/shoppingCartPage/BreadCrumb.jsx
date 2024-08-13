@@ -1,32 +1,32 @@
-import { Outlet, useLocation } from "react-router-dom"
-import "./ShoppingCartPage.scss"
+import { Outlet, useLocation } from "react-router-dom";
+import "./ShoppingCartPage.scss";
 
-import arrow from "/shoppingCart/breadcrumbArrow.png"
-import cartIcon from "/shoppingCart/shoppingCartIcon.png"
-import checkoutIcon from "/shoppingCart/checkoutIcon.png"
+import arrow from "/shoppingCart/breadcrumbArrow.png";
+import cartIcon from "/shoppingCart/shoppingCartIcon.png";
+import checkoutIcon from "/shoppingCart/checkoutIcon.png";
 
-import successIcon from "/shoppingCart/purchaseSuccess.png"
+import successIcon from "/shoppingCart/purchaseSuccess.png";
 const BreadCrumb = () => {
-  const location = useLocation()
-  console.log(location.pathname)
+  const location = useLocation();
+  console.log(location.pathname);
 
-  let pageName = ""
+  let pageName = "";
 
   switch (true) {
     case location.pathname.includes("checkout"):
-      pageName = "checkOutPage"
-      break
+      pageName = "checkOutPage";
+      break;
 
     case location.pathname.includes("cart"):
-      pageName = "shoppingCart"
-      break
+      pageName = "shoppingCart";
+      break;
 
     case location.pathname.includes("success"):
-      pageName = "shoppingSuccess"
-      break
+      pageName = "shoppingSuccess";
+      break;
 
     default:
-      pageName = ""
+      pageName = "";
   }
 
   return (
@@ -48,7 +48,7 @@ const BreadCrumb = () => {
         <Outlet />
       </main>
     </>
-  )
-}
+  );
+};
 
-export default BreadCrumb
+export default BreadCrumb;

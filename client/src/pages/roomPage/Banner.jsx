@@ -1,17 +1,17 @@
-import { FaCampground, FaDisease } from "react-icons/fa6"
-import { PiIslandFill } from "react-icons/pi"
-import { FaStarAndCrescent } from "react-icons/fa6"
-import { GiFallingStar } from "react-icons/gi"
-import { GiGrass } from "react-icons/gi"
+import { FaCampground, FaDisease } from "react-icons/fa6";
+import { PiIslandFill } from "react-icons/pi";
+import { FaStarAndCrescent } from "react-icons/fa6";
+import { GiFallingStar } from "react-icons/gi";
+import { GiGrass } from "react-icons/gi";
 
-import { FaShoePrints } from "react-icons/fa6"
-import ReservationModal from "./ReservationModal"
-import { useState } from "react"
+import { FaShoePrints } from "react-icons/fa6";
+import ReservationModal from "./ReservationModal";
+import { useState } from "react";
 
 const Banner = () => {
-  const [toggleReservation, setToggleReservation] = useState(false)
+  const [toggleReservation, setToggleReservation] = useState(false);
 
-  console.log(toggleReservation)
+  console.log(toggleReservation);
 
   return (
     <div id="roomBanner" class="bannerWrapper">
@@ -30,7 +30,7 @@ const Banner = () => {
               <h2>
                 <FaDisease />
               </h2>
-              <a href="#">海洋之眼</a>
+              <a href="#">沉靜海洋</a>
             </div>
           </div>
           <div class="drop dropThree">
@@ -71,7 +71,7 @@ const Banner = () => {
           <a
             class="primaryButton"
             onClick={() => {
-              setToggleReservation(!toggleReservation)
+              setToggleReservation(!toggleReservation);
             }}
           >
             <i class="fa-regular fa-calendar-plus"></i>快速預約
@@ -91,7 +91,7 @@ const Banner = () => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
