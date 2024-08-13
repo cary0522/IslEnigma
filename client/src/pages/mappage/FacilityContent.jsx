@@ -66,7 +66,7 @@ function FacilityContent({
 				return (
 					<div className="divContent col-10">
 						<div className="divContentItem">
-							<img src={facility.images.image1} />
+							<img src={facility.image.image1} />
 						</div>
 						<div className="divContentItem">
 							<h1>{facility.title}</h1>
@@ -95,10 +95,10 @@ function FacilityContent({
 									設施位置 | <span>{facility.location}</span>
 								</p>
 								<p>
-									設施保養 | <span>{facility.date_maintain}</span>
+									設施保養 | <span>{facility.data_maintain}</span>
 								</p>
 								<p>
-									其他限制 | <span>{facility.rule_other}</span>
+									其他限制 | <span>{facility.rule_others}</span>
 								</p>
 								<p>
 									備註說明 | <span>{facility.remarks}</span>

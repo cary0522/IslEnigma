@@ -1,5 +1,5 @@
-import { Outlet, useLocation } from "react-router-dom";
-// import "./ShoppingCartPage.css"
+import { Outlet, useLocation } from "react-router-dom"
+import "./ShoppingCartPage.scss"
 
 import arrow from "/shoppingCart/breadcrumbArrow.png";
 import cartIcon from "/shoppingCart/shoppingCartIcon.png";
@@ -30,7 +30,7 @@ const BreadCrumb = () => {
   }
 
   return (
-    <>
+    <div className="shoppingCart">
       <main id={pageName} className="main">
         <div class="breadcrumb">
           <div className={pageName === "shoppingCart" ? "activeNow" : ""}>
@@ -47,8 +47,8 @@ const BreadCrumb = () => {
         </div>
         <Outlet />
       </main>
-    </>
-  );
-};
+    </div>
+  )
+}
 
 export default BreadCrumb;

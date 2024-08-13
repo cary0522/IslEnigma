@@ -18,7 +18,7 @@ function FacilityDes({
 				return (
 					<>
 						<div className="divDes" style={style}>
-							<img src={facility.images.image1} />
+							<img src={facility.image.image1} />
 							<div className="divDesContent">
 								<h1>{facility.title}</h1>
 								<div>{facility.des}</div>
