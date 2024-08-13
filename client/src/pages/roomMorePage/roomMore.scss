@@ -5,1053 +5,1050 @@
 $font-family: "Noto Sans TC", "Arial", sans-serif;
 $background-color: #fffdf8;
 $main-color: linear-gradient(
-	to right,
-	rgb(49, 124, 165),
-	hsla(263, 25%, 52%, 1)
+  to right,
+  rgb(49, 124, 165),
+  hsla(263, 25%, 52%, 1)
 );
 $text-color: #fff;
 $primary-color: #333;
 .room-more-page {
-	// Mixins
-	// Mixin 是 SCSS 中的一個功能，允許你定義一組可重用的 CSS 屬性，然後在需要的地方引用它們。
-	// @include flex-center;
-	@mixin flex-center {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	// 響應式設計 Mixin
-	@mixin responsive($breakpoint) {
-		@if $breakpoint == huge {
-			@media (min-width: 1921px) {
-				@content;
-			}
-		} @else if $breakpoint == large {
-			@media (min-width: 1440px) and (max-width: 1920px) {
-				@content;
-			}
-		} @else if $breakpoint == medium {
-			@media (min-width: 1024px) and (max-width: 1439px) {
-				@content;
-			}
-		} @else if $breakpoint == small {
-			@media (min-width: 720px) and (max-width: 1023px) {
-				@content;
-			}
-		} @else if $breakpoint == mobile {
-			@media (max-width: 719px) {
-				@content;
-			}
-		}
-	}
-
-	/* 全局樣式 */
-	body {
-		margin: 0;
-		padding: 0;
-		font-family: "Noto Sans TC", "Arial", sans-serif;
-		background: #fffdf8;
-		// overflow: hidden;
-
-		@include responsive(mobile) {
-			height: 100vh;
-			position: relative; // 為絕對定位的子元素提供定位上下文
-		}
-	}
-
-	#footer {
-		margin-top: 10px;
-	}
-
-	@keyframes slideInFromBottom {
-		0% {
-			transform: translateY(100%);
-			opacity: 0;
-		}
-		100% {
-			transform: translateY(0);
-			opacity: 1;
-		}
-	}
-
-	//---------------------room banner start
-
-	//腳印動畫本人
-	// @keyframes footstep {
-	//   0% {
-	//     opacity: 0;
-	//     transform: translateY(-20px) rotate(90deg);
-	//   }
-	//   20% {
-	//     opacity: 1;
-	//     transform: translateY(0) rotate(90deg);
-	//   }
-	//   80% {
-	//     opacity: 1;
-	//     transform: translateY(0) rotate(90deg);
-	//   }
-	//   100% {
-	//     opacity: 0;
-	//     transform: translateY(20px) rotate(90deg);
-	//   }
-	// }
-	// 處理腳印
-	.footprint-right {
-		@keyframes footstep {
-			0% {
-				opacity: 0;
-				transform: translateY(-20px) rotate0(270deg);
-			}
-			20% {
-				opacity: 1;
-				transform: translateY(0) rotate(270deg);
-			}
-			80% {
-				opacity: 1;
-				transform: translateY(0) rotate(270deg);
-			}
-			100% {
-				opacity: 0;
-				transform: translateY(20px) rotate(270deg);
-			}
-		}
-	}
-	//rain start
-	.rain {
-		position: absolute;
-		z-index: 2;
-		top: -50px;
-		background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
-		width: 3.5px;
-		height: 50px;
-		animation: rain linear infinite;
-	}
-
-	@keyframes rain {
-		0% {
-			transform: translateY(-50px);
-		}
-		100% {
-			transform: translateY(calc(100vh + 50px));
-		}
-	}
-	//rain end
-
-	// roomBanner 包裝
-	#roomBanner {
-		width: 100%;
-		background-image: url("../../public/roomMorePage/room (6).jpeg");
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-		color: $text-color;
-		padding: 0px;
-		margin: 0;
-		top: 50px;
-		flex-direction: column;
-		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-		overflow: hidden;
-		border-radius: none !important;
-
-		&.raining {
-			background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-				url("../../public/roomMorePage/room (6).jpeg");
-		}
-
-		@include responsive(mobile) {
-			height: 100vh;
-		}
-
-		//banner中間的內容
-		.bannerContent {
-			text-align: center;
-			margin-top: 5rem;
-			max-width: 100%;
-		}
-
-		@include responsive(mobile) {
-			top: 0;
-		}
-
-		.bannerLogo {
-			width: 35%;
-			margin: 0 auto 1rem;
-
-			img {
-				width: 100%;
-				height: auto;
-			}
-
-			@include responsive(mobile) {
-				width: 60vw;
-			}
-		}
-
-		.bannerTextGroup {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 2rem;
-			margin-bottom: 2rem;
-			max-width: 35%;
-
-			h1 {
-				color: white;
-				font-weight: 800;
-			}
-
-			.bannerLine {
-				width: 10rem;
-				height: 1px;
-				background-color: white;
-
-				@include responsive(mobile) {
-					width: 5rem;
-				}
-			}
-		}
-
-		.bannerTitle {
-			font-size: 2rem;
-			margin: 0;
-			white-space: nowrap;
-
-			@include responsive(mobile) {
-				font-size: 1.5rem;
-			}
-		}
-
-		.bannerTagline {
-			font-size: 1rem;
-			line-height: 1.5;
-			margin-bottom: 2rem;
-
-			@include responsive(small) {
-				padding: 0 150px;
-				line-height: 1.5;
-			}
-
-			@include responsive(mobile) {
-				padding: 0 80px;
-				line-height: 1.5;
-			}
-		}
-
-		.bannerButtons {
-			display: flex;
-			width: 350px;
-			justify-content: center;
-			gap: 10px;
-
-			@include responsive(mobile) {
-				width: 300px;
-			}
-		}
-
-		.primaryButton {
-			background: rgba(255, 255, 255, 0.094);
-			color: #ffffff;
-			border: white 1px solid;
-			padding: 10px 20px;
-			border-radius: 25px;
-			font-weight: 500;
-			display: flex;
-			align-items: center;
-			gap: 10px;
-			cursor: pointer;
-			transition: background 0.3s ease;
-
-			&:hover {
-				background: #e4e3e6;
-				color: #3b7ba5;
-				transform: translateY(-5px);
-				box-shadow: 0px 4px 4px rgba(211, 211, 211, 0.5); // 添加懸停時的陰影
-			}
-
-			&:hover i {
-				transform: scale(1.2);
-			}
-
-			&:active {
-				transform: translateY(-2px); // 按下時稍微回彈
-				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); // 按下時的陰影稍微不同
-			}
-		}
-
-		//腳印動畫包裝
-		.footprints {
-			position: absolute;
-			bottom: 10px; //從底部開始
-			left: 50%;
-			transform: translateX(-50%);
-			width: 90px;
-			height: 120px;
-
-			@include responsive(mobile) {
-				bottom: 10vh;
-			}
-		}
-
-		//腳印本人
-		.footprint {
-			position: absolute;
-			font-size: 26px;
-			color: rgba(255, 255, 255, 0.7);
-			opacity: 0;
-			animation: footstep 4s infinite;
-			transform: rotate(270deg); // 使腳尖朝下
-
-			&-left {
-				left: 0;
-			}
-
-			&-right {
-				right: 0;
-				transform: rotate(270deg); // 使用 scaleY 而不是 scaleX
-			}
-
-			@include responsive(huge) {
-				display: none;
-			}
-
-			@include responsive(large) {
-				display: none;
-			}
-
-			//出現時間
-			&:nth-child(1) {
-				animation-delay: 0s;
-				top: 0%;
-			}
-			&:nth-child(2) {
-				animation-delay: 1s;
-				top: 25%;
-			}
-			&:nth-child(3) {
-				animation-delay: 2s;
-				top: 50%;
-			}
-			&:nth-child(4) {
-				animation-delay: 3s;
-				top: 75%;
-			}
-		}
-	}
-
-	//水滴按鈕
-	.containerMain {
-		display: flex;
-		position: relative;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 20px;
-		padding: 10px;
-		animation: slideInFromBottom 1s ease-out;
-
-		@include responsive(small) {
-			display: none;
-		}
-		@include responsive(mobile) {
-			display: none;
-		}
-
-		.drop {
-			position: relative;
-			width: 120px;
-			height: 120px;
-			background: rgba(255, 255, 255, 0.1);
-			backdrop-filter: blur(10px);
-			box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05),
-				25px 35px 30px rgba(0, 0, 0, 0.05), 25px 30px 30px rgba(0, 0, 0, 0.05),
-				inset -20px -20px 25px rgba(255, 255, 255, 0.544);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			transition: 0.5s ease-in-out;
-
-			&::before {
-				content: "";
-				position: absolute;
-				top: 10px;
-				left: 20px;
-				width: 10px;
-				height: 10px;
-				background: #fff;
-				border-radius: 50%;
-				opacity: 0.9;
-			}
-
-			&:hover {
-				border-radius: 50%;
-
-				.content .h2 {
-					color: #699dbf;
-					transform: scale(1.1);
-				}
-			}
-
-			.content {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 10px;
-				transition: 0.3s;
-				z-index: 99999;
-
-				.h2 {
-					width: 150px;
-					border-radius: 50%;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					font-size: 2.5rem;
-					color: #ffffff;
-					transition: 0.3s;
-				}
-
-				a {
-					// padding: 8px 20px;
-					color: #fff;
-					border-radius: 20px;
-					text-decoration: none;
-					font-weight: 500;
-					opacity: 0.75;
-					transition: 0.3s;
-
-					&:hover {
-						opacity: 1;
-					}
-				}
-			}
-		}
-
-		.dropOne {
-			border-radius: 50% 70% 70% 40% / 30% 30% 70% 70%;
-
-			/* 作外框 */
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-				border: 1px solid#ffffff;
-			}
-		}
-
-		.dropTwo {
-			border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-			/* 作外框 */
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 45% 55% 50% 50% / 39% 56% 44% 61%;
-				border: 1px solid#ffffff;
-			}
-		}
-
-		.dropThree {
-			border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
-			/* 作外框 */
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 45% 55% 50% 50% / 65% 34% 66% 35%;
-				border: 1px solid#ffffff;
-			}
-		}
-
-		.dropFour {
-			border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
-			/* 作外框 */
-			&::after {
-				content: "";
-				position: absolute;
-				width: 120px;
-				height: 120px;
-				border-radius: 45% 55% 50% 50% / 42% 42% 58% 58%;
-				border: 1px solid#ffffff;
-			}
-		}
-	}
-	//---------------------room banner end
-
-	//------------room more start
-	#roomMore {
-		max-width: 1300px;
-		margin: 0 auto;
-		margin-top: 100px;
-		padding: 2rem;
-
-		@include responsive(mobile) {
-			margin-top: 50px;
-		}
-
-		.roomItem {
-			display: flex;
-			margin-bottom: 3rem;
-			gap: 1.5rem;
-
-			//控制左右排序
-			&.odd {
-				flex-direction: row-reverse;
-			}
-
-			@include responsive(small) {
-				flex-direction: column;
-				gap: 0rem;
-
-				&.odd {
-					flex-direction: column;
-				}
-			}
-
-			@include responsive(mobile) {
-				flex-direction: column;
-				gap: 0rem;
-
-				&.odd {
-					flex-direction: column;
-				}
-			}
-
-			//左邊的圖
-			.roomCarousel {
-				flex: 0 0 50%; // 固定寬度為50%
-				max-width: 600px;
-				// margin-right: 1rem;
-
-				.odd & {
-					margin-right: 0;
-					margin-left: 2rem;
-				}
-
-				@include responsive(small) {
-					flex: 1 0 auto;
-					max-width: 100%;
-					margin-right: 0;
-					margin-left: 0;
-					margin-bottom: 1rem;
-				}
-
-				@include responsive(mobile) {
-					flex: 1 0 auto;
-					max-width: 100%;
-					margin-right: 0;
-					margin-left: 0;
-					margin-bottom: 1rem;
-				}
-
-				.carousel {
-					margin-bottom: 1rem;
-
-					.carousel-inner {
-						border-radius: 20px;
-						overflow: hidden;
-					}
-
-					.carousel-item {
-						img {
-							width: 100%;
-							height: 400px; // 固定高度
-							object-fit: cover; // 保持圖片比例並填滿容器
-							transition: 0.3s;
-
-							&:hover {
-								transform: scale(1.1);
-							}
-						}
-					}
-				}
-
-				.thumbnails {
-					display: flex;
-					justify-content: space-between;
-
-					img {
-						width: 32%;
-						height: 80px;
-						object-fit: cover;
-						border-radius: 20px;
-						cursor: pointer;
-						transition: 0.3s ease;
-
-						&:hover {
-							opacity: 0.8;
-							transform: scale(1.1);
-						}
-					}
-				}
-			}
-
-			//右邊
-			.roomInfo {
-				flex: 1;
-				padding: 1rem; //?
-				position: relative;
-
-				.backgroundImageGrass {
-					position: absolute;
-					top: -40px;
-					right: 0;
-					width: 250px;
-					height: 250px;
-					background-image: url("../../../public/roomMorePage/room(72)-02.png");
-					background-size: contain;
-					background-repeat: no-repeat;
-					background-position: top right;
-					opacity: 0.2;
-					z-index: 1;
-				}
-
-				.backgroundImageIsland {
-					position: absolute;
-					top: -50px;
-					right: 0;
-					width: 250px;
-					height: 250px;
-					background-image: url("../../../public/roomMorePage/room(73)-02-03.png");
-					background-size: contain;
-					background-repeat: no-repeat;
-					background-position: top right;
-					opacity: 0.2;
-					z-index: 1;
-				}
-
-				// 確保其他內容在圖片上方
-				.roomTypeEng,
-				.roomType,
-				.roomMoreSlogan,
-				.roomDesc,
-				.roomTags,
-				.roomDetails,
-				.roomActions {
-					position: relative;
-					// z-index: 2;
-				}
-
-				.roomTypeEng {
-					font-size: 2rem;
-					font-weight: 800;
-					line-height: 1.2;
-					background: $main-color;
-					-webkit-background-clip: text;
-					-webkit-text-fill-color: transparent;
-					margin-bottom: 0.5rem;
-					color: #3b7ba5;
-
-					@include responsive(small) {
-						font-size: 1.6rem;
-					}
-
-					@include responsive(mobile) {
-						font-size: 1.5rem;
-					}
-				}
-
-				.roomType {
-					font-size: 1.5rem;
-					margin-bottom: 0.5rem;
-					line-height: 1.5;
-					color: #666;
-					font-weight: 600;
-
-					@include responsive(small) {
-						font-size: 1.2rem;
-					}
-
-					@include responsive(mobile) {
-						font-size: 1.1rem;
-					}
-				}
-
-				.roomMoreSlogan {
-					font-style: italic;
-					margin-bottom: 1rem;
-					color: #7f8f99;
-					font-weight: 800;
-				}
-
-				.roomDesc {
-					margin-bottom: 1rem;
-					color: #3b7ba5;
-					font-weight: 600;
-					line-height: 1.5;
-				}
-
-				.roomTags {
-					display: flex;
-					flex-wrap: wrap;
-					margin-bottom: 1rem;
-					color: #3b7ba5;
-					gap: 10px;
-
-					span.tag {
-						display: block;
-						background: $main-color;
-						color: #fff;
-						padding: 0.5rem 1rem;
-						border-radius: 20px;
-						margin-left: 0;
-						margin-right: 0rem;
-						margin-bottom: 0.5rem;
-						transition: all 0.3s;
-
-						&:hover {
-							transform: scale(1.1rem);
-							font-size: large;
-						}
-
-						@include responsive(small) {
-							padding: 0.3rem 0.8rem;
-							font-size: 1rem;
-						}
-
-						@include responsive(mobile) {
-							padding: 0.3rem 0.8rem;
-							font-size: 1rem;
-							margin-right: 0.5rem;
-						}
-					}
-				}
-
-				.roomDetails {
-					display: grid;
-					grid-template-columns: repeat(4, 1fr);
-					gap: 1rem;
-					margin-bottom: 1rem;
-					font-weight: bold;
-					color: #3b7ba5;
-					font-size: 0.8rem;
-
-					@include responsive(small) {
-						grid-template-columns: repeat(8, 1fr);
-					}
-
-					@include responsive(mobile) {
-						grid-template-columns: repeat(3, 1fr);
-						gap: 0.5rem;
-					}
-
-					.detailItem {
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-						text-align: center;
-
-						i {
-							font-size: 2rem;
-							margin-bottom: 0.5rem;
-							background: $main-color;
-							-webkit-background-clip: text;
-							-webkit-text-fill-color: transparent;
-
-							@include responsive(small) {
-								font-size: 1.5rem;
-							}
-
-							@include responsive(mobile) {
-								font-size: 1.3rem;
-							}
-						}
-					}
-				}
-
-				.roomActions {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					.roomMemo {
-						font-style: italic;
-						margin-bottom: 0;
-						flex: 1;
-						color: #9ba7ce;
-					}
-
-					.checkFacilities {
-						background: $main-color;
-						color: #fff;
-						border: none;
-						padding: 0.8rem 1.5rem;
-						border-radius: 50px;
-						cursor: pointer;
-						transition: 0.3s ease;
-
-						@include responsive(small) {
-							padding: 0.7rem 1.3rem;
-							font-size: 0.95em;
-						}
-
-						@include responsive(mobile) {
-							padding: 0.6rem 1.2rem;
-							font-size: 0.9em;
-						}
-
-						&:hover {
-							opacity: 0.9;
-							transform: scale(1.1);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	.roomItem {
-		&.even {
-			background-color: rgba(255, 255, 255, 0.1); // 淡紅色背景
-		}
-		&.odd {
-			background-color: rgba(188, 188, 188, 0.1); // 淡藍色背景
-		}
-	}
-	//------------room more end
-
-	//------------room Facilities start
-	#roomFacilities {
-		padding: 2rem;
-		background-color: #fffdf8;
-
-		h2 {
-			text-align: center;
-			color: #3b7ba5;
-			font-size: 2rem;
-			margin-bottom: 2rem;
-		}
-
-		.facilitiesGrid {
-			display: grid;
-			grid-template-columns: repeat(8, 1fr);
-			gap: 1.5rem;
-			padding: 0 110px;
-
-			@include responsive(medium) {
-				grid-template-columns: repeat(6, 1fr);
-				padding: 0 80px;
-			}
-
-			@include responsive(small) {
-				grid-template-columns: repeat(5, 1fr);
-				padding: 0 50px;
-			}
-
-			@include responsive(mobile) {
-				grid-template-columns: repeat(4, 1fr);
-				gap: 1rem;
-				padding: 0 20px;
-			}
-
-			.facilityItem {
-				@include flex-center;
-				flex-direction: column;
-				text-align: center;
-				color: #3b7ba5;
-				font-size: 0.9rem;
-				transition: 0.3s;
-
-				&:hover {
-					transform: scale(1.2);
-				}
-
-				.iconWrapper {
-					width: 60px;
-					height: 60px;
-					border-radius: 50%;
-					background-color: #f0f0f0;
-					@include flex-center;
-					margin-bottom: 0.5rem;
-					transition: 0.3s;
-
-					&:hover {
-						background-color: #699dbf;
-
-						i {
-							color: #e4e3e6;
-						}
-					}
-
-					@include responsive(mobile) {
-						width: 50px;
-						height: 50px;
-					}
-
-					i {
-						font-size: 1.5rem;
-						color: #3b7ba5;
-
-						@include responsive(mobile) {
-							font-size: 1.2rem;
-						}
-					}
-				}
-
-				span {
-					@include responsive(mobile) {
-						font-size: 0.8rem;
-					}
-				}
-			}
-		}
-	}
-	//------------room Facilities end
-	//---------------------room slogan start
-	.roomSlogan {
-		position: relative;
-		width: calc(100% - 220px);
-		height: 300px;
-		overflow: hidden;
-		border-radius: 200px;
-		// border-radius: 200px / 50%;
-		margin: 50px 110px;
-		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-
-		img {
-			transition: 0.3s;
-			&:hover {
-				transform: scale(1.2);
-			}
-		}
-
-		@include responsive(medium) {
-			width: calc(100% - 160px);
-			height: 250px;
-			margin: 40px 80px;
-		}
-
-		@include responsive(small) {
-			width: calc(100% - 100px);
-			height: 200px;
-			margin: 30px 50px;
-		}
-
-		@include responsive(mobile) {
-			width: calc(100% - 40px);
-			height: 200px;
-			margin: 100px 20px;
-			border-radius: 100px / 50%;
-		}
-
-		&__container {
-			position: relative;
-			width: 100%;
-			height: 100%;
-			display: flex;
-			transition: transform 0.5s ease-in-out;
-		}
-
-		&__slide {
-			width: 50%;
-			height: 100%;
-			flex-shrink: 0;
-			overflow: hidden;
-			position: relative;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		}
-
-		&__content {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			text-align: center;
-			color: #fff;
-			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-			width: 80%;
-
-			h2 {
-				font-size: 2rem;
-				margin-bottom: 0.5rem;
-
-				@include responsive(medium) {
-					font-size: 1.8rem;
-				}
-
-				@include responsive(small) {
-					font-size: 1.5rem;
-				}
-
-				@include responsive(mobile) {
-					font-size: 1rem;
-				}
-			}
-
-			h3 {
-				font-size: 1.5rem;
-
-				@include responsive(medium) {
-					font-size: 1.3rem;
-				}
-
-				@include responsive(small) {
-					font-size: 1.1rem;
-				}
-
-				@include responsive(mobile) {
-					font-size: 0.8rem;
-				}
-			}
-		}
-
-		&__indicators {
-			position: absolute;
-			bottom: 20px;
-			left: 50%;
-			transform: translateX(-50%);
-			display: flex;
-			z-index: 10;
-
-			@include responsive(mobile) {
-				bottom: 10px;
-			}
-		}
-
-		&__indicator {
-			width: 12px;
-			height: 12px;
-			border-radius: 10px;
-			background-color: rgba(255, 255, 255, 0.5);
-			margin: 0 5px;
-			cursor: pointer;
-			transition: 0.3s ease;
-
-			@include responsive(mobile) {
-				width: 8px;
-				height: 8px;
-				margin: 0 3px;
-
-				&.active {
-					background-color: #fff;
-					width: 16px;
-				}
-			}
-
-			&.active {
-				background-color: #fff;
-				width: 24px;
-			}
-		}
-	}
-	//---------------------room slogan end
-	//粉嫩嫩色linear-gradient(to right, #e198b4, #6bbce7)
-	//比較深的粉嫩嫩色linear-gradient(to right, #6797C8, #E08BAE)
-	// $main-color: linear-gradient(
-	//   to right,
-	//   rgb(49, 124, 165),
-	//   hsla(263, 25%, 52%, 1)
-	// );
+  // Mixins
+  // Mixin 是 SCSS 中的一個功能，允許你定義一組可重用的 CSS 屬性，然後在需要的地方引用它們。
+  // @include flex-center;
+  @mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // 響應式設計 Mixin
+  @mixin responsive($breakpoint) {
+    @if $breakpoint == huge {
+      @media (min-width: 1921px) {
+        @content;
+      }
+    } @else if $breakpoint == large {
+      @media (min-width: 1440px) and (max-width: 1920px) {
+        @content;
+      }
+    } @else if $breakpoint == medium {
+      @media (min-width: 1024px) and (max-width: 1439px) {
+        @content;
+      }
+    } @else if $breakpoint == small {
+      @media (min-width: 720px) and (max-width: 1023px) {
+        @content;
+      }
+    } @else if $breakpoint == mobile {
+      @media (max-width: 719px) {
+        @content;
+      }
+    }
+  }
+
+  /* 全局樣式 */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans TC", "Arial", sans-serif;
+    background: #fffdf8;
+    // overflow: hidden;
+
+    @include responsive(mobile) {
+      height: 100vh;
+      position: relative; // 為絕對定位的子元素提供定位上下文
+    }
+  }
+
+  @keyframes slideInFromBottom {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  //---------------------room banner start
+
+  //腳印動畫本人
+  // @keyframes footstep {
+  //   0% {
+  //     opacity: 0;
+  //     transform: translateY(-20px) rotate(90deg);
+  //   }
+  //   20% {
+  //     opacity: 1;
+  //     transform: translateY(0) rotate(90deg);
+  //   }
+  //   80% {
+  //     opacity: 1;
+  //     transform: translateY(0) rotate(90deg);
+  //   }
+  //   100% {
+  //     opacity: 0;
+  //     transform: translateY(20px) rotate(90deg);
+  //   }
+  // }
+  // 處理腳印
+  .footprint-right {
+    @keyframes footstep {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px) rotate0(270deg);
+      }
+      20% {
+        opacity: 1;
+        transform: translateY(0) rotate(270deg);
+      }
+      80% {
+        opacity: 1;
+        transform: translateY(0) rotate(270deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(20px) rotate(270deg);
+      }
+    }
+  }
+  //rain start
+  .rain {
+    position: absolute;
+    z-index: 2;
+    top: -50px;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+    width: 3.5px;
+    height: 50px;
+    animation: rain linear infinite;
+  }
+
+  @keyframes rain {
+    0% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(calc(100vh + 50px));
+    }
+  }
+  //rain end
+
+  // roomBanner 包裝
+  #roomBanner {
+    width: 100%;
+    background-image: url("../../public/roomMorePage/room (6).jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: $text-color;
+    padding: 0px;
+    margin: 0;
+    top: 50px;
+    flex-direction: column;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: none !important;
+
+    &.raining {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+        url("../../public/roomMorePage/room (6).jpeg");
+    }
+
+    @include responsive(mobile) {
+      height: 100vh;
+    }
+
+    //banner中間的內容
+    .bannerContent {
+      text-align: center;
+      margin-top: 5rem;
+      max-width: 100%;
+    }
+
+    @include responsive(mobile) {
+      top: 0;
+    }
+
+    .bannerLogo {
+      width: 35%;
+      margin: 0 auto 1rem;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      @include responsive(mobile) {
+        width: 60vw;
+      }
+    }
+
+    .bannerTextGroup {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      max-width: 35%;
+
+      h1 {
+        color: white;
+        font-weight: 800;
+      }
+
+      .bannerLine {
+        width: 10rem;
+        height: 1px;
+        background-color: white;
+
+        @include responsive(mobile) {
+          width: 5rem;
+        }
+      }
+    }
+
+    .bannerTitle {
+      font-size: 2rem;
+      margin: 0;
+      white-space: nowrap;
+
+      @include responsive(mobile) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .bannerTagline {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+
+      @include responsive(small) {
+        padding: 0 150px;
+        line-height: 1.5;
+      }
+
+      @include responsive(mobile) {
+        padding: 0 80px;
+        line-height: 1.5;
+      }
+    }
+
+    .bannerButtons {
+      display: flex;
+      width: 350px;
+      justify-content: center;
+      gap: 10px;
+
+      @include responsive(mobile) {
+        width: 300px;
+      }
+    }
+
+    .primaryButton {
+      background: rgba(255, 255, 255, 0.094);
+      color: #ffffff;
+      border: white 1px solid;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #e4e3e6;
+        color: #3b7ba5;
+        transform: translateY(-5px);
+        box-shadow: 0px 4px 4px rgba(211, 211, 211, 0.5); // 添加懸停時的陰影
+      }
+
+      &:hover i {
+        transform: scale(1.2);
+      }
+
+      &:active {
+        transform: translateY(-2px); // 按下時稍微回彈
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); // 按下時的陰影稍微不同
+      }
+    }
+
+    //腳印動畫包裝
+    .footprints {
+      position: absolute;
+      bottom: 10px; //從底部開始
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 120px;
+
+      @include responsive(mobile) {
+        bottom: 10vh;
+      }
+    }
+
+    //腳印本人
+    .footprint {
+      position: absolute;
+      font-size: 26px;
+      color: rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      animation: footstep 4s infinite;
+      transform: rotate(270deg); // 使腳尖朝下
+
+      &-left {
+        left: 0;
+      }
+
+      &-right {
+        right: 0;
+        transform: rotate(270deg); // 使用 scaleY 而不是 scaleX
+      }
+
+      @include responsive(huge) {
+        display: none;
+      }
+
+      @include responsive(large) {
+        display: none;
+      }
+
+      //出現時間
+      &:nth-child(1) {
+        animation-delay: 0s;
+        top: 0%;
+      }
+      &:nth-child(2) {
+        animation-delay: 1s;
+        top: 25%;
+      }
+      &:nth-child(3) {
+        animation-delay: 2s;
+        top: 50%;
+      }
+      &:nth-child(4) {
+        animation-delay: 3s;
+        top: 75%;
+      }
+    }
+  }
+
+  //水滴按鈕
+  .containerMain {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    animation: slideInFromBottom 1s ease-out;
+
+    @include responsive(small) {
+      display: none;
+    }
+    @include responsive(mobile) {
+      display: none;
+    }
+
+    .drop {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.05),
+        25px 35px 30px rgba(0, 0, 0, 0.05), 25px 30px 30px rgba(0, 0, 0, 0.05),
+        inset -20px -20px 25px rgba(255, 255, 255, 0.544);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.5s ease-in-out;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        border-radius: 50%;
+        opacity: 0.9;
+      }
+
+      &:hover {
+        border-radius: 50%;
+
+        .content .h2 {
+          color: #699dbf;
+          transform: scale(1.1);
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+        z-index: 99999;
+
+        .h2 {
+          width: 150px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2.5rem;
+          color: #ffffff;
+          transition: 0.3s;
+        }
+
+        a {
+          // padding: 8px 20px;
+          color: #fff;
+          border-radius: 20px;
+          text-decoration: none;
+          font-weight: 500;
+          opacity: 0.75;
+          transition: 0.3s;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .dropOne {
+      border-radius: 50% 70% 70% 40% / 30% 30% 70% 70%;
+
+      /* 作外框 */
+      &::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        border: 1px solid#ffffff;
+      }
+    }
+
+    .dropTwo {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      /* 作外框 */
+      &::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 45% 55% 50% 50% / 39% 56% 44% 61%;
+        border: 1px solid#ffffff;
+      }
+    }
+
+    .dropThree {
+      border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+      /* 作外框 */
+      &::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 45% 55% 50% 50% / 65% 34% 66% 35%;
+        border: 1px solid#ffffff;
+      }
+    }
+
+    .dropFour {
+      border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+      /* 作外框 */
+      &::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 45% 55% 50% 50% / 42% 42% 58% 58%;
+        border: 1px solid#ffffff;
+      }
+    }
+  }
+  //---------------------room banner end
+
+  //------------room more start
+  #roomMore {
+    max-width: 1300px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 2rem;
+
+    @include responsive(mobile) {
+      margin-top: 50px;
+    }
+
+    .roomItem {
+      display: flex;
+      margin-bottom: 3rem;
+      gap: 1.5rem;
+
+      //控制左右排序
+      &.odd {
+        flex-direction: row-reverse;
+      }
+
+      @include responsive(small) {
+        flex-direction: column;
+        gap: 0rem;
+
+        &.odd {
+          flex-direction: column;
+        }
+      }
+
+      @include responsive(mobile) {
+        flex-direction: column;
+        gap: 0rem;
+
+        &.odd {
+          flex-direction: column;
+        }
+      }
+
+      //左邊的圖
+      .roomCarousel {
+        flex: 0 0 50%; // 固定寬度為50%
+        max-width: 600px;
+        // margin-right: 1rem;
+
+        .odd & {
+          margin-right: 0;
+          margin-left: 2rem;
+        }
+
+        @include responsive(small) {
+          flex: 1 0 auto;
+          max-width: 100%;
+          margin-right: 0;
+          margin-left: 0;
+          margin-bottom: 1rem;
+        }
+
+        @include responsive(mobile) {
+          flex: 1 0 auto;
+          max-width: 100%;
+          margin-right: 0;
+          margin-left: 0;
+          margin-bottom: 1rem;
+        }
+
+        .carousel {
+          margin-bottom: 1rem;
+
+          .carousel-inner {
+            border-radius: 20px;
+            overflow: hidden;
+          }
+
+          .carousel-item {
+            img {
+              width: 100%;
+              height: 400px; // 固定高度
+              object-fit: cover; // 保持圖片比例並填滿容器
+              transition: 0.3s;
+
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+
+        .thumbnails {
+          display: flex;
+          justify-content: space-between;
+
+          img {
+            width: 32%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            &:hover {
+              opacity: 0.8;
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      //右邊
+      .roomInfo {
+        flex: 1;
+        padding: 1rem; //?
+        position: relative;
+
+        .backgroundImageGrass {
+          position: absolute;
+          top: -40px;
+          right: 0;
+          width: 250px;
+          height: 250px;
+          background-image: url("../../../public/roomMorePage/room(72)-02.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: top right;
+          opacity: 0.2;
+          z-index: 1;
+        }
+
+        .backgroundImageIsland {
+          position: absolute;
+          top: -50px;
+          right: 0;
+          width: 250px;
+          height: 250px;
+          background-image: url("../../../public/roomMorePage/room(73)-02-03.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: top right;
+          opacity: 0.2;
+          z-index: 1;
+        }
+
+        // 確保其他內容在圖片上方
+        .roomTypeEng,
+        .roomType,
+        .roomMoreSlogan,
+        .roomDesc,
+        .roomTags,
+        .roomDetails,
+        .roomActions {
+          position: relative;
+          // z-index: 2;
+        }
+
+        .roomTypeEng {
+          font-size: 2rem;
+          font-weight: 800;
+          line-height: 1.2;
+          background: $main-color;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 0.5rem;
+          color: #3b7ba5;
+
+          @include responsive(small) {
+            font-size: 1.6rem;
+          }
+
+          @include responsive(mobile) {
+            font-size: 1.5rem;
+          }
+        }
+
+        .roomType {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+          line-height: 1.5;
+          color: #666;
+          font-weight: 600;
+
+          @include responsive(small) {
+            font-size: 1.2rem;
+          }
+
+          @include responsive(mobile) {
+            font-size: 1.1rem;
+          }
+        }
+
+        .roomMoreSlogan {
+          font-style: italic;
+          margin-bottom: 1rem;
+          color: #7f8f99;
+          font-weight: 800;
+        }
+
+        .roomDesc {
+          margin-bottom: 1rem;
+          color: #3b7ba5;
+          font-weight: 600;
+          line-height: 1.5;
+        }
+
+        .roomTags {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 1rem;
+          color: #3b7ba5;
+          gap: 10px;
+
+          span.tag {
+            display: block;
+            background: $main-color;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-left: 0;
+            margin-right: 0rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+
+            &:hover {
+              transform: scale(1.1rem);
+              font-size: large;
+            }
+
+            @include responsive(small) {
+              padding: 0.3rem 0.8rem;
+              font-size: 1rem;
+            }
+
+            @include responsive(mobile) {
+              padding: 0.3rem 0.8rem;
+              font-size: 1rem;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+
+        .roomDetails {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+          margin-bottom: 1rem;
+          font-weight: bold;
+          color: #3b7ba5;
+          font-size: 0.8rem;
+
+          @include responsive(small) {
+            grid-template-columns: repeat(8, 1fr);
+          }
+
+          @include responsive(mobile) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+          }
+
+          .detailItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            i {
+              font-size: 2rem;
+              margin-bottom: 0.5rem;
+              background: $main-color;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+
+              @include responsive(small) {
+                font-size: 1.5rem;
+              }
+
+              @include responsive(mobile) {
+                font-size: 1.3rem;
+              }
+            }
+          }
+        }
+
+        .roomActions {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .roomMemo {
+            font-style: italic;
+            margin-bottom: 0;
+            flex: 1;
+            color: #9ba7ce;
+          }
+
+          .checkFacilities {
+            background: $main-color;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            @include responsive(small) {
+              padding: 0.7rem 1.3rem;
+              font-size: 0.95em;
+            }
+
+            @include responsive(mobile) {
+              padding: 0.6rem 1.2rem;
+              font-size: 0.9em;
+            }
+
+            &:hover {
+              opacity: 0.9;
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .roomItem {
+    &.even {
+      background-color: rgba(255, 255, 255, 0.1); // 淡紅色背景
+    }
+    &.odd {
+      background-color: rgba(188, 188, 188, 0.1); // 淡藍色背景
+    }
+  }
+  //------------room more end
+
+  //------------room Facilities start
+  #roomFacilities {
+    padding: 2rem;
+    margin-bottom: 100px;
+    background-color: #fffdf8;
+
+    h2 {
+      text-align: center;
+      color: #3b7ba5;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .facilitiesGrid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 1.5rem;
+      padding: 0 110px;
+
+      @include responsive(medium) {
+        grid-template-columns: repeat(6, 1fr);
+        padding: 0 80px;
+      }
+
+      @include responsive(small) {
+        grid-template-columns: repeat(5, 1fr);
+        padding: 0 50px;
+      }
+
+      @include responsive(mobile) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        padding: 0 20px;
+      }
+
+      .facilityItem {
+        @include flex-center;
+        flex-direction: column;
+        text-align: center;
+        color: #3b7ba5;
+        font-size: 0.9rem;
+        transition: 0.3s;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+
+        .iconWrapper {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-color: #f0f0f0;
+          @include flex-center;
+          margin-bottom: 0.5rem;
+          transition: 0.3s;
+
+          &:hover {
+            background-color: #699dbf;
+
+            i {
+              color: #e4e3e6;
+            }
+          }
+
+          @include responsive(mobile) {
+            width: 50px;
+            height: 50px;
+          }
+
+          i {
+            font-size: 1.5rem;
+            color: #3b7ba5;
+
+            @include responsive(mobile) {
+              font-size: 1.2rem;
+            }
+          }
+        }
+
+        span {
+          @include responsive(mobile) {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+  //------------room Facilities end
+  //---------------------room slogan start
+  .roomSlogan {
+    position: relative;
+    width: calc(100% - 220px);
+    height: 300px;
+    overflow: hidden;
+    border-radius: 200px;
+    // border-radius: 200px / 50%;
+    margin: 50px 110px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+
+    img {
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    @include responsive(medium) {
+      width: calc(100% - 160px);
+      height: 250px;
+      margin: 40px 80px;
+    }
+
+    @include responsive(small) {
+      width: calc(100% - 100px);
+      height: 200px;
+      margin: 30px 50px;
+    }
+
+    @include responsive(mobile) {
+      width: calc(100% - 40px);
+      height: 200px;
+      margin: 100px 20px;
+      border-radius: 100px / 50%;
+    }
+
+    &__container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    &__slide {
+      width: 50%;
+      height: 100%;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      width: 80%;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+
+        @include responsive(medium) {
+          font-size: 1.8rem;
+        }
+
+        @include responsive(small) {
+          font-size: 1.5rem;
+        }
+
+        @include responsive(mobile) {
+          font-size: 1rem;
+        }
+      }
+
+      h3 {
+        font-size: 1.5rem;
+
+        @include responsive(medium) {
+          font-size: 1.3rem;
+        }
+
+        @include responsive(small) {
+          font-size: 1.1rem;
+        }
+
+        @include responsive(mobile) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    &__indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      z-index: 10;
+
+      @include responsive(mobile) {
+        bottom: 10px;
+      }
+    }
+
+    &__indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+      margin: 0 5px;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      @include responsive(mobile) {
+        width: 8px;
+        height: 8px;
+        margin: 0 3px;
+
+        &.active {
+          background-color: #fff;
+          width: 16px;
+        }
+      }
+
+      &.active {
+        background-color: #fff;
+        width: 24px;
+      }
+    }
+  }
+  //---------------------room slogan end
+  //粉嫩嫩色linear-gradient(to right, #e198b4, #6bbce7)
+  //比較深的粉嫩嫩色linear-gradient(to right, #6797C8, #E08BAE)
+  // $main-color: linear-gradient(
+  //   to right,
+  //   rgb(49, 124, 165),
+  //   hsla(263, 25%, 52%, 1)
+  // );
 }

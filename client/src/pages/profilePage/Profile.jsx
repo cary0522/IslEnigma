@@ -2,7 +2,6 @@ import "./Profile.scss"
 import { useState } from "react"
 import Order from "./Order"
 import PayMethod from "./PayMethod"
-
 import MemberDetail from "./MemberDetail"
 import ChangePassword from "./ChangePassword"
 import Sidebar from "./Sidebar"

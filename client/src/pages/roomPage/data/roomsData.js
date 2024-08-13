@@ -22,7 +22,7 @@
 // }
 export const roomsData = [
   {
-    roomType: "草原步調1",
+    roomType: "草原步調",
     images: [
       "/03rooms/room (26).png",
       "/03rooms/room (12).jpeg",
@@ -33,36 +33,36 @@ export const roomsData = [
     price: 12000,
   },
   {
-    roomType: "草原步調2",
+    roomType: "沉靜海洋",
     images: [
-      "/03rooms/room (26).png",
-      "/03rooms/room (12).jpeg",
-      "/03rooms/room (32).png",
+      "./public/03rooms/room (13).jpg",
+      "./public/03rooms/room (10).jpeg",
+      "./public/03rooms/room (24).jpeg",
     ],
-    title: "簡約帳篷|草原步調",
-    desc: "擁抱自然簡約風，享受寧靜草原夜景",
-    price: 12000,
+    title: "豪華帳棚 | 沉靜海洋",
+    desc: "聆聽海浪聲，感受奢華露營體驗",
+    price: 15000,
   },
   {
-    roomType: "草原步調3",
+    roomType: "島嶼蹤跡",
     images: [
-      "/03rooms/room (26).png",
-      "/03rooms/room (12).jpeg",
-      "/03rooms/room (32).png",
+      "/03rooms/room (7).png",
+      "/03rooms/room (15).jpeg",
+      "/03rooms/room (23).jpeg",
     ],
-    title: "簡約帳篷|草原步調",
-    desc: "擁抱自然簡約風，享受寧靜草原夜景",
-    price: 12000,
+    title: "高級帳篷 | 島嶼蹤跡",
+    desc: "探索島嶼秘境，高級舒適盡在此處",
+    price: 18000,
   },
   {
-    roomType: "草原步調4",
+    roomType: "夢幻星空",
     images: [
-      "/03rooms/room (26).png",
-      "/03rooms/room (12).jpeg",
-      "/03rooms/room (32).png",
+      "/03rooms/room (1).jpeg",
+      "/03rooms/room (47).png",
+      "/03rooms/room (29).png",
     ],
     title: "簡約帳篷|草原步調",
-    desc: "擁抱自然簡約風，享受寧靜草原夜景",
-    price: 12000,
+    desc: "仰望星空，圓形設計帶來獨特體驗",
+    price: 20000,
   },
-]
+];
