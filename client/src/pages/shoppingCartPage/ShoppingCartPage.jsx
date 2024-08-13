@@ -1,17 +1,12 @@
-// import "./ShoppingCartPage.css"
 import { useEffect, useState } from "react"
-import Item from "./Item"
-import TotalPrice from "./TotalPrice"
-import useCartStore from "../../zustand/cartStore"
 import { Link, useLocation } from "react-router-dom"
 import axios from "axios"
-import { formatDate } from "../../utils/helpers"
-import { fetchCartItem } from "../../hooks/useCartItem"
 import { useCartItemsData } from "../../hooks/useCartItem"
 import { useUpdateQty } from "../../hooks/useUpdateQty"
 import { useRemoveCartItem } from "../../hooks/useDeleteItem"
 import CartItem from "./CartItem"
 import arrow from "/shoppingCart/breadcrumbArrow.png"
+import "./ShoppingCartPage.scss"
 
 const ShoppingCartPage = () => {
   const { mutate: removeCartItem } = useRemoveCartItem()

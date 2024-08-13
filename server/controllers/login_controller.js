@@ -35,7 +35,7 @@ const login_controller = {
       }
       const payload = {
         account: member.account,
-        id: member.id,
+        id: member.member_id,
       }
       const cookieToken = await generateToken.generateToken(payload)
       await cookieHelpers.setAuthCookie(res, cookieToken)
