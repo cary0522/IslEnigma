@@ -1,5 +1,4 @@
-
-import "./Profile.css"
+import "./Profile.scss"
 import { useState } from "react"
 import Order from "./Order"
 import PayMethod from "./PayMethod"
@@ -45,5 +44,4 @@ const Profile = () => {
   )
 }
 
-
-export default Profile;
+export default Profile
