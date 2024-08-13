@@ -1,7 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const bookHotel_router = require('./routes/bookHotel_routes');
 const member_router = require('./routes/member_routes');
 const app = express();
 const port = 8080;

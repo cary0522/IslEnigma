@@ -13,6 +13,7 @@ const login_Model = {
       return member;
     } catch (error) {
       console.log(error);
+      throw error;
     }
   }
 };

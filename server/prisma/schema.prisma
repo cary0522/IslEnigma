@@ -11,7 +11,7 @@ model member {
   member_id      Int              @id @default(autoincrement())
   name           String           @db.VarChar(50)
   address        String?          @db.VarChar(100)
-  birth          DateTime?        @db.Date
+  birth          String?          @db.VarChar(100)
   account        String           @unique @db.VarChar(50)
   password       String           @db.VarChar(64)
   phone          String?          @db.VarChar(20)
@@ -26,7 +26,7 @@ model credit_card {
   number         String   @db.VarChar(16)
   expiry         DateTime @db.Date
   cvv            String   @db.VarChar(4)
-  member         member?  @relation(fields: [member_id], references: [member_id], onDelete: NoAction, onUpdate: NoAction)
+  member         member?  @relation(fields: [member_id], references: [member_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_credit_card_member")
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
@@ -35,56 +35,37 @@ model customer_order {
   member_id    Int
   total_amount Int
   status       String       @db.VarChar(7)
-  order_date   DateTime
-  member       member       @relation(fields: [member_id], references: [member_id], onDelete: NoAction, onUpdate: NoAction)
+  order_date   DateTime     @db.Timestamp(6)
+  member       member       @relation(fields: [member_id], references: [member_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_customer_order_member")
   order_info   order_info?
   order_item   order_item[]
 }
 
-model event {
-  event_id     String    @id @db.VarChar(255)
-  type         String    @db.VarChar(100)
-  title        String    @db.VarChar(255)
-  content      String?
-  publish_time DateTime? @default(now()) @db.Timestamptz(6)
-  start_time   DateTime  @db.Timestamptz(6)
-  end_time     DateTime  @db.Timestamptz(6)
-  image        Json?
-  session      String?   @db.VarChar(100)
-  location     String?   @db.VarChar(255)
-}
-
 model facility {
-  facility_id     String            @id @db.VarChar(255)
-  title           String            @db.VarChar(255)
-  image           Json?
-  category        String            @db.VarChar(255)
-  des             String?
-  content         String?
-  area            String            @db.VarChar(255)
-  location        String            @db.VarChar(255)
-  open_time       String?           @db.VarChar(255)
-  data_maintain   DateTime?         @db.Date
-  class_name      String?           @db.VarChar(255)
-  remarks         String?
-  facility_rule   facility_rule[]
-  restaurant_menu restaurant_menu[]
+  facility_id         Int             @id @default(autoincrement())
+  title               String          @db.VarChar(255)
+  image               Json?
+  category            String          @db.VarChar(255)
+  des                 String?
+  content             String?
+  area                Int
+  location            String          @db.VarChar(255)
+  open_time           String?         @db.VarChar(255)
+  data_maintain       String?         @db.VarChar(255)
+  facility_id_name    String          @db.VarChar(255)
+  facility_class_name String          @db.VarChar(255)
+  rule_others         String          @db.VarChar(255)
+  remarks             String?
+  facility_rule       facility_rule[]
+  more_about          more_about[]
 }
 
 model facility_rule {
   facility_rule_id Int       @id @default(autoincrement())
-  facility_id      String?   @db.VarChar(255)
+  facility_id      Int?
   rule_type        String?   @db.VarChar(50)
   rule_value       String?   @db.VarChar(255)
-  facility         facility? @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model news {
-  news_id     String    @id @db.VarChar(10)
-  title       String    @db.VarChar(255)
-  des         String
-  create_time DateTime? @default(now()) @db.Timestamptz(6)
-  image       Json?
+  facility         facility? @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_rule_facility")
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
@@ -95,49 +76,48 @@ model order_info {
   phone_number   String         @db.VarChar(191)
   address        String         @db.VarChar(191)
   payment_method String         @db.VarChar(10)
-  customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+  customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_info_customer_order")
 }
 
 model order_item {
   order_item_id  String         @id @db.VarChar(191)
   order_id       String         @db.VarChar(191)
-  room_id        String?        @db.VarChar(191)
-  ticket_id      String?        @db.VarChar(191)
-  check_in_date  DateTime?
-  check_out_date DateTime?
+  room_id        Int?
+  ticket_id      Int?
+  check_in_date  DateTime?      @db.Timestamp(6)
+  check_out_date DateTime?      @db.Timestamp(6)
   people_count   Int?
   quantity       Int
-  booked_date    DateTime?
-  valid_date     DateTime?
-  customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
-  room           room?          @relation(fields: [room_id], references: [room_id], onUpdate: NoAction)
-  ticket         ticket?        @relation(fields: [ticket_id], references: [ticket_id], onUpdate: NoAction)
-}
-
-model restaurant_menu {
-  restaurant_menu_id Int       @id @default(autoincrement())
-  facility_id        String?   @db.VarChar(20)
-  menu_item          String    @db.VarChar(255)
-  price              Decimal   @db.Decimal(10, 2)
-  facility           facility? @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction)
+  booked_date    DateTime?      @db.Timestamp(6)
+  valid_date     DateTime?      @db.Timestamp(6)
+  customer_order customer_order @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_item_customer_order")
+  room           room?          @relation(fields: [room_id], references: [room_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_item_room")
+  ticket         ticket?        @relation(fields: [ticket_id], references: [ticket_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_order_item_ticket")
 }
 
 model room {
-  room_id     String       @id @db.VarChar(191)
+  room_id     Int          @id @default(autoincrement())
   room_type   String       @db.VarChar(191)
-  bed_count   Int          @default(2)
+  room_count  Int          @default(2)
   description String?      @db.VarChar(191)
   price       Int
-  available   Boolean
   capacity    Int          @default(2)
   img         Json?
   order_item  order_item[]
 }
 
 model ticket {
-  ticket_id  String       @id @db.VarChar(191)
-  type       String       @db.VarChar(191)
+  ticket_id  Int          @id @default(autoincrement())
+  type       String       @db.VarChar(100)
   price      Int
   img        Json?
   order_item order_item[]
+}
+
+model more_about {
+  more_about_id Int      @id @default(autoincrement())
+  more_link     String
+  facility_id   Int
+  img           Json?
+  facility      facility @relation(fields: [facility_id], references: [facility_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_more_about_facility")
 }

@@ -12,7 +12,7 @@ const register_Model = {
           name: memberData.name,
           address: memberData.address,
           phone: memberData.phone,
-          birth: new Date(memberData.birth),
+          birth:memberData.birth,
           account: memberData.account,
           password:hashedPassword,
         },
