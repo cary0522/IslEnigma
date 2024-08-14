@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const Nav = ({ toggleNavbar }) => {
   return (
     <nav className={toggleNavbar ? "navbar hidden" : "navbar active"}>
-      <a href="./homepage">
+      <a href="/homepage">
         <picture className="logo-container">
           <source
             media="(min-width:1024px)"
