@@ -29,6 +29,7 @@ app.use("/rooms", search_rooms_route)
 app.use("/cart", cart_route)
 app.use("/map", map_route)
 app.use("/ticket", ticket_route)
+
 app.listen(PORT || 8080, () => {
   console.log(`Server is running on port ${PORT}`)
 })
