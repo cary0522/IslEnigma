@@ -1,18 +1,21 @@
 import { useState } from "react"
 import ProfileModal from "./ProfileModal"
 import { orderData } from "./data/orderData"
+import { useProfileOrders } from "../../hooks/useProfileOrders"
 
 const Order = () => {
+  const { data: orderData, isLoading, error } = useProfileOrders()
   const [orderPeople, setOrderPeople] = useState({})
   const [openModal, setOpenModal] = useState(false)
 
   const handleShowModal = (id) => {
     const targetOrder = orderData.find((order) => order.order_id === id)
-    console.log(targetOrder.orderPeople)
 
     setOrderPeople(targetOrder.orderPeople)
     setOpenModal(true)
   }
+  if (isLoading) return <div>isLoading..</div>
+
   return (
     <div id="orderContent" style={{ display: "flex" }}>
       {orderData.length === 0 ? (
@@ -32,7 +35,7 @@ const Order = () => {
           {orderData.map((data) => {
             return (
               <>
-                <h2 class="order-table-title">
+                <h2 class="order-table-title" key={data.id}>
                   {data.room_type ? "訂房資訊" : "訂票資訊"}
                 </h2>
                 <table class="order-table">
