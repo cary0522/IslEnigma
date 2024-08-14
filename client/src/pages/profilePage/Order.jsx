@@ -21,7 +21,7 @@ const Order = () => {
         <div class="none-container">
           <img
             class="none-picture"
-            src="../../assets/image/image 98.png"
+            src="/00logo/LOGO_Colorful_1.png"
             alt="PayMethod Image"
           />
           <p id="none-text">沒有任何訂單</p>

@@ -15,18 +15,19 @@ const PayMethod = () => {
   return (
     <>
       {/* 新增卡號彈出視窗 */}
-      {openModal && <AddCardModal setOpenModal={setOpenModal} />}
-      <div className="payMethod-addBtnDiv">
-        <button
+      {/* {openModal && <AddCardModal setOpenModal={setOpenModal} />} */}
+      {/* <div className="payMethod-addBtnDiv"> */}
+        {/* <button
           className="payMethod-addBtn"
           onClick={() => {
             setOpenModal(true)
           }}
         >
           新增付款方式
-        </button>
-      </div>
-      <PaymentContent cardInfo={cardInfo} />
+        </button> */}
+      {/* </div> */}
+      <AddCardModal setOpenModal={setOpenModal} openModal={openModal} />
+      <PaymentContent cardInfo={cardInfo} setOpenModal={setOpenModal} />
     </>
   )
 }
