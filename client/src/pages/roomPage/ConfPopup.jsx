@@ -1,14 +1,14 @@
-// 在 ConfPopup.jsx 中
-const ConfPopup = () => {
-  const handleClose = () => {
-    const popup = document.getElementById("cartConfirmationPopup");
-    if (popup) {
-      popup.classList.remove("active");
-    }
-  };
+const ConfPopup = ({
+  roomTypeName,
+  checkInDate,
+  checkOutDate,
+  onClose,
+  isVisible,
+}) => {
+  if (!isVisible) return null;
 
   return (
-    <div id="cartConfirmationPopup" className="popupOverlay">
+    <div id="cartConfirmationPopup" className="popupOverlay active">
       <div className="popupContent">
         <img
           src="./public/00myIcon/booking-info.png"
@@ -17,9 +17,8 @@ const ConfPopup = () => {
         />
         <h2>謝謝您的訂購</h2>
         <p>
-          您已訂購 "<span id="roomTypeName"></span>" 入住日期" "
-          <span id="checkInDate"></span>" 退房日期" "
-          <span id="checkOutDate"></span>"
+          您已訂購 "<span>{roomTypeName}</span>" 入住日期" "
+          <span>{checkInDate}</span>" 退房日期" "<span>{checkOutDate}</span>"
         </p>
         <div className="socialLinks">
           <p>追蹤我們</p>
@@ -39,7 +38,7 @@ const ConfPopup = () => {
         <button
           id="continueShoppingBtn"
           className="actionBtn secondary"
-          onClick={handleClose}
+          onClick={onClose}
         >
           繼續瀏覽
         </button>

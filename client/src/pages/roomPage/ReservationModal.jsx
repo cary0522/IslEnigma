@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import ConfPopup from "./ConfPopup";
+
 // date range picker
 import "@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css";
 import "react-calendar/dist/Calendar.css";
@@ -86,6 +88,8 @@ const ReservationModal = ({ setToggleReservation }) => {
     }));
     setTotalPrice(price);
   };
+  const [showConfPopup, setShowConfPopup] = useState(false);
+
   const handleAddCart = () => {
     const orderId = cartItems.order_id;
 
@@ -96,10 +100,7 @@ const ReservationModal = ({ setToggleReservation }) => {
     newCartItem(itemData);
 
     // 顯示確認彈窗
-    const popup = document.getElementById("cartConfirmationPopup");
-    if (popup) {
-      popup.classList.add("active");
-    }
+    setShowConfPopup(true);
   };
 
   useEffect(() => {
@@ -117,168 +118,177 @@ const ReservationModal = ({ setToggleReservation }) => {
   // }, [data])
 
   return (
-    <div id="quickReservationModal" className="quickModal">
-      <div className="quickModalContent">
-        <span
-          className="closeQuickModal"
-          onClick={() => {
-            setToggleReservation(false);
-          }}
-        >
-          &times;
-        </span>
-        <div className="modalLeft">
-          <h2>
-            露營訂房<i className="bi bi-calendar-week-fill"></i>
-          </h2>
-          <div>
-            <DateRangePicker
-              onChange={onChange}
-              value={value}
-              clearIcon={false}
-              closeCalendar={false}
-              disableCalendar={false}
-              isOpen={true}
-              shouldCloseCalendar={({ reason }) => reason !== "outsideAction"}
-              locale="en-us"
-            />
-          </div>
-          <a
-            className="buttonSearch"
-            onClick={handleSearch}
-            disabled={validateSearch()}
+    <>
+      <div id="quickReservationModal" className="quickModal">
+        <div className="quickModalContent">
+          <span
+            className="closeQuickModal"
+            onClick={() => {
+              setToggleReservation(false);
+            }}
           >
-            搜索 <i className="bi bi-search"></i>
-          </a>
-        </div>
-        <div className="modalRight">
-          <div className="reservationForm">
-            <div className="dateInputs">
-              <div className="dateInput">
-                <label htmlFor="checkInDate">入住日期</label>
-                <input
-                  type="text"
-                  id="checkInDate"
-                  readOnly
-                  value={formattedDate(queryData.dateRange[0]) || ""} // 确保有值或空字符串
-                />
-              </div>
-              <div className="dateInput">
-                <label htmlFor="checkOutDate">退房日期</label>
-                <input
-                  type="text"
-                  id="checkOutDate"
-                  readOnly
-                  value={formattedDate(queryData.dateRange[1]) || ""}
-                />
-              </div>
+            &times;
+          </span>
+          <div className="modalLeft">
+            <h2>
+              露營訂房<i className="bi bi-calendar-week-fill"></i>
+            </h2>
+            <div>
+              <DateRangePicker
+                onChange={onChange}
+                value={value}
+                clearIcon={false}
+                closeCalendar={false}
+                disableCalendar={false}
+                isOpen={true}
+                shouldCloseCalendar={({ reason }) => reason !== "outsideAction"}
+                locale="en-us"
+              />
             </div>
-            <div className="guestInputs">
-              <div className="inputGroup">
-                <label>間數</label>
-                <div className="numberInput">
-                  <button
-                    className="decrease"
-                    name="roomCount"
-                    onClick={handleUpdate}
-                  >
-                    -
-                  </button>
+            <a
+              className="buttonSearch"
+              onClick={handleSearch}
+              disabled={validateSearch()}
+            >
+              搜索 <i className="bi bi-search"></i>
+            </a>
+          </div>
+          <div className="modalRight">
+            <div className="reservationForm">
+              <div className="dateInputs">
+                <div className="dateInput">
+                  <label htmlFor="checkInDate">入住日期</label>
                   <input
-                    type="number"
-                    id="roomCount"
-                    value={queryData.roomCount || ""}
-                    min="0"
-                    max="4"
+                    type="text"
+                    id="checkInDate"
                     readOnly
+                    value={formattedDate(queryData.dateRange[0]) || ""} // 确保有值或空字符串
                   />
-                  <button
-                    className="increase"
-                    name="roomCount"
-                    onClick={handleUpdate}
-                  >
-                    +
-                  </button>
+                </div>
+                <div className="dateInput">
+                  <label htmlFor="checkOutDate">退房日期</label>
+                  <input
+                    type="text"
+                    id="checkOutDate"
+                    readOnly
+                    value={formattedDate(queryData.dateRange[1]) || ""}
+                  />
                 </div>
               </div>
-              <div className="inputGroup">
-                <label>人數</label>
-                <div className="numberInput">
-                  <button
-                    className="decrease"
-                    name="people"
-                    onClick={handleUpdate}
-                  >
-                    -
-                  </button>
-                  <input
-                    type="number"
-                    id="guestCount"
-                    value={queryData.people || ""}
-                    min="0"
-                    max="10"
-                    readOnly
-                  />
-                  <button
-                    className="increase"
-                    name="people"
-                    onClick={handleUpdate}
-                  >
-                    +
-                  </button>
+              <div className="guestInputs">
+                <div className="inputGroup">
+                  <label>間數</label>
+                  <div className="numberInput">
+                    <button
+                      className="decrease"
+                      name="roomCount"
+                      onClick={handleUpdate}
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      id="roomCount"
+                      value={queryData.roomCount || ""}
+                      min="0"
+                      max="4"
+                      readOnly
+                    />
+                    <button
+                      className="increase"
+                      name="roomCount"
+                      onClick={handleUpdate}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div>
-                {/* <a
+                <div className="inputGroup">
+                  <label>人數</label>
+                  <div className="numberInput">
+                    <button
+                      className="decrease"
+                      name="people"
+                      onClick={handleUpdate}
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      id="guestCount"
+                      value={queryData.people || ""}
+                      min="0"
+                      max="10"
+                      readOnly
+                    />
+                    <button
+                      className="increase"
+                      name="people"
+                      onClick={handleUpdate}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  {/* <a
                 className="buttonSearch"
                 onClick={handleSearch}
                 disabled={validateSearch()}
               >
                 搜索
               </a> */}
-              </div>
+                </div>
 
-              <div className="totalPrice">
-                <span>NT$</span>
-                <input
-                  type="text"
-                  id="totalPriceInput"
-                  value={totalPrice}
-                  readOnly
-                />
+                <div className="totalPrice">
+                  <span>NT$</span>
+                  <input
+                    type="text"
+                    id="totalPriceInput"
+                    value={totalPrice}
+                    readOnly
+                  />
+                </div>
               </div>
-            </div>
-            {data && (
-              <div className="roomTypeSelectWrapper">
-                <select
-                  id="roomTypeSelect"
-                  className="roomTypeSelect"
-                  onChange={handleSelect}
-                  value={queryData.roomType || ""}
-                >
-                  <option value="" disabled>
-                    選擇房型
-                  </option>
-                  {data.map((room) => (
-                    <option
-                      key={room.room_id}
-                      value={room.room_id}
-                      data-price={room.price}
-                      data-name={room.room_type}
-                    >
-                      {room.room_type}
+              {data && (
+                <div className="roomTypeSelectWrapper">
+                  <select
+                    id="roomTypeSelect"
+                    className="roomTypeSelect"
+                    onChange={handleSelect}
+                    value={queryData.roomType || ""}
+                  >
+                    <option value="" disabled>
+                      選擇房型
                     </option>
-                  ))}
-                </select>
-              </div>
-            )}
-            <button id="searchResults" onClick={handleAddCart}>
-              加入購物車
-            </button>
+                    {data.map((room) => (
+                      <option
+                        key={room.room_id}
+                        value={room.room_id}
+                        data-price={room.price}
+                        data-name={room.room_type}
+                      >
+                        {room.room_type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <button id="searchResults" onClick={handleAddCart}>
+                加入購物車
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <ConfPopup
+        roomTypeName={queryData.roomType}
+        checkInDate={formattedDate(queryData.dateRange[0])}
+        checkOutDate={formattedDate(queryData.dateRange[1])}
+        onClose={() => setShowConfPopup(false)}
+        isVisible={showConfPopup}
+      />
+    </>
   );
 };
 
