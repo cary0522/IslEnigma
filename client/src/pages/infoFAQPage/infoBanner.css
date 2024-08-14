@@ -1,0 +1,540 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(255, 253, 248);
+}
+
+.button {
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  padding: 20px 70px;
+  margin: 20px 10%;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 4px solid #73748c;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+.button:hover::before, .button:focus::before {
+  border-radius: 40px;
+  top: -9px;
+  left: -9px;
+  right: -9px;
+  bottom: -9px;
+  border-color: #758694;
+  transition: 0.4s ease-in-out;
+}
+
+.infoFAQPage {
+  /* 全局樣式 */
+  /* 全局樣式 */
+}
+.infoFAQPage body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", "Arial", sans-serif;
+  background: #fffdf8;
+}
+@media (max-width: 719px) {
+  .infoFAQPage body {
+    height: 100vh;
+    position: relative;
+  }
+}
+.infoFAQPage #footer {
+  margin-top: -60px;
+}
+.infoFAQPage body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", "Arial", sans-serif;
+  background: #fffdf8;
+}
+@media (max-width: 719px) {
+  .infoFAQPage body {
+    height: 100vh;
+    position: relative;
+  }
+}
+.infoFAQPage .bannerWrapper {
+  width: 100%;
+  background-image: url("../../public/07poster_banner/banner (8).png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 40%;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  top: 50px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: smallzoomInOut 10s ease-in-out infinite;
+  /* 作外框 */
+  /* 設置球球的位置，你可以調整這些值 */
+}
+@keyframes smallzoomInOut {
+  0%, 100% {
+    background-size: 100% auto;
+  }
+  50% {
+    background-size: 105% auto;
+  }
+}
+@keyframes bigzoomInOut {
+  0%, 100% {
+    background-size: 320% auto;
+  }
+  50% {
+    background-size: 330% auto;
+  }
+}
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper {
+    min-height: auto;
+    width: 90%;
+    height: 75vh;
+    border-radius: 250px;
+    padding: 0px;
+    background-position: center;
+    overflow: visible;
+    margin: 30px auto;
+    animation: bigzoomInOut 10s ease-in-out infinite;
+  }
+}
+.infoFAQPage .bannerWrapper .bannerTextGroup {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 2rem;
+  color: #fffdf8;
+}
+.infoFAQPage .bannerWrapper .bannerTextGroup h1 {
+  color: white;
+}
+.infoFAQPage .bannerWrapper .bannerLine {
+  width: 10rem;
+  position: relative;
+  bottom: 10px;
+  height: 1px;
+  background-color: white;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerLine {
+    display: none;
+  }
+}
+.infoFAQPage .bannerWrapper::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  border-radius: 400px;
+  border: 2px solid #7f7878;
+  pointer-events: none;
+  display: none;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper::before {
+    display: block;
+  }
+}
+.infoFAQPage .bannerWrapper .outBall {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #7f7878;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translateY(-50%);
+    background-color: #337ab7;
+  }
+  50% {
+    transform: rotate(180deg) translateY(-50%);
+    background-color: #b74aff;
+  }
+  100% {
+    transform: rotate(360deg) translateY(-50%);
+    background-color: #337ab7;
+  }
+}
+.infoFAQPage .bannerWrapper .outBall {
+  display: none;
+  animation: rotate 5s linear infinite;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .outBall {
+    display: block;
+  }
+}
+.infoFAQPage .bannerWrapper .outBall.outBall1 {
+  position: relative;
+  bottom: 65%;
+  right: -35%;
+}
+.infoFAQPage .bannerWrapper .outBall.outBall2 {
+  position: relative;
+  bottom: -5%;
+  left: -38%;
+}
+.infoFAQPage .bannerWrapper .bannerContent {
+  text-align: center;
+  position: relative;
+  top: 120px;
+  width: 80vw;
+  max-width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@media (min-width: 1921px) {
+  .infoFAQPage .bannerWrapper .bannerContent {
+    max-width: 1600px;
+  }
+}
+@media (min-width: 1440px) and (max-width: 1920px) {
+  .infoFAQPage .bannerWrapper .bannerContent {
+    max-width: 1300px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .infoFAQPage .bannerWrapper .bannerContent {
+    max-width: 1000px;
+  }
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerContent {
+    padding: 0px;
+    top: 0;
+  }
+}
+.infoFAQPage .bannerWrapper .bannerWrapper .line {
+  display: none;
+  width: 1px;
+  height: 120px;
+  background-color: rgba(128, 128, 128, 0);
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerWrapper .line {
+    display: block;
+  }
+}
+.infoFAQPage .bannerWrapper .bannerWrapper .line::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: waterFlow 2s linear infinite;
+}
+@keyframes waterFlow {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerWrapper .line {
+    display: block;
+  }
+}
+.infoFAQPage .bannerWrapper .bannerLogo {
+  width: 50%;
+  animation: slideInFromTop 1s ease-out;
+}
+.infoFAQPage .bannerWrapper .bannerLogo img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerLogo {
+    width: 40vw;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+}
+.infoFAQPage .bannerWrapper .bannerText {
+  display: flex;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  flex-wrap: nowrap;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerText {
+    font-size: 2rem;
+    animation: slideInFromTop 1s ease-out;
+  }
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerTagline {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+.infoFAQPage .bannerWrapper .customDropdown {
+  display: none;
+  animation: slideInFromBottom 1s ease-out;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .customDropdown {
+    display: block;
+    position: relative;
+    width: 60%;
+    margin: 10px auto;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownSelected {
+    padding: 10px 20px 10px 30px;
+    background-color: #ffffff;
+    color: #3b7ba5;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownSelected i {
+    margin-left: 10px;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownSelected:hover {
+    background-color: #3b7ba5;
+    color: #ffffff;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions {
+    position: absolute;
+    background-color: #f9f9f9;
+    top: 100%;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions li {
+    padding: 0;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions .dropdownOption {
+    color: #3b7ba5;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown .dropdownOptions .dropdownOption:hover {
+    background-color: #3b7ba5;
+    color: white;
+  }
+}
+@media (max-width: 719px) and (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .customDropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .infoFAQPage .bannerWrapper .customDropdown option {
+    background-color: #557e99;
+    color: #fff;
+    display: block;
+    padding: 10px;
+  }
+}
+.infoFAQPage .bannerWrapper .textMemo {
+  position: relative;
+  font-size: 0.8rem;
+  color: #ffffff;
+  font-weight: 800;
+  display: none;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .textMemo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.infoFAQPage .bannerWrapper .bannerMenu {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+  width: 100%;
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .bannerMenu {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0rem;
+  }
+}
+.infoFAQPage .bannerWrapper .bannerItemGroup {
+  display: flex;
+  animation: slideInFromBottom 1s ease-out;
+  gap: 5rem;
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .infoFAQPage .bannerWrapper .bannerItemGroup {
+    gap: 3rem;
+  }
+}
+@media (min-width: 720px) and (max-width: 1023px) {
+  .infoFAQPage .bannerWrapper .bannerItemGroup {
+    gap: 0.5rem;
+  }
+  .infoFAQPage .bannerWrapper .bannerItemGroup .menuItem {
+    transform: scale(0.8);
+  }
+}
+.infoFAQPage .bannerWrapper .menuItem {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: rgb(255, 255, 255);
+  color: #2c5d8f;
+  height: 150px;
+  width: 120px;
+  gap: 15px;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 0.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.infoFAQPage .bannerWrapper .menuItem .menuNumber {
+  position: absolute;
+  font-weight: 800;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  top: -10px;
+  font-size: 28px;
+  color: #ffffff;
+  text-shadow: 3px 2px 0 #a7a7a7;
+  z-index: 10;
+}
+.infoFAQPage .bannerWrapper .menuItem:hover {
+  transform: translateY(-10px);
+  background-color: rgb(187, 223, 255);
+}
+.infoFAQPage .bannerWrapper .menuItem:hover::after {
+  bottom: 0;
+}
+.infoFAQPage .bannerWrapper .menuItem:hover .menuIcon img {
+  transform: scale(1.2);
+}
+.infoFAQPage .bannerWrapper .menuItem p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #2c5d8f;
+  position: relative;
+  z-index: 2;
+}
+.infoFAQPage .bannerWrapper .menuItem::before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 5rem;
+  border: 1px solid #ffffff;
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(20px, -20px);
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .infoFAQPage .bannerWrapper .menuItem {
+    padding: 0px;
+  }
+}
+@media (min-width: 720px) and (max-width: 1023px) {
+  .infoFAQPage .bannerWrapper .menuItem {
+    padding: 10px;
+  }
+}
+@media (max-width: 719px) {
+  .infoFAQPage .bannerWrapper .menuItem {
+    display: none;
+  }
+}
+.infoFAQPage .bannerWrapper .menuIcon {
+  color: #417bb8;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.infoFAQPage .bannerWrapper .menuIcon img {
+  width: 3.7rem;
+  transition: transform 0.3s ease;
+}
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .infoFAQPage .bannerWrapper .menuIcon {
+    max-width: 3.5rem;
+  }
+}
+@media (min-width: 720px) and (max-width: 1023px) {
+  .infoFAQPage .bannerWrapper .menuIcon {
+    font-size: 3rem;
+  }
+}/*# sourceMappingURL=infoBanner.css.map */

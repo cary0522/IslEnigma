@@ -1,21 +1,22 @@
 //@author: 許哲誠
-const jwt = require('jsonwebtoken');
-require('dotenv').config({ path: '../.env' });
+const jwt = require("jsonwebtoken")
+const { JWT_SECRET } = require("../utils/config_env")
+
 const authMiddleware = {
   verifyToken: (req, res, next) => {
-    const token = req.cookies.JWTToken;
-    const secretKey=process.env.JWT_SECRET;
+    const token = req.cookies.JWTToken
+
     if (!token) {
-      return res.status(401).json({ error: 'No token' });
+      return res.status(401).json({ error: "No token" })
     }
     try {
-      const decoded = jwt.verify(token, secretKey);
-      req.user = decoded;
-      next();
+      const decoded = jwt.verify(token, JWT_SECRET)
+      req.user = decoded
+      next()
     } catch (error) {
-      console.error('Token verify failed:', error);
-      return res.status(401).json({ error: 'bad token' });
+      console.error("Token verify failed:", error)
+      return res.status(401).json({ error: "bad token" })
     }
   },
-};
-module.exports = authMiddleware;
+}
+module.exports = authMiddleware

@@ -1,0 +1,863 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(255, 253, 248);
+}
+
+.button {
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  padding: 20px 70px;
+  margin: 20px 10%;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 4px solid #73748c;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+.button:hover::before, .button:focus::before {
+  border-radius: 40px;
+  top: -9px;
+  left: -9px;
+  right: -9px;
+  bottom: -9px;
+  border-color: #758694;
+  transition: 0.4s ease-in-out;
+}
+
+.ticketPage {
+  font-family: "Noto Sans TC", "Arial", sans-serif;
+}
+.ticketPage .divAlert {
+  box-sizing: content-box;
+  padding: 30px;
+  max-width: 400px;
+  width: 70%;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52), 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  align-items: center;
+  text-align: center;
+  animation: alertShow 0.3s ease-out;
+}
+@keyframes alertShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.ticketPage .divAlert div {
+  box-sizing: content-box;
+}
+.ticketPage .divAlert div img {
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.ticketPage .divAlert h2,
+.ticketPage .divAlert p,
+.ticketPage .divAlert svg {
+  color: rgb(115, 116, 140);
+}
+.ticketPage .divAlert h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.ticketPage .divAlert p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  line-height: 30px;
+}
+.ticketPage .divAlert .ticketIcon {
+  box-sizing: content-box;
+  width: 80px;
+  margin-bottom: 20px;
+}
+.ticketPage .divAlert div:first-child {
+  text-align: center;
+  margin: 20px auto;
+  animation: robotShake 1.2s infinite;
+}
+@keyframes robotShake {
+  0% {
+    transform: rotate(0deg) translateX(0px);
+  }
+  25% {
+    transform: rotate(5deg) translateX(3px);
+  }
+  50% {
+    transform: rotate(0deg) translateX(0px);
+  }
+  75% {
+    transform: rotate(-5deg) translateX(-3px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0px);
+  }
+}
+.ticketPage .divAlert #divAlertContent {
+  text-align: center;
+  color: rgb(115, 116, 140);
+}
+.ticketPage .divAlert .btnClose {
+  position: absolute;
+  z-index: 6;
+  top: 3%;
+  right: 3%;
+  color: rgb(115, 116, 140);
+  cursor: pointer;
+}
+.ticketPage .divAlert .socialLinks {
+  margin-bottom: 25px;
+  text-align: center;
+}
+.ticketPage .divAlert .socialLinks p {
+  margin-bottom: 10px;
+}
+.ticketPage .divAlert .socialLinks .socialIcon {
+  display: inline-block;
+  margin: 0 10px;
+}
+.ticketPage .divAlert .socialLinks .socialIcon svg {
+  font-size: 30px;
+  transition: 0.3s ease;
+}
+.ticketPage .divAlert .socialLinks .socialIcon svg:hover {
+  transform: translateX(5px);
+  font-size: 2.2rem;
+  text-shadow: 2px 2px #266487;
+}
+.ticketPage .divAlert .divAlertBtn {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+.ticketPage .divAlert .divAlertBtn .button {
+  margin: 10px auto;
+  background-color: #73748c;
+  color: white;
+  font-size: 1rem;
+}
+.ticketPage .divAlert .divAlertBtn .btnCart {
+  background-color: #73748c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 0 10px;
+  position: relative;
+}
+.ticketPage .divAlert .divAlertBtn .btnCart::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 4px solid #73748c;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+.ticketPage .divAlert .divAlertBtn .btnCart:hover::before, .ticketPage .divAlert .divAlertBtn .btnCart:focus::before {
+  border-radius: 40px;
+  top: -9px;
+  left: -9px;
+  right: -9px;
+  bottom: -9px;
+  border-color: #758694;
+  transition: 0.4s ease-in-out;
+}
+@media screen and (max-width: 720px) {
+  .ticketPage .divAlert .divAlertBtn .btnCart {
+    font-size: 0.8rem;
+  }
+}
+.ticketPage #divBanner {
+  position: relative;
+}
+.ticketPage #divBanner img {
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.ticketPage #divBanner .logoArea {
+  position: absolute;
+  width: 40%;
+  top: 40%;
+  left: 8%;
+  transition: all 0.3s;
+}
+.ticketPage #divBanner .logoArea .divOutside {
+  width: 100%;
+  display: flex;
+}
+.ticketPage #divBanner .logoArea #imgLogoArea {
+  width: 700px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 992px) {
+  .ticketPage #divBanner .logoArea #imgLogoArea {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .logoArea #imgLogoArea {
+    width: 70%;
+  }
+}
+.ticketPage #divBanner .logoArea .divPageName {
+  margin: 0 auto;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+}
+.ticketPage #divBanner .logoArea .divPageName h3 {
+  font-size: 2rem;
+  margin: 0;
+  color: white;
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .logoArea .divPageName {
+    display: none;
+  }
+}
+.ticketPage #divBanner .logoArea .linePageName {
+  width: 20%;
+  height: 50%;
+  border-bottom: 3px solid white;
+}
+.ticketPage #divBanner .logoArea .linePageName:first-of-type {
+  margin: 0 20px 0 auto;
+}
+.ticketPage #divBanner .logoArea .linePageName:last-of-type {
+  margin: 0 auto 0 20px;
+}
+@media screen and (max-width: 992px) {
+  .ticketPage #divBanner .logoArea {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .logoArea {
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .ticketPage #divBanner .imgBackground {
+    height: 80vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .imgBackground {
+    height: 100vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+.ticketPage #divBanner .divSafe {
+  box-sizing: content-box;
+  position: absolute;
+  background-color: rgb(181, 108, 138);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52), 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  top: 65%;
+  left: 8%;
+  text-align: center;
+  width: 300px;
+  transition: all 0.3s;
+}
+.ticketPage #divBanner .divSafe h5 {
+  font-size: 0.8rem;
+  padding: 2px 0 0 0;
+}
+@media screen and (max-width: 750px) {
+  .ticketPage #divBanner .divSafe {
+    padding: 10px;
+  }
+  .ticketPage #divBanner .divSafe h5 {
+    font-size: 0.7rem;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .divSafe {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+  }
+}
+.ticketPage #divBanner .bookingArea {
+  box-sizing: content-box;
+  transition: all 0.3s;
+  width: 350px;
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset -5px 5px 5px rgba(255, 255, 255, 0.52), -5px 6px 4px rgba(0, 0, 0, 0.24);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border-radius: 20px;
+  color: rgb(115, 116, 140);
+  text-align: center;
+}
+.ticketPage #divBanner .bookingArea svg {
+  cursor: pointer;
+}
+.ticketPage #divBanner .bookingArea svg:hover {
+  transform: scale(1.2);
+  transition: all 0.5s;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem {
+  box-sizing: content-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  height: 50px;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divCalendar {
+  position: relative;
+  display: flex;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divCalendar input {
+  background-color: transparent;
+  border: 1px solid rgb(115, 116, 140);
+  border-radius: 20px;
+  text-align: center;
+  color: rgb(115, 116, 140);
+  box-sizing: content-box;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divCalendar .calendarArea {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 4;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divCalendar .calendarArea .react-calendar {
+  animation: divAnimation 0.5s;
+  width: 350px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52), 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 10px;
+}
+@keyframes divAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divCalendar .calendarArea .react-calendar abbr {
+  text-decoration: none;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divCalendar .calendarArea .react-calendar button {
+  background-color: transparent;
+  color: rgb(115, 116, 140);
+  width: auto;
+  margin: 5px auto;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 0px;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  cursor: pointer;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divCalendar .calendarArea .react-calendar .disableSelectDate {
+  color: rgb(175, 174, 174);
+  cursor: none;
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .bookingArea .divBookingItem .divCalendar .calendarArea {
+    right: -42%;
+  }
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divTicketNum {
+  display: flex;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divTicketNum input {
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: center;
+  line-height: 50px;
+  color: rgb(115, 116, 140);
+  font-size: 24px;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divTicketNum .divIcons {
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divTicketNum .divIcons:hover {
+  transform: scale(1.2);
+  transition: all 0.5s;
+}
+.ticketPage #divBanner .bookingArea .divBookingItem .divTicketNum .divIcons .bookingAreaIcon {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+}
+.ticketPage #divBanner .bookingArea p {
+  font-size: 24px;
+  color: rgb(115, 116, 140);
+  margin: 5px;
+}
+.ticketPage #divBanner .bookingArea small {
+  font-size: 16px;
+}
+.ticketPage #divBanner .bookingArea button {
+  background-color: #73748c;
+  color: white;
+  font-size: 20px;
+}
+@media screen and (max-width: 992px) {
+  .ticketPage #divBanner .bookingArea {
+    width: 300px;
+    right: 5%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .bookingArea {
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .ticketPage #divBanner .bookingArea .divBookingItem {
+    height: 30px;
+  }
+  .ticketPage #divBanner .bookingArea button {
+    font-size: 15px;
+    padding: 10px 70px;
+  }
+}
+.ticketPage #divBanner .btnDown {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52), 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: btnDown 1s infinite 0.5s;
+  transition: all 0.3s;
+}
+.ticketPage #divBanner .btnDown .btnDwnTriangle {
+  position: absolute;
+  bottom: -15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ticketPage #divBanner .btnDown .btnDwnTriangle .svgPolygon {
+  fill: rgba(255, 255, 255, 0.2);
+}
+@keyframes btnDown {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateY(6px) rotate(5deg);
+  }
+  40% {
+    transform: translateY(-4px) rotate(-3deg);
+  }
+  60% {
+    transform: translateY(2px) rotate(2deg);
+  }
+  80% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+@media screen and (max-width: 1200px) {
+  .ticketPage #divBanner .btnDown {
+    display: none;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divBanner .btnDown {
+    display: block;
+    bottom: 18%;
+    left: 47%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .ticketPage #divBanner .btnDown {
+    left: 45%;
+  }
+}
+.ticketPage .divBackground {
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 20px;
+  background-image: linear-gradient(270deg, rgb(124, 101, 163), rgb(49, 125, 165));
+  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52), 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  text-align: center;
+}
+.ticketPage #divBookingWay {
+  box-sizing: content-box;
+}
+.ticketPage #divBookingWay h1 {
+  margin: 10px;
+  font-size: 30px;
+}
+.ticketPage #divBookingWay .divIntroArea {
+  display: flex;
+  justify-content: space-around;
+}
+.ticketPage #divBookingWay .divIntroArea .divBookWayItem {
+  margin: 10px 0;
+  display: flex;
+}
+.ticketPage #divBookingWay .divIntroArea .divBookWayItem .lineBetweenComponents {
+  width: 0px;
+  height: 300px;
+  border: 1px solid white;
+  margin-top: 50px;
+}
+@media screen and (max-width: 991px) {
+  .ticketPage #divBookingWay .divIntroArea .divBookWayItem .lineBetweenComponents {
+    display: none;
+  }
+}
+.ticketPage #divBookingWay .divIntroArea .divBookWayItem .divBookingWayIntro {
+  margin: 0;
+}
+.ticketPage #divBookingWay .divIntroArea .divBookWayItem .divBookingWayIntro .pIntroTitle {
+  font-size: 24px;
+  margin: 20px 10px;
+}
+.ticketPage #divBookingWay .divIntroArea .divBookWayItem .divBookingWayIntro .pIntroContent {
+  text-align: left;
+  margin: 10px 30px;
+  line-height: 30px;
+  letter-spacing: 3px;
+}
+.ticketPage #divBookingWay .divIntroArea .divImages {
+  display: flex;
+  justify-content: center;
+}
+.ticketPage #divBookingWay .divIntroArea .divImages .divImgItem {
+  width: 100px;
+  height: 100px;
+  margin: 0px 15px 5px 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.52), 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* 左上跳動畫 */
+}
+.ticketPage #divBookingWay .divIntroArea .divImages .divImgItem img {
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.ticketPage #divBookingWay .divIntroArea .divImages .divImgItem:hover {
+  animation: softSpring 0.3s ease-in-out forwards;
+}
+@keyframes softSpring {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-7px, -7px) scale(1.2);
+  }
+  100% {
+    transform: translate(0px, -4px) scale(1.1);
+  }
+}
+@media screen and (max-width: 1400px) {
+  .ticketPage #divBookingWay .divIntroArea .divImages .divImgItem {
+    width: 80px;
+    height: 80px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .ticketPage #divBookingWay .divIntroArea .divImages .divImgItem {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .ticketPage #divBookingWay .divIntroArea .divImages .divImgItem {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .ticketPage #divBookingWay .divIntroArea .divImages .divImgItem {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .ticketPage #divBookingWay .divIntroArea {
+    flex-wrap: wrap;
+  }
+}
+.ticketPage #divCompare {
+  box-sizing: content-box;
+}
+.ticketPage #divCompare .divTable {
+  position: relative;
+  font-size: 24px;
+  color: white;
+}
+.ticketPage #divCompare .divTable .iconCrown {
+  color: rgb(246, 187, 66);
+  position: absolute;
+  right: 9%;
+  top: -4%;
+  animation: crownShin 1s infinite ease-in-out;
+}
+@keyframes crownShin {
+  0% {
+    transform: scale(1) rotate(20deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(25deg);
+  }
+  100% {
+    transform: scale(1) rotate(20deg);
+  }
+}
+@media screen and (max-width: 1700px) {
+  .ticketPage #divCompare .divTable .iconCrown {
+    right: 6%;
+    top: -2%;
+  }
+}
+@media screen and (max-width: 1220px) {
+  .ticketPage #divCompare .divTable .iconCrown {
+    right: 3%;
+    top: -2%;
+  }
+}
+.ticketPage #divCompare .divTable .divTableHead {
+  width: 100%;
+  display: flex;
+}
+.ticketPage #divCompare .divTable .divTableHead div {
+  width: 30%;
+  padding: 20px;
+}
+.ticketPage #divCompare .divTable .divTableHead div span {
+  width: 100%;
+  display: block;
+  margin: 10px;
+  letter-spacing: 1px;
+}
+.ticketPage #divCompare .divTable .divTableHead .divDisplayNone {
+  padding: 0;
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divCompare .divTable .divTableHead .divDisplayNone {
+    display: none;
+    padding: 0;
+  }
+}
+.ticketPage #divCompare .divTable .divTableTr {
+  display: flex;
+  border-top: 1px solid white;
+}
+.ticketPage #divCompare .divTable .divTableTr div {
+  width: 30%;
+  padding: 20px;
+  line-height: 50px;
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divCompare .divTable .divTableTr .compareTitle {
+    margin: 10px 0 0 0;
+    width: 100%;
+    font-weight: 900;
+  }
+}
+@media screen and (max-width: 720px) {
+  .ticketPage #divCompare .divTable .divTableTr {
+    flex-wrap: wrap;
+  }
+}
+.ticketPage #divCompare .divTable .iconTick {
+  color: rgb(246, 187, 66);
+}
+.ticketPage #divCompare .divTable .ticketPrice {
+  text-shadow: 2px 1px 0px rgb(246, 187, 66);
+}
+@media screen and (max-width: 992px) {
+  .ticketPage #divCompare .divTable {
+    font-size: 1rem;
+  }
+}
+.ticketPage #ticketRuleArea {
+  margin: 30px auto;
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder {
+  box-sizing: content-box;
+  margin: 10px auto 0 auto;
+  padding: 15px 20px;
+  height: 18px;
+  box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.25);
+  background-image: linear-gradient(270deg, rgb(124, 101, 163), rgb(49, 125, 165));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder .leftCol {
+  display: flex;
+  align-items: center;
+  margin: 10px auto 10px 10px;
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder .leftCol p {
+  font-size: 20px;
+  margin: 10px;
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder .leftCol .svgTriangle {
+  transition: all 0.5s;
+  transform: rotate(0deg);
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder .leftCol .svgTriangleClick {
+  transition: all 0.5s;
+  transform: rotate(180deg);
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder .rightCol {
+  margin: 10px 10px 10px auto;
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder svg {
+  color: white;
+  cursor: pointer;
+}
+.ticketPage #ticketRuleArea .ticketRuleTopBorder svg:hover {
+  transform: scale(1.2);
+}
+.ticketPage #ticketRuleArea .ticketRuleContent {
+  box-sizing: content-box;
+  background-color: white;
+  box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgb(195, 195, 195);
+  border-radius: 0 0 20px 20px;
+  margin: 0px auto 10px auto;
+  padding: 10px 20px;
+}
+.ticketPage #ticketRuleArea .ticketRuleContent p {
+  color: rgb(109, 149, 170);
+  margin: 20px;
+  letter-spacing: 1px;
+  line-height: 25px;
+}
+@keyframes ruleContentHide {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+  25% {
+    display: block;
+    opacity: 0.8;
+  }
+  50% {
+    display: block;
+    opacity: 0.4;
+  }
+  75% {
+    display: none;
+    opacity: 0.1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+.ticketPage #ticketRuleArea .ticketRuleContentNone {
+  animation: ruleContentHide 0.3s both;
+}
+@keyframes ruleContentBlock {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  25% {
+    display: block;
+    opacity: 0.4;
+  }
+  50% {
+    display: block;
+    opacity: 0.8;
+  }
+  75% {
+    display: block;
+    opacity: 0.9;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+.ticketPage #ticketRuleArea .ticketRuleContentBlock {
+  animation: ruleContentBlock 0.5s both;
+}/*# sourceMappingURL=ticketPage.css.map */

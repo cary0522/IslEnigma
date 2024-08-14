@@ -120,7 +120,7 @@ const memberInfo = {
           member_id: memberId,
         },
         data: {
-          email: memberInfoData.email,
+          account: memberInfoData.email,
           name: memberInfoData.name,
           address: memberInfoData.address,
           phone: memberInfoData.phone,

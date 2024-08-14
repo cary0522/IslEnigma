@@ -11,7 +11,7 @@ const cookieHelpers = {
     });
   },
   clearAuthCookie: (res) => {
-    res.clearCookie('token');
+    res.clearCookie('JWTToken');
   },
 };
 module.exports = cookieHelpers;

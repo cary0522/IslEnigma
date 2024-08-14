@@ -1,0 +1,129 @@
+* {
+  --nav-17: linear-gradient(
+    to right,
+    rgb(49, 124, 165),
+    hsla(263, 25%, 52%, 1)
+  );
+}
+
+main {
+  height: 190vh;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
+
+.checkOutContainer {
+  width: 90%;
+  height: inherit;
+  display: flex;
+  margin-top: 5vh;
+}
+
+.orderInfo {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  width: 50%;
+  height: 100vh;
+  border: 1px solid black;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.orderInfoTitle {
+  font-size: 24px;
+  color: #fff;
+  width: 100%;
+  padding: 12px 24px;
+  background: linear-gradient(
+    270deg,
+    rgba(83, 54, 131, 0.53) 0%,
+    rgba(49, 125, 165, 0.8) 100%
+  );
+}
+
+.form-container {
+  height: 50vh;
+  width: 90%;
+}
+
+.form-group {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.form-group div {
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 4px;
+  border-radius: 12px;
+  border: none;
+  background-color: #e7f1f4;
+}
+
+.multi {
+  display: flex;
+  gap: 20px;
+}
+
+.priceContainer {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+}
+
+.checkOutContainer p {
+  color: #126a9b;
+}
+
+.priceItem {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  min-width: 220px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 80%;
+  height: auto;
+  background-color: #e4e3e6;
+  border-radius: 12px;
+}
+
+.itemTitle {
+  width: 70%;
+  font-size: 24px;
+  padding-top: 20px;
+  color: #126a9b;
+  hr {
+    border: 1px solid #126a9b;
+  }
+}
+.itemInfo {
+  font-size: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemInfo p {
+  width: 40%;
+  text-align: center;
+}
+
+.total {
+  margin-top: 10px;
+}
