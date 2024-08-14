@@ -1,14 +1,15 @@
-import { useForm } from "react-hook-form"
-import { useUpdateCard } from "../../hooks/useUpdateCard"
+import { useForm } from "react-hook-form";
+import { useUpdateCard } from "../../hooks/useUpdateCard";
 
-const AddCardModal = ({ setOpenModal }) => {
-  const { mutate: updateCard, isLoading: loadingUpdate } = useUpdateCard()
+const AddCardModal = ({ openModal, setOpenModal }) => {
+	const { mutate: updateCard, isLoading: loadingUpdate } = useUpdateCard();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+
 
   const formatCardNumber = (value) => {
     return value.replace(/\D/g, "").replace(/(\d{4})(?=\d)/g, "$1-")
@@ -97,4 +98,5 @@ const AddCardModal = ({ setOpenModal }) => {
   )
 }
 
-export default AddCardModal
+
+export default AddCardModal;
