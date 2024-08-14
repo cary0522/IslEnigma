@@ -10,21 +10,20 @@ const AddCardModal = ({ setOpenModal }) => {
     formState: { errors },
   } = useForm()
 
+  const formatCardNumber = (value) => {
+    return value.replace(/\D/g, "").replace(/(\d{4})(?=\d)/g, "$1-")
+  }
+
   const onSubmit = (data) => {
     updateCard(data, {
-      onSuccess: setOpenModal(false),
+      onSuccess: () => setOpenModal(false),
     })
   }
 
   return (
     <div className="modal" id="addPayMethodModal">
       <div className="modal-content">
-        <span
-          className="close-btn"
-          onClick={() => {
-            setOpenModal(false)
-          }}
-        >
+        <span className="close-btn" onClick={() => setOpenModal(false)}>
           ×
         </span>
         <h2 className="modal-title">新增付款方式</h2>
@@ -32,15 +31,18 @@ const AddCardModal = ({ setOpenModal }) => {
           <div>
             <label>信用卡號碼</label>
             <input
-              type="number"
+              type="text"
               id="cardNumber"
               className="memberInput-field"
               maxLength="19"
               {...register("cardNumber", {
                 required: "請輸入信用卡號碼",
-                minLength: {
-                  value: 16,
-                  message: "請至輸入至少16位數字",
+                pattern: {
+                  value: /^\d{4}-\d{4}-\d{4}-\d{4}$/,
+                  message: "信用卡號碼格式錯誤，請輸入 xxxx-xxxx-xxxx-xxxx",
+                },
+                onChange: (e) => {
+                  e.target.value = formatCardNumber(e.target.value)
                 },
               })}
             />
@@ -86,7 +88,6 @@ const AddCardModal = ({ setOpenModal }) => {
               <span className="modal-errorMessage">{errors.cvv.message}</span>
             )}
           </div>
-          <div className="modal-errorMessage"></div>
           <button type="submit" id="submitPayMethod" className="submit-btn">
             確認新增
           </button>

@@ -1,109 +1,108 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 // date range picker
-import "@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css";
-import "react-calendar/dist/Calendar.css";
-import DateRangePicker from "@wojtekmaj/react-daterange-picker";
-import { useQueryRooms } from "../../hooks/useQueryRooms";
-import { useNewCartItem } from "../../hooks/useNewCartItem";
-import { useCartItemsData } from "../../hooks/useCartItem";
+import "@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css"
+import "react-calendar/dist/Calendar.css"
+import DateRangePicker from "@wojtekmaj/react-daterange-picker"
+import { useQueryRooms } from "../../hooks/useQueryRooms"
+import { useNewCartItem } from "../../hooks/useNewCartItem"
+import { useCartItemsData } from "../../hooks/useCartItem"
 
 const ReservationModal = ({ setToggleReservation }) => {
   const {
     data: cartItems,
     error,
     isLoading: loadingCartItem,
-  } = useCartItemsData();
-  const { mutate: queryRooms, isLoading, data } = useQueryRooms();
+  } = useCartItemsData()
+  const { mutate: queryRooms, isLoading, data } = useQueryRooms()
 
   const {
     mutate: newCartItem,
     isLoading: addingItem,
     data: item,
-  } = useNewCartItem();
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [value, onChange] = useState([]);
+  } = useNewCartItem()
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [value, onChange] = useState([])
   const [queryData, setQueryData] = useState({
     dateRange: [],
     roomCount: 1,
     people: 1,
     roomType: "",
-  });
+  })
 
   const formattedDate = (date) => {
-    if (!date) return "";
+    if (!date) return ""
     return date.toLocaleDateString({
       year: "numeric",
       month: "numeric",
       day: "numeric",
-    });
-  };
-
+    })
+  }
   const handleUpdate = (e) => {
-    const { name, className } = e.target;
+    const { name, className } = e.target
 
     setQueryData((prev) => {
-      let updatedValue = prev[name];
+      let updatedValue = prev[name]
 
       switch (className) {
         case "increase":
-          ++updatedValue;
-          break;
+          ++updatedValue
+          break
         case "decrease":
-          --updatedValue;
-          break;
+          --updatedValue
+          break
         default:
-          break;
+          break
       }
-      if (updatedValue < 1) updatedValue = 1;
-      if (updatedValue > 5) updatedValue = 5;
+      if (updatedValue < 1) updatedValue = 1
+      if (updatedValue > 5) updatedValue = 5
 
       return {
         ...prev,
         [name]: updatedValue,
-      };
-    });
-  };
+      }
+    })
+  }
   const handleSearch = () => {
-    setTotalPrice(0);
-    queryRooms(queryData);
-  };
+    setTotalPrice(0)
+    queryRooms(queryData)
+  }
 
   const validateSearch = () => {
-    const { dateRange } = queryData;
-    return dateRange.length === 0;
-  };
+    const { dateRange } = queryData
+    return dateRange.length === 0
+  }
 
   const handleSelect = (e) => {
-    const selectedOption = e.target.options[e.target.selectedIndex];
-    const price = selectedOption.getAttribute("data-price");
-    const roomType = selectedOption.getAttribute("data-name");
-    const roomId = parseInt(selectedOption.value);
+    const selectedOption = e.target.options[e.target.selectedIndex]
+    const price = selectedOption.getAttribute("data-price")
+    const roomType = selectedOption.getAttribute("data-name")
+    const roomId = parseInt(selectedOption.value)
 
     setQueryData((prev) => ({
       ...prev,
       roomType,
       roomId,
-    }));
-    setTotalPrice(price);
-  };
+    }))
+    setTotalPrice(price)
+  }
   const handleAddCart = () => {
-    const orderId = cartItems.order_id;
+    const orderId = cartItems.order_id
 
     const itemData = {
       ...queryData,
       order_id: orderId,
-    };
-    newCartItem(itemData);
-  };
+    }
+    newCartItem(itemData)
+  }
 
   useEffect(() => {
     if (value && value.length === 2) {
       setQueryData((prev) => ({
         ...prev,
         dateRange: value,
-      }));
+      }))
     }
-  }, [value]);
+  }, [value])
   // useEffect(() => {
   //   if (data) {
   //     setRoomOption(data)
@@ -116,7 +115,7 @@ const ReservationModal = ({ setToggleReservation }) => {
         <span
           className="closeQuickModal"
           onClick={() => {
-            setToggleReservation(false);
+            setToggleReservation(false)
           }}
         >
           &times;
@@ -248,7 +247,7 @@ const ReservationModal = ({ setToggleReservation }) => {
                   id="roomTypeSelect"
                   className="roomTypeSelect"
                   onChange={handleSelect}
-                  value={queryData.roomType || ""}
+                  value={queryData.roomId || ""}
                 >
                   <option value="" disabled>
                     選擇房型
@@ -266,14 +265,18 @@ const ReservationModal = ({ setToggleReservation }) => {
                 </select>
               </div>
             )}
-            <button id="searchResults" onClick={handleAddCart}>
+            <button
+              id="searchResults"
+              onClick={handleAddCart}
+              disabled={!queryData.roomId}
+            >
               加入購物車
             </button>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ReservationModal;
+export default ReservationModal

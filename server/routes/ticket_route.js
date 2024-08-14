@@ -12,7 +12,7 @@ router.post("/addTicketItem", async (req, res) => {
       await prisma.ticket.findFirst({
         where: { ticket_id: element.id },
       })
-      await prisma.order_item.create({
+      const res = await prisma.order_item.create({
         data: {
           check_in_date: element.booked_date,
           quantity: element.quantity,
