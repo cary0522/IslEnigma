@@ -1,5 +1,5 @@
-//@author: 許哲誠
-const login_Model = require('../models/login_Model');
+//@author : 許哲誠
+const login_Model = require('../models/login_model');
 const passwordHelpers = require('../utils/passwordHelpers');
 const generateToken = require('../utils/jwtHelpers');
 const cookieHelpers = require('../utils/setCookie');
@@ -9,13 +9,13 @@ const login_controllers = {
     try {
       const { account, password } = req.body;
       const member = await login_Model.read(account);
-      // const isReCaptchaValid = await validReCaptcha.valid(token);
-      // if (!isReCaptchaValid.success) {
-      //   return res.status(422).json({
-      //     "error": "ReCaptcha 驗證失敗",
-      //     "message": "提供的 ReCaptcha 響應無效或已過期。請重試。"
-      //   });
-      // }
+      const isReCaptchaValid = await validReCaptcha.valid(token);
+      if (!isReCaptchaValid.success) {
+        return res.status(422).json({
+          "error": "ReCaptcha 驗證失敗",
+          "message": "提供的 ReCaptcha 響應無效或已過期。請重試。"
+        });
+      }
       if (!member) {
         return res.status(404).json({
           error: '未找到',

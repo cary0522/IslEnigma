@@ -1,4 +1,4 @@
-//@author: 許哲誠
+//@author : 許哲誠
 const { order, payMethod, memberInfo, password,ticket,room } = require('../models/memberInfo_models');
 const passwordHelpers = require('../utils/passwordHelpers');
 const getOrder = async (req, res) => {

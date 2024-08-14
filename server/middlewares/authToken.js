@@ -1,4 +1,4 @@
-//@author: 許哲誠
+//@author : 許哲誠
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET } = require("../utils/config_env")
 

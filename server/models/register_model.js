@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author : 許哲誠
 const { PrismaClient } = require("@prisma/client")
 const passwordHelpers = require("../utils/passwordHelpers")
 const prisma = new PrismaClient()

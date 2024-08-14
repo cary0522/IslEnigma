@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author : 許哲誠
 const login_model = require("../models/login_model")
 const passwordHelpers = require("../utils/passwordHelpers")
 const generateToken = require("../utils/jwtHelpers")

@@ -10,7 +10,6 @@ export const login = async (memberData) => {
     const res = await axios.post(`${SERVER_URL}/member/login`, memberData, {
       withCredentials: true,
     })
-
     return res.data
   } catch (err) {
     throw err
