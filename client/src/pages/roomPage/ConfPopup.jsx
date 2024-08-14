@@ -1,11 +1,19 @@
+// 在 ConfPopup.jsx 中
 const ConfPopup = () => {
+  const handleClose = () => {
+    const popup = document.getElementById("cartConfirmationPopup");
+    if (popup) {
+      popup.classList.remove("active");
+    }
+  };
+
   return (
-    <div id="cartConfirmationPopup" class="popupOverlay">
-      <div class="popupContent">
+    <div id="cartConfirmationPopup" className="popupOverlay">
+      <div className="popupContent">
         <img
           src="./public/00myIcon/booking-info.png"
           alt="Tent Icon"
-          class="tentIcon"
+          className="tentIcon"
         />
         <h2>謝謝您的訂購</h2>
         <p>
@@ -13,27 +21,31 @@ const ConfPopup = () => {
           <span id="checkInDate"></span>" 退房日期" "
           <span id="checkOutDate"></span>"
         </p>
-        <div class="socialLinks">
+        <div className="socialLinks">
           <p>追蹤我們</p>
-          <a href="#" class="socialIcon">
-            <i class="bi bi-instagram"></i>
+          <a href="#" className="socialIcon">
+            <i className="bi bi-instagram"></i>
           </a>
-          <a href="#" class="socialIcon">
-            <i class="bi bi-facebook"></i>
+          <a href="#" className="socialIcon">
+            <i className="bi bi-facebook"></i>
           </a>
-          <a href="#" class="socialIcon">
-            <i class="bi bi-youtube"></i>
+          <a href="#" className="socialIcon">
+            <i className="bi bi-youtube"></i>
           </a>
         </div>
-        <button id="goToCartBtn" class="actionBtn">
+        <a href="/login" id="goToCartBtn" className="actionBtn">
           前往購物車
-        </button>
-        <button id="continueShoppingBtn" class="actionBtn secondary">
+        </a>
+        <button
+          id="continueShoppingBtn"
+          className="actionBtn secondary"
+          onClick={handleClose}
+        >
           繼續瀏覽
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ConfPopup
+export default ConfPopup;

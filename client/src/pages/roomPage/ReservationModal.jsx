@@ -94,6 +94,12 @@ const ReservationModal = ({ setToggleReservation }) => {
       order_id: orderId,
     };
     newCartItem(itemData);
+
+    // 顯示確認彈窗
+    const popup = document.getElementById("cartConfirmationPopup");
+    if (popup) {
+      popup.classList.add("active");
+    }
   };
 
   useEffect(() => {
