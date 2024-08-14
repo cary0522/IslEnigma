@@ -51,13 +51,16 @@ const order = {
 }
 const payMethod = {
   create: async (memberId, payMethodData) => {
+    const { cardNumber, expiryDate, cvv } = payMethodData
+    console.log(132)
+    console.log(payMethodData)
     try {
       const newPayMethod = await prisma.credit_card.create({
         data: {
           member_id: memberId,
-          number: payMethodData.number,
-          expiry: new Date(payMethodData.expiry),
-          cvv: payMethodData.cvv,
+          number: cardNumber,
+          expiry: new Date(expiryDate),
+          cvv,
         },
       })
       return true

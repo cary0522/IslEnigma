@@ -30,6 +30,6 @@ app.use("/cart", cart_route)
 app.use("/map", map_route)
 app.use("/ticket", ticket_route)
 
-app.listen(PORT || 8080, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
