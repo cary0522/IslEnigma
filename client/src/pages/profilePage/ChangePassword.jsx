@@ -1,14 +1,22 @@
 import { useForm } from "react-hook-form"
+import { useChangePwd } from "../../hooks/useChangePwd"
 
 const ChangePassword = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
 
+  const { mutate: changePwd, isLoading } = useChangePwd()
+
   const onSubmit = (data) => {
-    console.log(data)
+    changePwd(data, {
+      onSuccess: () => {
+        reset()
+      },
+    })
   }
 
   return (
