@@ -29,4 +29,5 @@ router.get("/memberInfo", verifyToken, getMemberInfo)
 router.put("/memberInfo", verifyToken, putMemberInfo)
 
 router.post("/changePassword", verifyToken, changePassword)
+
 module.exports = router

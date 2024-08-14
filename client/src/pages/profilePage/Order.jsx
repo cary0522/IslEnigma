@@ -1,6 +1,5 @@
 import { useState } from "react"
 import ProfileModal from "./ProfileModal"
-import { orderData } from "./data/orderData"
 import { useProfileOrders } from "../../hooks/useProfileOrders"
 
 const Order = () => {
