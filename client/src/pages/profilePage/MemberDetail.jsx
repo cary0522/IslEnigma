@@ -1,14 +1,45 @@
 import { useForm } from "react-hook-form"
+import { useMemberInfo } from "../../hooks/useMemberInfo"
+import { useUpdateMember } from "../../hooks/useUpdateMember"
+import { useEffect } from "react"
 
 const MemberDetail = () => {
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split("/")
+    return `${year}-${month}-${day}`
+  }
+
+  const {
+    mutate: updateMember,
+    isLoading: LoadingUpdate,
+    error: updateErr,
+  } = useUpdateMember()
+
+  const { data: member, isLoading, error } = useMemberInfo()
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm()
 
+  useEffect(() => {
+    if (member) {
+      setValue("firstName", member.name || "")
+      setValue("lastName", member.name || "")
+      setValue("phone", member.phone || "")
+      setValue("email", member.email || "")
+      setValue("address", member.address || "")
+      setValue("birth", member.birth ? formatDate(member.birth) : "")
+    }
+  }, [member, setValue])
+
+  if (isLoading) return <div>Loading...</div>
+
   const onSubmit = (data) => {
     console.log(data)
+    updateMember(data)
   }
 
   return (
@@ -116,6 +147,9 @@ const MemberDetail = () => {
                 errors.birth ? "memberInputError" : ""
               }`}
               id="memberBirth"
+              {...register("birth", {
+                required: "* 請 輸 入 生 日",
+              })}
             />
           </div>
         </div>

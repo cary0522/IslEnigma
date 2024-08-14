@@ -1,4 +1,5 @@
 const ProfileModal = ({ data, openModal, setOpenModal }) => {
+  const { customer, phone, address, payment_method } = data
   return (
     openModal && (
       <div class="modal">
@@ -14,16 +15,20 @@ const ProfileModal = ({ data, openModal, setOpenModal }) => {
           <h2 class="modal-title">訂單詳細信息</h2>
           <div class="order-details">
             <p>
-              <strong>訂購人姓名：</strong>Terry
+              <strong>訂購人姓名：</strong>
+              {customer}
             </p>
             <p>
-              <strong>電話：</strong>0979456123
+              <strong>電話：</strong>
+              {phone}
             </p>
             <p>
-              <strong>地址：</strong>台中市西屯區惠來路1段150號
+              <strong>地址：</strong>
+              {address}
             </p>
             <p>
-              <strong>付款方式：</strong>信用卡
+              <strong>付款方式：</strong>
+              {payment_method === "card" && "信用卡"}
             </p>
           </div>
         </div>
