@@ -27,7 +27,7 @@ const HamburgerMenu = ({
         >
           &times;
         </span>
-        <a href="./homepage">
+        <a href="/homepage">
           <img
             src="/00logo/LogoType_Light_1.png"
             alt="Logo"

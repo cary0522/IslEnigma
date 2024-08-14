@@ -274,6 +274,11 @@
     display: flex;
     float: right;
   }
+  .payMethod-addBtn-true{
+    margin: 20px;
+    display: flex;
+    justify-content: left;
+  }
   .payMethod-addBtn:hover {
     color: #fff;
     background: var(

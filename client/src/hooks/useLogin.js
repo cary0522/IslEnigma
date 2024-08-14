@@ -33,7 +33,7 @@ export const useLogin = () => {
     onError: (error) => {
       const errMsg = error || "發生錯誤!"
       console.log(errMsg)
-      toast.error(errMsg)
+      toast.error(errMsg.response.data.message)
     },
   })
 }

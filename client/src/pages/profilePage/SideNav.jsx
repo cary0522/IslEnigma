@@ -1,4 +1,10 @@
+import { useLogout } from "../../hooks/useLogout"
 const SideNav = ({ activeButton, handleButtonClick }) => {
+  const { mutate: logout } = useLogout()
+
+  const handleLogout = () => {
+    logout()
+  }
   return (
     <div className="button-group">
       <button
@@ -37,7 +43,12 @@ const SideNav = ({ activeButton, handleButtonClick }) => {
       >
         更改密碼
       </button>
-      <button className="btn-custom" id="logout" data-target="logoutContent">
+      <button
+        className="btn-custom"
+        id="logout"
+        data-target="logoutContent"
+        onClick={handleLogout}
+      >
         登出
       </button>
     </div>
