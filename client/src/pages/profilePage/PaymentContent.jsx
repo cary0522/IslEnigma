@@ -1,7 +1,8 @@
 import { checkCardType } from "../../utils/helpers";
 
 import { useDeleteCard } from "../../hooks/useDeleteCard";
-
+import visaIcon from "/memberInfo/visa.svg";
+import mastercardIcon from "/memberInfo/mastercard.svg";
 const PaymentContent = ({ cardInfo, setOpenModal }) => {
 	const { mutate: deleteCard, isLoading } = useDeleteCard();
 

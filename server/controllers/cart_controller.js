@@ -49,12 +49,13 @@ const cart_controller = {
   },
 
   new_cart_item: async (req, res) => {
-    const { order_id, dateRange, people, roomId } = req.body;
+    const { order_id, dateRange, people } = req.body
 
     const existingItem = await prisma.order_item.findFirst({
       where: {
         order_id: order_id,
-        room_id: roomId,
+        room_id: req.body.roomId??null,
+        ticket_id: req.body.ticketId??null,
         check_in_date: dateRange[0],
         check_out_date: dateRange[1],
       },

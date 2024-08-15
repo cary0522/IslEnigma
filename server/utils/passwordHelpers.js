@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author : 許哲誠
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const passwordHelpers = {
