@@ -25,9 +25,8 @@ export const useRegister = () => {
     onError: (error) => {
       const errMsg = error.response?.data?.error || "發生錯誤!"
 
-      console.log(error.response.data)
       console.log(errMsg)
-      toast.error(errMsg)
+      toast.error(error.response.data.error)
     },
   })
 }

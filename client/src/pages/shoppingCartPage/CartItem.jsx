@@ -57,12 +57,12 @@ const CartItem = ({ item }) => {
             />
           </div>
           <div class="shoppingCartItemInfo">
-            <h5 class="itemTitle">{item.room.room_type}</h5>
+            <h5 class="itemTitle">{item.room?.room_type}</h5>
             <p class="itemDate">
               入住日期:{formatDate(item.check_in_date)} - 退房日期:
               {formatDate(item.check_out_date)}
             </p>
-            <p class="itemBeds">床數 : {item.room.room_count}</p>
+            <p class="itemBeds">床數 : {item.room?.room_count}</p>
             <p class="itemPeople">人數 : {item.people_count}位</p>
           </div>
         </div>
@@ -92,7 +92,7 @@ const CartItem = ({ item }) => {
         <button class="changeButton">
           <i class="bi bi-pencil-square"></i>改變心意
         </button>
-        <p class="itemPrice">NT$ {item.room.price * item.quantity}</p>
+        <p class="itemPrice">NT$ {item.room?.price * item.quantity}</p>
       </div>
     </div>
   )
