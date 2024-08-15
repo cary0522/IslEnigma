@@ -76,7 +76,9 @@ function BookingArea({
           ]
         }
         axios
-          .post("http://localhost:3001/ticket/addTicketItem", cart)
+          .post("http://localhost:3001/ticket/addTicketItem", cart, {
+            withCredentials: true,
+          })
           .then((response) => {
             console.log(response)
           })

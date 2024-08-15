@@ -3,8 +3,11 @@ import { useUpdateQty } from "../../hooks/useUpdateQty"
 import { formatDate } from "../../utils/helpers"
 // icon
 import { FaTrashCan } from "react-icons/fa6"
+import roomImg from "/shoppingCart/roomImg.png"
 
 const CartItem = ({ item }) => {
+  const { ticket = null, room = null } = item
+
   const { mutate: removeCartItem } = useRemoveCartItem()
 
   const { mutate: updateQty, isLoading: qtyLoading, isError } = useUpdateQty()
@@ -46,40 +49,52 @@ const CartItem = ({ item }) => {
   }
 
   return (
-    <div class="item">
-      <div class="itemTop">
-        <div class="itemContent">
-          <div class="imgContainer">
+    <div className="item">
+      <div className="itemTop">
+        <div className="itemContent">
+          <div className="imgContainer">
             <img
-              src="shoppingCart/roomImg.png"
+              src={
+                item.room
+                  ? roomImg
+                  : "https://i.mj.run/u/6d8aa752-4375-4c2e-b46b-012f73974faf/578ae76eff4ac5a8e014647ede78abf64a83cce813d34b66d8ab8008b315541e_384_N.png"
+              }
               alt="房間圖片"
-              class="roomImg"
+              className="roomImg"
             />
           </div>
           <div class="shoppingCartItemInfo">
-            <h5 class="itemTitle">{item.room?.room_type}</h5>
-            <p class="itemDate">
-              入住日期:{formatDate(item.check_in_date)} - 退房日期:
-              {formatDate(item.check_out_date)}
+            <h5 class="itemTitle">{room?.room_type || ticket?.type}</h5>
+            <p className="itemDate">
+              入住日期: {formatDate(item.check_in_date)}
+              {item.room && (
+                <>
+                  {" - "}退房日期: {formatDate(item.check_out_date)}
+                </>
+              )}
             </p>
-            <p class="itemBeds">床數 : {item.room?.room_count}</p>
-            <p class="itemPeople">人數 : {item.people_count}位</p>
+            {room && (
+              <>
+                <p class="itemBeds">床數 : {room?.room_count}</p>
+                <p class="itemPeople">人數 : {item.people_count}位</p>
+              </>
+            )}
           </div>
         </div>
-        <div class="btngroups">
-          <div class="shoppingCartCounterBox">
-            <div class="shoppingCartCounter">
-              <div class="minusButton" onClick={handleMinus}>
+        <div className="btngroups">
+          <div className="shoppingCartCounterBox">
+            <div className="shoppingCartCounter">
+              <div className="minusButton" onClick={handleMinus}>
                 <span> - </span>
               </div>
               <span>{item.quantity}</span>
-              <div class="plusButton" onClick={handlePlus}>
+              <div className="plusButton" onClick={handlePlus}>
                 <span> ＋ </span>
               </div>
             </div>
           </div>
           <div
-            class="shoppingCartGarbageCan"
+            className="shoppingCartGarbageCan"
             onClick={() => {
               handleDelete(item.order_item_id)
             }}
@@ -88,11 +103,13 @@ const CartItem = ({ item }) => {
           </div>
         </div>
       </div>
-      <div class="itemBottom">
-        <button class="changeButton">
-          <i class="bi bi-pencil-square"></i>改變心意
+      <div className="itemBottom">
+        <button className="changeButton">
+          <i className="bi bi-pencil-square"></i>改變心意
         </button>
-        <p class="itemPrice">NT$ {item.room?.price * item.quantity}</p>
+        <p class="itemPrice">
+          NT$ {room?.price || ticket?.price * item.quantity}
+        </p>
       </div>
     </div>
   )

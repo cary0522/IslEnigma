@@ -23,15 +23,13 @@ const ShoppingCartPage = () => {
   useEffect(() => {
     if (data && data.order_item) {
       const sortedItems = data.order_item.sort((a, b) => {
-        // Compare by room_id first
         if (a.room_id < b.room_id) return -1
         if (a.room_id > b.room_id) return 1
 
-        // If room_id is the same, compare by ticket_id
         if (a.ticket_id < b.ticket_id) return -1
         if (a.ticket_id > b.ticket_id) return 1
 
-        return 0 // If both room_id and ticket_id are the same
+        return 1
       })
 
       setCartData(sortedItems)
@@ -40,7 +38,6 @@ const ShoppingCartPage = () => {
   }, [data])
 
   if (isLoading) return <p>Loading...</p>
-
   return (
     <div className="shoppingCart">
       <div className="apple"></div>

@@ -14,7 +14,7 @@ const Order = () => {
     setOpenModal(true)
   }
   if (isLoading) return <div>isLoading..</div>
-
+  console.log(orderData)
   return (
     <div id="orderContent" style={{ display: "flex" }}>
       {orderData.length === 0 ? (
