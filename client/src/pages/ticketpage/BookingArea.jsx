@@ -116,6 +116,7 @@ function BookingArea({
 						className="col-4"
 					/>
 					<DateCalendar
+					today={today}
 						date={date}
 						dateShow={dateShow}
 						selectDate={selectDate}

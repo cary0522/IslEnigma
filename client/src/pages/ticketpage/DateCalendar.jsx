@@ -6,6 +6,7 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 
 function DateCalendar({
+	today,
 	date,
 	dateShow,
 	selectDate,
@@ -20,15 +21,6 @@ function DateCalendar({
 					e.stopPropagation();
 				}}
 			>
-				{/* <Calendar
-					value={date}
-					calendarType={"gregory"}
-					defaultValue={new Date()}
-					minDate={new Date()}
-					onChange={selectDate}
-					onActiveStartDateChange={changeView}
-					tileClassName={tileClassName}
-				/> */}
 				<DatePicker
 					value={date}
 					onChange={selectDate}
@@ -38,11 +30,10 @@ function DateCalendar({
 					isOpen={true}
 					shouldCloseCalendar={({ reason }) => reason !== "outsideAction"}
 					locale="en-us"
-					// calendarType={"gregory"}
-					// defaultValue={new Date()}
-					// minDate={new Date()}
-					// onActiveStartDateChange={changeView}
-					// tileClassName={tileClassName}
+					calendarType={"gregory"}
+					minDate={today}
+					onActiveStartDateChange={changeView}
+					tileClassName={tileClassName}
 				/>
 			</div>
 		);

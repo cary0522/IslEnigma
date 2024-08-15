@@ -116,6 +116,10 @@
 			margin: 10px 0;
 			display: flex;
 			justify-content: center;
+			a {
+				margin: 0;
+				padding: 0;
+			}
 			.button {
 				margin: 10px auto;
 				background-color: $backgroundColorBtnDark;
@@ -314,6 +318,7 @@
 							display: none;
 						}
 						.react-calendar {
+							z-index: 5;
 							animation: divAnimation 0.5s;
 							width: 350px;
 							background-color: $backgroundColorBooking;
@@ -334,7 +339,6 @@
 							}
 							button {
 								background-color: transparent;
-								color: $colorText;
 								width: auto;
 								margin: 5px auto;
 								padding: 5px;
@@ -347,6 +351,15 @@
 							.disableSelectDate {
 								color: rgb(175, 174, 174);
 								cursor: none;
+							}
+							.react-calendar__tile {
+								&:hover {
+									background: rgba(175, 173, 173, 0.4);
+								}
+							}
+							.react-calendar__tile--now {
+								background: #ffff76;
+								color: #333;
 							}
 						}
 						@media screen and (max-width: 720px) {
@@ -392,7 +405,7 @@
 			small {
 				font-size: 16px;
 			}
-			button {
+			.button {
 				background-color: $backgroundColorBtnDark;
 				color: $colorSvg;
 				font-size: 20px;
