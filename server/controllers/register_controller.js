@@ -1,11 +1,9 @@
-//@author :TerryXU
+//@author : 許哲誠
 const register_Model = require("../models/register_model")
 const register_controller = {
   register: async (req, res) => {
     try {
       const memberData = req.body
-      console.log(memberData)
-
       const checkMember = await register_Model.read(memberData.account)
       if (checkMember) {
         return res.status(409).json({

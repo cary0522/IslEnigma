@@ -132,7 +132,11 @@ const ShoppingCartPage = () => {
         </div>
         <div class="customerService">
           <div class="customerAlerm">
-            <img class="customerAlermImg" src="./public/對話框.png" alt="" />
+            <img
+              class="customerAlermImg"
+              src="/shoppingCart/對話框.png"
+              alt=""
+            />
             <p>需要訂房嗎?</p>
           </div>
           <img

@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "islenigma",
+      "database": "islenigma",
+      "username": "postgres",
+      "password": "password"
+    }
+  ]
+}

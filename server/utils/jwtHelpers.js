@@ -1,4 +1,4 @@
-//@author :TerryXU
+//@author : 許哲誠
 const jwt = require("jsonwebtoken")
 const { JWT_SECRET, JWT_EXPIRES_IN } = require("./config_env")
 
