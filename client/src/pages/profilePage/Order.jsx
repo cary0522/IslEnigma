@@ -60,9 +60,9 @@ const Order = () => {
                           ? `入住 : ${data.checkin_date}`
                           : data.checkin_date}
                         <br />
-                        {data.room_type ? `退房 : ${data.checkin_date}` : ""}
+                        {data.room_type ? `退房 : ${data.checkout_date}` : ""}
                       </td>
-                      <td data-label="數量">1</td>
+                      <td data-label="數量">{data.quantity}</td>
                       <td data-label="操作">
                         <button
                           className="seeMore-btn"
