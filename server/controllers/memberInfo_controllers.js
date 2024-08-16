@@ -22,6 +22,7 @@ const getOrder = async (req, res) => {
 }
 
 const getPayMethod = async (req, res) => {
+  console.log(req.body)
   try {
     const memberID = req.user.id
     const payMethods = await payMethod.read(memberID)
@@ -37,6 +38,8 @@ const getPayMethod = async (req, res) => {
   }
 }
 const postPayMethod = async (req, res) => {
+  console.log(req.body)
+  console.log(req.body.payMethodData)
   try {
     const memberID = req.user.id
     const payMethodData = req.body
