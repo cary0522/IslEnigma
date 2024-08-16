@@ -88,7 +88,11 @@ const cart_controller = {
 
       const od = await prisma.customer_order.update({
         where: { order_id },
-        data: { total_amount: room.price },
+        data: {
+          total_amount: {
+            increment: room.price,
+          },
+        },
       })
 
       await prisma.order_item.create({
@@ -102,7 +106,6 @@ const cart_controller = {
           quantity: 1,
         },
       })
-
       res.status(200).json("成功新增商品!")
     } catch (err) {
       console.log(err)
@@ -131,22 +134,52 @@ const cart_controller = {
   },
   update_item_quantity: async (req, res) => {
     const { quantity } = req.body
-
     const itemId = req.params.id
-    console.log(itemId, quantity)
+
     try {
-      const updatedItem = await prisma.order_item.update({
-        where: {
-          order_item_id: itemId,
-        },
-        data: {
-          quantity,
+      const currentItem = await prisma.order_item.findUnique({
+        where: { order_item_id: itemId },
+        select: {
+          quantity: true,
+          order_id: true,
+          room: {
+            select: { price: true },
+          },
+          ticket: {
+            select: { price: true },
+          },
         },
       })
 
-      console.log(updatedItem)
-      res.status(200).json(updatedItem)
+      if (!currentItem) {
+        return res.status(404).json({ message: "Item not found" })
+      }
+
+      const unitPrice = currentItem.room
+        ? currentItem.room.price
+        : currentItem.ticket.price
+      const oldQuantity = currentItem.quantity
+      const priceDifference = unitPrice * (quantity - oldQuantity)
+
+      const updatedItem = await prisma.order_item.update({
+        where: { order_item_id: itemId },
+        data: { quantity },
+      })
+
+      const updatedOrder = await prisma.customer_order.update({
+        where: { order_id: currentItem.order_id },
+        data: {
+          total_amount: {
+            increment: priceDifference,
+          },
+        },
+      })
+
+      console.log(updatedOrder)
+
+      res.status(200).json({ updatedItem, updatedOrder })
     } catch (err) {
+      console.log(err)
       res.status(500).json(err)
     }
   },
@@ -155,14 +188,48 @@ const cart_controller = {
     const id = req.params.id
 
     try {
+      // 获取要删除的订单项的详细信息
+      const currentItem = await prisma.order_item.findUnique({
+        where: { order_item_id: id },
+        select: {
+          quantity: true,
+          order_id: true,
+          room: {
+            select: { price: true },
+          },
+          ticket: {
+            select: { price: true },
+          },
+        },
+      })
+
+      if (!currentItem) {
+        return res.status(404).json({ message: "Item not found" })
+      }
+
+      const unitPrice = currentItem.room
+        ? currentItem.room.price
+        : currentItem.ticket.price
+      const totalPrice = unitPrice * currentItem.quantity
+
       const response = await prisma.order_item.delete({
         where: {
           order_item_id: id,
         },
       })
 
+      const updatedOd = await prisma.customer_order.update({
+        where: { order_id: currentItem.order_id },
+        data: {
+          total_amount: {
+            decrement: totalPrice,
+          },
+        },
+      })
+      console.log(updatedOd)
       res.status(200).json(response)
     } catch (err) {
+      console.log(err)
       res.status(500).json(err)
     }
   },

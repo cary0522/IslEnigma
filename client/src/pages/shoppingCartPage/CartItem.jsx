@@ -108,7 +108,9 @@ const CartItem = ({ item }) => {
           <i className="bi bi-pencil-square"></i>改變心意
         </button>
         <p class="itemPrice">
-          NT$ {room?.price || ticket?.price * item.quantity}
+          NT${" "}
+          {item.room?.price * item.quantity ||
+            item.ticket?.price * item.quantity}
         </p>
       </div>
     </div>

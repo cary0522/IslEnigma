@@ -78,10 +78,9 @@ const CheckOutPage = () => {
             withCredentials: true,
           }
         )
-        // if (res.success) {
-        //   axios.post()
-        // }
+
         const paymentUrl = res.data.info.paymentUrl.web
+
         window.location.href = paymentUrl
       } catch (error) {
         console.error("支付創建失敗:", error)
@@ -148,7 +147,7 @@ const CheckOutPage = () => {
               setPaymentMethod("linePay")
             }}
           >
-            透過 LinePay 付款
+            <img src="/lineLogo/line.png" alt="" />
           </button>
           <button className="confirm-payment" type="submit">
             確認付款

@@ -53,12 +53,13 @@ router.post(
         return {
           id: `${item.ticket.ticket_id}`,
           name: item.ticket.type,
-          imageUrl: item.ticket.img,
+          imageUrl: item.ticket.img.url,
           quantity: item.quantity,
           price: item.ticket.price,
         }
       }
     })
+    console.log(products)
     function handleBigInteger(text) {
       const largeNumberRegex = /:\s*(\d{16,})\b/g
       const processedText = text.replace(largeNumberRegex, ': "$1"')
