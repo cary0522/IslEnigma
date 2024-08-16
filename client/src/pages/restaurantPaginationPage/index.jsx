@@ -37,8 +37,6 @@ function RestaurantPaginationPage() {
 					document.getElementById("restaurantImage").src = restaurant.mainImage;
 				}
 			});
-		// const {urlId} = useParams();
-		// console.log('urlId:',{urlId})
 	};
 	
 	const { urlId } = useParams();
