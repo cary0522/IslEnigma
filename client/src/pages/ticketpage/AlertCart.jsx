@@ -38,9 +38,11 @@ function AlertCart({
 						</a>
 					</div>
 					<div className="col-12 divAlertBtn">
-						<button className="btnCart" onClick={closeAlertShowCart}>
-							前往購物車
-						</button>
+						<a href="/cart">
+							<button className="btnCart" onClick={closeAlertShowCart}>
+								前往購物車
+							</button>
+						</a>
 						<a href="/rooms">
 							<button className="btnCart" onClick={closeAlertShowCart}>
 								前往訂房
@@ -78,9 +80,11 @@ function AlertCart({
 						</a>
 					</div>
 					<div className="col-12 divAlertBtn">
-						<button className="btnCart" onClick={closeAlertShowCart}>
-							前往購物車
-						</button>
+						<a href="/cart">
+							<button className="btnCart" onClick={closeAlertShowCart}>
+								前往購物車
+							</button>
+						</a>
 						<a href="/rooms">
 							<button className="btnCart" onClick={closeAlertShowCart}>
 								前往訂房
@@ -118,9 +122,11 @@ function AlertCart({
 						</a>
 					</div>
 					<div className="col-12 divAlertBtn">
-						<button className="btnCart" onClick={closeAlertShowCart}>
-							前往購物車
-						</button>
+						<a href="/cart">
+							<button className="btnCart" onClick={closeAlertShowCart}>
+								前往購物車
+							</button>
+						</a>
 						<a href="/rooms">
 							<button className="btnCart" onClick={closeAlertShowCart}>
 								前往訂房

@@ -1,5 +1,4 @@
 import React, { useMemo } from "react"
-import Calendar from "react-calendar"
 import DatePicker from "react-date-picker"
 
 import "react-date-picker/dist/DatePicker.css"
@@ -11,7 +10,6 @@ function DateCalendar({
 	dateShow,
 	selectDate,
 	changeView,
-	tileClassName,
 }) {
 	if (dateShow) {
 		return (
@@ -33,7 +31,6 @@ function DateCalendar({
 					calendarType={"gregory"}
 					minDate={today}
 					onActiveStartDateChange={changeView}
-					tileClassName={tileClassName}
 				/>
 			</div>
 		);

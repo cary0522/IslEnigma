@@ -321,7 +321,7 @@
 							z-index: 5;
 							animation: divAnimation 0.5s;
 							width: 350px;
-							background-color: $backgroundColorBooking;
+							background-color: $colorSvg;
 							box-shadow: $backgroundShadow;
 							backdrop-filter: blur($backgroundBlur);
 							border-radius: 20px;
@@ -338,7 +338,6 @@
 								text-decoration: none;
 							}
 							button {
-								background-color: transparent;
 								width: auto;
 								margin: 5px auto;
 								padding: 5px;
@@ -347,15 +346,6 @@
 								box-shadow: none;
 								backdrop-filter: none;
 								cursor: pointer;
-							}
-							.disableSelectDate {
-								color: rgb(175, 174, 174);
-								cursor: none;
-							}
-							.react-calendar__tile {
-								&:hover {
-									background: rgba(175, 173, 173, 0.4);
-								}
 							}
 							.react-calendar__tile--now {
 								background: #ffff76;
