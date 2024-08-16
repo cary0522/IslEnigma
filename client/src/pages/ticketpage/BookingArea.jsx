@@ -40,7 +40,7 @@ function BookingArea({
 		}
 	};
 	const cookies = new Cookies();
-	let cart = null
+	let cart = null;
 
 	// 整理資料傳到購物車
 	function addCart() {
@@ -59,24 +59,26 @@ function BookingArea({
 							quantity: standardNum,
 						},
 					];
-				}else{
+				} else {
 					cart = [
 						{
 							id: 1,
 							booked_date: bookingDate,
 							quantity: VIPNum,
-							userToken:cookies.get('token')
+							userToken: cookies.get("token"),
 						},
 						{
 							id: 2,
 							booked_date: bookingDate,
 							quantity: standardNum,
-							userToken:cookies.get('token')
+							userToken: cookies.get("token"),
 						},
 					];
 				}
 				axios
-					.post("http://localhost:3001/ticket/addTicketItem", cart)
+					.post("http://localhost:3001/ticket/addTicketItem", cart, {
+						withCredentials: true,
+					})
 					.then((response) => {
 						console.log(response);
 					});
@@ -116,11 +118,11 @@ function BookingArea({
 						className="col-4"
 					/>
 					<DateCalendar
+						today={today}
 						date={date}
 						dateShow={dateShow}
 						selectDate={selectDate}
 						changeView={changeView}
-						tileClassName={tileClassName}
 						onClick={(e) => {
 							e.stopPropagation();
 						}}
