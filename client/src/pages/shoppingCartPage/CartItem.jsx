@@ -1,47 +1,47 @@
-import { useRemoveCartItem } from "../../hooks/useDeleteItem";
-import { useUpdateQty } from "../../hooks/useUpdateQty";
-import { formatDate } from "../../utils/helpers";
-import { FaTrashCan } from "react-icons/fa6";
-import roomImg from "/shoppingCart/roomImg.png";
+import { useRemoveCartItem } from "../../hooks/useDeleteItem"
+import { useUpdateQty } from "../../hooks/useUpdateQty"
+import { formatDate } from "../../utils/helpers"
+import { FaTrashCan } from "react-icons/fa6"
+import roomImg from "/shoppingCart/roomImg.png"
 
 const CartItem = ({ item }) => {
-  const { ticket = null, room = null } = item;
-  const { mutate: removeCartItem } = useRemoveCartItem();
-  const { mutate: updateQty, isLoading: qtyLoading, isError } = useUpdateQty();
+  const { ticket = null, room = null } = item
+  const { mutate: removeCartItem } = useRemoveCartItem()
+  const { mutate: updateQty, isLoading: qtyLoading, isError } = useUpdateQty()
 
   const handleUpdateQty = (newQty) => {
     updateQty(
       { id: item.order_item_id, quantity: newQty },
       {
         onSuccess: () => {
-          console.log("Quantity updated successfully!");
+          console.log("Quantity updated successfully!")
         },
         onError: (error) => {
-          console.error("Error updating quantity:", error);
+          console.error("Error updating quantity:", error)
         },
       }
-    );
-  };
+    )
+  }
 
   const handlePlus = () => {
     if (item.quantity < 10) {
-      handleUpdateQty(item.quantity + 1);
+      handleUpdateQty(item.quantity + 1)
     }
-  };
+  }
 
   const handleMinus = () => {
     if (item.quantity > 1) {
-      const newQuantity = item.quantity - 1;
-      handleUpdateQty(newQuantity);
+      const newQuantity = item.quantity - 1
+      handleUpdateQty(newQuantity)
     }
-  };
+  }
 
   const handleDelete = (id) => {
-    const isConfirmed = window.confirm("確定要刪除這個商品嗎？");
+    const isConfirmed = window.confirm("確定要刪除這個商品嗎？")
     if (isConfirmed) {
-      removeCartItem(id);
+      removeCartItem(id)
     }
-  };
+  }
 
   return (
     <div className="item">
@@ -92,7 +92,7 @@ const CartItem = ({ item }) => {
           <div
             className="shoppingCartGarbageCan"
             onClick={() => {
-              handleDelete(item.order_item_id);
+              handleDelete(item.order_item_id)
             }}
           >
             <FaTrashCan />
@@ -104,11 +104,11 @@ const CartItem = ({ item }) => {
           <i className="bi bi-pencil-square"></i>改變心意
         </button>
         <p className="itemPrice">
-          NT$ {(room?.price || ticket?.price) * item.quantity}
+          NT$ {(item.room?.price || item.ticket?.price) * item.quantity}
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CartItem;
+export default CartItem

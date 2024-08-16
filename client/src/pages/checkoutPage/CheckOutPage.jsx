@@ -1,12 +1,13 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { useCartItemsData } from "../../hooks/useCartItem"
-import { formatDate, SERVER_URL } from "../../utils/helpers"
+import { SERVER_URL } from "../../utils/helpers"
 import { useMemberInfo } from "../../hooks/useMemberInfo"
 
 const CheckOutPage = () => {
+  const [paymentMethod, setPaymentMethod] = useState("stripe")
   const { data: memberData, isLoading: memberDataLoading } = useMemberInfo()
   const { data: cartData, isLoading: cartDataLoading } = useCartItemsData()
   const navigate = useNavigate()
@@ -35,6 +36,21 @@ const CheckOutPage = () => {
   }, [memberData, reset])
 
   const handleCreatePayment = async (formData) => {
+    switch (paymentMethod) {
+      case "stripe":
+        await payWithStripe(formData)
+        break
+
+      case "linePay":
+        await payWithLinePay(formData)
+        break
+
+      default:
+        console.error("未知的支付方式")
+    }
+  }
+
+  const payWithStripe = async (formData) => {
     try {
       const res = await axios.post(
         `${SERVER_URL}/cart/create-checkout-session`,
@@ -46,6 +62,31 @@ const CheckOutPage = () => {
       window.location.href = res.data.url
     } catch (error) {
       console.error("支付創建失敗:", error)
+    }
+  }
+
+  const payWithLinePay = async (formData) => {
+    try {
+      try {
+        const res = await axios.post(
+          `${SERVER_URL}/cart/line-test`,
+          {
+            data: cartData,
+            orderInfo: formData,
+          },
+          {
+            withCredentials: true,
+          }
+        )
+
+        const paymentUrl = res.data.info.paymentUrl.web
+
+        window.location.href = paymentUrl
+      } catch (error) {
+        console.error("支付創建失敗:", error)
+      }
+    } catch (error) {
+      console.error("LinePay支付失敗:", error)
     }
   }
 
@@ -99,6 +140,15 @@ const CheckOutPage = () => {
           </div>
         </div>
         <div className="checkout-right">
+          <button
+            type="submit"
+            className={paymentMethod === "linePay" ? "active" : ""}
+            onClick={() => {
+              setPaymentMethod("linePay")
+            }}
+          >
+            <img src="/lineLogo/line.png" alt="" />
+          </button>
           <button className="confirm-payment" type="submit">
             確認付款
           </button>
