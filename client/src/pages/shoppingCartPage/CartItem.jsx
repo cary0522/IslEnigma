@@ -14,10 +14,10 @@ const CartItem = ({ item }) => {
       { id: item.order_item_id, quantity: newQty },
       {
         onSuccess: () => {
-          console.log("數量更新成功！");
+          console.log("Quantity updated successfully!");
         },
         onError: (error) => {
-          console.error("更新數量時出錯：", error);
+          console.error("Error updating quantity:", error);
         },
       }
     );
@@ -31,12 +31,14 @@ const CartItem = ({ item }) => {
 
   const handleMinus = () => {
     if (item.quantity > 1) {
-      handleUpdateQty(item.quantity - 1);
+      const newQuantity = item.quantity - 1;
+      handleUpdateQty(newQuantity);
     }
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("確定要刪除這個商品嗎？")) {
+    const isConfirmed = window.confirm("確定要刪除這個商品嗎？");
+    if (isConfirmed) {
       removeCartItem(id);
     }
   };
@@ -59,7 +61,7 @@ const CartItem = ({ item }) => {
           <div className="shoppingCartItemInfo">
             <h5 className="itemTitle">{room?.room_type || ticket?.type}</h5>
             <p className="itemDate">
-              {ticket ? "入園日期：" : "入住日期："}
+              {ticket ? "入園日期 ： " : "入住日期："}
               {formatDate(item.check_in_date)}
               {room && (
                 <>
@@ -69,8 +71,8 @@ const CartItem = ({ item }) => {
             </p>
             {room && (
               <>
-                <p className="itemBeds">床數：{room?.room_count}</p>
-                <p className="itemPeople">人數：{item.people_count}位</p>
+                <p className="itemBeds">床數 ： {room?.room_count}</p>
+                <p className="itemPeople">人數 ： {item.people_count}位</p>
               </>
             )}
           </div>
@@ -79,17 +81,19 @@ const CartItem = ({ item }) => {
           <div className="shoppingCartCounterBox">
             <div className="shoppingCartCounter">
               <div className="minusButton" onClick={handleMinus}>
-                <span>-</span>
+                <span> - </span>
               </div>
               <span>{item.quantity}</span>
               <div className="plusButton" onClick={handlePlus}>
-                <span>＋</span>
+                <span> ＋ </span>
               </div>
             </div>
           </div>
           <div
             className="shoppingCartGarbageCan"
-            onClick={() => handleDelete(item.order_item_id)}
+            onClick={() => {
+              handleDelete(item.order_item_id);
+            }}
           >
             <FaTrashCan />
           </div>
