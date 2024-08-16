@@ -1,5 +1,6 @@
 const ProfileModal = ({ data, openModal, setOpenModal }) => {
   const { customer, phone, address, payment_method } = data
+  console.log(payment_method)
   return (
     openModal && (
       <div class="modal">
@@ -28,7 +29,7 @@ const ProfileModal = ({ data, openModal, setOpenModal }) => {
             </p>
             <p>
               <strong>付款方式：</strong>
-              {payment_method === "card" && "信用卡"}
+              {payment_method}
             </p>
           </div>
         </div>

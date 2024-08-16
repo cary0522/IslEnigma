@@ -1,4 +1,4 @@
-//@author: 許哲誠
+//@author : 許哲誠
 //東西太多了考慮改用FP
 const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
@@ -53,6 +53,7 @@ const payMethod = {
   create: async (memberId, payMethodData) => {
     const { cardNumber, expiryDate, cvv } = payMethodData
     console.log(132)
+    console.log(memberId)
     console.log(payMethodData)
     try {
       const newPayMethod = await prisma.credit_card.create({

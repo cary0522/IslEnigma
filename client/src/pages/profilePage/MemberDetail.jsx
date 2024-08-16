@@ -26,8 +26,8 @@ const MemberDetail = () => {
 
   useEffect(() => {
     if (member) {
-      setValue("firstName", member.name || "")
-      setValue("lastName", member.name || "")
+      setValue("firstName", member.name.charAt(0) || "")
+      setValue("lastName", member.name.slice(1) || "")
       setValue("phone", member.phone || "")
       setValue("email", member.email || "")
       setValue("address", member.address || "")
@@ -38,8 +38,15 @@ const MemberDetail = () => {
   if (isLoading) return <div>Loading...</div>
 
   const onSubmit = (data) => {
-    console.log(data)
-    updateMember(data)
+    const name = data.firstName + data.lastName
+    const updatedData = {
+      ...data,
+      name,
+    }
+    delete updatedData.firstName
+    delete updatedData.lastName
+
+    updateMember(updatedData)
   }
 
   return (

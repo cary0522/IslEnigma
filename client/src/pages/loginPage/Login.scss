@@ -169,6 +169,10 @@ $background-color_4: #fff;
 		margin: 0 5px;
 	}
 	@media (max-width: 768px) {
+    .index {
+      margin-top: 150px;
+      margin-bottom: 200px;
+    }
 		.login-container {
 			flex-direction: column;
 			margin: 20px;
@@ -178,7 +182,12 @@ $background-color_4: #fff;
 			display: none;
 		}
 		.login-form {
-			width: 100%;
+			width: 80%;
 		}
+    .form-actions {
+      flex-direction: column;
+      align-items:center;
+      gap: 20px;
+    }
 	}
 }

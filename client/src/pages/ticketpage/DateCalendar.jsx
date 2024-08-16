@@ -1,9 +1,9 @@
-import React from "react";
-import Calendar from "react-calendar";
-import DatePicker from "react-date-picker";
+import React, { useMemo } from "react"
+import Calendar from "react-calendar"
+import DatePicker from "react-date-picker"
 
-import "react-date-picker/dist/DatePicker.css";
-import "react-calendar/dist/Calendar.css";
+import "react-date-picker/dist/DatePicker.css"
+import "react-calendar/dist/Calendar.css"
 
 function DateCalendar({
 	today,
@@ -40,4 +40,4 @@ function DateCalendar({
 	}
 }
 
-export default DateCalendar;
+export default DateCalendar

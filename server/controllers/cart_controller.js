@@ -49,12 +49,14 @@ const cart_controller = {
   },
 
   new_cart_item: async (req, res) => {
-    const { order_id, dateRange, people, roomId } = req.body
+    const { order_id, dateRange, people } = req.body
+    console.log(req.body)
 
     const existingItem = await prisma.order_item.findFirst({
       where: {
         order_id: order_id,
-        room_id: roomId,
+        room_id: req.body.roomId ?? null,
+        ticket_id: req.body.ticketId ?? null,
         check_in_date: dateRange[0],
         check_out_date: dateRange[1],
       },
@@ -69,7 +71,7 @@ const cart_controller = {
         data: {
           order_item_id: uuidv4(),
           order_id,
-          room_id: roomId,
+          room_id: req.body.roomId || null,
           check_in_date: dateRange[0],
           check_out_date: dateRange[1],
           people_count: people,
@@ -78,6 +80,7 @@ const cart_controller = {
       })
 
       res.status(200).json("成功新增商品!")
+      res.status(200)
     } catch (err) {
       console.log(err)
       res.status(500).json(err)
@@ -108,7 +111,7 @@ const cart_controller = {
     const { quantity } = req.body
 
     const itemId = req.params.id
-
+    console.log(itemId, quantity)
     try {
       const updatedItem = await prisma.order_item.update({
         where: {
@@ -118,6 +121,8 @@ const cart_controller = {
           quantity,
         },
       })
+
+      console.log(updatedItem)
       res.status(200).json(updatedItem)
     } catch (err) {
       res.status(500).json(err)
