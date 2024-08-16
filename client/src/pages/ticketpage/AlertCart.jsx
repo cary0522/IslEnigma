@@ -39,7 +39,7 @@ function AlertCart({
             </a>
           </div>
           <div className="col-12 divAlertBtn">
-            <Link to={"/cart"} className="btnCart">
+            <Link to="/cart" className="btnCart">
               前往購物車
             </Link>
             <button className="btnCart" onClick={closeAlertShowCart}>
@@ -77,7 +77,7 @@ function AlertCart({
             </a>
           </div>
           <div className="col-12 divAlertBtn">
-            <Link to={"/cart"} className="btnCart">
+            <Link to="/cart" className="btnCart">
               前往購物車
             </Link>
             <button className="btnCart" onClick={closeAlertShowCart}>

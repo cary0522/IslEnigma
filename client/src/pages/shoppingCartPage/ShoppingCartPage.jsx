@@ -7,7 +7,6 @@ import { useRemoveCartItem } from "../../hooks/useDeleteItem"
 import CartItem from "./CartItem"
 import arrow from "/shoppingCart/breadcrumbArrow.png"
 import "./shoppingCart.scss"
-import { SERVER_URL } from "../../utils/helpers"
 
 const ShoppingCartPage = () => {
   const { mutate: removeCartItem } = useRemoveCartItem()
@@ -51,7 +50,6 @@ const ShoppingCartPage = () => {
   }, [data])
 
   if (isLoading) return <p>Loading...</p>
-  console.log(countTotalPrice())
   return (
     <div className="shoppingCart">
       <div className="apple"></div>
