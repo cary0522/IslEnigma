@@ -7,6 +7,7 @@ import { useRemoveCartItem } from "../../hooks/useDeleteItem"
 import CartItem from "./CartItem"
 import arrow from "/shoppingCart/breadcrumbArrow.png"
 import "./shoppingCart.scss"
+import { SERVER_URL } from "../../utils/helpers"
 
 const ShoppingCartPage = () => {
   const { mutate: removeCartItem } = useRemoveCartItem()
@@ -18,6 +19,18 @@ const ShoppingCartPage = () => {
   const handleDelete = async (itemId) => {
     await axios.delete(`http://localhost:3001/cart/${itemId}`)
     removeCartItem(itemId) // Ensure UI reflects the deletion
+  }
+
+  const countTotalPrice = () => {
+    return (
+      data?.order_item.reduce((total, item) => {
+        const roomPrice = item.room?.price || 0
+        const ticketPrice = item.ticket?.price || 0
+        const itemTotal =
+          roomPrice * item.quantity + ticketPrice * item.quantity
+        return total + itemTotal
+      }, 0) || 0
+    )
   }
 
   useEffect(() => {
@@ -38,6 +51,7 @@ const ShoppingCartPage = () => {
   }, [data])
 
   if (isLoading) return <p>Loading...</p>
+  console.log(countTotalPrice())
   return (
     <div className="shoppingCart">
       <div className="apple"></div>
@@ -56,15 +70,7 @@ const ShoppingCartPage = () => {
             <span className="title">小計:</span>
             <span>
               NT$
-              {cartData.length > 0
-                ? cartData.reduce((total, item) => {
-                    const roomPrice = item.room?.price || 0
-                    const ticketPrice = item.ticket?.price || 0
-                    const itemTotal =
-                      roomPrice * item.quantity + ticketPrice * item.quantity
-                    return total + itemTotal
-                  }, 0)
-                : 0}
+              {cartData.length > 0 ? countTotalPrice() : 0}
             </span>
           </div>
           {/* <div className="onSale">

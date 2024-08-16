@@ -49,29 +49,53 @@ const cart_controller = {
   },
 
   new_cart_item: async (req, res) => {
-    const { order_id, dateRange, people } = req.body
+    const { order_id, dateRange, people, roomId } = req.body
     console.log(req.body)
 
-    const existingItem = await prisma.order_item.findFirst({
-      where: {
-        order_id: order_id,
-        room_id: req.body.roomId ?? null,
-        ticket_id: req.body.ticketId ?? null,
-        check_in_date: dateRange[0],
-        check_out_date: dateRange[1],
-      },
-    })
-
-    if (existingItem) {
-      return res.status(400).json("剛日期範圍已經在購物車中!")
-    }
-
     try {
+      const existingItem = await prisma.order_item.findFirst({
+        where: {
+          order_id: order_id,
+          room_id: roomId ?? null,
+          check_in_date: dateRange[0],
+          check_out_date: dateRange[1],
+        },
+      })
+
+      if (existingItem) {
+        return res.status(400).json("該日期範圍已經在購物車中!")
+      }
+
+      const room = await prisma.room.findUnique({
+        where: { room_id: roomId },
+        select: { price: true },
+      })
+
+      if (!room) {
+        return res.status(404).json("房間不存在")
+      }
+
+      const currentOrder = await prisma.customer_order.findUnique({
+        where: { order_id },
+        select: { total_amount: true },
+      })
+
+      if (!currentOrder) {
+        return res.status(404).json("訂單不存在")
+      }
+
+      // const newTotalAmount = currentOrder.total_amount + room.price
+
+      const od = await prisma.customer_order.update({
+        where: { order_id },
+        data: { total_amount: room.price },
+      })
+
       await prisma.order_item.create({
         data: {
           order_item_id: uuidv4(),
           order_id,
-          room_id: req.body.roomId || null,
+          room_id: roomId || null,
           check_in_date: dateRange[0],
           check_out_date: dateRange[1],
           people_count: people,
@@ -80,13 +104,11 @@ const cart_controller = {
       })
 
       res.status(200).json("成功新增商品!")
-      res.status(200)
     } catch (err) {
       console.log(err)
       res.status(500).json(err)
     }
   },
-
   new_order: async (req, res) => {
     const { cartItems } = req.body
 

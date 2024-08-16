@@ -16,6 +16,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
     isLoading: loadingCartItem,
   } = useCartItemsData()
   const { mutate: queryRooms, isLoading, data } = useQueryRooms()
+
   const today = useMemo(() => {
     const date = new Date()
     date.setHours(0, 0, 0, 0)
@@ -73,7 +74,8 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       }
     })
   }
-  console.log(queryData)
+
+  console.log(data)
   const handleSearch = () => {
     setTotalPrice(0)
     queryRooms(queryData)
