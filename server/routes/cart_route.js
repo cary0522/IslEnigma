@@ -33,11 +33,13 @@ router.put("/:id", update_item_quantity)
 
 // delete item
 router.delete("/:id", remove_item)
+
+// linePay create payment
 router.post(
   "/line-test",
   authMiddleware.verifyToken,
   async (req, res, next) => {
-    const { data } = req.body
+    const { data, orderInfo } = req.body
     const { total_amount, order_id, order_item } = data
 
     const products = order_item.map((item) => {
@@ -121,7 +123,10 @@ router.post(
 
       return processedResponse
     }
-
+    const user = {
+      name: "張三",
+      email: "zhangsan@example.com",
+    }
     try {
       let response = await requestOnlineAPI({
         method: "POST",
@@ -129,24 +134,17 @@ router.post(
         apiPath: "/v3/payments/request",
         data: {
           amount: total_amount,
+
           currency: "TWD",
-          orderId: "EXAMPLE_ORDER_20230422_1000001",
+          orderId: order_id,
           packages: [
             {
               id: order_id,
               amount: total_amount,
-              products,
-              //  [
-              //   {
-              //     id: "PEN-B-001",
-              //     name: "Pen Brown",
-              //     imageUrl: "https://store.example.com/images/pen_brown.jpg",
-              //     quantity: 2,
-              //     price: 50,
-              //   },
-              // ],
+              products: products,
             },
           ],
+
           redirectUrls: {
             confirmUrl: "http://localhost:5173/cart/shoppingSuccess",
             cancelUrl: "https://store.example.com/order/payment/cancel",
@@ -160,6 +158,121 @@ router.post(
     }
   }
 )
+
+// linePay check payment
+
+router.post("/line-test/check-payment", async (req, res) => {
+  const { transactionId, orderId, order_info } = req.body
+
+  const order_id = parseInt(orderId)
+
+  function handleBigInteger(text) {
+    const largeNumberRegex = /:\s*(\d{16,})\b/g
+    const processedText = text.replace(largeNumberRegex, ': "$1"')
+
+    const data = JSON.parse(processedText)
+
+    return data
+  }
+
+  function signKey(clientKey, msg) {
+    const encoder = new TextEncoder()
+    return crypto
+      .createHmac("sha256", encoder.encode(clientKey))
+      .update(encoder.encode(msg))
+      .digest("base64")
+  }
+
+  async function requestOnlineAPI({
+    method,
+    baseUrl = LINE_PAY_SITE,
+    apiPath,
+    queryString = "",
+    data = null,
+    signal = null,
+  }) {
+    const nonce = crypto.randomUUID()
+    let signature = ""
+
+    if (method === "GET") {
+      signature = signKey(
+        LINE_PAY_SECRET,
+        LINE_PAY_SECRET + apiPath + queryString + nonce
+      )
+    } else if (method === "POST") {
+      signature = signKey(
+        LINE_PAY_SECRET,
+        LINE_PAY_SECRET + apiPath + JSON.stringify(data) + nonce
+      )
+    }
+    const headers = {
+      "X-LINE-ChannelId": LINE_PAY_CHANNELID,
+      "X-LINE-Authorization": signature,
+      "X-LINE-Authorization-Nonce": nonce,
+    }
+
+    const response = await fetch(
+      `${baseUrl}${apiPath}${queryString !== "" ? "&" + queryString : ""}`,
+      {
+        method: method,
+        headers: {
+          "Content-Type": "application/json",
+          ...headers,
+        },
+        body: data ? JSON.stringify(data) : null,
+        signal: signal,
+      }
+    )
+
+    const processedResponse = handleBigInteger(await response.text())
+
+    return processedResponse
+  }
+
+  const order = await prisma.customer_order.findUnique({
+    where: { order_id: parseInt(orderId) },
+    select: {
+      total_amount: true,
+    },
+  })
+
+  try {
+    let response = await requestOnlineAPI({
+      method: "POST",
+      baseUrl: LINE_PAY_SITE,
+      apiPath: `/v3/payments/${transactionId}/confirm`,
+      data: {
+        amount: order.total_amount,
+        currency: "TWD",
+      },
+    })
+    if (response.returnCode === "0000") {
+      await prisma.customer_order.update({
+        where: {
+          order_id,
+        },
+        data: {
+          status: "PAID",
+        },
+      })
+
+      await prisma.order_info.create({
+        data: {
+          ...order_info,
+          order_id,
+          payment_method: "LinePay",
+        },
+      })
+    }
+
+    console.log("Response: ", response)
+
+    res.status(200).json(response)
+  } catch (error) {
+    console.log("錯誤")
+    res.status(500).json(error)
+  }
+})
 
 // create payment
 router.post("/create-checkout-session", async (req, res) => {
@@ -212,23 +325,23 @@ router.post("/payment-status", (req, res) => {
   })
 })
 
-router.post("/order-info", async (req, res) => {
-  console.log(123)
-  try {
-    const res = await prisma.order_info.create({
-      data: {
-        order_info_id: "info2",
-        order_id: "order123",
-        customer: "Eric",
-        phone_number: "0982748292",
-        address: "台灣市台中路",
-        payment_method: "CREDITCARD",
-      },
-    })
-  } catch (e) {
-    console.log(e)
-    res.status(500).json(e)
-  }
-})
+// router.post("/order-info", async (req, res) => {
+//   console.log(123)
+//   try {
+//     const res = await prisma.order_info.create({
+//       data: {
+//         order_info_id: "info2",
+//         order_id: "order123",
+//         customer: "Eric",
+//         phone_number: "0982748292",
+//         address: "台灣市台中路",
+//         payment_method: "CREDITCARD",
+//       },
+//     })
+//   } catch (e) {
+//     console.log(e)
+//     res.status(500).json(e)
+//   }
+// })
 
 module.exports = router

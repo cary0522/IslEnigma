@@ -42,6 +42,7 @@ const CheckOutPage = () => {
         break
 
       case "linePay":
+        localStorage.setItem("order_info", JSON.stringify(formData))
         await payWithLinePay(formData)
         break
 
