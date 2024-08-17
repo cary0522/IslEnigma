@@ -1,9 +1,8 @@
 import mastercardIcon from "/memberInfo/mastercard.svg"
 import visaIcon from "/memberInfo/visa.svg"
+
 export const SERVER_URL = import.meta.env.VITE_SERVER_URL
-
 export const ReCAPTCHA_SITE_KEY = import.meta.env.VITE_ReCAPTCHA_SITE_KEY
-
 export const formatDate = (str) => {
   const date = new Date(str)
   const year = date.getFullYear()
