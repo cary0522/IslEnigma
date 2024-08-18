@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useCartItemsData } from "../../hooks/useCartItem"
 import { SERVER_URL } from "../../utils/helpers"
 import { useMemberInfo } from "../../hooks/useMemberInfo"
+import { toast } from "react-toastify"
 
 const CheckOutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("stripe")
@@ -84,7 +85,13 @@ const CheckOutPage = () => {
         }
       )
 
-      const paymentUrl = res.data.info.paymentUrl.web
+      console.log(res.data.returnCode)
+
+      if (res.data.returnCode === "1172")
+        toast.error(
+          "您的訂單已付款，可能是之前版本問題導致，請重新註冊新帳號在測試看看！或是將資料庫中customer_order的status改為PAID"
+        )
+      const paymentUrl = res.data.info.paymentUrl?.web
 
       window.location.href = paymentUrl
     } catch (error) {
