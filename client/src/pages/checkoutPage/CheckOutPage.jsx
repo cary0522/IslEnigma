@@ -46,11 +46,16 @@ const CheckOutPage = () => {
         await payWithLinePay(formData)
         break
 
+      case "ecPay":
+        localStorage.setItem("order_info", JSON.stringify(formData))
+        await payWithEcPay(formData)
+
+        break
       default:
         console.error("未知的支付方式")
     }
   }
-
+  console.log(cartData)
   const payWithStripe = async (formData) => {
     try {
       const res = await axios.post(
@@ -68,27 +73,61 @@ const CheckOutPage = () => {
 
   const payWithLinePay = async (formData) => {
     try {
-      try {
-        const res = await axios.post(
-          `${SERVER_URL}/cart/line-test`,
-          {
-            data: cartData,
-            orderInfo: formData,
-          },
-          {
-            withCredentials: true,
-          }
-        )
+      const res = await axios.post(
+        `${SERVER_URL}/cart/line-test`,
+        {
+          data: cartData,
+          orderInfo: formData,
+        },
+        {
+          withCredentials: true,
+        }
+      )
 
-        const paymentUrl = res.data.info.paymentUrl.web
+      const paymentUrl = res.data.info.paymentUrl.web
 
-        window.location.href = paymentUrl
-      } catch (error) {
-        console.error("支付創建失敗:", error)
-      }
+      window.location.href = paymentUrl
     } catch (error) {
-      console.error("LinePay支付失敗:", error)
+      console.error("支付創建失敗:", error)
     }
+  }
+
+  const payWithEcPay = async (formData) => {
+    const { total_amount: amount } = cartData
+
+    try {
+      const response = await axios.post(`${SERVER_URL}/cart/ecpay`, {
+        amount,
+        itemName: formData,
+      })
+
+      if (response.data && response.data.formData) {
+        submitForm(response.data.formData)
+      } else {
+        throw new Error("無效的回應數據")
+      }
+    } catch (err) {
+      console.log(err)
+    } finally {
+      console.log(123)
+    }
+  }
+
+  const submitForm = (formData) => {
+    const form = document.createElement("form")
+    form.method = "POST"
+    form.action = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5"
+
+    Object.entries(formData).forEach(([key, value]) => {
+      const input = document.createElement("input")
+      input.type = "hidden"
+      input.name = key
+      input.value = value
+      form.appendChild(input)
+    })
+
+    document.body.appendChild(form)
+    form.submit()
   }
 
   if (memberDataLoading || cartDataLoading) {
@@ -141,6 +180,16 @@ const CheckOutPage = () => {
           </div>
         </div>
         <div className="checkout-right">
+          <button
+            type="submit"
+            className={paymentMethod === "linePay" ? "active" : ""}
+            onClick={() => {
+              setPaymentMethod("ecPay")
+            }}
+          >
+            使用綠界科技付款
+          </button>
+
           <button
             type="submit"
             className={paymentMethod === "linePay" ? "active" : ""}
