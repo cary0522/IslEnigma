@@ -69,7 +69,7 @@ const Nav = ({ toggleNavbar }) => {
           <li className="navItem menber">
             <Link to="/profile">
               <img src={member ? catGif : memberPng} alt="登入" />
-              <p data-text="會員">{member.name}</p>
+              <p data-text="會員">{member?.name || "會員登入"}</p>
             </Link>
           </li>
         </ul>

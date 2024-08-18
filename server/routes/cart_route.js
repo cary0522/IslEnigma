@@ -12,6 +12,9 @@ const {
   LINE_PAY_SITE,
   LINE_PAY_SECRET,
   LINE_PAY_CHANNELID,
+  HashKey,
+  MerchantID,
+  HashIV,
 } = require("../utils/config_env")
 const {
   get_cart_items,
@@ -160,7 +163,6 @@ router.post(
 )
 
 // linePay check payment
-
 router.post("/line-test/check-payment", async (req, res) => {
   const { transactionId, orderId, order_info } = req.body
 
@@ -274,7 +276,7 @@ router.post("/line-test/check-payment", async (req, res) => {
   }
 })
 
-// create payment
+// create stripe payment
 router.post("/create-checkout-session", async (req, res) => {
   const { data, orderInfo } = req.body
   const order_id = data.order_id
@@ -313,6 +315,86 @@ router.post("/create-checkout-session", async (req, res) => {
   }
 })
 
+// ecPay create payment
+router.post("/ecpay", async (req, res) => {
+  function generateCheckMacValue(params) {
+    const filteredParams = Object.keys(params).reduce((acc, key) => {
+      if (key !== "CheckMacValue") {
+        acc[key] = params[key]
+      }
+      return acc
+    }, {})
+
+    const sortedParams = Object.keys(filteredParams)
+      .sort()
+      .reduce((acc, key) => {
+        acc[key] = filteredParams[key]
+        return acc
+      }, {})
+
+    let checkString = `HashKey=${HashKey}`
+    Object.keys(sortedParams).forEach((key) => {
+      checkString += `&${key}=${sortedParams[key]}`
+    })
+    checkString += `&HashIV=${HashIV}`
+
+    let encodedString = encodeURIComponent(checkString).toLowerCase()
+
+    encodedString = encodedString
+      .replace(/%20/g, "+")
+      .replace(/%21/g, "!")
+      .replace(/%2a/g, "*")
+      .replace(/%28/g, "(")
+      .replace(/%29/g, ")")
+      .replace(/%2d/g, "-")
+      .replace(/%5f/g, "_")
+      .replace(/%2e/g, ".")
+
+    const hash = crypto.createHash("sha256").update(encodedString).digest("hex")
+
+    return hash.toUpperCase()
+  }
+
+  function formatDate(date) {
+    const pad = (num) => (num < 10 ? "0" + num : num)
+
+    const year = date.getFullYear()
+    const month = pad(date.getMonth() + 1)
+    const day = pad(date.getDate())
+    const hours = pad(date.getHours())
+    const minutes = pad(date.getMinutes())
+    const seconds = pad(date.getSeconds())
+
+    return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`
+  }
+
+  const { amount, itemName } = req.body
+
+  const merchantTradeNo = `TEST${Date.now()}`
+  const merchantTradeDate = formatDate(new Date())
+
+  const params = {
+    MerchantID,
+    MerchantTradeNo: merchantTradeNo,
+    MerchantTradeDate: merchantTradeDate,
+    PaymentType: "aio",
+    TotalAmount: amount,
+    TradeDesc: "測試交易",
+    ItemName: itemName,
+    ReturnURL: "http://your-return-url.com",
+    ChoosePayment: "ALL",
+    EncryptType: "1",
+  }
+
+  const checkMacValue = generateCheckMacValue(params)
+
+  const formData = {
+    ...params,
+    CheckMacValue: checkMacValue,
+  }
+  console.log(formData)
+  res.json({ formData })
+})
 router.post("/payment-status", (req, res) => {
   const { sessionIdParam } = req.body
 
