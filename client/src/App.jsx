@@ -1,37 +1,37 @@
-import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom"
 
-import "./App.css";
-import Layout from "./components/layout/Layout";
-import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage";
-import CheckOutPage from "./pages/checkoutPage/CheckOutPage";
+import "./App.css"
+import Layout from "./components/layout/Layout"
+import ShoppingCart from "./pages/shoppingCartPage/ShoppingCartPage"
+import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
 
-import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage";
-import CartLayout from "./components/layout/CartLayout";
-import Restaurant from "./pages/restaurantpage/Restaurant";
-import Rooms from "./pages/roomPage/Rooms";
-import Login from "./pages/loginPage/Login";
-import Register from "./pages/registerPage/Register";
+import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
+import CartLayout from "./components/layout/CartLayout"
+import Restaurant from "./pages/restaurantpage/Restaurant"
+import Rooms from "./pages/roomPage/Rooms"
+import Login from "./pages/loginPage/Login"
+import Register from "./pages/registerPage/Register"
 //toast
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useAuthContext } from "./context/AuthContext";
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { useAuthContext } from "./context/AuthContext"
 
-import MapPage from "./pages/mappage";
-import TicketPage from "./pages/ticketpage";
-import RestaurantPage from "./pages/restaurantpage";
-import Homepage from "./pages/homepage";
-import BoatPage from "./pages/boatpage";
-import InfoEventPage from "./pages/infoEventPage";
-import InfoInfoPage from "./pages/infoInfoPage";
-import InfoFAQPage from "./pages/infoFAQPage";
-import RoomMorePage from "./pages/roomMorePage";
-import RestaurantPaginationPage from "./pages/restaurantPaginationPage";
-import Hello from "./Hello";
-import AboutUsPage from "./pages/aboutUsPage";
-import Profile from "./pages/profilePage/Profile";
+import MapPage from "./pages/mappage"
+import TicketPage from "./pages/ticketpage"
+import RestaurantPage from "./pages/restaurantpage"
+import Homepage from "./pages/homepage"
+import BoatPage from "./pages/boatpage"
+import InfoEventPage from "./pages/infoEventPage"
+import InfoInfoPage from "./pages/infoInfoPage"
+import InfoFAQPage from "./pages/infoFAQPage"
+import RoomMorePage from "./pages/roomMorePage"
+import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
+import Hello from "./Hello"
+import AboutUsPage from "./pages/aboutUsPage"
+import Profile from "./pages/profilePage/Profile"
 
 function App() {
-  const { member } = useAuthContext();
+  const { member } = useAuthContext()
 
   return (
     <>
@@ -44,10 +44,13 @@ function App() {
 
           <Route
             path="/login"
-            element={member ? <Navigate to="/rooms" /> : <Login />}
+            element={member ? <Navigate to="/homepage" /> : <Login />}
           />
 
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={member ? <Navigate to="/profile" /> : <Login />}
+          />
 
           <Route path="cart" element={<CartLayout />}>
             <Route
@@ -89,7 +92,7 @@ function App() {
       </Routes>
       <ToastContainer />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
