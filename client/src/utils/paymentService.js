@@ -68,6 +68,8 @@ export class PaymentService {
         toast.error(
           "您的訂單已付款，可能是之前版本問題導致，請重新註冊新帳號在測試看看！或是將資料庫中customer_order的status改為PAID"
         )
+
+      console.log(res.data)
       const paymentUrl = res.data.info.paymentUrl?.web
 
       window.location.href = paymentUrl

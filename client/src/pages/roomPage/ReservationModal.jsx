@@ -43,13 +43,25 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
 
   const [hasSearched, setHasSearched] = useState(false)
 
-  const formattedDate = (date) => {
+  const formatLocalDate = (date) => {
     if (!date) return ""
     return date.toLocaleDateString({
       year: "numeric",
       month: "numeric",
       day: "numeric",
     })
+  }
+
+  const formattedDate = (date) => {
+    if (!date) return ""
+
+    const date1 = new Date(date)
+    return date1.toISOString
+    // return date.toLocaleDateString({
+    //   year: "numeric",
+    //   month: "numeric",
+    //   day: "numeric",
+    // })
   }
 
   const handleUpdate = (e) => {
@@ -123,6 +135,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
     //新增商品到localStorage
     if (!member) {
       console.log(queryData)
+
       const existingCartData = JSON.parse(localStorage.getItem("cart")) || []
 
       console.log(existingCartData)
@@ -201,7 +214,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
                       type="text"
                       id="checkInDate"
                       readOnly
-                      value={formattedDate(queryData.dateRange[0]) || ""}
+                      value={formatLocalDate(queryData.dateRange[0]) || ""}
                     />
                   </div>
                   <div className="dateInput">
@@ -210,7 +223,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
                       type="text"
                       id="checkOutDate"
                       readOnly
-                      value={formattedDate(queryData.dateRange[1]) || ""}
+                      value={formatLocalDate(queryData.dateRange[1]) || ""}
                     />
                   </div>
                 </div>
