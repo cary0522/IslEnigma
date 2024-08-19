@@ -20,6 +20,18 @@ const ShoppingCartPage = () => {
     removeCartItem(itemId) // Ensure UI reflects the deletion
   }
 
+  const countTotalPrice = () => {
+    return (
+      data?.order_item.reduce((total, item) => {
+        const roomPrice = item.room?.price || 0
+        const ticketPrice = item.ticket?.price || 0
+        const itemTotal =
+          roomPrice * item.quantity + ticketPrice * item.quantity
+        return total + itemTotal
+      }, 0) || 0
+    )
+  }
+
   useEffect(() => {
     if (data && data.order_item) {
       const sortedItems = data.order_item.sort((a, b) => {
@@ -56,15 +68,7 @@ const ShoppingCartPage = () => {
             <span className="title">小計:</span>
             <span>
               NT$
-              {cartData.length > 0
-                ? cartData.reduce((total, item) => {
-                    const roomPrice = item.room?.price || 0
-                    const ticketPrice = item.ticket?.price || 0
-                    const itemTotal =
-                      roomPrice * item.quantity + ticketPrice * item.quantity
-                    return total + itemTotal
-                  }, 0)
-                : 0}
+              {cartData.length > 0 ? countTotalPrice() : 0}
             </span>
           </div>
           {/* <div className="onSale">

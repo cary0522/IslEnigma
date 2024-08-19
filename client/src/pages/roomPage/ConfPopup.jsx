@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const ConfPopup = ({
   roomTypeName,
   checkInDate,
@@ -32,9 +34,9 @@ const ConfPopup = ({
             <i className="bi bi-youtube"></i>
           </a>
         </div>
-        <a href="/login" id="goToCartBtn" className="actionBtn">
+        <Link to="/cart" id="goToCartBtn" className="actionBtn">
           前往購物車
-        </a>
+        </Link>
         <button
           id="continueShoppingBtn"
           className="actionBtn secondary"

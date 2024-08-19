@@ -28,7 +28,7 @@ export const useLogin = () => {
       toast(message)
       localStorage.setItem("member", JSON.stringify(member))
       setMember(member)
-      navigate("/rooms")
+      navigate("/homepage")
     },
     onError: (error) => {
       const errMsg = error || "發生錯誤!"
