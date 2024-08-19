@@ -864,7 +864,7 @@ function Map({ isSticky }) {
 		setTimeout(() => {
 			typeArr.current.forEach((elem) => {
 				elem.style.animation = "";
-				elem.style.backgroundImage = "url(/src/pages/mappage/mapPoint.svg)";
+				elem.style.backgroundImage = "";
 				elem.style.transition = "all 0.8s";
 			});
 		}, 2000);
