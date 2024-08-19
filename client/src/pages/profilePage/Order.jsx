@@ -15,7 +15,7 @@ const Order = () => {
   }
 
   if (isLoading) return <div>isLoading..</div>
-
+  console.log(orderData)
   const groupedOrders = orderData.reduce((acc, item) => {
     const key = item.room_type ? "room" : "ticket"
     if (!acc[key]) {

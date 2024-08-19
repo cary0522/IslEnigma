@@ -185,10 +185,10 @@ const cart_controller = {
   },
 
   remove_item: async (req, res) => {
-    const id = req.params.id
+    console.log(123)
 
+    const id = req.params.id
     try {
-      // 获取要删除的订单项的详细信息
       const currentItem = await prisma.order_item.findUnique({
         where: { order_item_id: id },
         select: {

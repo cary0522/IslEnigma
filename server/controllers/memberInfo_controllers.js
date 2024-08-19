@@ -121,6 +121,7 @@ const changePassword = async (req, res) => {
   }
 }
 async function transformOrderData(orders) {
+  console.log(orders)
   const transformedData = await Promise.all(
     orders.map(async (order) => {
       const orderAmount = order.total_amount.toString()

@@ -7,9 +7,12 @@ import "react-calendar/dist/Calendar.css"
 import DateRangePicker from "@wojtekmaj/react-daterange-picker"
 import { useQueryRooms } from "../../hooks/useQueryRooms"
 import { useNewCartItem } from "../../hooks/useNewCartItem"
+import { useAuthContext } from "../../context/AuthContext"
 import { useCartItemsData } from "../../hooks/useCartItem"
 
 const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
+  const { member } = useAuthContext()
+
   const {
     data: cartItems,
     error,
@@ -75,7 +78,6 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
     })
   }
 
-  console.log(data)
   const handleSearch = () => {
     setTotalPrice(0)
     queryRooms(queryData)
@@ -103,6 +105,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       ...prev,
       roomType,
       roomId,
+      price,
     }))
     setTotalPrice(price)
   }
@@ -110,12 +113,25 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
   const [showConfPopup, setShowConfPopup] = useState(false)
 
   const handleAddCart = () => {
-    const orderId = cartItems.order_id
-
+    const orderId = cartItems?.order_id
     const itemData = {
       ...queryData,
+      quantity: 1,
       order_id: orderId,
     }
+
+    //新增商品到localStorage
+    if (!member) {
+      console.log(queryData)
+      const existingCartData = JSON.parse(localStorage.getItem("cart")) || []
+
+      console.log(existingCartData)
+      existingCartData.push(itemData)
+
+      localStorage.setItem("cart", JSON.stringify(existingCartData))
+      return
+    }
+
     newCartItem(itemData, {
       onSuccess: () => {
         setShowConfPopup(true)
