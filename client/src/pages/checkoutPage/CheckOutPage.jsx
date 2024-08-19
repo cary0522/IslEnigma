@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react"
-import { useForm } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { useCartItemsData } from "../../hooks/useCartItem"
 import { useMemberInfo } from "../../hooks/useMemberInfo"
 import { PaymentService } from "../../utils/paymentService"
+import Select from "react-select"
 
 const CheckOutPage = () => {
-  const [paymentMethod, setPaymentMethod] = useState("stripe")
+  const [paymentMethod, setPaymentMethod] = useState({
+    value: "stripe",
+    label: "Stripe",
+  })
   const { data: memberData, isLoading: memberDataLoading } = useMemberInfo()
   const { data: cartData, isLoading: cartDataLoading } = useCartItemsData()
   const navigate = useNavigate()
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -21,7 +26,7 @@ const CheckOutPage = () => {
       customer: "",
       phone_number: "",
       address: "",
-      paymentMethod: paymentMethod,
+      paymentMethod: { value: "stripe", label: "Stripe" },
     },
   })
 
@@ -36,13 +41,27 @@ const CheckOutPage = () => {
   }, [memberData, reset])
 
   const onSubmit = (formData) => {
-    const paymentService = new PaymentService(paymentMethod, formData, cartData)
+    const paymentService = new PaymentService(
+      formData.paymentMethod.value,
+      formData,
+      cartData
+    )
     paymentService.pay()
   }
 
   if (memberDataLoading || cartDataLoading) {
     return <p>正在加載資料...</p>
   }
+
+  const options = [
+    {
+      value: "stripe",
+      label: "Stripe",
+      image: "/shoppingCart/stripe.png",
+    },
+    { value: "ecPay", label: "綠界科技", image: "/shoppingCart/ecpay.svg" },
+    { value: "linePay", label: "LinePay", image: "/lineLogo/line.png" },
+  ]
 
   return (
     <div className="checkout">
@@ -89,26 +108,55 @@ const CheckOutPage = () => {
             </div>
           </div>
         </div>
-        <div className="checkout-right">
-          <button
-            type="submit"
-            className={paymentMethod === "linePay" ? "active" : ""}
-            onClick={() => {
-              setPaymentMethod("ecPay")
-            }}
-          >
-            使用綠界科技付款
-          </button>
 
-          <button
-            type="submit"
-            className={paymentMethod === "linePay" ? "active" : ""}
-            onClick={() => {
-              setPaymentMethod("linePay")
-            }}
-          >
-            <img src="/lineLogo/line.png" alt="" />
-          </button>
+        <div className="checkout-right">
+          <Controller
+            name="paymentMethod"
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={options}
+                onChange={(selectedOption) => {
+                  field.onChange(selectedOption)
+                  setPaymentMethod(selectedOption)
+                }}
+                value={paymentMethod}
+                getOptionLabel={(option) => (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginRight: "350px",
+                      width: "155px",
+                      height: "20px",
+                      marginLeft: "-40px",
+                    }}
+                  >
+                    {option.image && (
+                      <img
+                        src={option.image}
+                        alt={option.label}
+                        style={{
+                          width: 30,
+                          height: 30,
+                          marginRight: 10,
+                          objectFit: "contain",
+                        }}
+                      />
+                    )}
+                    {option.label}
+                  </div>
+                )}
+                getOptionValue={(option) => option.value}
+                className="custom-select"
+              />
+            )}
+          />
+          {errors.paymentMethod && (
+            <p className="error-message">{errors.paymentMethod.message}</p>
+          )}
           <button className="confirm-payment" type="submit">
             確認付款
           </button>

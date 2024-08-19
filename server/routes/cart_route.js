@@ -120,13 +120,13 @@ router.post("/line-test", verifyToken, async (req, res, next) => {
     )
 
     const processedResponse = handleBigInteger(await response.text())
-
+    console.log(processedResponse)
     return processedResponse
   }
-  const user = {
-    name: "張三",
-    email: "zhangsan@example.com",
-  }
+  // const user = {
+  //   name: "張三",
+  //   email: "zhangsan@example.com",
+  // }
   try {
     let response = await requestOnlineAPI({
       method: "POST",

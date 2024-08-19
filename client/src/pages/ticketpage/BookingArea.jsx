@@ -73,14 +73,18 @@ function BookingArea({
             let cartData = JSON.parse(localStorage.getItem("cart")) || []
 
             cart.forEach((newItem) => {
-              const existingItemIndex = cartData.findIndex(
-                (item) => item.id === newItem.id
-              )
+              if (newItem.quantity > 0) {
+                const existingItem = cartData.find(
+                  (item) =>
+                    item.id === newItem.id &&
+                    item.check_in_date === newItem.check_in_date
+                )
 
-              if (existingItemIndex !== -1) {
-                cartData[existingItemIndex].quantity += newItem.quantity
-              } else {
-                cartData.push(newItem)
+                if (existingItem) {
+                  existingItem.quantity += newItem.quantity
+                } else {
+                  cartData.push(newItem)
+                }
               }
             })
 
