@@ -11,6 +11,7 @@ const CheckOutPage = () => {
     value: "stripe",
     label: "Stripe",
   })
+  const [isPaymentMethodSelected, setIsPaymentMethodSelected] = useState(false) // 添加此状态
   const { data: memberData, isLoading: memberDataLoading } = useMemberInfo()
   const { data: cartData, isLoading: cartDataLoading } = useCartItemsData()
   const navigate = useNavigate()
@@ -26,7 +27,7 @@ const CheckOutPage = () => {
       customer: "",
       phone_number: "",
       address: "",
-      paymentMethod: { value: "stripe", label: "Stripe" },
+      payment_method: { value: "stripe", label: "Stripe" },
     },
   })
 
@@ -41,9 +42,15 @@ const CheckOutPage = () => {
   }, [memberData, reset])
 
   const onSubmit = (formData) => {
+    console.log(formData)
+    const updatedFormData = {
+      ...formData,
+      payment_method: formData.payment_method.value,
+    }
+    console.log(updatedFormData)
     const paymentService = new PaymentService(
-      formData.paymentMethod.value,
-      formData,
+      formData.payment_method.value,
+      updatedFormData,
       cartData
     )
     paymentService.pay()
@@ -111,7 +118,7 @@ const CheckOutPage = () => {
 
         <div className="checkout-right">
           <Controller
-            name="paymentMethod"
+            name="payment_method"
             control={control}
             render={({ field }) => (
               <Select
@@ -120,6 +127,7 @@ const CheckOutPage = () => {
                 onChange={(selectedOption) => {
                   field.onChange(selectedOption)
                   setPaymentMethod(selectedOption)
+                  setIsPaymentMethodSelected(true) // 设置为已选择付款方式
                 }}
                 value={paymentMethod}
                 getOptionLabel={(option) => (
@@ -128,10 +136,9 @@ const CheckOutPage = () => {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      marginRight: "350px",
                       width: "155px",
                       height: "20px",
-                      marginLeft: "-40px",
+                      marginLeft: "-50px",
                     }}
                   >
                     {option.image && (
@@ -157,9 +164,21 @@ const CheckOutPage = () => {
           {errors.paymentMethod && (
             <p className="error-message">{errors.paymentMethod.message}</p>
           )}
-          <button className="confirm-payment" type="submit">
+          <button
+            className="confirm-payment"
+            type="submit"
+            disabled={!isPaymentMethodSelected}
+            style={{
+              backgroundColor: isPaymentMethodSelected
+                ? "transparent"
+                : "#e0e0e0",
+              cursor: isPaymentMethodSelected ? "pointer" : "not-allowed",
+              opacity: isPaymentMethodSelected ? 1 : 0.6,
+            }}
+          >
             確認付款
           </button>
+
           <button
             className="back-btn"
             type="button"

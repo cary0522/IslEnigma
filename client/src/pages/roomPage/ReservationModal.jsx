@@ -123,7 +123,6 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
   }
 
   const [showConfPopup, setShowConfPopup] = useState(false)
-
   const handleAddCart = () => {
     const orderId = cartItems?.order_id
     const itemData = {
@@ -164,7 +163,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       }))
     }
   }, [value])
-
+  console.log(queryData)
   return (
     <>
       {toggleReservation && (

@@ -103,9 +103,7 @@ const CartItem = ({ item, cartData, setCartData }) => {
             </p>
             {(room || roomType) && (
               <>
-                <p className="itemBeds">
-                  間數 : {room?.room_count || item.roomCount} 間
-                </p>
+                <p className="itemPeople">間數 : {item.room_count} 間</p>
                 <p className="itemPeople">
                   人數 : {item.people_count || item.people} 位
                 </p>

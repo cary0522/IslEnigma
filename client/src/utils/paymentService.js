@@ -14,6 +14,8 @@ export class PaymentService {
   }
 
   async pay() {
+    console.log(this.#paymentMethod)
+
     switch (this.#paymentMethod) {
       case "stripe":
         await this.#payWithStripe()
@@ -52,6 +54,8 @@ export class PaymentService {
 
   // LinePay 支付
   async #payWithLinePay() {
+    console.log(this.#formData)
+
     try {
       const res = await axios.post(
         `${SERVER_URL}/cart/line-test`,

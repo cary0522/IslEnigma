@@ -49,7 +49,13 @@ const cart_controller = {
   },
 
   new_cart_item: async (req, res) => {
-    const { order_id, dateRange, people, roomId } = req.body
+    const {
+      order_id,
+      dateRange,
+      people,
+      roomId,
+      roomCount: room_count,
+    } = req.body
     console.log(req.body)
 
     try {
@@ -104,6 +110,7 @@ const cart_controller = {
           check_out_date: dateRange[1],
           people_count: people,
           quantity: 1,
+          room_count,
         },
       })
       res.status(200).json("成功新增商品!")

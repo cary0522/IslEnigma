@@ -139,10 +139,10 @@ async function transformOrderData(orders) {
               : null,
             quantity: item.quantity.toString(),
             orderPeople: {
-              customer: order.orderInfo.customer,
-              phone: order.orderInfo.phone_number,
-              address: order.orderInfo.address,
-              payment_method: order.orderInfo.payment_method,
+              customer: order.orderInfo?.customer,
+              phone: order.orderInfo?.phone_number,
+              address: order.orderInfo?.address,
+              payment_method: order.orderInfo?.payment_method,
             },
           }
 

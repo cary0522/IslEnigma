@@ -123,10 +123,7 @@ router.post("/line-test", verifyToken, async (req, res, next) => {
     console.log(processedResponse)
     return processedResponse
   }
-  // const user = {
-  //   name: "張三",
-  //   email: "zhangsan@example.com",
-  // }
+
   try {
     let response = await requestOnlineAPI({
       method: "POST",
@@ -161,7 +158,6 @@ router.post("/line-test", verifyToken, async (req, res, next) => {
 // linePay check payment
 router.post("/line-test/check-payment", async (req, res) => {
   const { transactionId, orderId, order_info } = req.body
-
   const order_id = parseInt(orderId)
 
   function handleBigInteger(text) {
@@ -254,18 +250,17 @@ router.post("/line-test/check-payment", async (req, res) => {
         },
       })
 
-      await prisma.order_info.create({
+      const info = await prisma.order_info.create({
         data: {
           ...order_info,
           order_id,
-          payment_method: "LinePay",
         },
       })
     }
 
     res.status(200).json(response)
   } catch (error) {
-    console.log("錯誤")
+    console.log(error)
     res.status(500).json(error)
   }
 })

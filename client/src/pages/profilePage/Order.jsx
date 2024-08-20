@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ProfileModal from "./ProfileModal"
 import { useProfileOrders } from "../../hooks/useProfileOrders"
+import { formatDate } from "../../utils/helpers"
 
 const Order = () => {
   const { data: orderData, isLoading, error } = useProfileOrders()
@@ -24,7 +25,6 @@ const Order = () => {
     acc[key].push(item)
     return acc
   }, {})
-
   return (
     <div id="orderContent" style={{ display: "flex" }}>
       {Object.keys(groupedOrders).length === 0 ? (
