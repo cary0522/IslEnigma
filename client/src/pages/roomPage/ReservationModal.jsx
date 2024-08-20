@@ -57,11 +57,6 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
 
     const formattedDate = new Date(date).toISOString()
     return formattedDate
-    // return date.toLocaleDateString({
-    //   year: "numeric",
-    //   month: "numeric",
-    //   day: "numeric",
-    // })
   }
 
   const handleUpdate = (e) => {
@@ -130,22 +125,31 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       quantity: 1,
       order_id: orderId,
     }
-    // const processedDates = queryData.dateRange.map((date) => {
-    //   const utcDate = new Date(date).toISOString()
-    //   return utcDate
-    // })
+
     //新增商品到localStorage
     if (!member) {
       console.log(queryData)
 
       const existingCartData = JSON.parse(localStorage.getItem("cart")) || []
 
-      console.log(existingCartData)
-      existingCartData.push(itemData)
+      // 生成唯一商品ID（基于当前时间戳）
+      const itemId = Date.now()
+
+      // 给 itemData 加上一个 id
+      const itemDataWithId = {
+        ...itemData,
+        id: itemId,
+      }
+
+      existingCartData.push(itemDataWithId)
 
       localStorage.setItem("cart", JSON.stringify(existingCartData))
+      setShowConfPopup(true)
+      setToggleReservation(false)
+
       return
     }
+
     newCartItem(itemData, {
       onSuccess: () => {
         setShowConfPopup(true)
