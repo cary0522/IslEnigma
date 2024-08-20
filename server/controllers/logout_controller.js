@@ -1,10 +1,12 @@
 const cookieHelpers = require("../utils/setCookie")
 
-console.log(123)
-console.log(cookieHelpers)
 const logout_controller = (req, res) => {
   try {
-    res.clearCookie("JWTToken")
+    res.clearCookie("JWTToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
 
     res.status(200).json({ message: "成功登出" })
   } catch (error) {

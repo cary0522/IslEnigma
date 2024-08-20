@@ -4,11 +4,6 @@ import { useUpdateMember } from "../../hooks/useUpdateMember"
 import { useEffect } from "react"
 
 const MemberDetail = () => {
-  const formatDate = (dateString) => {
-    const [year, month, day] = dateString.split("/")
-    return `${year}-${month}-${day}`
-  }
-
   const {
     mutate: updateMember,
     isLoading: LoadingUpdate,
