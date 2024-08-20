@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ProfileModal from "./ProfileModal"
 import { useProfileOrders } from "../../hooks/useProfileOrders"
+import { formatDate } from "../../utils/helpers"
 
 const Order = () => {
   const { data: orderData, isLoading, error } = useProfileOrders()
@@ -15,7 +16,7 @@ const Order = () => {
   }
 
   if (isLoading) return <div>isLoading..</div>
-
+  console.log(orderData)
   const groupedOrders = orderData.reduce((acc, item) => {
     const key = item.room_type ? "room" : "ticket"
     if (!acc[key]) {
@@ -24,7 +25,6 @@ const Order = () => {
     acc[key].push(item)
     return acc
   }, {})
-
   return (
     <div id="orderContent" style={{ display: "flex" }}>
       {Object.keys(groupedOrders).length === 0 ? (

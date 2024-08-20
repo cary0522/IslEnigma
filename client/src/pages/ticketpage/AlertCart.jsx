@@ -115,9 +115,9 @@ function AlertCart({
             </a>
           </div>
           <div className="col-12 divAlertBtn">
-            <button className="btnCart" onClick={closeAlertShowCart}>
+            <Link to="/cart" className="btnCart" onClick={closeAlertShowCart}>
               前往購物車
-            </button>
+            </Link>
             <button className="btnCart" onClick={closeAlertShowCart}>
               繼續瀏覽
             </button>

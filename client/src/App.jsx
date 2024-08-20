@@ -53,10 +53,7 @@ function App() {
           />
 
           <Route path="cart" element={<CartLayout />}>
-            <Route
-              index
-              element={!member ? <Navigate to="/login" /> : <ShoppingCart />}
-            />
+            <Route index element={<ShoppingCart />} />
             <Route
               path="checkout"
               element={!member ? <Navigate to="/login" /> : <CheckOutPage />}

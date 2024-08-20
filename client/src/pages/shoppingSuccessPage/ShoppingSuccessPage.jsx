@@ -27,10 +27,8 @@ const ShoppingSuccessPage = () => {
           order_info,
         }
       )
-      console.log(res)
     }
-
-    checkPayMent()
+    if (transactionId) checkPayMent()
     console.log(transactionId, orderId)
   }, [])
 
@@ -52,7 +50,9 @@ const ShoppingSuccessPage = () => {
           <img src="/shoppingSuccess/yt-icon.png" alt="YouTube Icon" />
           <img src="/shoppingSuccess/ig-icon.png" alt="Instagram Icon" />
         </div>
-        <button className="btnOrder">查看訂單</button>
+        <button className="btnOrder">
+          <Link to="/profile">查看訂單</Link>
+        </button>
         <button className="btnOrder">
           <Link to="/cart">返回購物車</Link>
         </button>

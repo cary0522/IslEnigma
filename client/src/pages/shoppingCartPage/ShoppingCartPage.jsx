@@ -7,17 +7,30 @@ import { useRemoveCartItem } from "../../hooks/useDeleteItem"
 import CartItem from "./CartItem"
 import arrow from "/shoppingCart/breadcrumbArrow.png"
 import "./shoppingCart.scss"
+import { useAuthContext } from "../../context/AuthContext"
 
 const ShoppingCartPage = () => {
   const { mutate: removeCartItem } = useRemoveCartItem()
-  const { data, error, isLoading } = useCartItemsData()
+  const { data, isLoading } = useCartItemsData()
   const [cartData, setCartData] = useState([])
-
+  const { member } = useAuthContext()
   const location = useLocation()
 
   const handleDelete = async (itemId) => {
     await axios.delete(`http://localhost:3001/cart/${itemId}`)
-    removeCartItem(itemId) // Ensure UI reflects the deletion
+    // Remove from local storage
+    const updatedCart = cartData.filter((item) => item.id !== itemId)
+    localStorage.setItem("cart", JSON.stringify(updatedCart))
+    setCartData(updatedCart)
+  }
+
+  // Handle quantity update
+  const handleUpdateQuantity = (itemId, newQuantity) => {
+    const updatedCart = cartData.map((item) =>
+      item.id === itemId ? { ...item, quantity: newQuantity } : item
+    )
+    localStorage.setItem("cart", JSON.stringify(updatedCart))
+    setCartData(updatedCart)
   }
 
   const countTotalPrice = () => {
@@ -32,6 +45,13 @@ const ShoppingCartPage = () => {
     )
   }
 
+  const countLocalPrice = () => {
+    return (
+      cartData.reduce((total, item) => {
+        return total + item.price * item.quantity
+      }, 0) || 0
+    )
+  }
   useEffect(() => {
     if (data && data.order_item) {
       const sortedItems = data.order_item.sort((a, b) => {
@@ -49,6 +69,12 @@ const ShoppingCartPage = () => {
     }
   }, [data])
 
+  useEffect(() => {
+    if (!member) {
+      const localCartItem = JSON.parse(localStorage.getItem("cart")) || []
+      setCartData(localCartItem)
+    }
+  }, [member])
   if (isLoading) return <p>Loading...</p>
   return (
     <div className="shoppingCart">
@@ -56,7 +82,16 @@ const ShoppingCartPage = () => {
       {cartData.length > 0 ? (
         <div className="itemList">
           {cartData.map((item) => (
-            <CartItem key={item.order_item_id} item={item} />
+            <CartItem
+              key={item.id}
+              item={item}
+              onDelete={() => handleDelete(item.id)}
+              onUpdateQuantity={(newQuantity) =>
+                handleUpdateQuantity(item.id, newQuantity)
+              }
+              cartData={cartData}
+              setCartData={setCartData}
+            />
           ))}
         </div>
       ) : (
@@ -68,13 +103,15 @@ const ShoppingCartPage = () => {
             <span className="title">小計:</span>
             <span>
               NT$
-              {cartData.length > 0 ? countTotalPrice() : 0}
+              {member
+                ? cartData.length > 0
+                  ? countTotalPrice()
+                  : 0
+                : cartData.length > 0
+                ? countLocalPrice()
+                : 0}
             </span>
           </div>
-          {/* <div className="onSale">
-            <span className="title">首購優惠:</span>
-            <span>NT$1,800</span>
-          </div> */}
           <Link to="checkout" className="buyNow">
             前往購買手續
             <img src={arrow} alt="箭頭" className="breadcrumbArrow" />
