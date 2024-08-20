@@ -168,7 +168,10 @@ async function transformOrderData(orders) {
 }
 
 function formatDate(date) {
-  return date.toISOString().split("T")[0].replace(/-/g, "/")
+  return date
+    .toLocaleString()
+    .replace(/-/g, "/")
+    .replace(/\s(上午|下午).*$/, "")
 }
 
 async function fetchType(readMethod, id) {
