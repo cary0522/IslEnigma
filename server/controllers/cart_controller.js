@@ -57,7 +57,6 @@ const cart_controller = {
       roomCount: room_count,
     } = req.body
     console.log(req.body)
-
     try {
       const existingItem = await prisma.order_item.findFirst({
         where: {

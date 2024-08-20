@@ -25,6 +25,8 @@ const Order = () => {
     acc[key].push(item)
     return acc
   }, {})
+
+  console.log(orderData)
   return (
     <div id="orderContent" style={{ display: "flex" }}>
       {Object.keys(groupedOrders).length === 0 ? (
@@ -83,7 +85,10 @@ const Order = () => {
           {groupedOrders.ticket && (
             <>
               <h2 className="order-table-title">訂票資訊</h2>
-              <table className="order-table__ticket">
+              <table
+                className="order-table__ticket
+              "
+              >
                 <thead>
                   <tr>
                     <th>訂單編號</th>
