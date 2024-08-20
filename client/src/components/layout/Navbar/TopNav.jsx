@@ -63,9 +63,9 @@ const TopNav = ({
         <img className="topLogo" src="/00logo/LogoType_Light_1.png" alt="" />
       </a>
       <div className="headerRight">
-        <a href="/cart" className="btnShoppingCart">
+        <Link to="/cart" className="btnShoppingCart">
           <CiShoppingCart />
-        </a>
+        </Link>
         <div className="userMenuContainer">
           <a href="./login" className="btn btnLogin">
             {!member ? (
