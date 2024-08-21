@@ -26,3 +26,14 @@ export const checkCardType = (data) => {
 export const formatCardNumber = (value) => {
   return value.replace(/\D/g, "").replace(/(\d{4})(?=\d)/g, "$1-")
 }
+export const generateDateRange = (checkInDate, checkOutDate) => {
+  const dateList = []
+  let currentDate = new Date(checkInDate)
+
+  while (currentDate <= new Date(checkOutDate)) {
+    dateList.push(new Date(currentDate).toISOString())
+    currentDate.setDate(currentDate.getDate() + 1)
+  }
+
+  return dateList
+}

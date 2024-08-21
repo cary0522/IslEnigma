@@ -9,9 +9,18 @@ import { useQueryRooms } from "../../hooks/useQueryRooms"
 import { useNewCartItem } from "../../hooks/useNewCartItem"
 import { useAuthContext } from "../../context/AuthContext"
 import { useCartItemsData } from "../../hooks/useCartItem"
+import { DateRangePicker as Picker } from "react-date-range"
 
 const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
   const { member } = useAuthContext()
+
+  const disabledDates = [new Date(2024, 9, 15), new Date(2024, 9, 16)]
+
+  function isDateDisabled(date) {
+    return disabledDates.some(
+      (disabledDate) => date.toDateString() === disabledDate.toDateString()
+    )
+  }
 
   const {
     data: cartItems,
@@ -195,6 +204,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
                   }
                   locale="en-us"
                   minDate={today}
+                  disabledDates={disabledDates}
                 />
               </div>
               <a

@@ -1,39 +1,84 @@
-//引入useState hook
-import React, { useState } from "react";
-import { Carousel } from "react-bootstrap";
-//在組件內部使用 useState hook 來定義 activeIndex 狀態和 setActiveIndex 函數
+import DateRangePicker from "@wojtekmaj/react-daterange-picker"
+import React, { useEffect, useMemo, useState } from "react"
+import { Carousel } from "react-bootstrap"
+import "react-calendar/dist/Calendar.css"
+import { useQueryRoomsDate } from "../../hooks/useSearchBookedDate"
+import { generateDateRange } from "../../utils/helpers"
+
 const RoomItem = ({ room, index }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const {
+    mutate: searchRoomsDate,
+    isLoading,
+    data: bookedDatesData,
+  } = useQueryRoomsDate()
 
-  // 輔助函數來處理icon名稱
+  const [bookedDate, setBookedDate] = useState([])
+  const [selectedDates, setSelectedDates] = useState([null, null])
+  const today = useMemo(() => {
+    const date = new Date()
+    date.setHours(0, 0, 0, 0)
+    return date
+  }, [])
+
+  const disableBookedDates = ({ date }) => {
+    return bookedDate.some(
+      (bookedDate) =>
+        bookedDate.getFullYear() === date.getFullYear() &&
+        bookedDate.getMonth() === date.getMonth() &&
+        bookedDate.getDate() === date.getDate()
+    )
+  }
+
+  const [activeIndex, setActiveIndex] = useState(0)
   const getIconClass = (iconName) => {
-    // 移除 'fa-' 前綴（如果存在）
-    const cleanName = iconName.replace(/^fa-/, "");
-    // 如果包含 'fa-solid'，使用 'fas'，否則使用 'fa'
-    const prefix = iconName.includes("fa-solid") ? "fas" : "fa";
-    return `${prefix} fa-${cleanName}`;
-  };
+    const cleanName = iconName.replace(/^fa-/, "")
+    const prefix = iconName.includes("fa-solid") ? "fas" : "fa"
+    return `${prefix} fa-${cleanName}`
+  }
 
-  // 處理縮略圖點擊
   const handleThumbnailClick = (index) => {
-    setActiveIndex(index);
-  };
+    setActiveIndex(index)
+  }
 
-  // 輔助函數來決定背景圖類名
   const getBackgroundImageClass = (roomType) => {
     switch (roomType) {
       case "Grass Tempo":
-        return "backgroundImageGrass";
+        return "backgroundImageGrass"
       case "Island Trails":
-        return "backgroundImageIsland";
+        return "backgroundImageIsland"
       case "Ocean Serenity":
-        return "backgroundImageOcean";
+        return "backgroundImageOcean"
       case "Starry Dome":
-        return "backgroundImageStarry";
+        return "backgroundImageStarry"
       default:
-        return "";
+        return ""
     }
-  };
+  }
+
+  const handleOpenCalendar = () => {
+    searchRoomsDate(room.roomId)
+  }
+
+  const handleDateChange = (dates) => {
+    setSelectedDates(dates)
+    // Optional: Save dates immediately or trigger an action here
+    console.log("Selected Dates:", dates)
+  }
+
+  useEffect(() => {
+    if (bookedDatesData) {
+      const allBookedDates = bookedDatesData.flatMap(
+        ({ check_in_date, check_out_date }) =>
+          generateDateRange(
+            new Date(check_in_date),
+            new Date(check_out_date)
+          ).map((date) => new Date(date))
+      )
+      setBookedDate(allBookedDates)
+    }
+  }, [bookedDatesData])
+
+  if (isLoading) return <div>Loading..</div>
 
   return (
     <div
@@ -90,10 +135,24 @@ const RoomItem = ({ room, index }) => {
           <a href="#roomFacilities" className="checkFacilities">
             查看設備
           </a>
+          <DateRangePicker
+            onChange={handleDateChange}
+            value={selectedDates}
+            clearIcon={false}
+            closeCalendar={false}
+            disableCalendar={false}
+            shouldCloseCalendar={({ reason }) => reason !== "outsideAction"}
+            locale="en-us"
+            calendarProps={{
+              tileDisabled: disableBookedDates,
+            }}
+            onCalendarOpen={handleOpenCalendar}
+            minDate={today}
+          />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RoomItem;
+export default RoomItem

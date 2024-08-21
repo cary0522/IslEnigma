@@ -26,7 +26,6 @@ import InfoInfoPage from "./pages/infoInfoPage"
 import InfoFAQPage from "./pages/infoFAQPage"
 import RoomMorePage from "./pages/roomMorePage"
 import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
-import Hello from "./Hello"
 import AboutUsPage from "./pages/aboutUsPage"
 import Profile from "./pages/profilePage/Profile"
 
@@ -81,7 +80,6 @@ function App() {
             element={<InfoInfoPage />}
           />
           <Route path="/infoEvent/infoFAQPage" element={<InfoFAQPage />} />
-          {/* <Route path="/roomPage" element={< RoomPage />}/> */}
           <Route path="/room/roomMorePage" element={<RoomMorePage />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
