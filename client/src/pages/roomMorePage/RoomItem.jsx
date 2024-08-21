@@ -55,8 +55,8 @@ const RoomItem = ({ room, index }) => {
     }
   }
 
-  const handleOpenCalendar = () => {
-    searchRoomsDate(room.roomId)
+  const handleOpenCalendar = (index) => {
+    searchRoomsDate(index)
   }
 
   const handleDateChange = (dates) => {
@@ -135,6 +135,7 @@ const RoomItem = ({ room, index }) => {
           <a href="#roomFacilities" className="checkFacilities">
             查看設備
           </a>
+
           <DateRangePicker
             onChange={handleDateChange}
             value={selectedDates}
@@ -146,7 +147,9 @@ const RoomItem = ({ room, index }) => {
             calendarProps={{
               tileDisabled: disableBookedDates,
             }}
-            onCalendarOpen={handleOpenCalendar}
+            onCalendarOpen={() => {
+              handleOpenCalendar(index)
+            }}
             minDate={today}
           />
         </div>
