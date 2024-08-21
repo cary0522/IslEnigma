@@ -67,7 +67,7 @@ const TopNav = ({
           <CiShoppingCart />
         </Link>
         <div className="userMenuContainer">
-          <a href="./login" className="btn btnLogin">
+          <Link to="/login" className="btn btnLogin">
             {!member ? (
               <>
                 {" "}
@@ -80,7 +80,7 @@ const TopNav = ({
                 <span className="loginText">{member.name}</span>
               </>
             )}
-          </a>
+          </Link>
           {member && (
             <div className="dropdown-content">
               <Link to="/profile">會員中心</Link>
