@@ -73,7 +73,7 @@ const CartItem = ({ item, cartData, setCartData }) => {
           <div className={`imgContainer ${ticket ? "ticketimgContainer" : ""}`}>
             <img
               src={
-                ticket || item.id
+                ticket || item.type
                   ? "https://i.mj.run/u/6d8aa752-4375-4c2e-b46b-012f73974faf/578ae76eff4ac5a8e014647ede78abf64a83cce813d34b66d8ab8008b315541e_384_N.png"
                   : roomImg
               }
@@ -87,7 +87,7 @@ const CartItem = ({ item, cartData, setCartData }) => {
             </h5>
             <p className="itemDate">
               {/* { item.id && "入園日期" } */}
-              {ticket ? "入園日期 ： " : "入住日期："}
+              {ticket || type ? "入園日期 ： " : "入住日期："}
               {formatDate(
                 item.check_in_date ||
                   (item.dateRange ? item.dateRange[0] : null) ||

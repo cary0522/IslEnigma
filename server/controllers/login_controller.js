@@ -6,6 +6,7 @@ const cookieHelpers = require("../utils/setCookie")
 const validReCaptcha = require("../utils/validReCaptcha")
 const { PrismaClient } = require("@prisma/client")
 const { randomUUID } = require("crypto")
+const { v4: uuidv4 } = require("uuid")
 
 const prisma = new PrismaClient()
 const login_controller = {
@@ -77,19 +78,19 @@ const login_controller = {
         return new Date(year, month - 1, day)
       }
 
-      console.log(localCartData)
       if (localCartData) {
         const createOrderItems = localCartData.map((data) =>
           prisma.order_item.create({
             data: {
-              order_item_id: randomUUID(),
+              order_item_id: uuidv4(),
               check_in_date:
                 convertToDate(data.booked_date) ||
                 (data.dateRange ? data.dateRange[0] : null),
               check_out_date: data.dateRange ? data.dateRange[1] : null,
-              ticket_id: data.id ?? null,
+              ticket_id: data.roomId ? null : data.id,
               room_id: data.roomId ?? null,
               people_count: data.people ?? null,
+              room_count: data.roomCount,
               quantity: data.quantity,
               order_id: userCart.order_id,
             },
