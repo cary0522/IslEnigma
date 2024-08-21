@@ -2,13 +2,9 @@ import { useForm } from "react-hook-form"
 import { useMemberInfo } from "../../hooks/useMemberInfo"
 import { useUpdateMember } from "../../hooks/useUpdateMember"
 import { useEffect } from "react"
-
+import { formatDate } from "../../utils/helpers"
+formatDate
 const MemberDetail = () => {
-  const formatDate = (dateString) => {
-    const [year, month, day] = dateString.split("/")
-    return `${year}-${month}-${day}`
-  }
-
   const {
     mutate: updateMember,
     isLoading: LoadingUpdate,

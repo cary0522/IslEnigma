@@ -7,15 +7,19 @@ import "react-calendar/dist/Calendar.css"
 import DateRangePicker from "@wojtekmaj/react-daterange-picker"
 import { useQueryRooms } from "../../hooks/useQueryRooms"
 import { useNewCartItem } from "../../hooks/useNewCartItem"
+import { useAuthContext } from "../../context/AuthContext"
 import { useCartItemsData } from "../../hooks/useCartItem"
 
 const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
+  const { member } = useAuthContext()
+
   const {
     data: cartItems,
     error,
     isLoading: loadingCartItem,
   } = useCartItemsData()
   const { mutate: queryRooms, isLoading, data } = useQueryRooms()
+
   const today = useMemo(() => {
     const date = new Date()
     date.setHours(0, 0, 0, 0)
@@ -39,13 +43,20 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
 
   const [hasSearched, setHasSearched] = useState(false)
 
-  const formattedDate = (date) => {
+  const formatLocalDate = (date) => {
     if (!date) return ""
     return date.toLocaleDateString({
       year: "numeric",
       month: "numeric",
       day: "numeric",
     })
+  }
+
+  const formattedDate = (date) => {
+    if (!date) return ""
+
+    const formattedDate = new Date(date).toISOString()
+    return formattedDate
   }
 
   const handleUpdate = (e) => {
@@ -73,7 +84,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       }
     })
   }
-  console.log(queryData)
+
   const handleSearch = () => {
     setTotalPrice(0)
     queryRooms(queryData)
@@ -101,19 +112,44 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       ...prev,
       roomType,
       roomId,
+      price,
     }))
     setTotalPrice(price)
   }
 
   const [showConfPopup, setShowConfPopup] = useState(false)
-
   const handleAddCart = () => {
-    const orderId = cartItems.order_id
-
+    const orderId = cartItems?.order_id
     const itemData = {
       ...queryData,
+      quantity: 1,
       order_id: orderId,
     }
+
+    //新增商品到localStorage
+    if (!member) {
+      console.log(queryData)
+
+      const existingCartData = JSON.parse(localStorage.getItem("cart")) || []
+
+      // 生成唯一商品ID（基于当前时间戳）
+      const itemId = Date.now()
+
+      // 给 itemData 加上一个 id
+      const itemDataWithId = {
+        ...itemData,
+        id: itemId,
+      }
+
+      existingCartData.push(itemDataWithId)
+
+      localStorage.setItem("cart", JSON.stringify(existingCartData))
+      setShowConfPopup(true)
+      setToggleReservation(false)
+
+      return
+    }
+
     newCartItem(itemData, {
       onSuccess: () => {
         setShowConfPopup(true)
@@ -133,7 +169,6 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       }))
     }
   }, [value])
-
   return (
     <>
       {toggleReservation && (
@@ -183,7 +218,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
                       type="text"
                       id="checkInDate"
                       readOnly
-                      value={formattedDate(queryData.dateRange[0]) || ""}
+                      value={formatLocalDate(queryData.dateRange[0]) || ""}
                     />
                   </div>
                   <div className="dateInput">
@@ -192,7 +227,7 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
                       type="text"
                       id="checkOutDate"
                       readOnly
-                      value={formattedDate(queryData.dateRange[1]) || ""}
+                      value={formatLocalDate(queryData.dateRange[1]) || ""}
                     />
                   </div>
                 </div>
@@ -299,8 +334,8 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       )}
       <ConfPopup
         roomTypeName={queryData.roomType}
-        checkInDate={formattedDate(queryData.dateRange[0])}
-        checkOutDate={formattedDate(queryData.dateRange[1])}
+        checkInDate={formatLocalDate(queryData.dateRange[0])}
+        checkOutDate={formatLocalDate(queryData.dateRange[1])}
         onClose={() => setShowConfPopup(false)}
         isVisible={showConfPopup}
       />
