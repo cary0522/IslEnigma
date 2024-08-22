@@ -14,6 +14,11 @@ export const formatDate = (str) => {
   return formattedDate
 }
 
+export const formatDateForInput = (dateStr) => {
+  const [year, month, day] = dateStr.split("/")
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`
+}
+
 export const checkCardType = (data) => {
   switch (data[0]) {
     case "4":

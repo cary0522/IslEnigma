@@ -135,7 +135,9 @@ const RoomItem = ({ room, index }) => {
           <a href="#roomFacilities" className="checkFacilities">
             查看設備
           </a>
-
+          <a href="#roomFacilities" className="checkFacilities">
+            立即預約
+          </a>
           <DateRangePicker
             onChange={handleDateChange}
             value={selectedDates}

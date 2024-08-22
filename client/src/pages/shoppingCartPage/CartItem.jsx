@@ -93,9 +93,12 @@ const CartItem = ({ item, cartData, setCartData }) => {
                   (item.dateRange ? item.dateRange[0] : null) ||
                   item.booked_date
               ) || "未提供日期"}
+            </p>
+            <p className="itemDate">
+              {" "}
               {(room || roomType) && (
                 <>
-                  {" - "}退房日期：
+                  退房日期：
                   {formatDate(item.check_out_date || item.dateRange[1]) ||
                     "未提供日期"}
                 </>
