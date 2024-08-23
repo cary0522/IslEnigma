@@ -16,7 +16,6 @@ import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { useAuthContext } from "./context/AuthContext"
 
-<<<<<<< HEAD
 import MapPage from "./pages/mappage";
 import TicketPage from "./pages/ticketpage";
 import RestaurantPage from "./pages/restaurantpage"
@@ -26,17 +25,6 @@ import InfoEventPage from "./pages/infoEventPage";
 import InfoInfoPage from "./pages/infoInfoPage";
 import InfoFAQPage from "./pages/infoFAQPage";
 import RoomMorePage from "./pages/roomMorePage";
-=======
-import MapPage from "./pages/mappage"
-import TicketPage from "./pages/ticketpage"
-import RestaurantPage from "./pages/restaurantpage"
-import Homepage from "./pages/homepage"
-import BoatPage from "./pages/boatpage"
-import InfoEventPage from "./pages/infoEventPage"
-import InfoInfoPage from "./pages/infoInfoPage"
-import InfoFAQPage from "./pages/infoFAQPage"
-import RoomMorePage from "./pages/roomMorePage"
->>>>>>> main
 import RestaurantPaginationPage from "./pages/restaurantPaginationPage"
 import Hello from "./Hello"
 import AboutUsPage from "./pages/aboutUsPage"
