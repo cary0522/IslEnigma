@@ -70,6 +70,7 @@ const ShoppingCartPage = () => {
   }, [data])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (!member) {
       const localCartItem = JSON.parse(localStorage.getItem("cart")) || []
       setCartData(localCartItem)

@@ -23,6 +23,7 @@ export const useNewCartItem = () => {
       console.log(data)
     },
     onError: (error) => {
+      console.log(error)
       const errMsg = error.response?.data || "發生錯誤!"
       toast.error(errMsg)
     },

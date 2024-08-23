@@ -50,13 +50,43 @@ const cart_controller = {
 
   new_cart_item: async (req, res) => {
     const {
-      order_id,
+      // order_id = null,
       dateRange,
       people,
       roomId,
       roomCount: room_count,
     } = req.body
-    console.log(req.body)
+
+    const member_id = req.user.id
+
+    const order = await prisma.customer_order.findFirst({
+      where: {
+        member_id,
+        status: "CREATED",
+      },
+      select: {
+        order_id: true,
+      },
+    })
+    const order_id = order.order_id
+    // const memberWithOrders = await prisma.member.findUnique({
+    //   where: {
+    //     member_id, // Replace `member_id` with the actual ID variable
+    //   },
+    //   include: {
+    //     customer_order: {
+    //       where: {
+    //         status: "CREATED",
+    //       },
+
+    //       select: {
+    //         order_id: true,
+    //       },
+    //     },
+    //   },
+    // })
+    // console.log(memberWithOrders)
+
     try {
       const existingItem = await prisma.order_item.findFirst({
         where: {
@@ -191,8 +221,6 @@ const cart_controller = {
   },
 
   remove_item: async (req, res) => {
-    console.log(123)
-
     const id = req.params.id
     try {
       const currentItem = await prisma.order_item.findUnique({

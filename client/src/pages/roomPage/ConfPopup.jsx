@@ -13,7 +13,7 @@ const ConfPopup = ({
     <div id="cartConfirmationPopup" className="popupOverlay active">
       <div className="popupContent">
         <img
-          src="./public/00myIcon/booking-info.png"
+          src="/00myIcon/booking-info.png"
           alt="Tent Icon"
           className="tentIcon"
         />

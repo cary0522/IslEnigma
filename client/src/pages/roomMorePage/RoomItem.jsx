@@ -1,46 +1,83 @@
-import DateRangePicker from "@wojtekmaj/react-daterange-picker"
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState, useCallback } from "react"
 import { Carousel } from "react-bootstrap"
 import "react-calendar/dist/Calendar.css"
+import BookingModal from "./BookingModal"
 import { useQueryRoomsDate } from "../../hooks/useSearchBookedDate"
 import { generateDateRange } from "../../utils/helpers"
+import { useNewCartItem } from "../../hooks/useNewCartItem"
+import ConfPopup from "../roomPage/ConfPopup"
 
-const RoomItem = ({ room, index }) => {
+const RoomCarousel = React.memo(({ images }) => {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  const handleSelect = useCallback((selectedIndex) => {
+    setActiveIndex(selectedIndex)
+  }, [])
+
+  const handleThumbnailClick = useCallback((index) => {
+    setActiveIndex(index)
+  }, [])
+  return (
+    <div className="roomCarousel">
+      <Carousel activeIndex={activeIndex} onSelect={handleSelect}>
+        {images.map((img, imgIndex) => (
+          <Carousel.Item key={imgIndex}>
+            <img
+              src={img}
+              alt={`房間圖片 ${imgIndex + 1}`}
+              className="d-block w-100"
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
+      <div className="thumbnails">
+        {images.slice(1).map((img, i) => (
+          <img
+            key={i}
+            src={img}
+            alt={`縮略圖 ${i + 2}`}
+            onClick={() => handleThumbnailClick(i + 1)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+})
+
+// 主要的 RoomItem 組件
+const RoomItem = React.memo(({ room, index }) => {
+  const [toggleBookingModal, setToggleBookingModal] = useState(false)
+  const [bookedDate, setBookedDate] = useState([])
+
   const {
     mutate: searchRoomsDate,
     isLoading,
     data: bookedDatesData,
   } = useQueryRoomsDate()
 
-  const [bookedDate, setBookedDate] = useState([])
-  const [selectedDates, setSelectedDates] = useState([null, null])
-  const today = useMemo(() => {
-    const date = new Date()
-    date.setHours(0, 0, 0, 0)
-    return date
-  }, [])
+  const {
+    mutate: newCartItem,
+    isLoading: addingItem,
+    data: item,
+    errors,
+  } = useNewCartItem()
 
-  const disableBookedDates = ({ date }) => {
-    return bookedDate.some(
-      (bookedDate) =>
-        bookedDate.getFullYear() === date.getFullYear() &&
-        bookedDate.getMonth() === date.getMonth() &&
-        bookedDate.getDate() === date.getDate()
-    )
-  }
+  const handleOpenCalendar = useCallback(
+    (index) => {
+      searchRoomsDate(index)
+      setToggleBookingModal(true)
+    },
+    [searchRoomsDate, room.id]
+  )
 
-  const [activeIndex, setActiveIndex] = useState(0)
-  const getIconClass = (iconName) => {
+  const getIconClass = useCallback((iconName) => {
     const cleanName = iconName.replace(/^fa-/, "")
     const prefix = iconName.includes("fa-solid") ? "fas" : "fa"
     return `${prefix} fa-${cleanName}`
-  }
+  }, [])
 
-  const handleThumbnailClick = (index) => {
-    setActiveIndex(index)
-  }
-
-  const getBackgroundImageClass = (roomType) => {
+  const getBackgroundImageClass = useCallback((roomType) => {
     switch (roomType) {
       case "Grass Tempo":
         return "backgroundImageGrass"
@@ -53,17 +90,7 @@ const RoomItem = ({ room, index }) => {
       default:
         return ""
     }
-  }
-
-  const handleOpenCalendar = (index) => {
-    searchRoomsDate(index)
-  }
-
-  const handleDateChange = (dates) => {
-    setSelectedDates(dates)
-    // Optional: Save dates immediately or trigger an action here
-    console.log("Selected Dates:", dates)
-  }
+  }, [])
 
   useEffect(() => {
     if (bookedDatesData) {
@@ -78,6 +105,11 @@ const RoomItem = ({ room, index }) => {
     }
   }, [bookedDatesData])
 
+  const memoizedRoomCarousel = useMemo(
+    () => <RoomCarousel images={room.images} />,
+    [room.images]
+  )
+
   if (isLoading) return <div>Loading..</div>
 
   return (
@@ -85,29 +117,7 @@ const RoomItem = ({ room, index }) => {
       id={room.roomTypeEng.toLowerCase().replace(/\s+/g, "")}
       className={`roomItem ${index % 2 === 0 ? "even" : "odd"}`}
     >
-      <div className="roomCarousel">
-        <Carousel activeIndex={activeIndex} onSelect={setActiveIndex}>
-          {room.images.map((img, imgIndex) => (
-            <Carousel.Item key={imgIndex}>
-              <img
-                src={img}
-                alt={`房間圖片 ${imgIndex + 1}`}
-                className="d-block w-100"
-              />
-            </Carousel.Item>
-          ))}
-        </Carousel>
-        <div className="thumbnails">
-          {room.images.slice(1).map((img, i) => (
-            <img
-              key={i}
-              src={img}
-              alt={`縮略圖 ${i + 2}`}
-              onClick={() => handleThumbnailClick(i + 1)}
-            />
-          ))}
-        </div>
-      </div>
+      {memoizedRoomCarousel}
       <div className="roomInfo">
         <div className={getBackgroundImageClass(room.roomTypeEng)}></div>
         <h2 className="roomTypeEng">{room.roomTypeEng}</h2>
@@ -135,29 +145,29 @@ const RoomItem = ({ room, index }) => {
           <a href="#roomFacilities" className="checkFacilities">
             查看設備
           </a>
-          <a href="#roomFacilities" className="checkFacilities">
-            立即預約
-          </a>
-          <DateRangePicker
-            onChange={handleDateChange}
-            value={selectedDates}
-            clearIcon={false}
-            closeCalendar={false}
-            disableCalendar={false}
-            shouldCloseCalendar={({ reason }) => reason !== "outsideAction"}
-            locale="en-us"
-            calendarProps={{
-              tileDisabled: disableBookedDates,
-            }}
-            onCalendarOpen={() => {
+          <button
+            onClick={() => {
               handleOpenCalendar(index)
             }}
-            minDate={today}
-          />
+            className="checkFacilities"
+          >
+            立即預約
+          </button>
+          <div className="roomsPage">
+            <BookingModal
+              toggleBookingModal={toggleBookingModal}
+              setToggleBookingModal={setToggleBookingModal}
+              index={index}
+              bookedDate={bookedDate}
+              roomId={index}
+              price={room.price}
+              roomType={room.roomType}
+            />
+          </div>
         </div>
       </div>
     </div>
   )
-}
+})
 
 export default RoomItem
