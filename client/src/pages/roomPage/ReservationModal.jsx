@@ -55,13 +55,8 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
   const formattedDate = (date) => {
     if (!date) return ""
 
-    const date1 = new Date(date)
-    return date1.toISOString
-    // return date.toLocaleDateString({
-    //   year: "numeric",
-    //   month: "numeric",
-    //   day: "numeric",
-    // })
+    const formattedDate = new Date(date).toISOString()
+    return formattedDate
   }
 
   const handleUpdate = (e) => {
@@ -137,10 +132,21 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
 
       const existingCartData = JSON.parse(localStorage.getItem("cart")) || []
 
-      console.log(existingCartData)
-      existingCartData.push(itemData)
+      // 生成唯一商品ID（基于当前时间戳）
+      const itemId = Date.now()
+
+      // 给 itemData 加上一个 id
+      const itemDataWithId = {
+        ...itemData,
+        id: itemId,
+      }
+
+      existingCartData.push(itemDataWithId)
 
       localStorage.setItem("cart", JSON.stringify(existingCartData))
+      setShowConfPopup(true)
+      setToggleReservation(false)
+
       return
     }
 
@@ -163,7 +169,6 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       }))
     }
   }, [value])
-  console.log(queryData)
   return (
     <>
       {toggleReservation && (
@@ -329,8 +334,8 @@ const ReservationModal = ({ toggleReservation, setToggleReservation }) => {
       )}
       <ConfPopup
         roomTypeName={queryData.roomType}
-        checkInDate={formattedDate(queryData.dateRange[0])}
-        checkOutDate={formattedDate(queryData.dateRange[1])}
+        checkInDate={formatLocalDate(queryData.dateRange[0])}
+        checkOutDate={formatLocalDate(queryData.dateRange[1])}
         onClose={() => setShowConfPopup(false)}
         isVisible={showConfPopup}
       />

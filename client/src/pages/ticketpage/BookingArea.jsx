@@ -89,6 +89,7 @@ function BookingArea({
             })
 
             localStorage.setItem("cart", JSON.stringify(cartData))
+            handleAlertShowCart()
 
             return
           }
