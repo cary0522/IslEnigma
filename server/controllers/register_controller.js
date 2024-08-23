@@ -2,6 +2,7 @@
 const register_Model = require("../models/register_model")
 const register_controller = {
   register: async (req, res) => {
+    console.log(req.body)
     try {
       const memberData = req.body
       const checkMember = await register_Model.read(memberData.account)
