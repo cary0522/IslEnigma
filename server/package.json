@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "build": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

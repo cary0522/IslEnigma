@@ -7,7 +7,7 @@ import CheckOutPage from "./pages/checkoutPage/CheckOutPage"
 
 import ShoppingSuccessPage from "./pages/shoppingSuccessPage/ShoppingSuccessPage"
 import CartLayout from "./components/layout/CartLayout"
-import Restaurant from "./pages/restaurantpage/Restaurant"
+// import Restaurant from "./pages/restaurantpage/Restaurant"
 import Rooms from "./pages/roomPage/Rooms"
 import Login from "./pages/loginPage/Login"
 import Register from "./pages/registerPage/Register"
@@ -18,7 +18,7 @@ import { useAuthContext } from "./context/AuthContext"
 
 import MapPage from "./pages/mappage"
 import TicketPage from "./pages/ticketpage"
-import RestaurantPage from "./pages/restaurantpage"
+import RestaurantPage from "./pages/restaurantPage"
 import Homepage from "./pages/homepage"
 import BoatPage from "./pages/boatpage"
 import InfoEventPage from "./pages/infoEventPage"
@@ -65,7 +65,6 @@ function App() {
               }
             />
           </Route>
-          <Route path="restaurant" element={<Restaurant />} />
           <Route path="rooms" element={<Rooms />} />
           <Route path="/mappage" element={<MapPage />} />
           <Route path="/ticketpage" element={<TicketPage />} />

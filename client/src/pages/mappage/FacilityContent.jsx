@@ -20,14 +20,16 @@ function FacilityContent({
 						.post("http://localhost:3001/map/mapPage", { facility_id: facility.facility_id })
 						.then((response) => {
 							setRuleList(response.data);
-						});
+						}).catch((err)=>{
+							console.log(err)
+						})
 				};
-				useEffect(() => {
-					let fetchRule = async () => {
-						await getRuleList();
-					};
-					fetchRule();
-				}, []);
+				// useEffect(() => {
+				// 	let fetchRule = async () => {
+				// 		await getRuleList();
+				// 	};
+				// 	fetchRule();
+				// }, []);
 				let rule_height,
 					rule_seat,
 					rule_excitement = null;
