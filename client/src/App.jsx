@@ -18,7 +18,7 @@ import { useAuthContext } from "./context/AuthContext"
 
 import MapPage from "./pages/mappage"
 import TicketPage from "./pages/ticketpage"
-import RestaurantPage from "./pages/restaurantPage"
+import RestaurantPage from "./pages/restaurantpage"
 import Homepage from "./pages/homepage"
 import BoatPage from "./pages/boatpage"
 import InfoEventPage from "./pages/infoEventPage"
