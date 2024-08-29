@@ -1,4 +1,4 @@
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient } = require("../prisma/client")
 const prisma = new PrismaClient()
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 const stripe_webhook_controller = async (req, res) => {

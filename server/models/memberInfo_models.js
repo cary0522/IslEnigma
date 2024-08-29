@@ -1,6 +1,6 @@
 //@author : 許哲誠
 //東西太多了考慮改用FP
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient } = require("../prisma/client")
 const prisma = new PrismaClient()
 const passwordHelpers = require("../utils/passwordHelpers")
 const order = {

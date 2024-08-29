@@ -5,7 +5,7 @@
 	"scripts": {
 		"test": "jest",
 		"server": "nodemon server.js",
-		"postinstall": "prisma generate"
+    "postinstall": "npx prisma generate"
 	},
 	"keywords": [],
 	"author": "",

@@ -17,7 +17,7 @@ const ShoppingCartPage = () => {
   const location = useLocation()
 
   const handleDelete = async (itemId) => {
-    await axios.delete(`http://localhost:3001/cart/${itemId}`)
+    await axios.delete(`https://isl-enigma-server.vercel.app/cart/${itemId}`)
     // Remove from local storage
     const updatedCart = cartData.filter((item) => item.id !== itemId)
     localStorage.setItem("cart", JSON.stringify(updatedCart))

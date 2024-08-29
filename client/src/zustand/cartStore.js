@@ -6,7 +6,7 @@ const useCartStore = create((set) => ({
   loading: true,
   fetchCartData: async () => {
     try {
-      const response = await axios.get("http://localhost:3001/cart")
+      const response = await axios.get("https://isl-enigma-server.vercel.app/cart")
       set({
         cartItems: response.data.order_item,
         loading: false,

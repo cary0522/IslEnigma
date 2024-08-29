@@ -17,7 +17,7 @@ function FacilityContent({
 				let [ruleList, setRuleList] = useState([]);
 				let getRuleList = () => {
 					axios
-						.post("http://localhost:3001/map/mapPage", { facility_id: facility.facility_id })
+						.post("https://isl-enigma-server.vercel.app/map/mapPage", { facility_id: facility.facility_id })
 						.then((response) => {
 							setRuleList(response.data);
 						}).catch((err)=>{
@@ -47,7 +47,7 @@ function FacilityContent({
 				let [moreAbout, setMoreAbout] = useState(null);
 				let getMoreAbout = () => {
 					axios
-						.post("http://localhost:3001/map/moreAbout", {
+						.post("https://isl-enigma-server.vercel.app/map/moreAbout", {
 							facility_id: facility.facility_id,
 						})
 						.then((response) => {

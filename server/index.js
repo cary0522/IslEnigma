@@ -23,6 +23,8 @@ app.use(
 		origin: [
 			"https://localhost:5173",
 			"http://api.openweathermap.org/data/2.5/weather",
+			"https://isl-enigma-server.vercel.app/",
+			"https://isl-enigma.vercel.app"
 		],
 		credentials: true,
 	})

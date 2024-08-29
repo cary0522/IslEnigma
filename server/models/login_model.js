@@ -1,5 +1,5 @@
 //@author: 許哲誠
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require('../prisma/client');
 const prisma = new PrismaClient();
 
 const login_Model = {

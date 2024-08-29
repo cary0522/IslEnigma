@@ -1,4 +1,4 @@
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient } = require("../prisma/client")
 const prisma = new PrismaClient()
 const startDate = new Date("2024-08-20")
 const endDate = new Date("2024-08-21")

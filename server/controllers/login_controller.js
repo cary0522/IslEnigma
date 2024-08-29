@@ -4,7 +4,7 @@ const passwordHelpers = require("../utils/passwordHelpers")
 const generateToken = require("../utils/jwtHelpers")
 const cookieHelpers = require("../utils/setCookie")
 const validReCaptcha = require("../utils/validReCaptcha")
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient } = require("../prisma/client")
 const { randomUUID } = require("crypto")
 const { v4: uuidv4 } = require("uuid")
 

@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient } = require("../prisma/client")
 const prisma = new PrismaClient()
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 const authMiddleware = require("../middlewares/authToken")
@@ -383,7 +383,7 @@ router.post("/ecpay", verifyToken, async (req, res) => {
     ItemName: itemStrings,
     ReturnURL: "https://localhost:5173/cart/shoppingSuccess",
     ClientBackURL: "https://localhost:5173/cart/shoppingSuccess",
-    OrderResultURL: `http://localhost:3001/cart/payment/${itemName[0].order_id}`,
+    OrderResultURL: `https://isl-enigma-server.vercel.app/cart/payment/${itemName[0].order_id}`,
     ChoosePayment: "ALL",
     EncryptType: "1",
     CustomField1: customer,

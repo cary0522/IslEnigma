@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require("../prisma/client");
 const prisma = new PrismaClient();
 
 // 地圖頁面：取得所有設施資料

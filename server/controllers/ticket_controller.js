@@ -1,4 +1,4 @@
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient } = require("../prisma/client")
 const prisma = new PrismaClient()
 var { v4: uuidv4 } = require("uuid")
 const { ticket } = require("../models/memberInfo_models")
