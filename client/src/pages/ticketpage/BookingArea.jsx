@@ -110,7 +110,7 @@ function BookingArea({
           ]
         }
         axios
-          .post("http://localhost:3001/ticket/addTicketItem", cart, {
+          .post("https://isl-enigma-server.vercel.app/ticket/addTicketItem", cart, {
             withCredentials: true,
           })
           .then((response) => {

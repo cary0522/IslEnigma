@@ -34,7 +34,7 @@ function Map({ isSticky }) {
 	// 從資料庫抓設施資料
 	let [facilityList, setFacilityList] = useState([]);
 	let getFacilityList = async () => {
-		let result = await axios.get("http://localhost:3001/map/mapPage");
+		let result = await axios.get("https://isl-enigma-server.vercel.app/map/mapPage");
 		setFacilityList(result.data);
 	};
 	useEffect(() => {
