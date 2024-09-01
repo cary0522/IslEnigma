@@ -41,7 +41,7 @@ function App() {
 	const { member } = useAuthContext();
 
 	return (
-		<Router>
+		<>
 			<Routes>
 				<Route path="/" element={<Layout />}>
 					<Route
@@ -94,7 +94,7 @@ function App() {
 				</Route>
 			</Routes>
 			<ToastContainer />
-		</Router>
+		</>
 	);
 }
 
