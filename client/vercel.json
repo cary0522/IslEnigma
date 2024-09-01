@@ -1,7 +1,4 @@
 {
 	"version": 2,
-	"routes":[
-		{"src":"/mappage","dest":"/"},
-		{"src":"/ticketpage","dest":"/"}
-	]
+	"rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
