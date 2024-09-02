@@ -858,7 +858,7 @@ function Map({ isSticky }) {
 	function handleType(typeArr) {
 		typeArr.current.forEach((elem) => {
 			elem.style.transition = "";
-			elem.style.backgroundImage = "url(./mapPointHover.svg)";
+			elem.style.backgroundImage = "url('./mapPointHover.svg')";
 			elem.style.animation = "svgHover 0.8s";
 		});
 		setTimeout(() => {
