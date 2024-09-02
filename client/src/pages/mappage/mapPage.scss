@@ -207,26 +207,32 @@
 					@keyframes svgHover {
 						0% {
 							transform: translateX(0) rotate(0deg) scale(1);
+							background-image: url("./mapPoint.svg");
 						}
 						20% {
 							transform: translateX(3px) rotate(5deg) scale(1.2);
+							background-image: url("./mapPointHover.svg");
 						}
 						40% {
 							transform: translateX(-3px) rotate(-5deg) scale(1.2);
+							background-image: url("./mapPointHover.svg");
 						}
 						60% {
 							transform: translateX(3px) rotate(5deg) scale(1.2);
+							background-image: url("./mapPointHover.svg");
 						}
 						80% {
 							transform: translateX(-3px) rotate(-5deg) scale(1.2);
+							background-image: url("./mapPointHover.svg");
 						}
 						100% {
 							transform: translateX(0px) rotate(0deg) scale(1);
+							background-image: url("./mapPoint.svg");
 						}
 					}
 					&:hover {
 						animation: svgHover 0.8s;
-						background-image: url("./mapPointHover.svg");
+						// background-image: url("./mapPointHover.svg");
 					}
 					// 地標內的分類svg圖樣式
 					svg {
