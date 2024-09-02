@@ -861,7 +861,7 @@ function Map({ isSticky }) {
 	function handleType(typeArr) {
 		typeArr.current.forEach((elem) => {
 			elem.style.transition = "";
-			elem.style.backgroundImage = url(svgHover);
+			elem.style.backgroundImage ="url('client/src/pages/mappage/mapPointHover.svg')";
 			elem.style.animation = "svgHover 0.8s";
 		});
 		setTimeout(() => {
