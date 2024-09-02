@@ -751,6 +751,7 @@
 			}
 		}
 		.ticketRuleContentNone {
+			display: none;
 			animation: ruleContentHide 0.3s both;
 		}
 		@keyframes ruleContentBlock {
@@ -776,6 +777,7 @@
 			}
 		}
 		.ticketRuleContentBlock {
+			display: block;
 			animation: ruleContentBlock 0.5s both;
 		}
 	}
