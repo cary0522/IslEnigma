@@ -1,4 +1,5 @@
 import React from "react";
+import aboutPgn from '/00myIcon/about.png';
 
 function AlertInt({
 	alertShow,
@@ -12,7 +13,7 @@ function AlertInt({
 			return (
 				<div className="divAlert">
 					<div className="col-10 col-md-3">
-						<img src="./about.png" alt="" />
+						<img src={aboutPgn} alt="" />
 					</div>
 					<div className="col-10 col-md-9" id="divAlertContent">
 						<p>{alertContent}</p>
@@ -37,7 +38,7 @@ function AlertInt({
 			return (
 				<div className="divAlert">
 					<div className="col-10">
-						<img src="./about.png" alt="" />
+						<img src={aboutPgn} alt="" />
 					</div>
 					<div className="col-10" id="divAlertContent">
 						<p>{alertContent}</p>

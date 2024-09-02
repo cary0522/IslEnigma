@@ -1,6 +1,7 @@
 import React from "react"
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import ticketPng from "/00myIcon/ticket.png"
 
 function AlertCart({
   cartShow,
@@ -14,7 +15,7 @@ function AlertCart({
       return (
         <div className="divAlert">
           <div className="col-10 ticketIcon">
-            <img src="/00myIcon/ticket.png" alt="" />
+            <img src={ticketPng} alt="" />
           </div>
           <div className="col-10">
             <h2>謝謝您的訂購</h2>
@@ -52,7 +53,7 @@ function AlertCart({
       return (
         <div className="divAlert">
           <div className="col-10 ticketIcon">
-            <img src="/public/00myIcon/ticket.png" alt="" />
+            <img src={ticketPng} alt="" />
           </div>
           <div className="col-10">
             <h2>謝謝您的訂購</h2>
@@ -90,7 +91,7 @@ function AlertCart({
       return (
         <div className="divAlert">
           <div className="col-10 ticketIcon">
-            <img src="/public/00myIcon/ticket.png" alt="" />
+            <img src={ticketPng} alt="" />
           </div>
           <div className="col-10">
             <h2>謝謝您的訂購</h2>
