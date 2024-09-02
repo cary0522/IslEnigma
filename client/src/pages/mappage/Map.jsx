@@ -858,13 +858,13 @@ function Map({ isSticky }) {
 	function handleType(typeArr) {
 		typeArr.current.forEach((elem) => {
 			elem.style.transition = "";
-			elem.style.backgroundImage = "url(/src/pages/mappage/mapPointHover.svg)";
+			elem.style.backgroundImage = "url(./mapPointHover.svg)";
 			elem.style.animation = "svgHover 0.8s";
 		});
 		setTimeout(() => {
 			typeArr.current.forEach((elem) => {
 				elem.style.animation = "";
-				elem.style.backgroundImage = "url(/src/pages/mappage/mapPoint.svg)";
+				elem.style.backgroundImage = "";
 				elem.style.transition = "all 0.8s";
 			});
 		}, 2000);
